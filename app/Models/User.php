@@ -46,4 +46,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Driver::class,'userid');
     }
+    public function report()
+    {
+        return $this->hasMany(Report::class,'userid');
+    }
 }

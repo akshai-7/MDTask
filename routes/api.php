@@ -20,9 +20,12 @@ Route::get('/getdetails',[ApiController::class,'getdetails'])->middleware('auth:
 Route::post('update',[ApiController::class,'update'])->middleware('auth:sanctum');
 Route::delete('delete',[ApiController::class,'delete'])->middleware('auth:sanctum');
 
-
-
 Route::post('/driver',[ApiController::class,'driver'])->middleware('auth:sanctum');
 Route::get('/driverdetails',[ApiController::class,'driverdetails'])->middleware('auth:sanctum');
 Route::post('updatedetails',[ApiController::class,'updatedetails'])->middleware('auth:sanctum');
 Route::delete('deletedetails',[ApiController::class,'deletedetails'])->middleware('auth:sanctum');
+
+Route::post('/report',[ApiController::class,'report'])->middleware('auth:sanctum');
+Route::get('/reportdetails',[ApiController::class,'reportdetails'])->middleware('auth:sanctum');
+Route::post('updatereport',[ApiController::class,'updatereport'])->middleware('auth:sanctum');
+Route::delete('deletereport',[ApiController::class,'deletereport'])->middleware('auth:sanctum');
