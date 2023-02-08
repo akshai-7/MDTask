@@ -16,4 +16,13 @@ use App\Http\Controllers\ApiController;
 
 Route::post('/register',[ApiController::class,'register']);
 Route::post('/login',[ApiController::class,'login']);
-Route::post('/driver',[ApiController::class,'driver']);
+Route::get('/getdetails',[ApiController::class,'getdetails'])->middleware('auth:sanctum');
+Route::post('update',[ApiController::class,'update'])->middleware('auth:sanctum');
+Route::delete('delete',[ApiController::class,'delete'])->middleware('auth:sanctum');
+
+
+
+Route::post('/driver',[ApiController::class,'driver'])->middleware('auth:sanctum');
+Route::get('/driverdetails',[ApiController::class,'driverdetails'])->middleware('auth:sanctum');
+Route::post('updatedetails',[ApiController::class,'updatedetails'])->middleware('auth:sanctum');
+Route::delete('deletedetails',[ApiController::class,'deletedetails'])->middleware('auth:sanctum');
