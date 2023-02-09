@@ -246,7 +246,7 @@ class ApiController extends Controller
                             $image =$request->file('image');
                             $time = time().'.'.$image->getClientOriginalExtension();
                             $location = public_path('public/images'.$time);
-                            Report::make($image)->resize(300, 300)->save($location);
+                            Visual::make($image)->resize(300, 300)->save($location);
                         }
                     $data->feedback=$request['feedback'];
                     $data->action=$request['action'];
@@ -279,7 +279,7 @@ class ApiController extends Controller
                             $image =$request->file('image');
                             $time = time().'.'.$image->getClientOriginalExtension();
                             $location = public_path('public/images'.$time);
-                            Report::make($image)->resize(300, 300)->save($location);
+                            Visual::make($image)->resize(300, 300)->save($location);
                         }
                     $data->feedback=$request['feedback'];
                     $data->action=$request['action'];
@@ -289,7 +289,7 @@ class ApiController extends Controller
             }
 
             public function deletedamage(){
-                $data=Visual::where('user_id',Auth::user()->id)->get();
+                $data=Visual::where('user_id',Auth::user()->id)->first();
                 $data->delete();
                 return response()->json(['message'=>'Deleted'],200);
             }
