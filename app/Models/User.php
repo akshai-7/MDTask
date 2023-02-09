@@ -44,10 +44,10 @@ class User extends Authenticatable
 
     public function driver()
     {
-        return $this->hasMany(Driver::class,'userid');
+        return $this->hasMany(Driver::class,'user_id');
     }
     public function report()
     {
-        return $this->hasMany(Report::class,'userid');
+        return $this->hasMany(Report::class,'user_id');
     }
 }
