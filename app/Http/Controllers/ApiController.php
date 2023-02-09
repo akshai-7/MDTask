@@ -4,15 +4,17 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
-use App\Models\Report;
 use App\Models\Driver;
+use App\Models\Report;
+use App\Models\Visual;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules\Unique;
 
 class ApiController extends Controller
 {
-        //Request;:
+    //user datails
+        //Request:
             public function register(Request $request){
                 $validator = Validator::make($request->all(),[
                     'name'=>'required',
@@ -45,7 +47,7 @@ class ApiController extends Controller
 
         //details:
             public function getdetails(){
-                return response()->json(['success' => Auth::user()]);
+                return response()->json(Auth::user());
             }
 
         //update:
@@ -80,7 +82,7 @@ class ApiController extends Controller
                     'drivername'=>'required',
                     'company'=>'required',
                     'delivaryemail'=>'required|email',
-                    'phone'=>'required|max:10',
+                    'phone'=>'required|min:10',
                 ]);
                 if ($validator->fails()){
                     return response()->json(['message'=>'Validator error'],401);
@@ -108,7 +110,7 @@ class ApiController extends Controller
                     'drivername'=>'required',
                     'company'=>'required',
                     'delivaryemail'=>'required|email',
-                    'phone'=>'required|max:10',
+                    'phone'=>'required|min:10',
                 ]);
                 if ($validator->fails()){
                     return response()->json(['message'=>'Validator error'],401);
@@ -224,4 +226,72 @@ class ApiController extends Controller
                 $user->delete();
                 return response()->json(['message'=>'Deleted'],200);
             }
+    // visual damage:
+            public function visualdamage(Request $request){
+                $validator = Validator::make($request->all(),[
+                    'view'=>'required',
+                    'image'=>'required',
+                    'feedback'=>'required',
+                    'action'=>'required',
+                ]);
+                if ($validator->fails()){
+                    return response()->json(['message'=>'Validator error'],401);
+                }
+                else{
+                    $data = new Visual();
+                    $data->user_id =Auth::user()->id;
+                    $data->view=$request['view'];
+                    $data->image =$request['image'];
+                        if($request->hasfile('image')){
+                            $image =$request->file('image');
+                            $time = time().'.'.$image->getClientOriginalExtension();
+                            $location = public_path('public/images'.$time);
+                            Report::make($image)->resize(300, 300)->save($location);
+                        }
+                    $data->feedback=$request['feedback'];
+                    $data->action=$request['action'];
+                    $data->save();
+                    return response()->json(['message'=>'Data Stored Successfully'],200);
+                }
+            }
+
+            public function damagedetails(){
+                $data= Visual::where('user_id',Auth::user()->id)->get();
+                return response()->json($data);
+            }
+
+            public function updatedamage(Request $request){
+                $validator = Validator::make($request->all(),[
+                    'view'=>'required',
+                    'image'=>'required',
+                    'feedback'=>'required',
+                    'action'=>'required',
+                ]);
+                if ($validator->fails()){
+                    return response()->json(['message'=>'Validator error'],401);
+                }
+                else{
+                    $data = Visual::where('user_id',Auth::user()->id)->first();
+                    $data->user_id =Auth::user()->id;
+                    $data->view=$request['view'];
+                    $data->image =$request['image'];
+                        if($request->hasfile('image')){
+                            $image =$request->file('image');
+                            $time = time().'.'.$image->getClientOriginalExtension();
+                            $location = public_path('public/images'.$time);
+                            Report::make($image)->resize(300, 300)->save($location);
+                        }
+                    $data->feedback=$request['feedback'];
+                    $data->action=$request['action'];
+                    $data->save();
+                    return response()->json(['message'=>'Updated Successfully'],200);
+                }
+            }
+
+            public function deletedamage(){
+                $data=Visual::where('user_id',Auth::user()->id)->get();
+                $data->delete();
+                return response()->json(['message'=>'Deleted'],200);
+            }
+
 }

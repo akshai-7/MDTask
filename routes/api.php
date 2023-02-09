@@ -29,3 +29,8 @@ Route::post('/report',[ApiController::class,'report'])->middleware('auth:sanctum
 Route::get('/reportdetails',[ApiController::class,'reportdetails'])->middleware('auth:sanctum');
 Route::post('updatereport',[ApiController::class,'updatereport'])->middleware('auth:sanctum');
 Route::delete('deletereport',[ApiController::class,'deletereport'])->middleware('auth:sanctum');
+
+Route::post('/visualdamage',[ApiController::class,'visualdamage'])->middleware('auth:sanctum');
+Route::get('/damagedetails',[ApiController::class,'damagedetails'])->middleware('auth:sanctum');
+Route::post('/updatedamage',[ApiController::class,'updatedamage'])->middleware('auth:sanctum');
+Route::delete('deletedamage',[ApiController::class,'deletedamage'])->middleware('auth:sanctum');

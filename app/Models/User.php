@@ -50,4 +50,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Report::class,'user_id');
     }
+    public function visual()
+    {
+        return $this->hasMany(Visual::class,'user_id');
+    }
 }
