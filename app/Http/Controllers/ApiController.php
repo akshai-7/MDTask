@@ -40,7 +40,6 @@ class ApiController extends Controller
             if(Auth::attempt($request->only(['email','password'])))
             {
                 $response['token']= Auth::user()->createToken('token')->plainTextToken;
-                // dd($response['token']);
                 return response()->json($response,200);
             }else{
                 return response()->json(['message'=>'Invalid Email and Password'],401);
@@ -133,7 +132,7 @@ class ApiController extends Controller
 
     //delete driver details:
         public function deletedetails(){
-            $data= Driver::find(Auth::user()->id);
+            $data= Driver::where('user_id',Auth::user()->id)->first();
             $data->delete();
             return response()->json(['message'=>'Deleted'],200);
         }
@@ -213,6 +212,13 @@ class ApiController extends Controller
             $user->phone_number_of_witness =$request['phone_number_of_witness'];
             $user->brief_statement =$request['brief_statement'];
             $user->upload_image =$request['upload_image'];
+            if($request->hasfile('upload_image')){
+               $upload_image =$request->file('upload_image');
+               $filename = time().'.'.$upload_image->getClientOriginalExtension();
+                $location = public_path('public/images'.$filename);
+                Report::make($upload_image)->resize(300, 300)->save($location);
+                $user->upload_image = $filename;
+            }
             $user->report =$request['report'];
             $user->date =$request['date'];
             $user->number_plate =$request['number_plate'];
@@ -224,7 +230,7 @@ class ApiController extends Controller
 
     // delete report details:
         public function deletereport(){
-            $user= Report::find(Auth::user()->id);
+            $user=Report::where('user_id',Auth::user()->id)->first();
             $user->delete();
             return response()->json(['message'=>'Deleted'],200);
         }
