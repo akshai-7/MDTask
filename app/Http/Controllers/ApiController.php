@@ -7,6 +7,8 @@ use App\Models\User;
 use App\Models\Driver;
 use App\Models\Report;
 use App\Models\Visual;
+use App\Models\Vehicle;
+use App\Models\Cabin;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules\Unique;
@@ -18,7 +20,7 @@ class ApiController extends Controller
             public function register(Request $request){
                 $validator = Validator::make($request->all(),[
                     'name'=>'required',
-                    'email'=>'required|email',
+                    'email'=>'required|emai',
                     'password'=>'required',
                 ]);
                 if ($validator->fails()){
@@ -255,11 +257,13 @@ class ApiController extends Controller
                 }
             }
 
+        // damagedetails:
             public function damagedetails(){
                 $data= Visual::where('user_id',Auth::user()->id)->get();
                 return response()->json($data);
             }
 
+        //updatedamage:
             public function updatedamage(Request $request){
                 $validator = Validator::make($request->all(),[
                     'view'=>'required',
@@ -288,10 +292,161 @@ class ApiController extends Controller
                 }
             }
 
+        //deletedamage:
             public function deletedamage(){
                 $data=Visual::where('user_id',Auth::user()->id)->first();
                 $data->delete();
                 return response()->json(['message'=>'Deleted'],200);
             }
 
+    //vehiclechecks:
+            public function vehiclechecks(Request $request){
+                $validator = Validator::make($request->all(),[
+                    'view'=>'required',
+                    'image'=>'required',
+                    'feedback'=>'required',
+                    'action'=>'required',
+                    'notes'=>'required',
+                ]);
+                if ($validator->fails()){
+                    return response()->json(['message'=>'Validator error'],401);
+                }
+                else{
+                    $user = new Vehicle();
+                    $user->user_id =Auth::user()->id;
+                    $user->view=$request['view'];
+                    $user->image =$request['image'];
+                        if($request->hasfile('image')){
+                            $image =$request->file('image');
+                            $time = time().'.'.$image->getClientOriginalExtension();
+                            $location = public_path('public/images'.$time);
+                            Vehicle::make($image)->resize(300, 300)->save($location);
+                        }
+                    $user->feedback=$request['feedback'];
+                    $user->action=$request['action'];
+                    $user->notes=$request['notes'];
+                    $user->save();
+                    return response()->json(['message'=>'Data Stored Successfully'],200);
+                }
+            }
+
+        //vehiclecheckdetails:
+            public function vehiclecheckdetails(){
+                $user= Vehicle::where('user_id',Auth::user()->id)->get();
+                return response()->json($user);
+            }
+
+        //updatevehiclechecks:
+            public function updatevehiclechecks(Request $request){
+                $validator = Validator::make($request->all(),[
+                    'view'=>'required',
+                    'image'=>'required',
+                    'feedback'=>'required',
+                    'action'=>'required',
+                    'notes'=>'required',
+                ]);
+                if ($validator->fails()){
+                    return response()->json(['message'=>'Validator error'],401);
+                }
+                else{
+                    $user = Vehicle::where('user_id',Auth::user()->id)->first();
+                    $user->user_id =Auth::user()->id;
+                    $user->view=$request['view'];
+                    $user->image =$request['image'];
+                        if($request->hasfile('image')){
+                            $image =$request->file('image');
+                            $time = time().'.'.$image->getClientOriginalExtension();
+                            $location = public_path('public/images'.$time);
+                            Vehicle::make($image)->resize(300, 300)->save($location);
+                        }
+                    $user->feedback=$request['feedback'];
+                    $user->action=$request['action'];
+                    $user->notes=$request['notes'];
+                    $user->save();
+                    return response()->json(['message'=>'Updated Successfully'],200);
+                }
+            }
+
+        //detletvehiclechecks:
+            public function deletevehiclechecks(){
+                $user=Vehicle::where('user_id',Auth::user()->id)->first();
+                $user->delete();
+                return response()->json(['message'=>'Deleted'],200);
+            }
+
+    //cabinchecks:
+            public function cabinchecks(Request $request){
+                $validator = Validator::make($request->all(),[
+                    'view'=>'required',
+                    'image'=>'required',
+                    'feedback'=>'required',
+                    'action'=>'required',
+                    'notes'=>'required',
+                ]);
+                if ($validator->fails()){
+                    return response()->json(['message'=>'Validator error'],401);
+                }
+                else{
+                    $data = new Cabin();
+                    $data->user_id =Auth::user()->id;
+                    $data->view=$request['view'];
+                    $data->image =$request['image'];
+                        if($request->hasfile('image')){
+                            $image =$request->file('image');
+                            $time = time().'.'.$image->getClientOriginalExtension();
+                            $location = public_path('public/images'.$time);
+                            Cabin::make($image)->resize(300, 300)->save($location);
+                        }
+                    $data->feedback=$request['feedback'];
+                    $data->action=$request['action'];
+                    $data->notes=$request['notes'];
+                    $data->save();
+                    return response()->json(['message'=>'Data Stored Successfully'],200);
+                }
+            }
+
+        //cabincheckdetails:
+            public function cabincheckdetails(){
+                    $data = Cabin::where('user_id',Auth::id())->get();
+                    return response()->json($data);
+
+            }
+
+        //updatcabinchecks:
+            public function updatcabinchecks(Request $request){
+                $validator = Validator::make($request->all(),[
+                    'view'=>'required',
+                    'image'=>'required',
+                    'feedback'=>'required',
+                    'action'=>'required',
+                    'notes'=>'required',
+                ]);
+                if ($validator->fails()){
+                    return response()->json(['message'=>'Validator error'],401);
+                }
+                else{
+                    $data = Cabin::where('user_id',Auth::id())->first();
+                    $data->user_id =Auth::user()->id;
+                    $data->view=$request['view'];
+                    $data->image =$request['image'];
+                        if($request->hasfile('image')){
+                            $image =$request->file('image');
+                            $time = time().'.'.$image->getClientOriginalExtension();
+                            $location = public_path('public/images'.$time);
+                            Cabin::make($image)->resize(300, 300)->save($location);
+                        }
+                    $data->feedback=$request['feedback'];
+                    $data->action=$request['action'];
+                    $data->notes=$request['notes'];
+                    $data->save();
+                    return response()->json(['message'=>'Updated Successfully'],200);
+                }
+            }
+
+        //deletecabinchecks:
+            public function deletecabinchecks(){
+                $data = Cabin::where('user_id',Auth::id())->first();
+                $data->delete();
+                return response()->json(['message'=>'Deleted'],200);
+            }
 }
