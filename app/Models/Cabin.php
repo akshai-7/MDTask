@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Cabin extends Model
 {
     use HasFactory;
+
+    public function users()
+    {
+        return $this->belongsTo(Driver::class,'user_id');
+    }
 }

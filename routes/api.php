@@ -44,3 +44,5 @@ Route::post('/cabinchecks',[ApiController::class,'cabinchecks'])->middleware('au
 Route::get('/cabincheckdetails',[ApiController::class,'cabincheckdetails'])->middleware('auth:sanctum');
 Route::post('/updatcabinchecks',[ApiController::class,'updatcabinchecks'])->middleware('auth:sanctum');
 Route::delete('deletecabinchecks',[ApiController::class,'deletecabinchecks'])->middleware('auth:sanctum');
+
+Route::get('/reportsummary',[ApiController::class,'reportsummary'])->middleware('auth:sanctum');

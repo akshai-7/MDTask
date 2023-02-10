@@ -46,12 +46,5 @@ class User extends Authenticatable
     {
         return $this->hasMany(Driver::class,'user_id');
     }
-    public function report()
-    {
-        return $this->hasMany(Report::class,'user_id');
-    }
-    public function visual()
-    {
-        return $this->hasMany(Visual::class,'user_id');
-    }
+
 }

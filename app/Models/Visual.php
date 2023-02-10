@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Visual extends Model
 {
     use HasFactory;
+
     public function users()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Driver::class,'user_id');
     }
 }

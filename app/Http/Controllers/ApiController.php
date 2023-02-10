@@ -20,7 +20,7 @@ class ApiController extends Controller
             public function register(Request $request){
                 $validator = Validator::make($request->all(),[
                     'name'=>'required',
-                    'email'=>'required|emai',
+                    'email'=>'required|email',
                     'password'=>'required',
                 ]);
                 if ($validator->fails()){
@@ -78,7 +78,7 @@ class ApiController extends Controller
                     return response()->json(['message'=>'Deleted'],200);
             }
 
-    //Driver details;
+    //river details;
             public function driver(Request $request){
                 $validator = Validator::make($request->all(),[
                     'drivername'=>'required',
@@ -124,7 +124,7 @@ class ApiController extends Controller
                 $data->deliveryemail=$request['delivaryemail'];
                 $data->phone=$request['phone'];
                 $data->save();
-                return response()->json(['message'=>'Data Updated Successfully'],200);
+                return response()->json(['message'=>'Updated Successfully'],200);
                 }
             }
 
@@ -135,7 +135,7 @@ class ApiController extends Controller
                 return response()->json(['message'=>'Deleted'],200);
             }
 
-    // Report details:
+    //report details:
             public function report(Request $request){
                 $validator = Validator::make($request->all(),[
                     'date_of_incident'=>'required',
@@ -153,8 +153,9 @@ class ApiController extends Controller
                     return response()->json(['message'=>'Validator error'],401);
                 }
                 else{
+                $data= Driver::select('id')->first();
                 $user = new Report();
-                $user->user_id =Auth::user()->id;
+                $user->user_id =$data->id;
                 $user->date_of_incident =$request['date_of_incident'];
                 $user->location =$request['location'];
                 $user->witnessed_by =$request['witnessed_by'];
@@ -178,7 +179,8 @@ class ApiController extends Controller
 
         // get report details:
             public function reportdetails(){
-                $user=Report::where('user_id',Auth::user()->id)->get();
+                $data= Driver::select('id')->first();
+                $user=Report::where('user_id',$data->id)->get();
                 return response()->json($user);
             }
 
@@ -199,8 +201,9 @@ class ApiController extends Controller
                 if ($validator->fails()){
                     return response()->json(['message'=>'Validator error'],401);
                 }else{
-                $user =Report::where('user_id',Auth::id())->first();
-                $user->user_id =Auth::user()->id;
+                $data= Driver::select('id')->first();
+                $user=Report::where('user_id',$data->id)->first();
+                $user->user_id =$data->id;
                 $user->date_of_incident =$request['date_of_incident'];
                 $user->location =$request['location'];
                 $user->witnessed_by =$request['witnessed_by'];
@@ -224,11 +227,12 @@ class ApiController extends Controller
 
         // delete report details:
             public function deletereport(){
-                $user=Report::where('user_id',Auth::user()->id)->first();
+                $data=Driver::select('id')->first();
+                $user=Report::where('user_id',$data->id)->first();
                 $user->delete();
                 return response()->json(['message'=>'Deleted'],200);
             }
-    // visual damage:
+    //visual damage:
             public function visualdamage(Request $request){
                 $validator = Validator::make($request->all(),[
                     'view'=>'required',
@@ -448,5 +452,12 @@ class ApiController extends Controller
                 $data = Cabin::where('user_id',Auth::id())->first();
                 $data->delete();
                 return response()->json(['message'=>'Deleted'],200);
+            }
+
+    //reportsummary:
+            public function reportsummary(){
+                // $user = Visual::where('user_id',Auth::id())->get();
+                $user = Visual::with('users')->get();
+                return response()->json($user);
             }
 }
