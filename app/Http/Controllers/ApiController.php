@@ -12,6 +12,7 @@ use App\Models\Cabin;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules\Unique;
+use PhpParser\Node\Stmt\TryCatch;
 
 class ApiController extends Controller
 {
@@ -23,6 +24,8 @@ class ApiController extends Controller
                     'email'=>'required|email',
                     'password'=>'required',
                 ]);
+
+
                 if ($validator->fails()){
                     return response()->json(['message'=>'Validator error'],401);
                 }else{
@@ -31,8 +34,8 @@ class ApiController extends Controller
                 $user->email=$request['email'];
                 $user->password=Hash::make($request['password']);
                 $user->save();
-                $response['token']= $user->createToken('token')->plainTextToken;
-                return response()->json($response,200);
+                // $response['token']= $user->createToken('token')->plainTextToken;
+                return response()->json(['success'=>true,'data'=>$user],200);
                 }
             }
 
@@ -78,13 +81,13 @@ class ApiController extends Controller
                     return response()->json(['message'=>'Deleted'],200);
             }
 
-    //river details;
+    //driver details;
             public function driver(Request $request){
                 $validator = Validator::make($request->all(),[
-                    'drivername'=>'required',
-                    'company'=>'required',
-                    'delivaryemail'=>'required|email',
-                    'phone'=>'required|min:10',
+                    // 'drivername'=>'required',
+                    // 'company'=>'required',
+                    // 'delivaryemail'=>'required|email',
+                    // 'phone'=>'required|min:10',
                 ]);
                 if ($validator->fails()){
                     return response()->json(['message'=>'Validator error'],401);
@@ -96,7 +99,7 @@ class ApiController extends Controller
                 $data->deliveryemail=$request['delivaryemail'];
                 $data->phone=$request['phone'];
                 $data->save();
-                return response()->json(['message'=>'Data Stored Successfully'],200);
+                return response()->json(['success'=>true,'data'=>$data],200);
                 }
             }
 
@@ -148,14 +151,19 @@ class ApiController extends Controller
                     'date'=>'required',
                     'number_plate'=>'required',
                     'mileage'=>'required',
+
                 ]);
                 if ($validator->fails()){
                     return response()->json(['message'=>'Validator error'],401);
                 }
-                else{
-                $data= Driver::select('id')->first();
+
+                $data= $request['driver_id'];
+                $data1=Driver::find($data);
+                    if ($data1==null){
+                        return response()->json(['message'=>'Invalid Driver Id'],401);
+                    }
                 $user = new Report();
-                $user->user_id =$data->id;
+                $user->user_id =$data;
                 $user->date_of_incident =$request['date_of_incident'];
                 $user->location =$request['location'];
                 $user->witnessed_by =$request['witnessed_by'];
@@ -174,14 +182,27 @@ class ApiController extends Controller
                 $user->mileage=$request['mileage'];
                 $user->save();
                 return response()->json(['message'=>'Data Stored Successfully'],200);
-                }
+
             }
 
-        // get report details:
+        // get Allreport details:
             public function reportdetails(){
                 $data= Driver::select('id')->first();
                 $user=Report::where('user_id',$data->id)->get();
                 return response()->json($user);
+            }
+
+             // get Singlereport details:
+             public function getOnereportdetails(Request $request,$driver_id){
+                $data= $driver_id;
+
+                $data1=Driver::find($data);
+
+                if ($data1==null){
+                    return response()->json(['message'=>'Invalid Driver Id'],401);
+                }
+                $sinleReport=Report::where('user_id',$data1->id)->get();
+                return response()->json(['success'=>true,'data'=> $sinleReport],200);
             }
 
         // upadate report details:
