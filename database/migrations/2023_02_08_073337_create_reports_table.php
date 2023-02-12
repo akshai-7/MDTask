@@ -15,7 +15,7 @@ class CreateReportsTable extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('driver_id');
             $table->string('date_of_incident');
             $table->string('location');
             $table->string('witnessed_by');
