@@ -198,7 +198,7 @@ class ApiController extends Controller
             }
 
         // upadate report details:
-            public function updatereport(Request $request){
+            public function updatereport(Request $request,$driver_id,$report_id){
                 $validator = Validator::make($request->all(),[
                     'date_of_incident'=>'required',
                     'location'=>'required',
@@ -213,10 +213,15 @@ class ApiController extends Controller
                 ]);
                 if ($validator->fails()){
                     return response()->json(['message'=>'Validator error'],401);
-                }else{
-                $data= Driver::select('id')->first();
-                $user=Report::where('driver_id',$data->id)->first();
-                $user->user_id =$data->id;
+                }
+
+                $data= $driver_id;
+                $data1=Driver::find($data);
+                    if ($data1==null){
+                        return response()->json(['message'=>'Invalid Driver Id'],401);
+                    }
+                $data2=$report_id;
+                $user = Report::where('driver_id',$data1->id)->where('id',$data2)->first();
                 $user->date_of_incident =$request['date_of_incident'];
                 $user->location =$request['location'];
                 $user->witnessed_by =$request['witnessed_by'];
@@ -235,13 +240,14 @@ class ApiController extends Controller
                 $user->mileage=$request['mileage'];
                 $user->save();
                 return response()->json(['message'=>'Updated Successfully'],200);
-                }
+
             }
 
         // delete report details:
-            public function deletereport(){
-                $data=Driver::select('id')->first();
-                $user=Report::where('driver_id',$data->id)->first();
+            public function deletereport($driver_id,$report_id){
+                $data=$driver_id;
+                $data1=$report_id;
+                $user=Report::where('driver_id',$data)->where('id',$data1)->get();
                 $user->delete();
                 return response()->json(['message'=>'Deleted'],200);
             }
@@ -256,9 +262,13 @@ class ApiController extends Controller
                 if ($validator->fails()){
                     return response()->json(['message'=>'Validator error'],401);
                 }
-                else{
+                $user= $request['driver_id'];
+                $data1=Driver::find($user);
+                    if ($data1==null){
+                        return response()->json(['message'=>'Invalid Driver Id'],401);
+                    }
                     $data = new Visual();
-                    $data->user_id =Auth::user()->id;
+                    $data->driver_id =$user;
                     $data->view=$request['view'];
                     $data->image =$request['image'];
                         if($request->hasfile('image')){
@@ -271,17 +281,30 @@ class ApiController extends Controller
                     $data->action=$request['action'];
                     $data->save();
                     return response()->json(['message'=>'Data Stored Successfully'],200);
-                }
+
             }
 
         // damagedetails:
-            public function damagedetails(){
-                $data= Visual::where('user_id',Auth::user()->id)->get();
-                return response()->json($data);
+            public function damagedetails($driver_id,$visual_id){
+                $driverId= $driver_id;
+                // dd($driverId);
+                $data1=Driver::find($driverId);
+                    if ($data1==null){
+                        return response()->json(['message'=>'Invalid Driver Id'],401);
+                    }
+                    // dd($data1);
+                $visual_id= $visual_id;
+                $data2=Visual::find($visual_id);
+                    if ($data2==null){
+                        return response()->json(['message'=>'Invalid Report Id'],401);
+                    }
+
+                $user=Visual::where('driver_id',$data1->id)->where('id',$data2->id)->get();
+                return response()->json(['success'=>true,'data'=> $user],200);
             }
 
         //updatedamage:
-            public function updatedamage(Request $request){
+            public function updatedamage(Request $request,$driver_id,$visual_id){
                 $validator = Validator::make($request->all(),[
                     'view'=>'required',
                     'image'=>'required',
@@ -291,9 +314,14 @@ class ApiController extends Controller
                 if ($validator->fails()){
                     return response()->json(['message'=>'Validator error'],401);
                 }
-                else{
-                    $data = Visual::where('user_id',Auth::user()->id)->first();
-                    $data->user_id =Auth::user()->id;
+                $user=$driver_id;
+                    $user1=Driver::find($user);
+                        if ($user1==null){
+                            return response()->json(['message'=>'Invalid Driver Id'],401);
+                        }
+                $user2=$visual_id;
+                    $data = Visual::where('driver_id',$user1->id)->where('id',$user2)->first();
+                    $data->driver_id =$user;
                     $data->view=$request['view'];
                     $data->image =$request['image'];
                         if($request->hasfile('image')){
@@ -306,13 +334,14 @@ class ApiController extends Controller
                     $data->action=$request['action'];
                     $data->save();
                     return response()->json(['message'=>'Updated Successfully'],200);
-                }
             }
 
         //deletedamage:
-            public function deletedamage(){
-                $data=Visual::where('user_id',Auth::user()->id)->first();
-                $data->delete();
+            public function deletedamage($driver_id,$visual_id){
+                $data=$driver_id;
+                $data1=$visual_id;
+                $user=Visual::where('driver_id',$data)->where('id',$data1)->get();
+                $user->delete();
                 return response()->json(['message'=>'Deleted'],200);
             }
 
