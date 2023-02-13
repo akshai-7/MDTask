@@ -573,11 +573,4 @@ class ApiController extends Controller
                 $user->delete();
                 return response()->json(['message'=>'Deleted'],200);
             }
-
-    //reportsummary:
-            public function reportsummary(){
-                // $user = Visual::where('user_id',Auth::id())->get();
-                $user = Visual::with('users')->get();
-                return response()->json($user);
-            }
 }
