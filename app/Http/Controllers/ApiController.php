@@ -47,7 +47,7 @@ class ApiController extends Controller
 
         //details:
             public function getdetails(){
-                return response()->json(Auth::user());
+                return response()->json(Auth::user())->get();
             }
 
         //update:
@@ -71,9 +71,9 @@ class ApiController extends Controller
 
         //delete
             public function delete(){
-                    $user=User::find(Auth::user()->id);
-                    $user->delete();
-                    return response()->json(['message'=>'Deleted'],200);
+                $user=User::find(Auth::user()->id)->first();
+                $user->delete();
+                return response()->json(['message'=>'Deleted'],200);
             }
 
     //driver details;
@@ -101,7 +101,7 @@ class ApiController extends Controller
         //get driver details:
             public function driverdetails(){
                 $data=Driver::where('user_id',Auth::user()->id)->get();
-                return response()->json($data);
+                return response()->json(['success'=>true,'data'=> $data],200);
             }
 
         //update driver details:
@@ -115,7 +115,7 @@ class ApiController extends Controller
                 if ($validator->fails()){
                     return response()->json(['message'=>'Validator error'],401);
                 }else{
-                $data =Driver::where('user_id',Auth::id())->where('deliveryemail',$request['delivaryemail'])->first();
+                $data =Driver::where('user_id',Auth::user()->id)->where('deliveryemail',$request['delivaryemail'])->first();
                 $data->user_id =Auth::user()->id;
                 $data->drivername=$request['drivername'];
                 $data->company=$request['company'];
@@ -156,7 +156,7 @@ class ApiController extends Controller
                             return response()->json(['message'=>'Invalid Driver Id'],401);
                         }
                 $user = new Report();
-                $user->driver_id=$data;
+                $user->driver_id=$data1->id;
                 $user->date_of_incident =$request['date_of_incident'];
                 $user->location =$request['location'];
                 $user->witnessed_by =$request['witnessed_by'];
@@ -189,7 +189,7 @@ class ApiController extends Controller
                     if ( $data3==null){
                         return response()->json(['message'=>'Invalid Report Id'],401);
                     }
-                $singleReport=Report::where('driver_id',$data1->id)->where('id',$data3->id)->get();
+                $singleReport=Report::where('driver_id',$data1->id)->where('id',$data3->id)->first();
                 return response()->json(['success'=>true,'data'=> $singleReport],200);
             }
 
@@ -298,12 +298,12 @@ class ApiController extends Controller
                         if ($data1==null){
                             return response()->json(['message'=>'Invalid Driver Id'],401);
                         }
-                $visual_id= $visual_id;
-                    $data2=Visual::find($visual_id);
+                $visualId= $visual_id;
+                    $data2=Visual::find($visualId);
                         if ($data2==null){
                             return response()->json(['message'=>'Invalid Report Id'],401);
                         }
-                $user=Visual::where('driver_id',$data1->id)->where('id',$data2->id)->get();
+                $user=Visual::where('driver_id',$data1->id)->where('id',$data2->id)->first();
                 return response()->json(['success'=>true,'data'=> $user],200);
             }
 
@@ -370,7 +370,7 @@ class ApiController extends Controller
                     'action'=>'required',
                     'notes'=>'required',
                 ]);
-                if ($validator->fails()){
+                if($validator->fails()){
                     return response()->json(['message'=>'Validator error'],401);
                 }
                 $data= $request['driver_id'];
@@ -403,12 +403,12 @@ class ApiController extends Controller
                     if ($data1==null){
                         return response()->json(['message'=>'Invalid Driver Id'],401);
                     }
-                $vehicle_id= $vehicle_id;
-                    $data2=Vehicle::find($vehicle_id);
+                $vehicleId= $vehicle_id;
+                    $data2=Vehicle::find($vehicleId);
                     if ($data2==null){
                         return response()->json(['message'=>'Invalid Report Id'],401);
                     }
-                $user=Vehicle::where('driver_id',$data1->id)->where('id',$data2->id)->get();
+                $user=Vehicle::where('driver_id',$data1->id)->where('id',$data2->id)->first();
                 return response()->json(['success'=>true,'data'=> $user],200);
             }
 
@@ -481,7 +481,7 @@ class ApiController extends Controller
                     return response()->json(['message'=>'Validator error'],401);
                 }
                 $user= $request['driver_id'];
-                $data1=Driver::find($user);
+                    $data1=Driver::find($user);
                     if ($data1==null){
                         return response()->json(['message'=>'Invalid Driver Id'],401);
                     }
@@ -514,7 +514,7 @@ class ApiController extends Controller
                         if ($data2==null){
                             return response()->json(['message'=>'Invalid Report Id'],401);
                         }
-                $user=Cabin::where('driver_id',$data1->id)->where('id',$data2->id)->get();
+                $user=Cabin::where('driver_id',$data1->id)->where('id',$data2->id)->first();
                 return response()->json(['success'=>true,'data'=> $user],200);
             }
 
