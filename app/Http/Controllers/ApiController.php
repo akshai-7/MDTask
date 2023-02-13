@@ -151,6 +151,7 @@ class ApiController extends Controller
                     return response()->json(['message'=>'Validator error'],401);
                 }
                 $data= $request['driver_id'];
+                // $data= Auth::user()->id;
                     $data1=Driver::find($data);
                         if ($data1==null){
                             return response()->json(['message'=>'Invalid Driver Id'],401);
@@ -187,7 +188,7 @@ class ApiController extends Controller
                 $data2= $report_id;
                     $data3=Report::find($data2);
                     if ( $data3==null){
-                        return response()->json(['message'=>'Invalid Report Id'],401);
+                        return response()->json(['message'=>'Invalid Id'],401);
                     }
                 $singleReport=Report::where('driver_id',$data1->id)->where('id',$data3->id)->first();
                 return response()->json(['success'=>true,'data'=> $singleReport],200);
@@ -218,7 +219,7 @@ class ApiController extends Controller
                 $data2=$report_id;
                     $data3=Report::find($data2);
                     if ($data1==null){
-                        return response()->json(['message'=>'Invalid Driver Id'],401);
+                        return response()->json(['message'=>'Invalid Id'],401);
                     }
                 $user=Report::where('driver_id',$data1->id)->where('id',$data3->id)->first();
                 $user->driver_id =$data1->id;
@@ -240,7 +241,6 @@ class ApiController extends Controller
                 $user->mileage=$request['mileage'];
                 $user->save();
                 return response()->json(['message'=>'Updated Successfully'],200);
-
             }
 
         // delete report details:
@@ -253,12 +253,13 @@ class ApiController extends Controller
                 $data2=$report_id;
                     $data3=Report::find($data2);
                     if ($data1==null){
-                        return response()->json(['message'=>'Invalid Driver Id'],401);
+                        return response()->json(['message'=>'Invalid Id'],401);
                     }
                 $user=Report::where('driver_id',$data1->id)->where('id',$data3->id)->first();
                 $user->delete();
                 return response()->json(['message'=>'Deleted'],200);
             }
+
     //visual damage:
             public function visualdamage(Request $request){
                 $validator = Validator::make($request->all(),[
@@ -282,7 +283,7 @@ class ApiController extends Controller
                         if($request->hasfile('image')){
                             $image =$request->file('image');
                             $time = time().'.'.$image->getClientOriginalExtension();
-                            $location = public_path('public/images'.$time);
+                            $location=public_path('public/images'.$time);
                             Visual::make($image)->resize(300, 300)->save($location);
                         }
                 $data->feedback=$request['feedback'];
@@ -301,7 +302,7 @@ class ApiController extends Controller
                 $visualId= $visual_id;
                     $data2=Visual::find($visualId);
                         if ($data2==null){
-                            return response()->json(['message'=>'Invalid Report Id'],401);
+                            return response()->json(['message'=>'Invalid Id'],401);
                         }
                 $user=Visual::where('driver_id',$data1->id)->where('id',$data2->id)->first();
                 return response()->json(['success'=>true,'data'=> $user],200);
@@ -326,7 +327,7 @@ class ApiController extends Controller
                 $user2=$visual_id;
                         $user3=Visual::find($user2);
                         if ($user3==null){
-                            return response()->json(['message'=>'Invalid Driver Id'],401);
+                            return response()->json(['message'=>'Invalid Id'],401);
                         }
                 $data = Visual::where('driver_id',$user1->id)->where('id',$user3->id)->first();
                 $data->driver_id =$user1->id;
@@ -354,7 +355,7 @@ class ApiController extends Controller
                 $data2=$visual_id;
                     $data3=Visual::find($data2);
                     if ($data3==null){
-                        return response()->json(['message'=>'Invalid Driver Id'],401);
+                        return response()->json(['message'=>'Invalid Id'],401);
                     }
                 $user=Visual::where('driver_id',$data1->id)->where('id',$data3->id)->first();
                 $user->delete();
@@ -406,7 +407,7 @@ class ApiController extends Controller
                 $vehicleId= $vehicle_id;
                     $data2=Vehicle::find($vehicleId);
                     if ($data2==null){
-                        return response()->json(['message'=>'Invalid Report Id'],401);
+                        return response()->json(['message'=>'Invalid Id'],401);
                     }
                 $user=Vehicle::where('driver_id',$data1->id)->where('id',$data2->id)->first();
                 return response()->json(['success'=>true,'data'=> $user],200);
@@ -432,7 +433,7 @@ class ApiController extends Controller
                 $data2=$vehicle_id;
                     $data3=Vehicle::find($data2);
                     if ($data3==null){
-                        return response()->json(['message'=>'Invalid Driver Id'],401);
+                        return response()->json(['message'=>'Invalid Id'],401);
                     }
                 $user = Vehicle::where('driver_id',$data1->id)->where('id',$data3->id)->first();
                 $user->driver_id =$data1->id;
@@ -461,7 +462,7 @@ class ApiController extends Controller
                 $data2=$vehicle_id;
                     $data3=Vehicle::find($data2);
                     if ($data3==null){
-                        return response()->json(['message'=>'Invalid Driver Id'],401);
+                        return response()->json(['message'=>'Invalid Id'],401);
                     }
                 $user=Vehicle::where('driver_id',$data1->id)->where('id',$data3->id)->first();
                 $user->delete();
@@ -512,7 +513,7 @@ class ApiController extends Controller
                 $cabinId= $cabin_id;
                     $data2=Cabin::find($cabinId);
                         if ($data2==null){
-                            return response()->json(['message'=>'Invalid Report Id'],401);
+                            return response()->json(['message'=>'Invalid Id'],401);
                         }
                 $user=Cabin::where('driver_id',$data1->id)->where('id',$data2->id)->first();
                 return response()->json(['success'=>true,'data'=> $user],200);
@@ -538,7 +539,7 @@ class ApiController extends Controller
                 $user2= $cabin_id;
                     $user3=Cabin::find($user2);
                     if ($user3==null){
-                        return response()->json(['message'=>'Invalid Driver Id'],401);
+                        return response()->json(['message'=>'Invalid Id'],401);
                     }
                 $data = Cabin::where('driver_id',$user1->id)->where('id',$user3->id)->first();
                 $data->driver_id=$user1->id;
@@ -567,7 +568,7 @@ class ApiController extends Controller
                 $data2=$cabin_id;
                     $data3=Vehicle::find($data2);
                     if ($data3==null){
-                        return response()->json(['message'=>'Invalid Driver Id'],401);
+                        return response()->json(['message'=>'Invalid Id'],401);
                     }
                 $user=Cabin::where('driver_id',$data1->id)->where('id',$data3->id)->first();
                 $user->delete();
