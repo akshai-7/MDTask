@@ -16,4 +16,6 @@ use App\Http\Controllers\AdminController;
 Route::view('/','login');
 Route::post('/index',[AdminController::class,'admin']);
 Route::get('/index',[AdminController::class,'create']);
-
+Route::get('/index',[AdminController::class,'userlist']);
+Route::get('/delete/{id}',[AdminController::class,'delete']);
+Route::get('/index1/{user_id}',[AdminController::class,'reportlist']);

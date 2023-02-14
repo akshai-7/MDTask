@@ -150,14 +150,14 @@ class ApiController extends Controller
                 if ($validator->fails()){
                     return response()->json(['message'=>'Validator error'],401);
                 }
-                $data= $request['driver_id'];
-                // $data= Auth::user()->id;
+                // $data= $request['driver_id'];
+                $data= Auth::user()->id;
                     $data1=Driver::find($data);
                         if ($data1==null){
-                            return response()->json(['message'=>'Invalid Driver Id'],401);
+                            return response()->json(['message'=>'Invalid Id'],401);
                         }
                 $user = new Report();
-                $user->driver_id=$data1->id;
+                $user->user_id=$data1->id;
                 $user->date_of_incident =$request['date_of_incident'];
                 $user->location =$request['location'];
                 $user->witnessed_by =$request['witnessed_by'];
@@ -179,23 +179,24 @@ class ApiController extends Controller
             }
 
         // get Singlereport details:
-             public function getOnereportdetails($driver_id,$report_id){
-                $data= $driver_id;
-                    $data1=Driver::find($data);
-                    if($data1==null){
-                        return response()->json(['message'=>'Invalid Driver Id'],401);
-                    }
+             public function getOnereportdetails($report_id){
+                $data= Auth::id();
+                //     $data1=Driver::where('user_id',$data)->first();
+                //     if($data1==null){
+                //         return response()->json(['message'=>'Invalid Id'],401);
+                //     }
                 $data2= $report_id;
                     $data3=Report::find($data2);
-                    if ( $data3==null){
+                    // dd($data3);
+                                        if ( $data3==null){
                         return response()->json(['message'=>'Invalid Id'],401);
                     }
-                $singleReport=Report::where('driver_id',$data1->id)->where('id',$data3->id)->first();
+                $singleReport=Report::where('id',$data3->id)->where('user_id',$data)->first();
                 return response()->json(['success'=>true,'data'=> $singleReport],200);
             }
 
         // upadate report details:
-            public function updatereport(Request $request,$driver_id,$report_id){
+            public function updatereport(Request $request,$user_id,$report_id){
                 $validator = Validator::make($request->all(),[
                     'date_of_incident'=>'required',
                     'location'=>'required',
@@ -211,18 +212,18 @@ class ApiController extends Controller
                 if ($validator->fails()){
                     return response()->json(['message'=>'Validator error'],401);
                 }
-                $data= $driver_id;
-                    $data1=Driver::find($data);
-                    if ($data1==null){
-                        return response()->json(['message'=>'Invalid Driver Id'],401);
+                $data= $user_id;
+                $data1=Driver::where('user_id',$data)->first();
+                  if ($data1==null){
+                        return response()->json(['message'=>'Invalid Id'],401);
                     }
                 $data2=$report_id;
                     $data3=Report::find($data2);
                     if ($data1==null){
                         return response()->json(['message'=>'Invalid Id'],401);
                     }
-                $user=Report::where('driver_id',$data1->id)->where('id',$data3->id)->first();
-                $user->driver_id =$data1->id;
+                $user=Report::where('user_id',$data1->user_id)->where('id',$data3->id)->first();
+                $user->user_id =$data1->user_id;
                 $user->date_of_incident =$request['date_of_incident'];
                 $user->location =$request['location'];
                 $user->witnessed_by =$request['witnessed_by'];
@@ -244,18 +245,18 @@ class ApiController extends Controller
             }
 
         // delete report details:
-            public function deletereport($driver_id,$report_id){
-                $data=$driver_id;
-                    $data1=Driver::find($data);
+            public function deletereport($user_id,$report_id){
+                $data=$user_id;
+                $data1=Driver::where('user_id',$data)->first();
                     if ($data1==null){
-                        return response()->json(['message'=>'Invalid Driver Id'],401);
+                        return response()->json(['message'=>'Invalid Id'],401);
                     }
                 $data2=$report_id;
                     $data3=Report::find($data2);
                     if ($data1==null){
                         return response()->json(['message'=>'Invalid Id'],401);
                     }
-                $user=Report::where('driver_id',$data1->id)->where('id',$data3->id)->first();
+                $user=Report::where('user_id',$data1->user_id)->where('id',$data3->id)->first();
                 $user->delete();
                 return response()->json(['message'=>'Deleted'],200);
             }

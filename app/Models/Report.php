@@ -9,7 +9,7 @@ class Report extends Model
 {
     use HasFactory;
 
-    public function users()
+    public function driver()
     {
         return $this->belongsTo(Driver::class,'user_id');
     }

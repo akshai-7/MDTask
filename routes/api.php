@@ -26,9 +26,9 @@ Route::post('updatedetails',[ApiController::class,'updatedetails'])->middleware(
 Route::delete('deletedetails',[ApiController::class,'deletedetails'])->middleware('auth:sanctum');
 
 Route::post('/report',[ApiController::class,'report'])->middleware('auth:sanctum');
-Route::get('/getOnereportdetails/{driver_id}/report/{report_id}',[ApiController::class,'getOnereportdetails'])->middleware('auth:sanctum');
-Route::post('updatereport/{driver_id}/report/{report_id}',[ApiController::class,'updatereport'])->middleware('auth:sanctum');
-Route::delete('deletereport/{driver_id}/report/{report_id}',[ApiController::class,'deletereport'])->middleware('auth:sanctum');
+Route::get('/getOnereportdetails/report/{report_id}',[ApiController::class,'getOnereportdetails'])->middleware('auth:sanctum');
+Route::post('updatereport/report/{report_id}',[ApiController::class,'updatereport'])->middleware('auth:sanctum');
+Route::delete('deletereport/{user_id}/report/{report_id}',[ApiController::class,'deletereport'])->middleware('auth:sanctum');
 
 Route::post('/visualdamage',[ApiController::class,'visualdamage'])->middleware('auth:sanctum');
 Route::get('/damagedetails/{driver_id}/visual/{visual_id}',[ApiController::class,'damagedetails'])->middleware('auth:sanctum');

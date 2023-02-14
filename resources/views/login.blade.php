@@ -137,14 +137,17 @@
 
     }
 
+
 </style>
 </head>
 <body>
     <div class="container">
         <section id="content">
+
             <form action="/index" method="POST" autocomplete="off">
                 @csrf
-                <h3 class="text-primary">Login Form</h3>
+                <h5 class="text-pink"> M&D Fundations </h5>
+                <h5 class="text-primary">Login Form</h5>
                 <div>
                     <input type="text" placeholder="Enter Email" required name="email" />
                 </div>
