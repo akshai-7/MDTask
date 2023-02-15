@@ -33,13 +33,13 @@ class AdminController extends Controller
         return view('/index',['user'=>$user]);
     }
     public function delete($id){
-        $driver=Driver::find($id);
+        $driver=User::find($id);
         $driver->delete();
         return redirect('/index');
     }
-    public function reportlist($user_id){
-        $report = Report::where('user_id',$user_id)->get();
-        return view('/index1',['report'=>$report]);
+    public function drivertlist($user_id){
+        $driver = Driver::where('user_id',$user_id)->get();
+        return view('/index1',['driver'=>$driver]);
 
     }
 }

@@ -1,110 +1,3 @@
-{{-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-</head>
-
-<style>
-    body{
-        font-family: 'Times New Roman', Times, serif;
-        height: 100vh;
-        width: 100vw;
-        position: fixed;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .section{
-        overflow: hidden;
-        /* background-color: black; */
-        height:1000%;
-        width:100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .sidebar{
-        height: 100%;
-        width: 200px;
-        position: fixed;
-        z-index: 1;
-        top: 60px;
-        left: 0;
-        /* background-color:gray; */
-        border-right: 1px solid black;
-        overflow-x: hidden;
-        padding-top: 20px;
-    }
-    .navbar {
-        width: 100%;
-        height: 60px;
-        /* background-color:#e91e63; */
-        border-bottom: 1px solid black;
-        overflow: hidden;
-        margin-top: -8px;
-        margin-left: -8px;
-    }
-    .box{
-        padding: 0px 15px;
-        border-bottom: 1px solid #ccc;
-        width: 150px;
-        height: 40px;
-    }
-    .box1{
-        padding: 15px 15px;
-        width: 150px;
-        height: 40px;
-        margin-top: 0px;
-        text-decoration: none;
-    }
-
-</style>
-<body>
-    <header>
-        <div class="navbar">
-
-          </div>
-    </header>
-
-
-    <section class="section">
-        <div class="sidebar" id="show">
-            <div class="box">
-                <h3> M&D Fundations </h3>
-            </div>
-            <div class="box1">
-                <h4>Rental</h4>
-            </div>
-        </div>
-        <div class="d-flex justify-content-center align-items-center">
-            <table class="table table-striped table-bordered col-md-5 mt-3" style="width:900px">
-                <thead class="header">
-                    <th style="text-align:center;">S.No</th>
-                    <th style="text-align:center;">Driver Name</th>
-                    <th style="text-align:center;">Company</th>
-                    <th style="text-align:center;">Phone</th>
-                    <th style="text-align:center;">Creation Date</th>
-                    <th style="text-align:center;">Action</th>
-                </thead>
-
-            </table> --}}
-        {{-- </div>
-        </div>
-    </section>
-</body>
-</html>  --}}
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -481,21 +374,21 @@
 	<section id="sidebar">
 		<a href="#" class="brand">
 			<i class='bx bxs-smile'></i>
-			<span class="text-primary">M&D Foundations</span>
+			<span class="text-primary">M&D <span class="text-danger">Foundations</span></span>
 		</a>
 		<ul class="side-menu top">
 			<li class="active">
 				<a href="#">
 					<i class='bx bxs-dashboard' ></i>
-					<span class="text">Dashboard</span>
+					<span class="">Dashboard</span>
 				</a>
 			</li>
 		</ul>
 		<ul class="side-menu">
 			<li>
 				<a href="/" class="logout">
-					<i class='bx bxs-log-out-circle' ></i>
-					<span class="text">Logout</span>
+					<i class='bx bxs-log-out-circle text-danger' ></i>
+					<span class="text-danger">Logout</span>
 				</a>
 			</li>
 		</ul>
@@ -506,18 +399,18 @@
 		<main>
 			<div class="head-title">
 				<div class="left">
-					<h2>Dashboard</h2>
+					<h2 class="text-secondary">Dashboard</h2>
 				</div>
 			</div>
 			<div class="table-data">
 				<div class="order">
-					{{-- <div class="head">
-						<h3>User Details</h3>
-						<i class='bx bx-search' ></i>
-						<i class='bx bx-filter' ></i>
-					</div> --}}
-                    <table class="" style="width:600px">
-                        <thead class="header">
+					<div class="head">
+						<h3 class="text-success">User Details</h3>
+						{{-- <i class='bx bx-search' ></i>
+						<i class='bx bx-filter' ></i> --}}
+					</div>
+                    <table style="width:700px">
+                        <thead class="text-primary">
                             <th style="text-align:center;">S.No</th>
                             <th style="text-align:center;">Name</th>
                             <th style="text-align:center;">Email</th>
@@ -534,7 +427,7 @@
                                     <td style="text-align:center;">{{$user->role}}</td>
                                     <td style="text-align:center;">{{$user->created_at}}</td>
                                     <td style="text-align:center;">
-                                    <a href="index1/{{$user->user_id}}" data-toggle="tooltip" title="View"><i class="fa-solid fa-eye btn btn-primary" ></i></a>
+                                    <a href="index1/{{$user->id}}" data-toggle="tooltip" title="View"><i class="fa-solid fa-eye btn btn-primary" ></i></a>
                                     <a href="delete/{{$user->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
                                 </tr>
                             @endforeach
@@ -574,6 +467,5 @@
 			</div>
 		</main>
 	</section>
-
 </body>
 </html>

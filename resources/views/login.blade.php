@@ -143,7 +143,6 @@
 <body>
     <div class="container">
         <section id="content">
-
             <form action="/index" method="POST" autocomplete="off">
                 @csrf
                 <h5 class="text-pink"> M&D Fundations </h5>

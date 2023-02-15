@@ -28,22 +28,22 @@ Route::delete('deletedetails',[ApiController::class,'deletedetails'])->middlewar
 Route::post('/report',[ApiController::class,'report'])->middleware('auth:sanctum');
 Route::get('/getOnereportdetails/report/{report_id}',[ApiController::class,'getOnereportdetails'])->middleware('auth:sanctum');
 Route::post('updatereport/report/{report_id}',[ApiController::class,'updatereport'])->middleware('auth:sanctum');
-Route::delete('deletereport/{user_id}/report/{report_id}',[ApiController::class,'deletereport'])->middleware('auth:sanctum');
+Route::delete('deletereport/report/{report_id}',[ApiController::class,'deletereport'])->middleware('auth:sanctum');
 
 Route::post('/visualdamage',[ApiController::class,'visualdamage'])->middleware('auth:sanctum');
-Route::get('/damagedetails/{driver_id}/visual/{visual_id}',[ApiController::class,'damagedetails'])->middleware('auth:sanctum');
-Route::post('/updatedamage/{driver_id}/visual/{visual_id}',[ApiController::class,'updatedamage'])->middleware('auth:sanctum');
-Route::delete('deletedamage/{driver_id}/visual/{visual_id}',[ApiController::class,'deletedamage'])->middleware('auth:sanctum');
+Route::get('/damagedetails/visual/{visual_id}',[ApiController::class,'damagedetails'])->middleware('auth:sanctum');
+Route::post('/updatedamage/visual/{visual_id}',[ApiController::class,'updatedamage'])->middleware('auth:sanctum');
+Route::delete('deletedamage/visual/{visual_id}',[ApiController::class,'deletedamage'])->middleware('auth:sanctum');
 
 Route::post('/vehiclechecks',[ApiController::class,'vehiclechecks'])->middleware('auth:sanctum');
-Route::get('/vehiclecheckdetails/{driver_id}/vehicle/{vehicle_id}',[ApiController::class,'vehiclecheckdetails'])->middleware('auth:sanctum');
-Route::post('/updatevehiclechecks/{driver_id}/vehicle/{vehicle_id}',[ApiController::class,'updatevehiclechecks'])->middleware('auth:sanctum');
-Route::delete('deletevehiclechecks/{driver_id}/vehicle/{vehicle_id}',[ApiController::class,'deletevehiclechecks'])->middleware('auth:sanctum');
+Route::get('/vehiclecheckdetails/vehicle/{vehicle_id}',[ApiController::class,'vehiclecheckdetails'])->middleware('auth:sanctum');
+Route::post('/updatevehiclechecks/vehicle/{vehicle_id}',[ApiController::class,'updatevehiclechecks'])->middleware('auth:sanctum');
+Route::delete('deletevehiclechecks/vehicle/{vehicle_id}',[ApiController::class,'deletevehiclechecks'])->middleware('auth:sanctum');
 
 Route::post('/cabinchecks',[ApiController::class,'cabinchecks'])->middleware('auth:sanctum');
-Route::get('/cabincheckdetails/{driver_id}/cabin/{cabin_id}',[ApiController::class,'cabincheckdetails'])->middleware('auth:sanctum');
-Route::post('/updatcabinchecks/{driver_id}/cabin/{cabin_id}',[ApiController::class,'updatcabinchecks'])->middleware('auth:sanctum');
-Route::delete('deletecabinchecks/{driver_id}/cabin/{cabin_id}',[ApiController::class,'deletecabinchecks'])->middleware('auth:sanctum');
+Route::get('/cabincheckdetails/cabin/{cabin_id}',[ApiController::class,'cabincheckdetails'])->middleware('auth:sanctum');
+Route::post('/updatcabinchecks/cabin/{cabin_id}',[ApiController::class,'updatcabinchecks'])->middleware('auth:sanctum');
+Route::delete('deletecabinchecks/cabin/{cabin_id}',[ApiController::class,'deletecabinchecks'])->middleware('auth:sanctum');
 
 
 Route::get('/reportsummary',[ApiController::class,'reportsummary'])->middleware('auth:sanctum');

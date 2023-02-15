@@ -15,7 +15,7 @@ class CreateVisualsTable extends Migration
     {
         Schema::create('visuals', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('driver_id');
+            $table->unsignedBigInteger('user_id');
             $table->string('view');
             $table->string('image');
             $table->string('feedback');
