@@ -13,4 +13,8 @@ class Visual extends Model
     {
         return $this->belongsTo(Driver::class,'user_id');
     }
+    public function vehicle()
+    {
+        return $this->belongsTo(Vehicle::class,'user_id');
+    }
 }

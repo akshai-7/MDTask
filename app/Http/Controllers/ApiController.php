@@ -111,7 +111,7 @@ class ApiController extends Controller
                     'drivername'=>'required',
                     'company'=>'required',
                     'deliveryemail'=>'required|email',
-                    'phone'=>'required|min:10',
+                    'phone'=>'required',
                 ]);
                 if ($validator->fails()){
                     return response()->json(['message'=>'Validator error'],401);

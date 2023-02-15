@@ -16,6 +16,17 @@ use App\Http\Controllers\AdminController;
 Route::view('/','login');
 Route::post('/index',[AdminController::class,'admin']);
 Route::get('/index',[AdminController::class,'create']);
+//user
 Route::get('/index',[AdminController::class,'userlist']);
 Route::get('/delete/{id}',[AdminController::class,'delete']);
-Route::get('/index1/{user_id}',[AdminController::class,'drivertlist']);
+//driver
+Route::get('/index1/{user_id}',[AdminController::class,'driverlist']);
+Route::get('/remove/{id}',[AdminController::class,'remove']);
+//vehicle
+Route::get('/report/{user_id}',[AdminController::class,'reportlist']);
+Route::get('/removereport/{id}',[AdminController::class,'removereport']);
+//damage
+Route::get('/damage/{user_id}',[AdminController::class,'damagelist']);
+// Route::get('/damage/{user_id}',[AdminController::class,'vehiclelist']);
+Route::get('//{id}',[AdminController::class,'remove']);
+

@@ -9,8 +9,12 @@ class Vehicle extends Model
 {
     use HasFactory;
 
-    public function users()
+    // public function users()
+    // {
+    //     return $this->belongsTo(Vehicle::class,'user_id');
+    // }
+    public function visual()
     {
-        return $this->belongsTo(Vehicle::class,'user_id');
+        return $this->belongsTo(Visual::class,'user_id');
     }
 }

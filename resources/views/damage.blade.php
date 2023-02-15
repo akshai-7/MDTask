@@ -405,36 +405,34 @@
 			<div class="table-data">
 				<div class="order">
 					<div class="head">
-						<h3 class="text-success">Driver Details</h3>
+						<h3 class="text-success">Damage Details</h3>
 						{{-- <i class='bx bx-search' ></i>
 						<i class='bx bx-filter' ></i> --}}
 					</div>
                     <table class="" style="width:700px">
-                        <thead class="text-primary">
-                            <th style="text-align:center;">S.No</th>
-                            <th style="text-align:center;">Driver Name</th>
-                            <th style="text-align:center;">Company</th>
-                            <th style="text-align:center;">Email</th>
-                            <th style="text-align:center;">Phone</th>
-                            <th style="text-align:center;">Creation Date</th>
-                            <th style="text-align:center;">Action</th>
-                        </thead>
-                        <tbody>
-                            @foreach($driver as $driver)
-                                 <tr>
-                                    <td style="text-align:center;">{{$loop->iteration}}</td>
-                                    <td style="text-align:center;">{{$driver->drivername}}</td>
-                                    <td style="text-align:center;">{{$driver->company}}</td>
-                                    <td style="text-align:center;">{{$driver->deliveryemail}}</td>
-                                    <td style="text-align:center;">{{$driver->phone}}</td>
-                                    <td style="text-align:center;">{{$driver->created_at}}</td>
-                                    <td style="text-align:center;">
-                                    <a href="/report/{{$driver->user_id}}"><i class="fa-solid fa-eye btn btn-primary" ></i></a>
-                                    <a href="/remove/{{$driver->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
-                                </tr>
-                            @endforeach
-                        </tbody>
+                            <thead class="header">
+                                 <th style="text-align:center;">S.No</th>
+                                <th style="text-align:center;">View</th>
+                                <th style="text-align:center;">Image</th>
+                                <th style="text-align:center;">Feed Back</th>
+                                <th style="text-align:center;">Action</th>
+
+                            </thead>
+                            <tbody>
+                                @foreach($visual as $visual)
+                                    <tr>
+                                        <td style="text-align:center;">{{$loop->iteration}}</td>
+                                        <td style="text-align:center;">{{$visual->view}}</td>
+                                        <td style="text-align:center;">{{$visual->image}}</td>
+                                        <td style="text-align:center;">{{$visual->feedback}}</td>
+                                        <td style="text-align:center;">
+                                        <a href="/damage/{{$visual->user_id}}"><i class="fa-solid fa-eye btn btn-primary" ></i></a>
+                                        <a href="/delete/{{$visual->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
                     </table>
+
 				</div>
 				<div class="todo">
 					<div class="head">
@@ -442,28 +440,28 @@
 						<i class='bx bx-plus' ></i>
 						<i class='bx bx-filter' ></i>
 					</div>
-					<ul class="todo-list">
-						{{-- <li class="completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li>
-						<li class="completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li>
-						<li class="not-completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li>
-						<li class="completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li>
-						<li class="not-completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li> --}}
-					</ul>
+                    <table class="" style="width:700px">
+                        <thead class="header">
+                             <th style="text-align:center;">S.No</th>
+                            <th style="text-align:center;">View</th>
+                            <th style="text-align:center;">Image</th>
+                            <th style="text-align:center;">Feed Back</th>
+                            <th style="text-align:center;">Action</th>
+                        </thead>
+                        <tbody>
+                            @foreach($visual as $visual)
+                                <tr>
+                                    <td style="text-align:center;">{{$loop->iteration}}</td>
+                                    <td style="text-align:center;">{{$visual->view}}</td>
+                                    <td style="text-align:center;">{{$visual->image}}</td>
+                                    <td style="text-align:center;">{{$visual->feedback}}</td>
+                                    <td style="text-align:center;">
+                                        <a href="/damage/{{$visual->user_id}}"><i class="fa-solid fa-eye btn btn-primary" ></i></a>
+                                        <a href="/delete/{{$visual->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                </table>
 				</div>
 			</div>
 		</main>

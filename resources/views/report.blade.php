@@ -405,36 +405,45 @@
 			<div class="table-data">
 				<div class="order">
 					<div class="head">
-						<h3 class="text-success">Driver Details</h3>
+						<h3 class="text-success">Vehicle Details</h3>
 						{{-- <i class='bx bx-search' ></i>
 						<i class='bx bx-filter' ></i> --}}
 					</div>
                     <table class="" style="width:700px">
-                        <thead class="text-primary">
-                            <th style="text-align:center;">S.No</th>
-                            <th style="text-align:center;">Driver Name</th>
-                            <th style="text-align:center;">Company</th>
-                            <th style="text-align:center;">Email</th>
-                            <th style="text-align:center;">Phone</th>
-                            <th style="text-align:center;">Creation Date</th>
-                            <th style="text-align:center;">Action</th>
-                        </thead>
-                        <tbody>
-                            @foreach($driver as $driver)
-                                 <tr>
-                                    <td style="text-align:center;">{{$loop->iteration}}</td>
-                                    <td style="text-align:center;">{{$driver->drivername}}</td>
-                                    <td style="text-align:center;">{{$driver->company}}</td>
-                                    <td style="text-align:center;">{{$driver->deliveryemail}}</td>
-                                    <td style="text-align:center;">{{$driver->phone}}</td>
-                                    <td style="text-align:center;">{{$driver->created_at}}</td>
-                                    <td style="text-align:center;">
-                                    <a href="/report/{{$driver->user_id}}"><i class="fa-solid fa-eye btn btn-primary" ></i></a>
-                                    <a href="/remove/{{$driver->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
-                                </tr>
-                            @endforeach
-                        </tbody>
+                            <thead class="header">
+                                 <th style="text-align:center;">S.No</th>
+                                {{-- <th style="text-align:center;">Date Of Incident</th> --}}
+                                {{-- <th style="text-align:center;">Location</th> --}}
+                                {{-- <th style="text-align:center;">Witnessed By</th> --}}
+                                {{-- <th style="text-align:center;">Phone No Of Witness</th> --}}
+                                {{-- <th style="text-align:center;">Date</th> --}}
+                                <th style="text-align:center;">Number Plate</th>
+                                <th style="text-align:center;">Milage</th>
+                                <th style="text-align:center;">Report</th>
+                                <th style="text-align:center;">Action</th>
+
+                            </thead>
+                            <tbody>
+                                @foreach($report as $report)
+
+                                    <tr>
+                                        <td style="text-align:center;">{{$loop->iteration}}</td>
+                                        {{-- <td style="text-align:center;">{{$report->date_of_incident}}</td> --}}
+                                        {{-- <td style="text-align:center;">{{$report->location}}</td> --}}
+                                        {{-- <td style="text-align:center;">{{$report->witnessed_by}}</td> --}}
+                                        {{-- <td style="text-align:center;">{{$report->phone_number_of_witness}}</td> --}}
+                                        {{-- <td style="text-align:center;">{{$report->date}}</td> --}}
+                                        <td style="text-align:center;">{{$report->number_plate}}</td>
+                                        <td style="text-align:center;">{{$report->mileage}}</td>
+                                        <td style="text-align:center;">{{$report->report}}</td>
+                                        <td style="text-align:center;">
+                                        <a href="/damage/{{$report->user_id}}" data-toggle="tooltip" title="View"><i class="fa-solid fa-eye btn btn-primary" ></i></a>
+                                        <a href="/removereport/{{$report->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
                     </table>
+
 				</div>
 				<div class="todo">
 					<div class="head">

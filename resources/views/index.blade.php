@@ -427,14 +427,15 @@
                                     <td style="text-align:center;">{{$user->role}}</td>
                                     <td style="text-align:center;">{{$user->created_at}}</td>
                                     <td style="text-align:center;">
-                                    <a href="index1/{{$user->id}}" data-toggle="tooltip" title="View"><i class="fa-solid fa-eye btn btn-primary" ></i></a>
-                                    <a href="delete/{{$user->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
+                                    <a href="/index1/{{$user->id}}" data-toggle="tooltip" title="View"><i class="fa-solid fa-eye btn btn-primary" ></i></a>
+                                    <a href="/delete/{{$user->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
 
 				</div>
+
 				<div class="todo">
 					<div class="head">
 						<h3>Todos</h3>
