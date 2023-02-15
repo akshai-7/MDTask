@@ -372,6 +372,7 @@
 
 
 /* Style the buttons inside the tab */
+
 .tab button {
   display:flex;
   background-color: inherit;
