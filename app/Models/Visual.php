@@ -11,10 +11,10 @@ class Visual extends Model
 
     public function users()
     {
-        return $this->belongsTo(Driver::class,'user_id');
+        return $this->belongsTo(User::class,'user_id');
     }
     public function vehicle()
     {
-        return $this->belongsTo(Vehicle::class,'user_id');
+        return $this->hasMany(Vehicle::class,'user_id');
     }
 }

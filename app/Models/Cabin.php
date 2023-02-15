@@ -11,6 +11,6 @@ class Cabin extends Model
 
     public function users()
     {
-        return $this->belongsTo(Driver::class,'user_id');
+        return $this->belongsTo(User::class,'user_id');
     }
 }

@@ -409,7 +409,7 @@
 						{{-- <i class='bx bx-search' ></i>
 						<i class='bx bx-filter' ></i> --}}
 					</div>
-                    <table class="" style="width:700px">
+                    <table class="" style="width:1000px">
                         <thead class="text-primary">
                             <th style="text-align:center;">S.No</th>
                             <th style="text-align:center;">Driver Name</th>
@@ -436,35 +436,7 @@
                         </tbody>
                     </table>
 				</div>
-				<div class="todo">
-					<div class="head">
-						<h3>Todos</h3>
-						<i class='bx bx-plus' ></i>
-						<i class='bx bx-filter' ></i>
-					</div>
-					<ul class="todo-list">
-						{{-- <li class="completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li>
-						<li class="completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li>
-						<li class="not-completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li>
-						<li class="completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li>
-						<li class="not-completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li> --}}
-					</ul>
-				</div>
+
 			</div>
 		</main>
 	</section>

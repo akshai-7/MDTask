@@ -183,7 +183,7 @@
                 grid-gap: 16px;
                 flex-wrap: wrap;
             }
-            #content main .head-title .left h1 {
+            #content main .head-title .left h1 {s
                 font-size: 36px;
                 font-weight: 600;
                 margin-bottom: 10px;
@@ -405,47 +405,63 @@
 			<div class="table-data">
 				<div class="order">
 					<div class="head">
-						<h3 class="text-success">Vehicle Details</h3>
+						<h3 class="text-success">Cabin Check </h3>
 						{{-- <i class='bx bx-search' ></i>
 						<i class='bx bx-filter' ></i> --}}
 					</div>
-                    <table class="" style="width:1000px">
+                    <table class="" style="width:600px">
                             <thead class="header">
-                                 <th style="text-align:center;">S.No</th>
-                                {{-- <th style="text-align:center;">Date Of Incident</th> --}}
-                                {{-- <th style="text-align:center;">Location</th> --}}
-                                {{-- <th style="text-align:center;">Witnessed By</th> --}}
-                                {{-- <th style="text-align:center;">Phone No Of Witness</th> --}}
-                                {{-- <th style="text-align:center;">Date</th> --}}
-                                <th style="text-align:center;">Number Plate</th>
-                                <th style="text-align:center;">Milage</th>
-                                <th style="text-align:center;">Report</th>
+                                <th style="text-align:center;">S.No</th>
+                                <th style="text-align:center;">View</th>
+                                <th style="text-align:center;">Image</th>
+                                <th style="text-align:center;">Feed Back</th>
                                 <th style="text-align:center;">Action</th>
-
                             </thead>
                             <tbody>
-                                @foreach($report as $report)
-
+                                @foreach($cabin as $cabin)
                                     <tr>
                                         <td style="text-align:center;">{{$loop->iteration}}</td>
-                                        {{-- <td style="text-align:center;">{{$report->date_of_incident}}</td> --}}
-                                        {{-- <td style="text-align:center;">{{$report->location}}</td> --}}
-                                        {{-- <td style="text-align:center;">{{$report->witnessed_by}}</td> --}}
-                                        {{-- <td style="text-align:center;">{{$report->phone_number_of_witness}}</td> --}}
-                                        {{-- <td style="text-align:center;">{{$report->date}}</td> --}}
-                                        <td style="text-align:center;">{{$report->number_plate}}</td>
-                                        <td style="text-align:center;">{{$report->mileage}}</td>
-                                        <td style="text-align:center;">{{$report->report}}</td>
+                                        <td style="text-align:center;">{{$cabin->view}}</td>
+                                        <td style="text-align:center;">{{$cabin->image}}</td>
+                                        <td style="text-align:center;">{{$cabin->feedback}}</td>
                                         <td style="text-align:center;">
-                                        <a href="/details/{{$report->user_id}}" data-toggle="tooltip" title="View"><i class="fa-solid fa-eye btn btn-primary" ></i></a>
-                                        <a href="/removereport/{{$report->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
+                                        <a href="/cabincheck/{{$cabin->user_id}}"><i class="fa-solid fa-arrow-right  btn btn-primary" ></i></a>
+                                        <a href="/delete/{{$cabin->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
                                     </tr>
                                 @endforeach
                             </tbody>
                     </table>
 
 				</div>
-
+				{{-- <div class="todo">
+					<div class="head">
+						<h3>Todos</h3>
+						<i class='bx bx-plus' ></i>
+						<i class='bx bx-filter' ></i>
+					</div>
+					<ul class="todo-list">
+						<li class="completed">
+							<p>Todo List</p>
+							<i class='bx bx-dots-vertical-rounded' ></i>
+						</li>
+						<li class="completed">
+							<p>Todo List</p>
+							<i class='bx bx-dots-vertical-rounded' ></i>
+						</li>
+						<li class="not-completed">
+							<p>Todo List</p>
+							<i class='bx bx-dots-vertical-rounded' ></i>
+						</li>
+						<li class="completed">
+							<p>Todo List</p>
+							<i class='bx bx-dots-vertical-rounded' ></i>
+						</li>
+						<li class="not-completed">
+							<p>Todo List</p>
+							<i class='bx bx-dots-vertical-rounded' ></i>
+						</li>
+					</ul>
+				</div> --}}
 			</div>
 		</main>
 	</section>

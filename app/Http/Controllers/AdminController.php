@@ -55,13 +55,25 @@ class AdminController extends Controller
         $driver->delete();
         return view('/report');
     }
-    public function damagelist($user_id){
-        $visual= Visual::with('vehicle')->get();
-        dd($visual);
-        return view('/damage',['visual'=>$visual]);
+    public function visualcheck($user_id){
+        $visual= Visual::where('user_id',$user_id)->get();
+        // dd($visual);
+        return view('/visualcheck',['visual'=>$visual]);
     }
-    // public function vehiclelist($user_id){
-    //     $vehicle = Vehicle::where('user_id',$user_id)->get();
-    //     return view('/damage',['vehicle '=>$vehicle ]);
-    // }
+    public function vehiclecheck($user_id){
+        $vehicle = Vehicle::where('user_id',$user_id)->get();
+        // dd($vehicle);
+        return view('/vehiclecheck',['vehicle'=>$vehicle ]);
+    }
+    public function cabincheck($user_id){
+        $cabin= Cabin::where('user_id',$user_id)->get();
+        // dd($vehicle);
+        return view('/cabincheck',['cabin'=>$cabin ]);
+    }
+    public function check($user_id){
+        $visual= Visual::where('user_id',$user_id)->get();
+        $vehicle = Vehicle::where('user_id',$user_id)->get();
+        $cabin= Cabin::where('user_id',$user_id)->get();
+        return view('/details',['cabin'=>$cabin,'visual'=>$visual,'vehicle'=>$vehicle]);
+    }
 }

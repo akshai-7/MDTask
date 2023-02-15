@@ -368,6 +368,50 @@
             }
         /* MAIN */
         /* CONTENT */
+        /* Style the tab */
+
+
+/* Style the buttons inside the tab */
+.tab button {
+  display:flex;
+  background-color: inherit;
+  color: black;
+  padding: 22px 16px;
+  width: 100%;
+  border: none;
+  outline: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current "tab button" class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  float: left;
+  padding: 0px 12px;
+  border: 1px solid #ccc;
+  width: 70%;
+  border-left: none;
+  height: 300px;
+  display: none;
+}
+
+/* Clear floats after the tab */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
 </style>
 <body>
 	<!-- SIDEBAR -->
@@ -394,60 +438,161 @@
 		</ul>
 	</section>
 
-	<!-- CONTENT -->
-	<section id="content">
-		<main>
-			<div class="head-title">
-				<div class="left">
-					<h2 class="text-secondary">Dashboard</h2>
-				</div>
-			</div>
-			<div class="table-data">
-				<div class="order">
-					<div class="head">
-						<h3 class="text-success">Vehicle Details</h3>
-						{{-- <i class='bx bx-search' ></i>
-						<i class='bx bx-filter' ></i> --}}
-					</div>
-                    <table class="" style="width:1000px">
-                            <thead class="header">
-                                 <th style="text-align:center;">S.No</th>
-                                {{-- <th style="text-align:center;">Date Of Incident</th> --}}
-                                {{-- <th style="text-align:center;">Location</th> --}}
-                                {{-- <th style="text-align:center;">Witnessed By</th> --}}
-                                {{-- <th style="text-align:center;">Phone No Of Witness</th> --}}
-                                {{-- <th style="text-align:center;">Date</th> --}}
-                                <th style="text-align:center;">Number Plate</th>
-                                <th style="text-align:center;">Milage</th>
-                                <th style="text-align:center;">Report</th>
-                                <th style="text-align:center;">Action</th>
+        <div class="tab">
+          <button class="tablinks" onmouseover="openCheck(event, 'Visual')">Visual Check</button>
+          <button class="tablinks" onmouseover="openCheck(event, 'Vehicle')">Vehicle Check</button>
+          <button class="tablinks" onmouseover="openCheck(event, 'Cabin')">Cabin Check</button>
+        </div>
 
-                            </thead>
-                            <tbody>
-                                @foreach($report as $report)
+        <div id="Visual" class="tabcontent">
+            <section id="content">
+                <main>
+                    <div class="head-title">
+                        <div class="left">
+                            <h2 class="text-secondary">Dashboard</h2>
+                        </div>
+                    </div>
+                    <div class="table-data">
+                        <div class="order">
+                            <div class="head">
+                                <h3 class="text-success">Visual Check</h3>
 
-                                    <tr>
-                                        <td style="text-align:center;">{{$loop->iteration}}</td>
-                                        {{-- <td style="text-align:center;">{{$report->date_of_incident}}</td> --}}
-                                        {{-- <td style="text-align:center;">{{$report->location}}</td> --}}
-                                        {{-- <td style="text-align:center;">{{$report->witnessed_by}}</td> --}}
-                                        {{-- <td style="text-align:center;">{{$report->phone_number_of_witness}}</td> --}}
-                                        {{-- <td style="text-align:center;">{{$report->date}}</td> --}}
-                                        <td style="text-align:center;">{{$report->number_plate}}</td>
-                                        <td style="text-align:center;">{{$report->mileage}}</td>
-                                        <td style="text-align:center;">{{$report->report}}</td>
-                                        <td style="text-align:center;">
-                                        <a href="/details/{{$report->user_id}}" data-toggle="tooltip" title="View"><i class="fa-solid fa-eye btn btn-primary" ></i></a>
-                                        <a href="/removereport/{{$report->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                    </table>
+                            </div>
+                            <table class="" style="width:600px">
+                                    <thead class="header">
+                                        <th style="text-align:center;">S.No</th>
+                                        <th style="text-align:center;">View</th>
+                                        <th style="text-align:center;">Image</th>
+                                        <th style="text-align:center;">Feed Back</th>
+                                        <th style="text-align:center;">Action</th>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($visual as $visual)
+                                            <tr>
+                                                <td style="text-align:center;">{{$loop->iteration}}</td>
+                                                <td style="text-align:center;">{{$visual->view}}</td>
+                                                <td style="text-align:center;">{{$visual->image}}</td>
+                                                <td style="text-align:center;">{{$visual->feedback}}</td>
+                                                <td style="text-align:center;">
+                                                <a href="/vehiclecheck/{{$visual->user_id}}"><i class="fa-solid fa-arrow-right btn btn-primary" ></i></a>
+                                                <a href="/delete/{{$visual->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                            </table>
 
-				</div>
+                        </div>
 
-			</div>
-		</main>
-	</section>
+                    </div>
+                </main>
+            </section>
+        </div>
+
+        <div id="Vehicle" class="tabcontent">
+
+            <section id="content">
+                <main>
+                    <div class="head-title">
+                        <div class="left">
+                            <h2 class="text-secondary">Dashboard</h2>
+                        </div>
+                    </div>
+                    <div class="table-data">
+                        <div class="order">
+                            <div class="head">
+                                <h3 class="text-success">Vehicle Check</h3>
+
+                            </div>
+                            <table class="" style="width:600px">
+                                    <thead class="header">
+                                        <th style="text-align:center;">S.No</th>
+                                        <th style="text-align:center;">View</th>
+                                        <th style="text-align:center;">Image</th>
+                                        <th style="text-align:center;">Feed Back</th>
+                                        <th style="text-align:center;">Action</th>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($vehicle as $vehicle)
+                                            <tr>
+                                                <td style="text-align:center;">{{$loop->iteration}}</td>
+                                                <td style="text-align:center;">{{$vehicle->view}}</td>
+                                                <td style="text-align:center;">{{$vehicle->image}}</td>
+                                                <td style="text-align:center;">{{$vehicle->feedback}}</td>
+                                                <td style="text-align:center;">
+                                                <a href="/vehiclecheck/{{$vehicle->user_id}}"><i class="fa-solid fa-arrow-right btn btn-primary" ></i></a>
+                                                <a href="/delete/{{$vehicle->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                            </table>
+
+                        </div>
+
+                    </div>
+                </main>
+            </section>
+        </div>
+
+        <div id="Cabin" class="tabcontent">
+            <section id="content">
+                <main>
+                    <div class="head-title">
+                        <div class="left">
+                            <h2 class="text-secondary">Dashboard</h2>
+                        </div>
+                    </div>
+                    <div class="table-data">
+                        <div class="order">
+                            <div class="head">
+                                <h3 class="text-success">Cabin Check</h3>
+
+                            </div>
+                            <table class="" style="width:600px">
+                                    <thead class="header">
+                                        <th style="text-align:center;">S.No</th>
+                                        <th style="text-align:center;">View</th>
+                                        <th style="text-align:center;">Image</th>
+                                        <th style="text-align:center;">Feed Back</th>
+                                        <th style="text-align:center;">Action</th>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($cabin as $cabin)
+                                            <tr>
+                                                <td style="text-align:center;">{{$loop->iteration}}</td>
+                                                <td style="text-align:center;">{{$cabin->view}}</td>
+                                                <td style="text-align:center;">{{$cabin->image}}</td>
+                                                <td style="text-align:center;">{{$cabin->feedback}}</td>
+                                                <td style="text-align:center;">
+                                                <a href="/vehiclecheck/{{$cabin->user_id}}"><i class="fa-solid fa-arrow-right btn btn-primary" ></i></a>
+                                                <a href="/delete/{{$cabin->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                            </table>
+
+                        </div>
+
+                    </div>
+                </main>
+            </section>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <script>
+        function openCheck(evt,Name) {
+          var i, tabcontent, tablinks;
+          tabcontent = document.getElementsByClassName("tabcontent");
+          for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+          }
+          tablinks = document.getElementsByClassName("tablinks");
+          for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+          }
+          document.getElementById(Name).style.display = "block";
+          evt.currentTarget.className += " active";
+        }
+        </script>
 </body>
 </html>

@@ -25,8 +25,18 @@ Route::get('/remove/{id}',[AdminController::class,'remove']);
 //vehicle
 Route::get('/report/{user_id}',[AdminController::class,'reportlist']);
 Route::get('/removereport/{id}',[AdminController::class,'removereport']);
-//damage
-Route::get('/damage/{user_id}',[AdminController::class,'damagelist']);
-// Route::get('/damage/{user_id}',[AdminController::class,'vehiclelist']);
+//Visualdamage
+Route::get('/visualcheck/{user_id}',[AdminController::class,'visualcheck']);
 Route::get('//{id}',[AdminController::class,'remove']);
+//vehicle check
+Route::get('/vehiclecheck/{user_id}',[AdminController::class,'vehiclecheck']);
+Route::view('/vehiclecheck',[AdminController::class,'vehicle']);
+//cabin check
+Route::get('/cabincheck/{user_id}',[AdminController::class,'cabincheck']);
+
+
+
+// Route::get('/check/{user_id}',[AdminController::class,'check']);
+Route::get('/details/{user_id}',[AdminController::class,'check']);
+
 
