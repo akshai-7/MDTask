@@ -10,7 +10,8 @@ use App\Models\Vehicle;
 use App\Models\Cabin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -76,4 +77,39 @@ class AdminController extends Controller
         $cabin= Cabin::where('user_id',$user_id)->get();
         return view('/details',['cabin'=>$cabin,'visual'=>$visual,'vehicle'=>$vehicle]);
     }
+
+    public function updatevehiclecheck($id){
+        $vehicle = Vehicle::where('id',$id)->get();
+        return view('/updatevehiclecheck',['vehicle'=>$vehicle ]);
+    }
+       public function store(Request $request){
+
+                $validator = Validator::make($request->all(),[
+                    // 'id'=>'required',
+                    'user_id'=>'required',
+                    'view'=>'required',
+                    'image'=>'required',
+                    'feedback'=>'required',
+                ]);
+                if ($validator->fails()){
+                    return response()->json(['message'=>'Validator error'],401);
+                }
+                $user_id=$request->user_id;
+                $vehicle= Vehicle::where('user_id',$user_id)->first();
+                $vehicle->id =$request['id'];
+                $vehicle->user_id =$request['user_id'];
+                $vehicle->view=$request['view'];
+                $vehicle->image =$request['image'];
+                        if($request->hasfile('image')){
+                            $image =$request->file('image');
+                            $time = time().'.'.$image->getClientOriginalExtension();
+                            $location = public_path('public/images'.$time);
+                            Vehicle::make($image)->resize(300, 300)->save($location);
+                        }
+                $vehicle->feedback=$request['feedback'];
+                $vehicle->save();
+                return redirect('/details/{user_id}');
+            }
+
+
 }

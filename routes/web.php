@@ -40,3 +40,6 @@ Route::get('/cabincheck/{user_id}',[AdminController::class,'cabincheck']);
 Route::get('/details/{user_id}',[AdminController::class,'check']);
 
 
+Route::get('/updatevehiclecheck/{id}',[AdminController::class,'updatevehiclecheck']);
+Route::post('/store',[AdminController::class,'store']);
+
