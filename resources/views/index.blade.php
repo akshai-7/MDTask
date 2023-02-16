@@ -269,7 +269,7 @@
                 color: var(--dark);
             }
             #content main .table-data > div {
-                border-radius: 20px;
+                border-radius: 4px;
                 background: var(--light);
                 padding: 24px;
                 overflow-x: auto;

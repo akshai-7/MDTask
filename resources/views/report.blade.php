@@ -269,7 +269,7 @@
                 color: var(--dark);
             }
             #content main .table-data > div {
-                border-radius: 20px;
+                border-radius: 4px;
                 background: var(--light);
                 padding: 24px;
                 overflow-x: auto;
@@ -411,16 +411,16 @@
 					</div>
                     <table class="" style="width:1000px">
                             <thead class="header">
-                                 <th style="text-align:center;">S.No</th>
+                                 <th style="text-align:center;" class="text-primary">S.No</th>
                                 {{-- <th style="text-align:center;">Date Of Incident</th> --}}
                                 {{-- <th style="text-align:center;">Location</th> --}}
                                 {{-- <th style="text-align:center;">Witnessed By</th> --}}
                                 {{-- <th style="text-align:center;">Phone No Of Witness</th> --}}
                                 {{-- <th style="text-align:center;">Date</th> --}}
-                                <th style="text-align:center;">Number Plate</th>
-                                <th style="text-align:center;">Milage</th>
-                                <th style="text-align:center;">Report</th>
-                                <th style="text-align:center;">Action</th>
+                                <th style="text-align:center;" class="text-primary">Number Plate</th>
+                                <th style="text-align:center;" class="text-primary">Milage</th>
+                                <th style="text-align:center;" class="text-primary">Report</th>
+                                <th style="text-align:center;" class="text-primary">Action</th>
 
                             </thead>
                             <tbody>
@@ -437,8 +437,9 @@
                                         <td style="text-align:center;">{{$report->mileage}}</td>
                                         <td style="text-align:center;">{{$report->report}}</td>
                                         <td style="text-align:center;">
-                                        <a href="/details/{{$report->user_id}}" data-toggle="tooltip" title="View"><i class="fa-solid fa-eye btn btn-primary" ></i></a>
+                                        <a href="/details/{{$report->id}}" data-toggle="tooltip" title="View"><i class="fa-solid fa-eye btn btn-primary" ></i></a>
                                         <a href="/removereport/{{$report->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
+                                        {{-- @dd($report->id); --}}
                                     </tr>
                                 @endforeach
                             </tbody>

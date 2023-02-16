@@ -269,7 +269,7 @@
                 color: var(--dark);
             }
             #content main .table-data > div {
-                border-radius: 20px;
+                border-radius: 4px;
                 background: var(--light);
                 padding: 24px;
                 overflow-x: auto;
@@ -406,8 +406,7 @@
 				<div class="order">
 					<div class="head">
 						<h3 class="text-success">Driver Details</h3>
-						{{-- <i class='bx bx-search' ></i>
-						<i class='bx bx-filter' ></i> --}}
+
 					</div>
                     <table class="" style="width:1000px">
                         <thead class="text-primary">
