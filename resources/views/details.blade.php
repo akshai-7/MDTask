@@ -442,7 +442,7 @@
 		</a>
 		<ul class="side-menu top">
 			<li class="active ">
-				<a href="" class="">
+				<a href="/index" class="">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text-primary dashboard ">Dashboard</span>
 				</a>
@@ -493,15 +493,13 @@
                                                 <td style="text-align:center;">{{$visual->image}}</td>
                                                 <td style="text-align:center;">{{$visual->feedback}}</td>
                                                 <td style="text-align:center;">
-                                                {{-- <a href="/vehiclecheck/{{$visual->user_id}}"><i class="fa-solid fa-arrow-right btn btn-primary" ></i></a> --}}
+                                                <a href="/updatevisualcheck/{{$visual->id}}"><i class="fa-solid fa-edit btn btn-primary" ></i></a>
                                                 <a href="/delete/{{$visual->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
                                             </tr>
                                         @endforeach
                                     </tbody>
                             </table>
-
                         </div>
-
                     </div>
                 </main>
             </section>
@@ -560,8 +558,8 @@
                                                 <td style="text-align:center;">{{$cabin->image}}</td>
                                                 <td style="text-align:center;">{{$cabin->feedback}}</td>
                                                 <td style="text-align:center;">
-                                                {{-- <a href="/vehiclecheck/{{$cabin->user_id}}"><i class="fa-solid fa-arrow-right btn btn-primary" ></i></a> --}}
-                                                <a href="/delete/{{$cabin->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
+                                                    <a href="/updatecabincheck/{{$cabin->id}}"><i class="fa-solid fa-edit btn btn-primary" ></i></a>
+                                                    <a href="/delete/{{$cabin->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
                                             </tr>
                                         @endforeach
                                     </tbody>

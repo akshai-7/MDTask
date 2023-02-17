@@ -84,7 +84,7 @@
                 padding-bottom: 20px;
                 box-sizing: content-box;
             }
-            #sidebar .brand .bx {
+            /* #sidebar .brand .bx {
                 min-width: 60px;
                 display: flex;
                 justify-content: center;
@@ -103,7 +103,7 @@
             #sidebar .side-menu li.active {
                 background: var(--grey);
                 position: relative;
-            }
+            } */
             #sidebar .side-menu li.active::before {
                 content: '';
                 position: absolute;
@@ -378,7 +378,7 @@
 		</a>
 		<ul class="side-menu top">
 			<li class="active">
-				<a href="#">
+				<a href="/index">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="">Dashboard</span>
 				</a>

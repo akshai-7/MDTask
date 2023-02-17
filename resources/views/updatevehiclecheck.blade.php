@@ -84,7 +84,7 @@
                 padding-bottom: 20px;
                 box-sizing: content-box;
             }
-            #sidebar .brand .bx {
+            /* #sidebar .brand .bx {
                 min-width: 60px;
                 display: flex;
                 justify-content: center;
@@ -103,7 +103,7 @@
             #sidebar .side-menu li.active {
                 background: var(--grey);
                 position: relative;
-            }
+            } */
             #sidebar .side-menu li.active::before {
                 content: '';
                 position: absolute;
@@ -378,7 +378,7 @@
 		</a>
 		<ul class="side-menu top">
 			<li class="active">
-				<a href="#">
+				<a href="/index">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="">Dashboard</span>
 				</a>
@@ -408,16 +408,16 @@
 						<h3 class="text-success">Vehicle Check</h3>
 
 					</div>
-                    <form action="/store" method="POST">
+                    <form action="/vehicleupdate/{user_id}" method="POST" autocomplete="off">
                         @csrf
                         <table class="" style="width:1100px">
                             <thead class="">
-                                <th style="text-align:center;" class="col-md-1">S.No</th>
-                                <th style="text-align:center;" class="col-md-1" >User_id</th>
-                                <th style="text-align:center;" class="col-md-2">View</th>
-                                <th style="text-align:center;">Image</th>
-                                <th style="text-align:center;">Feed Back</th>
-                                <th style="text-align:center;">Action</th>
+                                <th style="text-align:center;" class="col-md-1 text-primary">Id</th>
+                                <th style="text-align:center;" class="col-md-1 text-primary" >User_id</th>
+                                <th style="text-align:center;" class="col-md-2 text-primary">View</th>
+                                <th style="text-align:center;" class="col-md-2 text-primary">Image</th>
+                                <th style="text-align:center;" class="col-md-3 text-primary">Feed Back</th>
+                                <th style="text-align:center;" class="col-md-2 text-primary">Action</th>
                             </thead>
                             <tbody>
                                 @foreach($vehicle as $vehicle)
@@ -427,7 +427,9 @@
                                         <td style="text-align:center;"><input type="text" class="form-control"   name="view" value="{{$vehicle->view}}"></td>
                                         <td style="text-align:center;"><input type="text" class="form-control"   name="image" value="{{$vehicle->image}}"></td>
                                         <td style="text-align:center;"><input type="text"  class="form-control"  name="feedback" value="{{$vehicle->feedback}}"></td>
-                                        <td style="text-align:center;"><a href=""><input type="submit" name="submit" value="Submit" class="btn btn-primary"></a></td>
+                                        <td style="text-align:center;"><a href="/details/{{$vehicle->id}}/{{$vehicle->user_id}}"><input type="submit" name="submit" value="Submit" class="btn btn-primary"></a>
+                                        </td>
+                                        {{-- @dd($vehicle->user_id); --}}
                                     </tr>
                                 @endforeach
                             </tbody>

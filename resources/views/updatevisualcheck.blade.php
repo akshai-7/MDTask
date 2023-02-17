@@ -84,7 +84,7 @@
                 padding-bottom: 20px;
                 box-sizing: content-box;
             }
-            #sidebar .brand .bx {
+            /* #sidebar .brand .bx {
                 min-width: 60px;
                 display: flex;
                 justify-content: center;
@@ -103,7 +103,7 @@
             #sidebar .side-menu li.active {
                 background: var(--grey);
                 position: relative;
-            }
+            } */
             #sidebar .side-menu li.active::before {
                 content: '';
                 position: absolute;
@@ -269,7 +269,7 @@
                 color: var(--dark);
             }
             #content main .table-data > div {
-                border-radius: 20px;
+                border-radius: 4px;
                 background: var(--light);
                 padding: 24px;
                 overflow-x: auto;
@@ -378,7 +378,7 @@
 		</a>
 		<ul class="side-menu top">
 			<li class="active">
-				<a href="#">
+				<a href="/index">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="">Dashboard</span>
 				</a>
@@ -405,62 +405,36 @@
 			<div class="table-data">
 				<div class="order">
 					<div class="head">
-						<h3 class="text-success">Vehicle Check</h3>
-						{{-- <i class='bx bx-search' ></i>
-						<i class='bx bx-filter' ></i> --}}
+						<h3 class="text-success">Visual Check</h3>
+
 					</div>
-                    <table class="" style="width:600px">
-                            <thead class="header">
-                                <th style="text-align:center;">S.No</th>
-                                <th style="text-align:center;">View</th>
-                                <th style="text-align:center;">Image</th>
-                                <th style="text-align:center;">Feed Back</th>
-                                <th style="text-align:center;">Action</th>
+                    <form action="/visualupdate/{user_id}" method="POST" autocomplete="off">
+                        @csrf
+                        <table class="" style="width:1100px">
+                            <thead class="">
+                                <th style="text-align:center;" class="col-md-1 text-primary">Id</th>
+                                <th style="text-align:center;" class="col-md-1 text-primary" >User_id</th>
+                                <th style="text-align:center;" class="col-md-2 text-primary">View</th>
+                                <th style="text-align:center;" class="col-md-2 text-primary">Image</th>
+                                <th style="text-align:center;" class="col-md-3 text-primary">Feed Back</th>
+                                <th style="text-align:center;" class="col-md-2 text-primary">Action</th>
                             </thead>
                             <tbody>
-                                @foreach($vehicle as $vehicle)
+                                @foreach($visual as $visual)
                                     <tr>
-                                        <td style="text-align:center;">{{$loop->iteration}}</td>
-                                        <td style="text-align:center;">{{$vehicle->view}}</td>
-                                        <td style="text-align:center;">{{$vehicle->image}}</td>
-                                        <td style="text-align:center;">{{$vehicle->feedback}}</td>
-                                        <td style="text-align:center;">
-                                        <a href="/cabincheck/{{$vehicle->user_id}}"><i class="fa-solid fa-arrow-right  btn btn-primary" ></i></a>
-                                        <a href="/delete/{{$vehicle->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
+                                        <td style="text-align:center;"><input type="text"  class="form-control"   name="id" value="{{$visual->id}}"></td>
+                                        <td style="text-align:center;"><input type="text"  class="form-control"   name="user_id" value="{{$visual->user_id}}"></td>
+                                        <td style="text-align:center;"><input type="text" class="form-control"   name="view" value="{{$visual->view}}"></td>
+                                        <td style="text-align:center;"><input type="text" class="form-control"   name="image" value="{{$visual->image}}"></td>
+                                        <td style="text-align:center;"><input type="text"  class="form-control"  name="feedback" value="{{$visual->feedback}}"></td>
+                                        <td style="text-align:center;"><a href="/details/{{$visual->id}}/{{$visual->user_id}}"><input type="submit" name="submit" value="Submit" class="btn btn-primary"></a>
+                                        </td>
+                                        {{-- @dd($vehicle->user_id); --}}
                                     </tr>
                                 @endforeach
                             </tbody>
                     </table>
-
-				</div>
-				<div class="todo">
-					<div class="head">
-						<h3>Todos</h3>
-						<i class='bx bx-plus' ></i>
-						<i class='bx bx-filter' ></i>
-					</div>
-					<ul class="todo-list">
-						{{-- <li class="completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li>
-						<li class="completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li>
-						<li class="not-completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li>
-						<li class="completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li>
-						<li class="not-completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li> --}}
-					</ul>
+                    </form>
 				</div>
 			</div>
 		</main>

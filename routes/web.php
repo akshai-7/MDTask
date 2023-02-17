@@ -25,21 +25,15 @@ Route::get('/remove/{id}',[AdminController::class,'remove']);
 //vehicle
 Route::get('/report/{user_id}',[AdminController::class,'reportlist']);
 Route::get('/removereport/{id}',[AdminController::class,'removereport']);
-//Visualdamage
-Route::get('/visualcheck/{user_id}',[AdminController::class,'visualcheck']);
-Route::get('//{id}',[AdminController::class,'remove']);
-//vehicle check
-Route::get('/vehiclecheck/{user_id}',[AdminController::class,'vehiclecheck']);
-Route::view('/vehiclecheck',[AdminController::class,'vehicle']);
-//cabin check
-Route::get('/cabincheck/{user_id}',[AdminController::class,'cabincheck']);
 
-
-
-// Route::get('/check/{user_id}',[AdminController::class,'check']);
 Route::get('/details/{user_id}',[AdminController::class,'check']);
 
-
+//updatevehiclecheck
 Route::get('/updatevehiclecheck/{id}',[AdminController::class,'updatevehiclecheck']);
-Route::post('/store',[AdminController::class,'store']);
-
+Route::post('/vehicleupdate/{user_id}',[AdminController::class,'vehicleupdate']);
+//updatevisualcheck
+Route::get('/updatevisualcheck/{id}',[AdminController::class,'updatevisualcheck']);
+Route::post('/visualupdate/{user_id}',[AdminController::class,'visualupdate']);
+//updatecabincheck
+Route::get('/updatecabincheck/{id}',[AdminController::class,'updatecabincheck']);
+Route::post('/cabinupdate/{user_id}',[AdminController::class,'cabinupdate']);

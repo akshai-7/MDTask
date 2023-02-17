@@ -84,7 +84,7 @@
                 padding-bottom: 20px;
                 box-sizing: content-box;
             }
-            #sidebar .brand .bx {
+            /* #sidebar .brand .bx {
                 min-width: 60px;
                 display: flex;
                 justify-content: center;
@@ -103,7 +103,7 @@
             #sidebar .side-menu li.active {
                 background: var(--grey);
                 position: relative;
-            }
+            } */
             #sidebar .side-menu li.active::before {
                 content: '';
                 position: absolute;
@@ -183,7 +183,7 @@
                 grid-gap: 16px;
                 flex-wrap: wrap;
             }
-            #content main .head-title .left h1 {s
+            #content main .head-title .left h1 {
                 font-size: 36px;
                 font-weight: 600;
                 margin-bottom: 10px;
@@ -269,7 +269,7 @@
                 color: var(--dark);
             }
             #content main .table-data > div {
-                border-radius: 20px;
+                border-radius: 4px;
                 background: var(--light);
                 padding: 24px;
                 overflow-x: auto;
@@ -368,39 +368,6 @@
             }
         /* MAIN */
         /* CONTENT */
-
-
-.tab button {
-  /* display: block; */
-  background-color: inherit;
-  width: 25%;
-  border: none;
-  border-radius: 5px;
-  outline: none;
-  cursor: pointer;
-  transition: 0.3s;
-  text-align: center;
-
-}
-.tab button:hover {
-  background-color: #ddd;
-}
-/* .tab button.active {
-  background-color: #ccc;
-} */
-.tab button.active {
-  background-color: #ccc;
-}
-
-/* Style the tab content */
-.tabcontent {
-  float: left;
-  padding: 0px 12px;
-  /* border: 1px solid #ccc; */
-  width: 70%;
-  border-left: none;
-  height: 300px;
-}
 </style>
 <body>
 	<!-- SIDEBAR -->
@@ -411,7 +378,7 @@
 		</a>
 		<ul class="side-menu top">
 			<li class="active">
-				<a href="#">
+				<a href="/index">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="">Dashboard</span>
 				</a>
@@ -420,16 +387,15 @@
 		<ul class="side-menu">
 			<li>
 				<a href="/" class="logout">
-					<i class='bx bxs-log-out-circle text-danger' ></i>
+					<i class='bx bxs-log-out-circle text-danger ' ></i>
 					<span class="text-danger">Logout</span>
 				</a>
 			</li>
 		</ul>
 	</section>
 
-
 	<!-- CONTENT -->
-	<section id="content" class="tabcontent">
+	<section id="content">
 		<main>
 			<div class="head-title">
 				<div class="left">
@@ -438,131 +404,37 @@
 			</div>
 			<div class="table-data">
 				<div class="order">
-					<div class="head tab">
-                        <div class="tab">
-                            <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">Visual Check</button>
-                            <button class="tablinks" onclick="openCity(event, 'Paris')">Vehicle Check</button>
-                            <button class="tablinks" onclick="openCity(event, 'Tokyo')">Cabn Check</button>
-                          </div>
-					</div>
-                    <table class="" style="width:600px">
-                            <thead class="header">
-                                <th style="text-align:center;">S.No</th>
-                                <th style="text-align:center;">View</th>
-                                <th style="text-align:center;">Image</th>
-                                <th style="text-align:center;">Feed Back</th>
-                                <th style="text-align:center;">Action</th>
-                            </thead>
-                            <tbody>
-                                @foreach($visual as $visual)
-                                    <tr>
-                                        <td style="text-align:center;">{{$loop->iteration}}</td>
-                                        <td style="text-align:center;">{{$visual->view}}</td>
-                                        <td style="text-align:center;">{{$visual->image}}</td>
-                                        <td style="text-align:center;">{{$visual->feedback}}</td>
-                                        <td style="text-align:center;">
-                                        <a href="/vehiclecheck/{{$visual->user_id}}"><i class="fa-solid fa-arrow-right btn btn-primary" ></i></a>
-                                        <a href="/delete/{{$visual->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                    </table>
-
-				</div>
-			</div>
-		</main>
-	</section>
-    <section id="content" class="tabcontent">
-		<main>
-
-			<div class="table-data">
-				<div class="order">
 					<div class="head">
-						<h3 class="text-success">Vehicle Check </h3>
-						{{-- <i class='bx bx-search' ></i>
-						<i class='bx bx-filter' ></i> --}}
-					</div>
-                    <table class="" style="width:600px">
-                            <thead class="header">
-                                <th style="text-align:center;">S.No</th>
-                                <th style="text-align:center;">View</th>
-                                <th style="text-align:center;">Image</th>
-                                <th style="text-align:center;">Feed Back</th>
-                                <th style="text-align:center;">Action</th>
-                            </thead>
-                            <tbody>
-                                @foreach($vehicle as $vehicle)
-                                <tr>
-                                    <td style="text-align:center;">{{$loop->iteration}}</td>
-                                    <td style="text-align:center;">{{$vehicle->view}}</td>
-                                    <td style="text-align:center;">{{$vehicle->image}}</td>
-                                    <td style="text-align:center;">{{$vehicle->feedback}}</td>
-                                    <td style="text-align:center;">
-                                    <a href="/cabincheck/{{$vehicle->user_id}}"><i class="fa-solid fa-arrow-right  btn btn-primary" ></i></a>
-                                    <a href="/delete/{{$vehicle->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                    </table>
+						<h3 class="text-success">Vehicle Check</h3>
 
-				</div>
-			</div>
-		</main>
-	</section>
-    <section id="content" class="tabcontent">
-		<main>
-			<div class="table-data">
-				<div class="order">
-					<div class="head">
-						<h3 class="text-success">Cabin Check </h3>
-						{{-- <i class='bx bx-search' ></i>
-						<i class='bx bx-filter' ></i> --}}
 					</div>
-                    <table class="" style="width:600px">
-                            <thead class="header">
-                                <th style="text-align:center;">S.No</th>
-                                <th style="text-align:center;">View</th>
-                                <th style="text-align:center;">Image</th>
-                                <th style="text-align:center;">Feed Back</th>
-                                <th style="text-align:center;">Action</th>
+                    <form action="/cabinupdate/{user_id}" method="POST" autocomplete="off">
+                        @csrf
+                        <table class="" style="width:1100px">
+                            <thead class="">
+                                <th style="text-align:center;" class="col-md-1 text-primary">Id</th>
+                                <th style="text-align:center;" class="col-md-1 text-primary" >User_id</th>
+                                <th style="text-align:center;" class="col-md-2 text-primary">View</th>
+                                <th style="text-align:center;" class="col-md-2 text-primary">Image</th>
+                                <th style="text-align:center;" class="col-md-3 text-primary">Feed Back</th>
+                                <th style="text-align:center;" class="col-md-2 text-primary">Action</th>
                             </thead>
                             <tbody>
                                 @foreach($cabin as $cabin)
                                     <tr>
-                                        <td style="text-align:center;">{{$loop->iteration}}</td>
-                                        <td style="text-align:center;">{{$cabin->view}}</td>
-                                        <td style="text-align:center;">{{$cabin->image}}</td>
-                                        <td style="text-align:center;">{{$cabin->feedback}}</td>
-                                        <td style="text-align:center;">
-                                        <a href="/cabincheck/{{$cabin->user_id}}"><i class="fa-solid fa-arrow-right  btn btn-primary" ></i></a>
-                                        <a href="/delete/{{$cabin->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
+                                        <td style="text-align:center;"><input type="text"  class="form-control"   name="id" value="{{$cabin->id}}"></td>
+                                        <td style="text-align:center;"><input type="text"  class="form-control"   name="user_id" value="{{$cabin->user_id}}"></td>
+                                        <td style="text-align:center;"><input type="text" class="form-control"   name="view" value="{{$cabin->view}}"></td>
+                                        <td style="text-align:center;"><input type="text" class="form-control"   name="image" value="{{$cabin->image}}"></td>
+                                        <td style="text-align:center;"><input type="text"  class="form-control"  name="feedback" value="{{$cabin->feedback}}"></td>
+                                        <td style="text-align:center;"><a href="/details/{{$cabin->id}}/{{$cabin->user_id}}"><input type="submit" name="submit" value="Submit" class="btn btn-primary"></a>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
                     </table>
-
+                    </form>
 				</div>
 			</div>
 		</main>
 	</section>
-
-    <script>
-        function openCheck(evt, cityName) {
-          var i, tabcontent, tablinks;
-          tabcontent = document.getElementsByClassName("tabcontent");
-          for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-          }
-          tablinks = document.getElementsByClassName("tablinks");
-          for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-          }
-          document.getElementById(cityName).style.display = "block";
-          evt.currentTarget.className += " active";
-        }
-        </script>
-
-
-
-</body>
-</html>
