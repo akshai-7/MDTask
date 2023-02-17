@@ -360,6 +360,7 @@ class ApiController extends Controller
 
     //vehiclechecks:
             public function vehiclechecks(Request $request){
+                // dd($request);
                 $validator = Validator::make($request->all(),[
                     'view'=>'required',
                     'image'=>'required',
@@ -381,9 +382,10 @@ class ApiController extends Controller
                 $user->image =$request['image'];
                         if($request->hasfile('image')){
                             $image =$request->file('image');
+                            // dd($image);
                             $time = time().'.'.$image->getClientOriginalExtension();
                             $location = public_path('public/images'.$time);
-                            Vehicle::make($image)->resize(300, 300)->save($location);
+                            // Vehicle::make($image)->resize(300, 300)->save($location);
                         }
                 $user->feedback=$request['feedback'];
                 $user->action=$request['action'];

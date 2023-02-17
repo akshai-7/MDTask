@@ -70,15 +70,13 @@
                 width: 60px;
             }
             #sidebar .brand {
-                font-size: 24px;
-                font-weight: 700;
                 height: 56px;
-                display: flex;
+
                 align-items: center;
-                color: var(--blue);
-                position: sticky;
-                top: 0;
-                left: 0;
+
+                position: fixed;
+                top: 20px;
+                margin-left: 20px;
                 background: var(--light);
                 z-index: 500;
                 padding-bottom: 20px;
@@ -366,32 +364,37 @@
             #content main .table-data .todo .todo-list li:last-child {
                 margin-bottom: 0;
             }
+            .log{
+                margin-top: 20px;
+            }
+            .board{
+                margin-top: 150px;
+            }
         /* MAIN */
         /* CONTENT */
 </style>
 <body>
 	<!-- SIDEBAR -->
-	<section id="sidebar">
-		<a href="#" class="brand">
-			<i class='bx bxs-smile'></i>
-			<span class="text-primary">M&D <span class="text-danger">Foundations</span></span>
+    <section id="sidebar">
+        <a href="#" class="brand">
+			<img src="{{asset('img/m-d-foundation.png')}}" alt="">
 		</a>
-		<ul class="side-menu top">
-			<li class="active">
-				<a href="/index">
+        <ul class="board">
+			<li class="">
+				<a href="#">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="">Dashboard</span>
 				</a>
 			</li>
-		</ul>
-		<ul class="side-menu">
-			<li>
-				<a href="/" class="logout">
-					<i class='bx bxs-log-out-circle text-danger ' ></i>
-					<span class="text-danger">Logout</span>
-				</a>
-			</li>
-		</ul>
+        </ul>
+        <ul class="log">
+                <li>
+                    <a href="/" class="logout">
+                        <i class='bx bxs-log-out-circle text-danger' ></i>
+                        <span class="text-danger">Logout</span>
+                    </a>
+                </li>
+        </ul>
 	</section>
 
 	<!-- CONTENT -->
@@ -410,7 +413,7 @@
 					</div>
                     <table class="" style="width:1000px">
                         <thead class="text-primary">
-                            <th style="text-align:center;">S.No</th>
+                            <th style="text-align:;">S.No</th>
                             <th style="text-align:center;">Driver Name</th>
                             <th style="text-align:center;">Company</th>
                             <th style="text-align:center;">Email</th>

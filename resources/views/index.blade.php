@@ -70,15 +70,14 @@
                 width: 60px;
             } */
             #sidebar .brand {
-                font-size: 24px;
-                font-weight: 700;
+
                 height: 56px;
-                display: flex;
+
                 align-items: center;
-                color: var(--blue);
-                position: sticky;
-                top: 0;
-                left: 0;
+
+                position: fixed;
+                top: 20px;
+                margin-left: 20px;
                 background: var(--light);
                 z-index: 500;
                 padding-bottom: 20px;
@@ -89,17 +88,17 @@
                 display: flex;
                 justify-content: center;
             } */
-            /* #sidebar .side-menu {
+            #sidebar .side-menu {
                 width: 100%;
-                margin-top: 48px;
-            } */
-            /* #sidebar .side-menu li {
+                margin-top: 150px;
+            }
+            #sidebar .side-menu li {
                 height: 48px;
                 background: transparent;
                 margin-left: 6px;
                 border-radius: 48px 0 0 48px;
                 padding: 4px;
-            } */
+            }
             /* #sidebar .side-menu li.active {
                 background: var(--grey);
                 position: relative;
@@ -139,6 +138,7 @@
                 overflow-x: hidden;
             }
             #sidebar .side-menu.top li.active a {
+                top:50px;
                 color: var(--blue);
             }
             #sidebar.hide .side-menu li a {
@@ -366,32 +366,37 @@
             #content main .table-data .todo .todo-list li:last-child {
                 margin-bottom: 0;
             }
+            .log{
+                margin-top: 20px;
+            }
+            .board{
+                margin-top: 150px;
+            }
         /* MAIN */
         /* CONTENT */
 </style>
 <body>
 	<!-- SIDEBAR -->
 	<section id="sidebar">
-		<a href="#" class="brand">
-			<i class='bx bxs-smile'></i>
-			<span class="text-primary">M&D <span class="text-danger">Foundations</span></span>
+        <a href="#" class="brand">
+			<img src="{{asset('img/m-d-foundation.png')}}" alt="">
 		</a>
-		<ul class="side-menu top">
-			<li class="active">
+        <ul class="board">
+			<li class="">
 				<a href="#">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="">Dashboard</span>
 				</a>
 			</li>
-		</ul>
-		<ul class="side-menu">
-			<li>
-				<a href="/" class="logout">
-					<i class='bx bxs-log-out-circle text-danger' ></i>
-					<span class="text-danger">Logout</span>
-				</a>
-			</li>
-		</ul>
+        </ul>
+        <ul class="log">
+                <li>
+                    <a href="/" class="logout">
+                        <i class='bx bxs-log-out-circle text-danger' ></i>
+                        <span class="text-danger">Logout</span>
+                    </a>
+                </li>
+        </ul>
 	</section>
 
 	<!-- CONTENT -->
@@ -399,19 +404,17 @@
 		<main>
 			<div class="head-title">
 				<div class="left">
-					<h2 class="text-secondary">Dashboard</h2>
+					<h2 class="text-black">Dashboard</h2>
 				</div>
 			</div>
 			<div class="table-data">
 				<div class="order">
 					<div class="head">
 						<h3 class="text-success">User Details</h3>
-						{{-- <i class='bx bx-search' ></i>
-						<i class='bx bx-filter' ></i> --}}
 					</div>
                     <table style="width:1000px">
                         <thead class="text-primary">
-                            <th style="text-align:center;">S.No</th>
+                            <th style="text-align:;">S.No</th>
                             <th style="text-align:center;">Name</th>
                             <th style="text-align:center;">Email</th>
                             <th style="text-align:center;">Role</th>
