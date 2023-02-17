@@ -14,13 +14,13 @@ use App\Http\Controllers\AdminController;
 */
 
 Route::view('/','login');
-Route::post('/index',[AdminController::class,'admin']);
-Route::get('/index',[AdminController::class,'create']);
+Route::post('/user',[AdminController::class,'admin']);
+Route::get('/user',[AdminController::class,'create']);
 //user
-Route::get('/index',[AdminController::class,'userlist']);
+Route::get('/user',[AdminController::class,'userlist']);
 Route::get('/delete/{id}',[AdminController::class,'delete']);
 //driver
-Route::get('/index1/{user_id}',[AdminController::class,'driverlist']);
+Route::get('/driver/{user_id}',[AdminController::class,'driverlist']);
 Route::get('/remove/{id}',[AdminController::class,'remove']);
 //vehicle
 Route::get('/report/{user_id}',[AdminController::class,'reportlist']);

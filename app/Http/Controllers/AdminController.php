@@ -24,28 +24,28 @@ class AdminController extends Controller
             if($user->role!= 'admin'){
                 return "<script>alert('You Are Not Admin');window.location.href='".('/')."'; </script>";
             }
-            return redirect('/index');
+            return redirect('/user');
         }
         public function create(){
-            return view('/index');
+            return view('/user');
         }
         public function userlist(){
             $user= User::all();
-            return view('/index',['user'=>$user]);
+            return view('/user',['user'=>$user]);
         }
         public function delete($id){
             $driver=User::find($id);
             $driver->delete();
-            return redirect('/index');
+            return redirect('/user');
         }
         public function driverlist($user_id){
-            $driver = Driver::where('user_id',$user_id)->get();
-            return view('/index1',['driver'=>$driver]);
+            $driver = Driver::with('report')->where('user_id',$user_id)->get();
+            return view('/driver',['driver'=>$driver]);
         }
         public function remove($id){
             $driver=Driver::find($id);
             $driver->delete();
-            return view('/index1');
+            return view('/driver');
         }
         public function reportlist($user_id){
             $report = Report::where('user_id',$user_id)->get();

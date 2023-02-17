@@ -10,7 +10,7 @@
 	<title>M&D Foundations</title>
 </head>
 <style>
-    a {
+            a {
                 text-decoration: none;
             }
 
@@ -90,13 +90,9 @@
                 overflow-y: auto;
             }
             #content main .table-data {
-                display: flex;
-                flex-wrap: wrap;
-                grid-gap: 24px;
-                margin-top: 24px;
-                width: 100%;
-                color: var(--dark);
+                margin-top: 30px;
             }
+
             #content main .table-data > div {
                 border-radius: 4px;
                 background: var(--light);
@@ -105,14 +101,9 @@
             }
             #content main .table-data .head {
                 display: flex;
-                align-items: center;
-                grid-gap: 16px;
-                margin-bottom: 24px;
-
             }
             #content main .table-data .head h3 {
                 margin-right: auto;
-                /* font-size: 24px; */
                 font-weight: 600;
             }
             #content main .table-data .order {
@@ -122,8 +113,10 @@
             #content main .table-data .order table {
                 width: 100%;
                 border-collapse: collapse;
+
             }
             #content main .table-data .order table th {
+
                 padding-bottom: 12px;
                 font-size: 17px;
                 text-align: left;
@@ -135,13 +128,6 @@
             #content main .table-data .order table tbody tr:hover {
                 background: var(--grey);
             }
-            #content main .table-data .order table tr td .status {
-                font-size: 10px;
-                padding: 6px 16px;
-                color: var(--light);
-                border-radius: 20px;
-                font-weight: 700;
-            }
             .log{
                 margin-top: 20px;
                 margin-left: 40px;
@@ -151,6 +137,7 @@
                 margin-top: 150px;
                  margin-left: 40px;
                 font-size: 20px;
+
             }
             #add{
                 background: rgb(254,231,154);
@@ -167,7 +154,7 @@
 </style>
 <body>
 	<!-- SIDEBAR -->
-    <section id="sidebar">
+	<section id="sidebar">
         <a href="#" class="brand">
 			<img src="{{asset('img/m-d-foundation.png')}}" alt="">
 		</a>
@@ -193,55 +180,41 @@
 	<section id="content">
 		<main>
 			<div class="head-title">
-				<div class="left">
-					<h2 class="text-secondary">Dashboard</h2>
+				<div class="left" >
+					<h2 class="text-black">Dashboard</h2>
 				</div>
 			</div>
 			<div class="table-data">
 				<div class="order">
 					<div class="head">
-						<h3 class="text-success">Vehicle Details</h3>
-						{{-- <i class='bx bx-search' ></i>
-						<i class='bx bx-filter' ></i> --}}
+						<h3 class="text-success">User Details</h3>
+                        <a href=""><input type="submit" value="Add-User" class="text-primary" id="add"></a>
 					</div>
-                    <table class="" >
-                            <thead class="header">
-                                 <th style="text-align:;" class="text-primary">S.No</th>
-                                {{-- <th style="text-align:center;">Date Of Incident</th> --}}
-                                {{-- <th style="text-align:center;">Location</th> --}}
-                                {{-- <th style="text-align:center;">Witnessed By</th> --}}
-                                {{-- <th style="text-align:center;">Phone No Of Witness</th> --}}
-                                {{-- <th style="text-align:center;">Date</th> --}}
-                                <th style="text-align:center;" class="text-primary">Number Plate</th>
-                                <th style="text-align:center;" class="text-primary">Milage</th>
-                                <th style="text-align:center;" class="text-primary">Report</th>
-                                <th style="text-align:center;" class="text-primary">Action</th>
-
-                            </thead>
-                            <tbody>
-                                @foreach($report as $report)
-
-                                    <tr>
-                                        <td style="text-align:center;">{{$loop->iteration}}</td>
-                                        {{-- <td style="text-align:center;">{{$report->date_of_incident}}</td> --}}
-                                        {{-- <td style="text-align:center;">{{$report->location}}</td> --}}
-                                        {{-- <td style="text-align:center;">{{$report->witnessed_by}}</td> --}}
-                                        {{-- <td style="text-align:center;">{{$report->phone_number_of_witness}}</td> --}}
-                                        {{-- <td style="text-align:center;">{{$report->date}}</td> --}}
-                                        <td style="text-align:center;">{{$report->number_plate}}</td>
-                                        <td style="text-align:center;">{{$report->mileage}}</td>
-                                        <td style="text-align:center;">{{$report->report}}</td>
-                                        <td style="text-align:center;">
-                                        <a href="/details/{{$report->id}}" data-toggle="tooltip" title="View"><i class="fa-solid fa-eye btn btn-primary" ></i></a>
-                                        <a href="/removereport/{{$report->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
-                                        {{-- @dd($report->id); --}}
-                                    </tr>
-                                @endforeach
-                            </tbody>
+                    <table class="">
+                        <thead class="text-primary">
+                            <th style="text-align:center;">S.No</th>
+                            <th style="text-align:center;">Name</th>
+                            <th style="text-align:center;">Email</th>
+                            <th style="text-align:center;">Role</th>
+                            <th style="text-align:center;">Creation Date</th>
+                            <th style="text-align:center;">Action</th>
+                        </thead>
+                        <tbody>
+                            @foreach($user as $user)
+                                 <tr>
+                                    <td style="text-align:center;">{{$loop->iteration}}</td>
+                                    <td style="text-align:center;">{{$user->name}}</td>
+                                    <td style="text-align:center;">{{$user->email}}</td>
+                                    <td style="text-align:center;">{{$user->role}}</td>
+                                    <td style="text-align:center;">{{$user->created_at}}</td>
+                                    <td style="text-align:center;">
+                                    <a href="/driver/{{$user->id}}" data-toggle="tooltip" title="View"><i class="fa-solid fa-eye btn btn-primary" ></i></a>
+                                    <a href="/delete/{{$user->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
+                                </tr>
+                            @endforeach
+                        </tbody>
                     </table>
-
 				</div>
-
 			</div>
 		</main>
 	</section>

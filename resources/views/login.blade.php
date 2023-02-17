@@ -134,7 +134,6 @@
         margin: 20px 0 3px 15px;
         position: relative;
         width: 120px;
-
     }
 
 
@@ -143,7 +142,7 @@
 <body>
     <div class="container">
         <section id="content">
-            <form action="/index" method="POST" autocomplete="off">
+            <form action="/user" method="POST" autocomplete="off">
                 @csrf
                 <h5 class="text-pink"> M&D Fundations </h5>
                 <h5 class="text-primary">Login Form</h5>
@@ -157,7 +156,6 @@
 
                 <div>
                     <input type="submit" value="Login" >
-                    {{-- <a href="/register"><input type="button" value="Register"></a> --}}
                 </div>
             </form>
         </section>

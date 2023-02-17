@@ -323,13 +323,7 @@
                 }
 
                 button{
-
                     color:	#228B22;
-                }
-                .tablinks:hover {
-                    background-color:white;
-                    /* background: linear-gradient(to right, #33ccff 28%, #ff99cc 89%); */
-                    color:black;
                 }
 
                 .tabcontent {
@@ -337,7 +331,6 @@
                     display: none;
 
                 }
-
                 .button{
                     margin-right: 600px;
                     box-align: center;
@@ -345,14 +338,14 @@
                 .tablinks{
                     padding: 5px 20px;
                     border: none;
-                    border-radius: 2px;
+                    border-radius: 4px;
                     outline: none;
                     cursor: pointer;
-                    transition: 0.5s;
+                    transition: 0.2s;
                     margin-top: 7px;
                 }
-                .dashboard:hover{
-                    background: linear-gradient(to right, #33ccff 28%, #ff99cc 89%);
+                 button.active {
+                background-color:white;
                 }
 
 
@@ -584,18 +577,12 @@
             tablinks[i].className = tablinks[i].className.replace(" active", "");
           }
           document.getElementById(Name).style.display = "block";
-          evt.currentTarget.className += " active";
+          evt.currentTarget.className +=" active";
 
         }
         document.getElementById("defaultOpen").click();
 
-        function openForm() {
-  document.getElementById("myForm").style.display = "block";
-}
 
-function closeForm() {
-  document.getElementById("myForm").style.display = "none";
-}
         </script>
 </body>
 </html>
