@@ -200,7 +200,7 @@
 				<div class="order">
 					<div class="head">
 						<h3 class="text-success">Driver Details</h3>
-
+                        <a href="/createdriver"><input type="submit" value="Add-User" class="text-primary" id="add"></a>
 					</div>
                     <table class="" >
                         <thead class="text-primary">

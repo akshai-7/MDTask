@@ -171,4 +171,28 @@ class AdminController extends Controller
                 $cabin->save();
                 return redirect('/details/'.$data1->id);
             }
+            public function newuser(){
+                return view('/createuser');
+            }
+
+            public function createuser(Request $request){
+                $validator = Validator::make($request->all(),[
+                    'name'=>'required',
+                    'email'=>'required|email',
+                    'password'=>'required',
+                ]);
+                if ($validator->fails()){
+                    return response()->json(['message'=>'Validator error'],401);
+                }else{
+                $user = new User();
+                $user->name=$request['name'];
+                $user->email=$request['email'];
+                $user->password=Hash::make($request['password']);
+                $user->save();
+                return redirect('/user');
+                }
+            }
+            public function newdriver(){
+                return view('/createdriver');
+            }
 }

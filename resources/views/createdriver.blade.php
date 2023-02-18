@@ -7,7 +7,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 	<title>M&D Foundations</title>
 </head>
 <style>
@@ -81,7 +80,7 @@
                 position: relative;
                 width: calc(100% - 280px);
                 left: 280px;
-                transition: .3s ease;
+                transition:0.3s ease;
             }
             #content main {
                 width: 100%;
@@ -93,7 +92,6 @@
             #content main .table-data {
                 margin-top: 30px;
             }
-
             #content main .table-data > div {
                 border-radius: 4px;
                 background: var(--light);
@@ -152,6 +150,17 @@
                 position: relative;
                 width: 80px;
             }
+            form{
+                display: flex;
+            }
+            #report{
+                /* margin-left: 100px; */
+
+            }
+            #report1{
+                margin-right: 170px;
+
+            }
 </style>
 <body>
 	<!-- SIDEBAR -->
@@ -164,14 +173,6 @@
 				<a href="#">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="">Dashboard</span>
-				</a>
-			</li>
-        </ul>
-        <ul class="log">
-			<li class="">
-				<a href="#">
-					<i class="fa-solid fa-list"></i>
-					<span class="">Driver List</span>
 				</a>
 			</li>
         </ul>
@@ -196,33 +197,66 @@
 			<div class="table-data">
 				<div class="order">
 					<div class="head">
-						<h3 class="text-success">User Details</h3>
-                        <a href="/createuser"><input type="submit" value="Add-User" class="text-primary" id="add"></a>
+						<h3 class="text-success">New Driver</h3>
 					</div>
-                    <table class="">
-                        <thead class="text-primary">
-                            <th style="text-align:center;">S.No</th>
-                            <th style="text-align:center;">Name</th>
-                            <th style="text-align:center;">Email</th>
-                            <th style="text-align:center;">Role</th>
-                            <th style="text-align:center;">Creation Date</th>
-                            <th style="text-align:center;">Action</th>
-                        </thead>
-                        <tbody>
-                            @foreach($user as $user)
-                                 <tr>
-                                    <td style="text-align:center;">{{$loop->iteration}}</td>
-                                    <td style="text-align:center;">{{$user->name}}</td>
-                                    <td style="text-align:center;">{{$user->email}}</td>
-                                    <td style="text-align:center;">{{$user->role}}</td>
-                                    <td style="text-align:center;">{{$user->created_at}}</td>
-                                    <td style="text-align:center;">
-                                    <a href="/driver/{{$user->id}}" data-toggle="tooltip" title="View"><i class="fa-solid fa-eye btn btn-primary" ></i></a>
-                                    <a href="/delete/{{$user->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                   <form action="/" method="POST" autocomplete="off">
+                    @csrf
+                   <div class="form-group row" id="report">
+                        <div class="">
+                            <label for="" class="col-sm-3 col-form-label">Name</label>
+                            <input type="text" required name="name"  />
+                        </div>
+                        <div>
+                            <label for="" class="col-sm-3 col-form-label">Company</label>
+                            <input type="text" required name="company"  />
+                        </div>
+                        <div>
+                            <label for="" class="col-sm-3 col-form-label">Email</label>
+                            <input type="text" required name="email" />
+                        </div>
+                        <div>
+                            <label for="" class="col-sm-3 col-form-label">Date</label>
+                            <input type="text" required name="date" />
+                        </div>
+                        <div>
+                            <label for="" class="col-sm-3 col-form-label">NumberPlate</label>
+                            <input type="text" required name="number_plate" />
+                        </div>
+                        <div>
+                            <label for="" class="col-sm-3 col-form-label">Mileage</label>
+                            <input type="text" required name="mileage" />
+                        </div>
+                   </div>
+                    <div class="form-group row" id="report1">
+                        <h5 align="left" class="text-success">Report On Incident</h5>
+                        <div>
+                            <label for="" class="col-sm-3 col-form-label">Date-of-incident</label>
+                            <input type="text" required name="date_of_incident" />
+                        </div>
+                        <div>
+                            <label for="" class="col-sm-3 col-form-label">Location</label>
+                            <input type="text" required name="location" />
+                        </div>
+                        <div>
+                            <label for="" class="col-sm-3 col-form-label">Witnessed-by</label>
+                            <input type="text" required name="witnessed_by" />
+                        </div>
+                        <div>
+                            <label for="" class="col-sm-3 col-form-label">Phone</label>
+                            <input type="text" required name="phone_number_of_witness" />
+                        </div>
+                        <div>
+                            <label for="" class="col-sm-3 col-form-label">Statement</label>
+                            <input type="text" required name="brief_statement" />
+                        </div>
+                        <div>
+                            <label for="" class="col-sm-3 col-form-label">Image</label>
+                            <input type="file" required name="upload_image" />
+                        </div>
+                    <div>
+                        {{-- <input type="submit" value="Login" > --}}
+                    </div>
+                   </form>
 				</div>
 			</div>
 		</main>

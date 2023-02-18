@@ -7,7 +7,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 	<title>M&D Foundations</title>
 </head>
 <style>
@@ -81,7 +80,7 @@
                 position: relative;
                 width: calc(100% - 280px);
                 left: 280px;
-                transition: .3s ease;
+                transition:0.3s ease;
             }
             #content main {
                 width: 100%;
@@ -93,7 +92,6 @@
             #content main .table-data {
                 margin-top: 30px;
             }
-
             #content main .table-data > div {
                 border-radius: 4px;
                 background: var(--light);
@@ -168,14 +166,6 @@
 			</li>
         </ul>
         <ul class="log">
-			<li class="">
-				<a href="#">
-					<i class="fa-solid fa-list"></i>
-					<span class="">Driver List</span>
-				</a>
-			</li>
-        </ul>
-        <ul class="log">
                 <li>
                     <a href="/" class="logout">
                         <i class='bx bxs-log-out-circle text-danger' ></i>
@@ -196,33 +186,28 @@
 			<div class="table-data">
 				<div class="order">
 					<div class="head">
-						<h3 class="text-success">User Details</h3>
-                        <a href="/createuser"><input type="submit" value="Add-User" class="text-primary" id="add"></a>
+						<h3 class="text-success">New User</h3>
 					</div>
+                   <form action="/createuser" method="POST" autocomplete="off">
+                    @csrf
                     <table class="">
                         <thead class="text-primary">
-                            <th style="text-align:center;">S.No</th>
                             <th style="text-align:center;">Name</th>
                             <th style="text-align:center;">Email</th>
-                            <th style="text-align:center;">Role</th>
-                            <th style="text-align:center;">Creation Date</th>
+                            <th style="text-align:center;">Password</th>
                             <th style="text-align:center;">Action</th>
                         </thead>
                         <tbody>
-                            @foreach($user as $user)
-                                 <tr>
-                                    <td style="text-align:center;">{{$loop->iteration}}</td>
-                                    <td style="text-align:center;">{{$user->name}}</td>
-                                    <td style="text-align:center;">{{$user->email}}</td>
-                                    <td style="text-align:center;">{{$user->role}}</td>
-                                    <td style="text-align:center;">{{$user->created_at}}</td>
-                                    <td style="text-align:center;">
-                                    <a href="/driver/{{$user->id}}" data-toggle="tooltip" title="View"><i class="fa-solid fa-eye btn btn-primary" ></i></a>
-                                    <a href="/delete/{{$user->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
-                                </tr>
-                            @endforeach
+                            <tr>
+                                <td style="text-align:center;"><input type="text" class="form-control" name="name"></td>
+                                <td style="text-align:center;"><input type="text" class="form-control" name="email"></td>
+                                <td style="text-align:center;"><input type="text" class="form-control" name="password"></td>
+                                <td style="text-align:center;"><a href="/user"><input type="submit" name="submit" value="Submit" class="btn btn-primary"></a></td>
+                            </tr>
+
                         </tbody>
                     </table>
+                   </form>
 				</div>
 			</div>
 		</main>

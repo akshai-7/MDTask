@@ -37,3 +37,9 @@ Route::post('/visualupdate/{user_id}',[AdminController::class,'visualupdate']);
 //updatecabincheck
 Route::get('/updatecabincheck/{id}',[AdminController::class,'updatecabincheck']);
 Route::post('/cabinupdate/{user_id}',[AdminController::class,'cabinupdate']);
+
+Route::get('/createuser',[AdminController::class,'newuser']);
+Route::post('/createuser',[AdminController::class,'createuser']);
+
+Route::get('/createdriver',[AdminController::class,'newdriver']);
+
