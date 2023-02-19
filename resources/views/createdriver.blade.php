@@ -7,6 +7,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<title>M&D Foundations</title>
 </head>
 <style>
@@ -93,10 +96,11 @@
                 margin-top: 30px;
             }
             #content main .table-data > div {
-                border-radius: 4px;
+                border-radius: 5px;
                 background: var(--light);
                 padding: 24px;
                 overflow-x: auto;
+                margin-right: 50px;
             }
             #content main .table-data .head {
                 display: flex;
@@ -150,17 +154,22 @@
                 position: relative;
                 width: 80px;
             }
-            form{
+            #main{
                 display: flex;
             }
-            #report{
-                /* margin-left: 100px; */
-
+            .report{
+                margin-left: 150px;
             }
-            #report1{
-                margin-right: 170px;
+         #btn-add-row{
+            margin-left: 850px;
+         }
+         #btn-add-row1{
+            margin-left: 850px;
+         }
+         #btn-add-row2{
+            margin-left: 850px;
+         }
 
-            }
 </style>
 <body>
 	<!-- SIDEBAR -->
@@ -188,78 +197,181 @@
 
 	<!-- CONTENT -->
 	<section id="content">
-		<main>
-			<div class="head-title">
-				<div class="left" >
-					<h2 class="text-black">Dashboard</h2>
-				</div>
-			</div>
-			<div class="table-data">
-				<div class="order">
-					<div class="head">
-						<h3 class="text-success">New Driver</h3>
-					</div>
-                   <form action="/" method="POST" autocomplete="off">
-                    @csrf
-                   <div class="form-group row" id="report">
-                        <div class="">
-                            <label for="" class="col-sm-3 col-form-label">Name</label>
-                            <input type="text" required name="name"  />
+        <form action="/" method="POST" autocomplete="off">
+        @csrf
+            <main>
+                <div class="table-data" >
+                        <div class="head">
+                            <h3 class="text-success">New Driver</h3>
+                        </div>
+                        <div id="main">
+                            <div class="col-md-5 report">
+                                <h5 class="text-primary mb-3 mt-4" > <i class="fa-solid fa-user"></i> Driver & Vehicle Details</h5>
+                                    <div class="form-group col-sm-7 mb-3">
+                                        <label class="mb-2"> <i class="fa-solid fa-user"></i> Name</label>
+                                        <input type="text" name="name" required class="form-control">
+                                    </div>
+                                    <div class="form-group col-sm-7 mb-3">
+                                        <label class="mb-2"> <i class="fa-solid fa-location-dot "></i> Company</label>
+                                        <input type="text" name="company" required class="form-control">
+                                    </div>
+                                    <div class="form-group col-sm-7 mb-3">
+                                        <label class="mb-2"><i class="fa-solid fa-envelope "></i> Email</label>
+                                        <input type="text" name="email" required class="form-control">
+                                    </div>
+                                    <div class="form-group col-sm-7 mb-3">
+                                        <label class="mb-2"> <i class="fa-solid fa-calendar-days"></i> Date</label>
+                                        <input type="date" name="date" required class="form-control">
+                                    </div>
+                                    <div class="form-group col-sm-7 mb-3">
+                                        <label class="mb-2"> <i class="fa-solid fa-ticket "></i>  NumberPlate</label>
+                                        <input type="text" name="numberplate" required class="form-control">
+                                    </div>
+                                    <div class="form-group col-sm-7 mb-3">
+                                        <label class="mb-2"><i class="fa-solid fa-gauge "></i> Mileage </label>
+                                        <input type="text" name="mileage" required class="form-control">
+                                    </div>
+                            </div>
+                            <div class="col-md-5 ">
+                                <h5 class="text-primary mb-3 mt-4" > <i class="fa-solid fa-user"></i> Report on Incident</h5>
+                                    <div class="form-group col-sm-7 mb-3">
+                                        <label class="mb-2"> <i class="fa-solid fa-calendar-days"></i> Date </label>
+                                        <input type="date" name="date_of_incident" required class="form-control">
+                                    </div>
+                                    <div class="form-group col-sm-7 mb-3">
+                                        <label class="mb-2"> <i class="fa-solid fa-location-dot "></i> Location</label>
+                                        <input type="text" name="location" required class="form-control">
+                                    </div>
+                                    <div class="form-group col-sm-7 mb-3">
+                                        <label class="mb-2"><i class="fa-solid fa-user "></i> Witnessed_by</label>
+                                        <input type="text" name="witnessed_by" required class="form-control">
+                                    </div>
+                                    <div class="form-group col-sm-7 mb-3">
+                                        <label class="mb-2"> <i class="fa-solid fa-phone "></i> Phone</label>
+                                        <input type="number" name="phone_number_of_witness" required class="form-control">
+                                    </div>
+                                    <div class="form-group col-sm-7 mb-3">
+                                        <label class="mb-2"> <i class="fa-solid fa-file "></i> Statement</label>
+                                        <input type="text" name="brief_statement" required class="form-control">
+                                    </div>
+                                    <div class="form-group col-sm-7 mb-3">
+                                        <label class="mb-2"><i class="fa-solid fa-image"></i> Image </label>
+                                        <input type="text" name="image" required class="form-control">
+                                    </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="table-data">
+                        <div class="head">
+                            <h5 class="text-success">Visual Check</h5>
+                            <input type="button" value="+" class=" btn btn-success btn-sm border-0" id="btn-add-row" style="text-align:center;">
+
+                        </div>
+
+                        <div>
+                            <table class="table table-bordered mt-3" style="width:1000px;">
+                                <thead class="header">
+                                        <tr>
+                                            {{-- <th class="col-md-1 text-primary" style="text-align:center;">S.no</th> --}}
+                                            <th style="text-align:center;" class="col-md-4 text-primary">View</th>
+                                            <th style="text-align:center;" class="col-md-4 text-primary">Image</th>
+                                            <th style="text-align:center;" class="col-md-4 text-primary">Feed Back</th>
+                                            <th style="text-align:center;" class="col-md-4 text-primary">Action</th>
+                                        </tr>
+                                </thead>
+                                <tbody id='row' >
+                                        <tr class="list">
+                                            {{-- <td class="col-md-1"><input type="text" required name="sno[]" class="form-control col-md-1 border-0" style="text-align:center;" value="1" id="sno"></td> --}}
+                                            <td><input type="text" required name="view[]" class="form-control view border-0" style="text-align:center;" id='view'></td>
+                                            <td><input type="file" required name="image[]" class="form-control image border-0" style="text-align:center;" id='image'></td>
+                                            <td><input type="text" required name="feedback[]" class="form-control feedback border-0" style="text-align:center;" id='feedback'></td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                </div>
+                <div class="table-data">
+                        <div class="head">
+                            <h5 class="text-success">Vehicle Check</h5>
+                            <td style="text-align:center;"><input type="button" value="+" class=" btn btn-success btn-sm border-0" id=btn-add-row1 style="text-align:center;"></td>
+                        </div>
+                         <div>
+                                <table class="table table-bordered mt-3" style="width:1000px;">
+                                    <thead class="header">
+                                        <tr>
+                                            {{-- <th class="col-md-1 text-primary" style="text-align:center;">S.no</th> --}}
+                                            <th style="text-align:center;" class="col-md-4 text-primary">View</th>
+                                            <th style="text-align:center;" class="col-md-4 text-primary">Image</th>
+                                            <th style="text-align:center;" class="col-md-4 text-primary">Feed Back</th>
+                                            <th style="text-align:center;" class="col-md-4 text-primary">Action</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody id='row1' >
+                                        <tr class="list">
+                                            {{-- <td class="col-md-1"><input type="text" required name="sno[]" class="form-control col-md-1 border-0" style="text-align:center;" value="1" id="sno"></td> --}}
+                                            <td><input type="text" required name="view[]" class="form-control view border-0" style="text-align:center;" id='view'></td>
+                                            <td><input type="file" required name="image[]" class="form-control image border-0" style="text-align:center;" id='image'></td>
+                                            <td><input type="text" required name="feedback[]" class="form-control feedback border-0" style="text-align:center;" id='feedback'></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                        </div>
+                </div>
+                <div class="table-data">
+                        <div class="head">
+                            <h5 class="text-success">Cabin Check</h5>
+                            <td style="text-align:center;"><input type="button" value="+" class=" btn btn-success btn-sm border-0" id=btn-add-row2 style="text-align:center;"></td>
+
                         </div>
                         <div>
-                            <label for="" class="col-sm-3 col-form-label">Company</label>
-                            <input type="text" required name="company"  />
+                                <table class="table table-bordered mt-3" style="width:1000px;">
+                                    <thead class="header">
+                                        <tr>
+                                            {{-- <th class="col-md-1 text-primary" style="text-align:center;">S.no</th> --}}
+                                            <th style="text-align:center;" class="col-md-4 text-primary">View</th>
+                                            <th style="text-align:center;" class="col-md-4 text-primary">Image</th>
+                                            <th style="text-align:center;" class="col-md-4 text-primary">Feed Back</th>
+                                            <th style="text-align:center;" class="col-md-4 text-primary">Action</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody id='row2' >
+                                        <tr class="list">
+                                            {{-- <td class="col-md-1"><input type="text" required name="sno[]" class="form-control col-md-1 border-0" style="text-align:center;" value="1" id="sno"></td> --}}
+                                            <td><input type="text" required name="view[]" class="form-control view border-0" style="text-align:center;" id='view'></td>
+                                            <td><input type="file" required name="image[]" class="form-control image border-0" style="text-align:center;" id='image'></td>
+                                            <td><input type="text" required name="feedback[]" class="form-control feedback border-0" style="text-align:center;" id='feedback'></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                         </div>
-                        <div>
-                            <label for="" class="col-sm-3 col-form-label">Email</label>
-                            <input type="text" required name="email" />
-                        </div>
-                        <div>
-                            <label for="" class="col-sm-3 col-form-label">Date</label>
-                            <input type="text" required name="date" />
-                        </div>
-                        <div>
-                            <label for="" class="col-sm-3 col-form-label">NumberPlate</label>
-                            <input type="text" required name="number_plate" />
-                        </div>
-                        <div>
-                            <label for="" class="col-sm-3 col-form-label">Mileage</label>
-                            <input type="text" required name="mileage" />
-                        </div>
-                   </div>
-                    <div class="form-group row" id="report1">
-                        <h5 align="left" class="text-success">Report On Incident</h5>
-                        <div>
-                            <label for="" class="col-sm-3 col-form-label">Date-of-incident</label>
-                            <input type="text" required name="date_of_incident" />
-                        </div>
-                        <div>
-                            <label for="" class="col-sm-3 col-form-label">Location</label>
-                            <input type="text" required name="location" />
-                        </div>
-                        <div>
-                            <label for="" class="col-sm-3 col-form-label">Witnessed-by</label>
-                            <input type="text" required name="witnessed_by" />
-                        </div>
-                        <div>
-                            <label for="" class="col-sm-3 col-form-label">Phone</label>
-                            <input type="text" required name="phone_number_of_witness" />
-                        </div>
-                        <div>
-                            <label for="" class="col-sm-3 col-form-label">Statement</label>
-                            <input type="text" required name="brief_statement" />
-                        </div>
-                        <div>
-                            <label for="" class="col-sm-3 col-form-label">Image</label>
-                            <input type="file" required name="upload_image" />
-                        </div>
-                    <div>
-                        {{-- <input type="submit" value="Login" > --}}
-                    </div>
-                   </form>
-				</div>
-			</div>
-		</main>
+                </div>
+                <input type="submit" value="Submit">
+            </main>
+        </form>
 	</section>
+    <script>
+        $(document).ready (function(){
+                var i=1;
+                $("#btn-add-row").click(function(){
+                i++
+                $("#row").append("<tr class='list'><td><input type='text' required name='view[]' class='form-control view border-0' style='text-align:center;'></td>'+' <td><input type='file' required name='image[]' class='form-control image border-0' style='text-align:center;'></td>'+'<td><input type='text' required name='feedback[]' class='form-control feedback border-0' style='text-align:center;'></td>'+'<td></td></tr>");
+                })
+
+                var i=1;
+                $("#btn-add-row1").click(function(){
+                i++
+                $("#row1").append("<tr class='list'><td><input type='text' required name='view[]' class='form-control view border-0' style='text-align:center;'></td>'+' <td><input type='file' required name='image[]' class='form-control image border-0' style='text-align:center;'></td>'+'<td><input type='text' required name='feedback[]' class='form-control feedback border-0' style='text-align:center;'></td>'+'<td></td></tr>");
+                })
+
+                var i=1;
+                $("#btn-add-row2").click(function(){
+                i++
+                $("#row2").append("<tr class='list'><td><input type='text' required name='view[]' class='form-control view border-0' style='text-align:center;'></td>'+' <td><input type='file' required name='image[]' class='form-control image border-0' style='text-align:center;'></td>'+'<td><input type='text' required name='feedback[]' class='form-control feedback border-0' style='text-align:center;'></td>'+'<td></td></tr>");
+                })
+         });
+
+    </script>
 </body>
 </html>
