@@ -11,7 +11,7 @@ use App\Models\Cabin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -176,6 +176,7 @@ class AdminController extends Controller
             }
 
             public function createuser(Request $request){
+                return view('/createdriver');
                 $validator = Validator::make($request->all(),[
                     'name'=>'required',
                     'email'=>'required|email',
@@ -193,6 +194,108 @@ class AdminController extends Controller
                 }
             }
             public function newdriver(){
+
                 return view('/createdriver');
+            }
+            public function store(Request $request){
+                // dd($request);
+                $validator = Validator::make($request->all(),[
+                    // 'drivername'=>'required',
+                    // 'company'=>'required',
+                    // 'deliveryemail'=>'required|email',
+                    // 'phone'=>'required',
+                    // 'date_of_incident'=>'required',
+                    // 'location'=>'required',
+                    // 'witnessed_by'=>'required',
+                    // 'phone_number_of_witness'=>'required',
+                    // 'brief_statement'=>'required',
+                    // 'upload_image'=>'required',
+                    // 'report'=>'required',
+                    // 'date'=>'required',
+                    // 'number_plate'=>'required',
+                    // 'mileage'=>'required',
+                    // 'view'=>'required',
+                    // 'image'=>'required',
+                    // 'feedback'=>'required',
+                ]);
+                if ($validator->fails()){
+                    return response()->json(['message'=>'Validator error'],401);
+                }else{
+                $user_id=Auth::id();
+                dd($user_id);
+                $data = new Driver();
+                $data->user_id =$user_id;
+                $data->drivername=$request['drivername'];
+                $data->company=$request['company'];
+                $data->deliveryemail=$request['deliveryemail'];
+                $data->phone=$request['phone'];
+                $data->save();
+
+                $user = new Report();
+                $user->user_id=Auth::user()->id;
+                $user->date_of_incident =$request['date_of_incident'];
+                $user->location =$request['location'];
+                $user->witnessed_by =$request['witnessed_by'];
+                $user->phone_number_of_witness =$request['phone_number_of_witness'];
+                $user->brief_statement =$request['brief_statement'];
+                $user->upload_image =$request['upload_image'];
+                    if($request->hasfile('upload_image')){
+                        $upload_image =$request->file('upload_image');
+                        $filename = time().'.'.$upload_image->getClientOriginalExtension();
+                        $location = public_path('public/images'.$filename);
+                        Report::make($upload_image)->resize(300, 300)->save($location);
+                    }
+                $user->report =$request['report'];
+                $user->date =$request['date'];
+                $user->number_plate =$request['number_plate'];
+                $user->mileage=$request['mileage'];
+                $user->save();
+
+                $data = new Visual();
+                $data->user_id =Auth::user()->id;
+                $data->view=$request['view'];
+                $data->image =$request['image'];
+                        if($request->hasfile('image')){
+                            $image =$request->file('image');
+                            $time = time().'.'.$image->getClientOriginalExtension();
+                            $location=public_path('public/images'.$time);
+                            Visual::make($image)->resize(300, 300)->save($location);
+                        }
+                $data->feedback=$request['feedback'];
+                $data->action=$request['action'];
+                $data->save();
+
+                $user = new Vehicle();
+                $user->user_id =Auth::user()->id;
+                $user->view=$request['view'];
+                $user->image =$request['image'];
+                        if($request->hasfile('image')){
+                            $image =$request->file('image');
+                            $time = time().'.'.$image->getClientOriginalExtension();
+                            $location = public_path('public/images'.$time);
+                            Vehicle::make($image)->resize(300, 300)->save($location);
+                        }
+                $user->feedback=$request['feedback'];
+                $user->action=$request['action'];
+                $user->notes=$request['notes'];
+                $user->save();
+
+                $data = new Cabin();
+                $data->user_id=Auth::user()->id;
+                $data->view=$request['view'];
+                $data->image =$request['image'];
+                        if($request->hasfile('image')){
+                            $image =$request->file('image');
+                            $time = time().'.'.$image->getClientOriginalExtension();
+                            $location = public_path('public/images'.$time);
+                            Cabin::make($image)->resize(300, 300)->save($location);
+                        }
+                $data->feedback=$request['feedback'];
+                $data->action=$request['action'];
+                $data->notes=$request['notes'];
+                $data->save();
+
+                return view('/createdriver');
+                }
             }
 }

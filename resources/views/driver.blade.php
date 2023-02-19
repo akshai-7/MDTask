@@ -200,7 +200,7 @@
 				<div class="order">
 					<div class="head">
 						<h3 class="text-success">Driver Details</h3>
-                        <a href="/createdriver"><input type="submit" value="Add-User" class="text-primary" id="add"></a>
+                        {{-- <a href="/createdriver/{}"><input type="submit" value="Add-User" class="text-primary" id="add"></a> --}}
 					</div>
                     <table class="" >
                         <thead class="text-primary">
@@ -225,6 +225,7 @@
                                     <td style="text-align:center;">{{$driver->created_at}}</td>
                                     <td style="text-align:center;">
                                     <a href="/report/{{$driver->user_id}}"><i class="fa-solid fa-eye btn btn-primary" ></i></a>
+                                    <a href="/createdriver/{{$driver->user_id}}"><i class="fa-solid fa-plus btn btn-success"></i></a>
                                     <a href="/remove/{{$driver->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
                                 </tr>
                             @endforeach

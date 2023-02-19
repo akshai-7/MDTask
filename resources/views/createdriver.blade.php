@@ -197,7 +197,7 @@
 
 	<!-- CONTENT -->
 	<section id="content">
-        <form action="/" method="POST" autocomplete="off">
+        <form action="/store" method="POST" autocomplete="off">
         @csrf
             <main>
                 <div class="table-data" >
@@ -209,54 +209,58 @@
                                 <h5 class="text-primary mb-3 mt-4" > <i class="fa-solid fa-user"></i> Driver & Vehicle Details</h5>
                                     <div class="form-group col-sm-7 mb-3">
                                         <label class="mb-2"> <i class="fa-solid fa-user"></i> Name</label>
-                                        <input type="text" name="name" required class="form-control">
+                                        <input type="text" name="drivername"  class="form-control">
                                     </div>
                                     <div class="form-group col-sm-7 mb-3">
                                         <label class="mb-2"> <i class="fa-solid fa-location-dot "></i> Company</label>
-                                        <input type="text" name="company" required class="form-control">
+                                        <input type="text" name="company"  class="form-control">
                                     </div>
                                     <div class="form-group col-sm-7 mb-3">
                                         <label class="mb-2"><i class="fa-solid fa-envelope "></i> Email</label>
-                                        <input type="text" name="email" required class="form-control">
+                                        <input type="text" name="deliveryemail" class="form-control">
+                                    </div>
+                                    <div class="form-group col-sm-7 mb-3">
+                                        <label class="mb-2"> <i class="fa-solid fa-phone "></i> Phone</label>
+                                        <input type="number" name="phone"  class="form-control">
                                     </div>
                                     <div class="form-group col-sm-7 mb-3">
                                         <label class="mb-2"> <i class="fa-solid fa-calendar-days"></i> Date</label>
-                                        <input type="date" name="date" required class="form-control">
+                                        <input type="date" name="date" class="form-control">
                                     </div>
                                     <div class="form-group col-sm-7 mb-3">
                                         <label class="mb-2"> <i class="fa-solid fa-ticket "></i>  NumberPlate</label>
-                                        <input type="text" name="numberplate" required class="form-control">
+                                        <input type="text" name="number_plate"  class="form-control">
                                     </div>
                                     <div class="form-group col-sm-7 mb-3">
                                         <label class="mb-2"><i class="fa-solid fa-gauge "></i> Mileage </label>
-                                        <input type="text" name="mileage" required class="form-control">
+                                        <input type="text" name="mileage"  class="form-control">
                                     </div>
                             </div>
                             <div class="col-md-5 ">
                                 <h5 class="text-primary mb-3 mt-4" > <i class="fa-solid fa-user"></i> Report on Incident</h5>
                                     <div class="form-group col-sm-7 mb-3">
                                         <label class="mb-2"> <i class="fa-solid fa-calendar-days"></i> Date </label>
-                                        <input type="date" name="date_of_incident" required class="form-control">
+                                        <input type="date" name="date_of_incident"  class="form-control">
                                     </div>
                                     <div class="form-group col-sm-7 mb-3">
                                         <label class="mb-2"> <i class="fa-solid fa-location-dot "></i> Location</label>
-                                        <input type="text" name="location" required class="form-control">
+                                        <input type="text" name="location"  class="form-control">
                                     </div>
                                     <div class="form-group col-sm-7 mb-3">
                                         <label class="mb-2"><i class="fa-solid fa-user "></i> Witnessed_by</label>
-                                        <input type="text" name="witnessed_by" required class="form-control">
+                                        <input type="text" name="witnessed_by"  class="form-control">
                                     </div>
                                     <div class="form-group col-sm-7 mb-3">
                                         <label class="mb-2"> <i class="fa-solid fa-phone "></i> Phone</label>
-                                        <input type="number" name="phone_number_of_witness" required class="form-control">
+                                        <input type="number" name="phone_number_of_witness"  class="form-control">
                                     </div>
                                     <div class="form-group col-sm-7 mb-3">
                                         <label class="mb-2"> <i class="fa-solid fa-file "></i> Statement</label>
-                                        <input type="text" name="brief_statement" required class="form-control">
+                                        <input type="text" name="brief_statement"  class="form-control">
                                     </div>
                                     <div class="form-group col-sm-7 mb-3">
                                         <label class="mb-2"><i class="fa-solid fa-image"></i> Image </label>
-                                        <input type="text" name="image" required class="form-control">
+                                        <input type="text" name="upload_image"  class="form-control">
                                     </div>
                             </div>
                         </div>
@@ -273,18 +277,21 @@
                                 <thead class="header">
                                         <tr>
                                             {{-- <th class="col-md-1 text-primary" style="text-align:center;">S.no</th> --}}
-                                            <th style="text-align:center;" class="col-md-4 text-primary">View</th>
-                                            <th style="text-align:center;" class="col-md-4 text-primary">Image</th>
-                                            <th style="text-align:center;" class="col-md-4 text-primary">Feed Back</th>
-                                            <th style="text-align:center;" class="col-md-4 text-primary">Action</th>
+                                            <th style="text-align:center;" class="col-md-2 text-primary">View</th>
+                                            <th style="text-align:center;" class="col-md-2 text-primary">Image</th>
+                                            <th style="text-align:center;" class="col-md-2 text-primary">Feed Back</th>
+                                            <th style="text-align:center;" class="col-md-2 text-primary">Notes</th>
+                                            <th style="text-align:center;" class="col-md-2 text-primary">Action</th>
                                         </tr>
                                 </thead>
                                 <tbody id='row' >
                                         <tr class="list">
-                                            {{-- <td class="col-md-1"><input type="text" required name="sno[]" class="form-control col-md-1 border-0" style="text-align:center;" value="1" id="sno"></td> --}}
-                                            <td><input type="text" required name="view[]" class="form-control view border-0" style="text-align:center;" id='view'></td>
-                                            <td><input type="file" required name="image[]" class="form-control image border-0" style="text-align:center;" id='image'></td>
-                                            <td><input type="text" required name="feedback[]" class="form-control feedback border-0" style="text-align:center;" id='feedback'></td>
+                                            {{-- <td class="col-md-1"><input type="text"  name="sno[]" class="form-control col-md-1 border-0" style="text-align:center;" value="1" id="sno"></td> --}}
+                                            <td><input type="text"  name="view[]" class="form-control view border-0" style="text-align:center;" id='view'></td>
+                                            <td><input type="file"  name="image[]" class="form-control image border-0" style="text-align:center;" id='image'></td>
+                                            <td><input type="text"  name="feedback[]" class="form-control feedback border-0" style="text-align:center;" id='feedback'></td>
+                                            <td><input type="text"  name="notes[]" class="form-control notes border-0" style="text-align:center;" id='notes'></td>
+                                            <td><input type="text"  name="action[]" class="form-control action border-0" style="text-align:center;" id='action'></td>
                                         </tr>
                                 </tbody>
                             </table>
@@ -300,19 +307,21 @@
                                     <thead class="header">
                                         <tr>
                                             {{-- <th class="col-md-1 text-primary" style="text-align:center;">S.no</th> --}}
-                                            <th style="text-align:center;" class="col-md-4 text-primary">View</th>
-                                            <th style="text-align:center;" class="col-md-4 text-primary">Image</th>
-                                            <th style="text-align:center;" class="col-md-4 text-primary">Feed Back</th>
-                                            <th style="text-align:center;" class="col-md-4 text-primary">Action</th>
-
+                                            <th style="text-align:center;" class="col-md-2 text-primary">View</th>
+                                            <th style="text-align:center;" class="col-md-2 text-primary">Image</th>
+                                            <th style="text-align:center;" class="col-md-2 text-primary">Feed Back</th>
+                                            <th style="text-align:center;" class="col-md-2 text-primary">Notes</th>
+                                            <th style="text-align:center;" class="col-md-2 text-primary">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody id='row1' >
                                         <tr class="list">
                                             {{-- <td class="col-md-1"><input type="text" required name="sno[]" class="form-control col-md-1 border-0" style="text-align:center;" value="1" id="sno"></td> --}}
-                                            <td><input type="text" required name="view[]" class="form-control view border-0" style="text-align:center;" id='view'></td>
-                                            <td><input type="file" required name="image[]" class="form-control image border-0" style="text-align:center;" id='image'></td>
-                                            <td><input type="text" required name="feedback[]" class="form-control feedback border-0" style="text-align:center;" id='feedback'></td>
+                                            <td><input type="text"  name="view[]" class="form-control view border-0" style="text-align:center;" id='view'></td>
+                                            <td><input type="file"  name="image[]" class="form-control image border-0" style="text-align:center;" id='image'></td>
+                                            <td><input type="text"  name="feedback[]" class="form-control feedback border-0" style="text-align:center;" id='feedback'></td>
+                                            <td><input type="text"  name="notes[]" class="form-control notes border-0" style="text-align:center;" id='notes'></td>
+                                            <td><input type="text"  name="action[]" class="form-control action border-0" style="text-align:center;" id='action'></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -329,25 +338,27 @@
                                     <thead class="header">
                                         <tr>
                                             {{-- <th class="col-md-1 text-primary" style="text-align:center;">S.no</th> --}}
-                                            <th style="text-align:center;" class="col-md-4 text-primary">View</th>
-                                            <th style="text-align:center;" class="col-md-4 text-primary">Image</th>
-                                            <th style="text-align:center;" class="col-md-4 text-primary">Feed Back</th>
-                                            <th style="text-align:center;" class="col-md-4 text-primary">Action</th>
-
+                                            <th style="text-align:center;" class="col-md-2 text-primary">View</th>
+                                            <th style="text-align:center;" class="col-md-2 text-primary">Image</th>
+                                            <th style="text-align:center;" class="col-md-2 text-primary">Feed Back</th>
+                                            <th style="text-align:center;" class="col-md-2 text-primary">Notes</th>
+                                            <th style="text-align:center;" class="col-md-2 text-primary">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody id='row2' >
                                         <tr class="list">
                                             {{-- <td class="col-md-1"><input type="text" required name="sno[]" class="form-control col-md-1 border-0" style="text-align:center;" value="1" id="sno"></td> --}}
-                                            <td><input type="text" required name="view[]" class="form-control view border-0" style="text-align:center;" id='view'></td>
-                                            <td><input type="file" required name="image[]" class="form-control image border-0" style="text-align:center;" id='image'></td>
-                                            <td><input type="text" required name="feedback[]" class="form-control feedback border-0" style="text-align:center;" id='feedback'></td>
+                                            <td><input type="text"  name="view[]" class="form-control view border-0" style="text-align:center;" id='view'></td>
+                                            <td><input type="file"  name="image[]" class="form-control image border-0" style="text-align:center;" id='image'></td>
+                                            <td><input type="text"  name="feedback[]" class="form-control feedback border-0" style="text-align:center;" id='feedback'></td>
+                                            <td><input type="text"  name="notes[]" class="form-control notes border-0" style="text-align:center;" id='notes'></td>
+                                            <td><input type="text"  name="action[]" class="form-control action border-0" style="text-align:center;" id='action'></td>
                                         </tr>
                                     </tbody>
                                 </table>
                         </div>
                 </div>
-                <input type="submit" value="Submit">
+                <a href=""><input type="submit" value="Add-User" class="text-primary" id="add"></a>
             </main>
         </form>
 	</section>
@@ -356,19 +367,19 @@
                 var i=1;
                 $("#btn-add-row").click(function(){
                 i++
-                $("#row").append("<tr class='list'><td><input type='text' required name='view[]' class='form-control view border-0' style='text-align:center;'></td>'+' <td><input type='file' required name='image[]' class='form-control image border-0' style='text-align:center;'></td>'+'<td><input type='text' required name='feedback[]' class='form-control feedback border-0' style='text-align:center;'></td>'+'<td></td></tr>");
+                $("#row").append("<tr class='list'><td><input type='text'  name='view[]' class='form-control view border-0' style='text-align:center;'></td>'+' <td><input type='file'  name='image[]' class='form-control image border-0' style='text-align:center;'></td>'+'<td><input type='text'  name='feedback[]' class='form-control feedback border-0' style='text-align:center;'></td>'+'<td><input type='text'  name='notes[]' class='form-control notes border-0' style='text-align:center;'></td>'+'<td><input type='text'  name='action[]' class='form-control action border-0' style='text-align:center;'></td></tr>");
                 })
 
                 var i=1;
                 $("#btn-add-row1").click(function(){
                 i++
-                $("#row1").append("<tr class='list'><td><input type='text' required name='view[]' class='form-control view border-0' style='text-align:center;'></td>'+' <td><input type='file' required name='image[]' class='form-control image border-0' style='text-align:center;'></td>'+'<td><input type='text' required name='feedback[]' class='form-control feedback border-0' style='text-align:center;'></td>'+'<td></td></tr>");
+                $("#row1").append("<tr class='list'><td><input type='text'  name='view[]' class='form-control view border-0' style='text-align:center;'></td>'+' <td><input type='file'  name='image[]' class='form-control image border-0' style='text-align:center;'></td>'+'<td><input type='text'  name='feedback[]' class='form-control feedback border-0' style='text-align:center;'></td>'+'<td><input type='text'  name='notes[]' class='form-control notes border-0' style='text-align:center;'></td>'+'<td><input type='text'  name='action[]' class='form-control action border-0' style='text-align:center;'></td></tr>");
                 })
 
                 var i=1;
                 $("#btn-add-row2").click(function(){
                 i++
-                $("#row2").append("<tr class='list'><td><input type='text' required name='view[]' class='form-control view border-0' style='text-align:center;'></td>'+' <td><input type='file' required name='image[]' class='form-control image border-0' style='text-align:center;'></td>'+'<td><input type='text' required name='feedback[]' class='form-control feedback border-0' style='text-align:center;'></td>'+'<td></td></tr>");
+                $("#row2").append("<tr class='list'><td><input type='text'  name='view[]' class='form-control view border-0' style='text-align:center;'></td>'+' <td><input type='file'  name='image[]' class='form-control image border-0' style='text-align:center;'></td>'+'<td><input type='text'  name='feedback[]' class='form-control feedback border-0' style='text-align:center;'></td>'+'<td><input type='text'  name='notes[]' class='form-control notes border-0' style='text-align:center;'></td>'+'<td><input type='text'  name='action[]' class='form-control action border-0' style='text-align:center;'></td></tr>");
                 })
          });
 

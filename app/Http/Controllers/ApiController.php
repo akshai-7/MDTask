@@ -89,7 +89,6 @@ class ApiController extends Controller
                 }else{
                 $data = new Driver();
                 $data->user_id =Auth::user()->id;
-
                 $data->drivername=$request['drivername'];
                 $data->company=$request['company'];
                 $data->deliveryemail=$request['deliveryemail'];
@@ -385,7 +384,7 @@ class ApiController extends Controller
                             // dd($image);
                             $time = time().'.'.$image->getClientOriginalExtension();
                             $location = public_path('public/images'.$time);
-                            // Vehicle::make($image)->resize(300, 300)->save($location);
+                            Vehicle::make($image)->resize(300, 300)->save($location);
                         }
                 $user->feedback=$request['feedback'];
                 $user->action=$request['action'];
