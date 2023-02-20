@@ -40,7 +40,8 @@ Route::post('/cabinupdate/{user_id}',[AdminController::class,'cabinupdate']);
 
 Route::get('/createuser',[AdminController::class,'newuser']);
 Route::post('/createuser',[AdminController::class,'createuser']);
+Route::get('/updateuser/{id}',[AdminController::class,'updateuser']);
 
 Route::get('/createdriver/{user_id}',[AdminController::class,'newdriver']);
-Route::post('/store',[AdminController::class,'store']);
+Route::post('/store/{id}',[AdminController::class,'store']);
 

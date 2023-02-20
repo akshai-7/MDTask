@@ -17,4 +17,12 @@ class Vehicle extends Model
     {
         return $this->belongsTo(Visual::class,'user_id');
     }
+    protected $fillable = [
+        'user_id',
+        'view',
+        'image',
+        'feedback',
+        'notes',
+        'action'
+        ];
 }

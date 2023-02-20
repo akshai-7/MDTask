@@ -13,4 +13,12 @@ class Cabin extends Model
     {
         return $this->belongsTo(User::class,'user_id');
     }
+    protected $fillable = [
+        'user_id',
+        'view',
+        'image',
+        'feedback',
+        'notes',
+        'action'
+        ];
 }

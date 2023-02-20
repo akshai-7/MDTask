@@ -17,4 +17,11 @@ class Visual extends Model
     {
         return $this->hasMany(Vehicle::class,'user_id');
     }
+    protected $fillable = [
+        'user_id',
+        'view',
+        'image',
+        'feedback',
+        'action'
+        ];
 }

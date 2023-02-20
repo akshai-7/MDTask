@@ -171,6 +171,7 @@ class AdminController extends Controller
                 $cabin->save();
                 return redirect('/details/'.$data1->id);
             }
+
             public function newuser(){
                 return view('/createuser');
             }
@@ -193,12 +194,16 @@ class AdminController extends Controller
                 return redirect('/user');
                 }
             }
-            public function newdriver(){
-
-                return view('/createdriver');
+            public function updateuser($id){
+                $user=User::find($id)->get();
+                // dd($user->id);
+                return view('/updateuser',['user'=>$user]);
+            }
+            public function newdriver($id){
+                return view('/createdriver',compact('id'));
             }
             public function store(Request $request){
-                // dd($request);
+//  dd($request->user_id);
                 $validator = Validator::make($request->all(),[
                     // 'drivername'=>'required',
                     // 'company'=>'required',
@@ -221,81 +226,81 @@ class AdminController extends Controller
                 if ($validator->fails()){
                     return response()->json(['message'=>'Validator error'],401);
                 }else{
-                $user_id=Auth::id();
-                dd($user_id);
-                $data = new Driver();
-                $data->user_id =$user_id;
-                $data->drivername=$request['drivername'];
-                $data->company=$request['company'];
-                $data->deliveryemail=$request['deliveryemail'];
-                $data->phone=$request['phone'];
-                $data->save();
+                // $user_id=Auth::id();
+                // dd($user_id);
+                // $data = new Driver();
+                // $data->user_id =1;
+                // $data->drivername=$request['drivername'];
+                // $data->company=$request['company'];
+                // $data->deliveryemail=$request['deliveryemail'];
+                // $data->phone=$request['phone'];
+                // $data->save();
 
-                $user = new Report();
-                $user->user_id=Auth::user()->id;
-                $user->date_of_incident =$request['date_of_incident'];
-                $user->location =$request['location'];
-                $user->witnessed_by =$request['witnessed_by'];
-                $user->phone_number_of_witness =$request['phone_number_of_witness'];
-                $user->brief_statement =$request['brief_statement'];
-                $user->upload_image =$request['upload_image'];
-                    if($request->hasfile('upload_image')){
-                        $upload_image =$request->file('upload_image');
-                        $filename = time().'.'.$upload_image->getClientOriginalExtension();
-                        $location = public_path('public/images'.$filename);
-                        Report::make($upload_image)->resize(300, 300)->save($location);
+                // $user = new Report();
+                // $user->user_id=1;
+                // $user->date_of_incident =$request['date_of_incident'];
+                // $user->location =$request['location'];
+                // $user->witnessed_by =$request['witnessed_by'];
+                // $user->phone_number_of_witness =$request['phone_number_of_witness'];
+                // $user->brief_statement =$request['brief_statement'];
+                // $user->upload_image =$request['upload_image'];
+                //     if($request->hasfile('upload_image')){
+                //         $upload_image =$request->file('upload_image');
+                //         $filename = time().'.'.$upload_image->getClientOriginalExtension();
+                //         $location = public_path('public/images'.$filename);
+                //         Report::make($upload_image)->resize(300, 300)->save($location);
+                //     }
+                // $user->report =$request['report'];
+                // $user->date =$request['date'];
+                // $user->number_plate =$request['number_plate'];
+                // $user->mileage=$request['mileage'];
+                // $user->save();
+
+
+
+                $data= $request->all();
+                $user_id=$request->user_id;
+                //  dd($user_id);
+                foreach($data['view'] as $row =>$value){
+
+                    $data1=array(
+                    'user_id'=>$request->user_id,
+                    'view'=>$data['view'][$row],
+                    'image'=> $data['image'][$row],
+                    'feedback'=>$data['feedback'][$row],
+                    'notes'=> $data['notes'][$row],
+                    'action'=> $data['action'][$row],
+                    );
+                    Visual::create($data1);
                     }
-                $user->report =$request['report'];
-                $user->date =$request['date'];
-                $user->number_plate =$request['number_plate'];
-                $user->mileage=$request['mileage'];
-                $user->save();
 
-                $data = new Visual();
-                $data->user_id =Auth::user()->id;
-                $data->view=$request['view'];
-                $data->image =$request['image'];
-                        if($request->hasfile('image')){
-                            $image =$request->file('image');
-                            $time = time().'.'.$image->getClientOriginalExtension();
-                            $location=public_path('public/images'.$time);
-                            Visual::make($image)->resize(300, 300)->save($location);
-                        }
-                $data->feedback=$request['feedback'];
-                $data->action=$request['action'];
-                $data->save();
+                    $data2= $request->all();
+                foreach($data2['view'] as $key =>$value){
+                    $data3=array(
+                    'user_id'=>$request->user_id,
+                    'view'=>$data2['view'][$key],
+                    'image'=> $data2['image'][$key],
+                    'feedback'=>$data2['feedback'][$key],
+                    'notes'=> $data2['notes'][$key],
+                    'action'=> $data2['action'][$key],
+                    );
+                    Vehicle::create($data3);
+                    }
 
-                $user = new Vehicle();
-                $user->user_id =Auth::user()->id;
-                $user->view=$request['view'];
-                $user->image =$request['image'];
-                        if($request->hasfile('image')){
-                            $image =$request->file('image');
-                            $time = time().'.'.$image->getClientOriginalExtension();
-                            $location = public_path('public/images'.$time);
-                            Vehicle::make($image)->resize(300, 300)->save($location);
-                        }
-                $user->feedback=$request['feedback'];
-                $user->action=$request['action'];
-                $user->notes=$request['notes'];
-                $user->save();
 
-                $data = new Cabin();
-                $data->user_id=Auth::user()->id;
-                $data->view=$request['view'];
-                $data->image =$request['image'];
-                        if($request->hasfile('image')){
-                            $image =$request->file('image');
-                            $time = time().'.'.$image->getClientOriginalExtension();
-                            $location = public_path('public/images'.$time);
-                            Cabin::make($image)->resize(300, 300)->save($location);
-                        }
-                $data->feedback=$request['feedback'];
-                $data->action=$request['action'];
-                $data->notes=$request['notes'];
-                $data->save();
-
-                return view('/createdriver');
+                    $data4= $request->all();
+                foreach($data4['view'] as $list =>$value){
+                    $data5=array(
+                    'user_id'=>$request->user_id,
+                    'view'=>$data4['view'][$list],
+                    'image'=> $data4['image'][$list],
+                    'feedback'=>$data4['feedback'][$list],
+                    'notes'=> $data4['notes'][$list],
+                    'action'=> $data4['action'][$list],
+                    );
+                    Cabin::create($data5);
+                    }
+                return redirect('/driver/'.$user_id);
                 }
             }
 }
