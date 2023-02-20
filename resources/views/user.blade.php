@@ -152,11 +152,18 @@
                 position: relative;
                 width: 80px;
             }
+            #sidebar ul a:hover{
+                background-color:grey;
+                padding: 10px;
+                border-radius: 5px;
+                color: white;
+            }
+
 </style>
 <body>
 	<!-- SIDEBAR -->
 	<section id="sidebar">
-        <a href="#" class="brand">
+        <a href="#" class="brand" id="img">
 			<img src="{{asset('img/m-d-foundation.png')}}" alt="">
 		</a>
         <ul class="board">
@@ -169,7 +176,7 @@
         </ul>
         <ul class="log">
 			<li class="">
-				<a href="#">
+				<a href="">
 					<i class="fa-solid fa-list"></i>
 					<span class="">Driver List</span>
 				</a>
@@ -218,7 +225,7 @@
                                     <td style="text-align:center;">{{$user->created_at}}</td>
                                     <td style="text-align:center;">
                                     <a href="/driver/{{$user->id}}" ><i class="fa-solid fa-eye btn btn-primary" ></i></a>
-                                    <a href="/updateuser/{{$user->id}}" ><i class="fa-solid fa-eye btn btn-primary" ></i></a>
+                                    <a href="/updateuser/{{$user->id}}" ><i class="fa-solid fa-edit btn btn-success" ></i></i></a>
                                     <a href="/delete/{{$user->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
                                 </tr>
                             @endforeach

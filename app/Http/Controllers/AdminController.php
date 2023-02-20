@@ -171,11 +171,10 @@ class AdminController extends Controller
                 $cabin->save();
                 return redirect('/details/'.$data1->id);
             }
-
+//user
             public function newuser(){
                 return view('/createuser');
             }
-
             public function createuser(Request $request){
                 return view('/createdriver');
                 $validator = Validator::make($request->all(),[
@@ -195,74 +194,98 @@ class AdminController extends Controller
                 }
             }
             public function updateuser($id){
-                $user=User::find($id)->get();
-                // dd($user->id);
+                $user=User::where('id',$id)->get();
                 return view('/updateuser',['user'=>$user]);
             }
+
+            public function updateuserdetails(Request $request,$id){
+                $validator = Validator::make($request->all(),[
+                    'name'=>'required',
+                    'email'=>'required',
+                    'role'=>'required',
+                    'date'=>'required',
+
+                ]);
+                if ($validator->fails()){
+                    return response()->json(['message'=>'Validator error'],401);
+                }
+                $id= $request->id;
+                    $data1=User::find($id);
+                    if ($data1==null){
+                        return response()->json(['message'=>'Invalid Id'],401);
+                    }
+
+                $user= User::where('id',$id)->first();
+                $user->name=$request['name'];
+                $user->email=$request['email'];
+                $user->role=$request['role'];
+                $user->created_at=$request['date'];
+                $user->save();
+                return redirect('/user');
+            }
+//user
             public function newdriver($id){
                 return view('/createdriver',compact('id'));
             }
             public function store(Request $request){
-//  dd($request->user_id);
                 $validator = Validator::make($request->all(),[
-                    // 'drivername'=>'required',
-                    // 'company'=>'required',
-                    // 'deliveryemail'=>'required|email',
-                    // 'phone'=>'required',
-                    // 'date_of_incident'=>'required',
-                    // 'location'=>'required',
-                    // 'witnessed_by'=>'required',
-                    // 'phone_number_of_witness'=>'required',
-                    // 'brief_statement'=>'required',
-                    // 'upload_image'=>'required',
-                    // 'report'=>'required',
-                    // 'date'=>'required',
-                    // 'number_plate'=>'required',
-                    // 'mileage'=>'required',
-                    // 'view'=>'required',
-                    // 'image'=>'required',
-                    // 'feedback'=>'required',
+                    'drivername'=>'required',
+                    'company'=>'required',
+                    'deliveryemail'=>'required',
+                    'phone'=>'required',
+                    'date_of_incident'=>'required',
+                    'location'=>'required',
+                    'witnessed_by'=>'required',
+                    'phone_number_of_witness'=>'required',
+                    'brief_statement'=>'required',
+                    'upload_image'=>'required',
+                    'report'=>'required',
+                    'date'=>'required',
+                    'number_plate'=>'required',
+                    'mileage'=>'required',
+                    'view'=>'required',
+                    'image'=>'required',
+                    'feedback'=>'required',
+                    'action'=>'required'
                 ]);
                 if ($validator->fails()){
                     return response()->json(['message'=>'Validator error'],401);
                 }else{
-                // $user_id=Auth::id();
-                // dd($user_id);
-                // $data = new Driver();
-                // $data->user_id =1;
-                // $data->drivername=$request['drivername'];
-                // $data->company=$request['company'];
-                // $data->deliveryemail=$request['deliveryemail'];
-                // $data->phone=$request['phone'];
-                // $data->save();
+                $user_id=Auth::id();
+                dd($user_id);
+                $data = new Driver();
+                $data->user_id =1;
+                $data->drivername=$request['drivername'];
+                $data->company=$request['company'];
+                $data->deliveryemail=$request['deliveryemail'];
+                $data->phone=$request['phone'];
+                $data->save();
 
-                // $user = new Report();
-                // $user->user_id=1;
-                // $user->date_of_incident =$request['date_of_incident'];
-                // $user->location =$request['location'];
-                // $user->witnessed_by =$request['witnessed_by'];
-                // $user->phone_number_of_witness =$request['phone_number_of_witness'];
-                // $user->brief_statement =$request['brief_statement'];
-                // $user->upload_image =$request['upload_image'];
-                //     if($request->hasfile('upload_image')){
-                //         $upload_image =$request->file('upload_image');
-                //         $filename = time().'.'.$upload_image->getClientOriginalExtension();
-                //         $location = public_path('public/images'.$filename);
-                //         Report::make($upload_image)->resize(300, 300)->save($location);
-                //     }
-                // $user->report =$request['report'];
-                // $user->date =$request['date'];
-                // $user->number_plate =$request['number_plate'];
-                // $user->mileage=$request['mileage'];
-                // $user->save();
+                $user = new Report();
+                $user->user_id=1;
+                $user->date_of_incident =$request['date_of_incident'];
+                $user->location =$request['location'];
+                $user->witnessed_by =$request['witnessed_by'];
+                $user->phone_number_of_witness =$request['phone_number_of_witness'];
+                $user->brief_statement =$request['brief_statement'];
+                $user->upload_image =$request['upload_image'];
+                    if($request->hasfile('upload_image')){
+                        $upload_image =$request->file('upload_image');
+                        $filename = time().'.'.$upload_image->getClientOriginalExtension();
+                        $location = public_path('public/images'.$filename);
+                        Report::make($upload_image)->resize(300, 300)->save($location);
+                    }
+                $user->report =$request['report'];
+                $user->date =$request['date'];
+                $user->number_plate =$request['number_plate'];
+                $user->mileage=$request['mileage'];
+                $user->save();
 
 
 
                 $data= $request->all();
                 $user_id=$request->user_id;
-                //  dd($user_id);
                 foreach($data['view'] as $row =>$value){
-
                     $data1=array(
                     'user_id'=>$request->user_id,
                     'view'=>$data['view'][$row],

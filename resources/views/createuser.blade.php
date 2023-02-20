@@ -150,6 +150,9 @@
                 position: relative;
                 width: 80px;
             }
+            #sidebar a:hover{
+background-color: #000;
+            }
 </style>
 <body>
 	<!-- SIDEBAR -->

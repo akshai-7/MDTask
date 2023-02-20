@@ -412,12 +412,12 @@
 						<h3 class="text-success">User</h3>
 
 					</div>
-                    <form action="" method="POST" autocomplete="off">
+                    <form action="/updateuserdetails/{id}" method="POST" autocomplete="off">
 
                         @csrf
                         <table class="" style="width:1100px">
                             <thead class="">
-                                <th style="text-align:center;" class="col-md-1 text-primary">S.No</th>
+                                <th style="text-align:center;" class="col-md-1 text-primary">ID</th>
                                 <th style="text-align:center;" class="col-md-1 text-primary" >Name</th>
                                 <th style="text-align:center;" class="col-md-2 text-primary">Email</th>
                                 <th style="text-align:center;" class="col-md-2 text-primary">Role</th>

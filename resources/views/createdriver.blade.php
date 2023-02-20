@@ -273,7 +273,7 @@
                 <div class="table-data">
                         <div class="head">
                             <h5 class="text-success">Visual Check</h5>
-                            <input type="button" value="+" class=" btn btn-success btn-sm border-0" id="btn-add-row" style="text-align:center;">
+                            {{-- <input type="button" value="+" class=" btn btn-success btn-sm border-0" id="btn-add-row" style="text-align:center;"> --}}
 
                         </div>
 
@@ -335,7 +335,7 @@
                 <div class="table-data">
                         <div class="head">
                             <h5 class="text-success">Vehicle Check</h5>
-                            <td style="text-align:center;"><input type="button" value="+" class=" btn btn-success btn-sm border-0" id=btn-add-row1 style="text-align:center;"></td>
+                            {{-- <td style="text-align:center;"><input type="button" value="+" class=" btn btn-success btn-sm border-0" id=btn-add-row1 style="text-align:center;"></td> --}}
                         </div>
                          <div>
                                 <table class="table table-bordered mt-3" style="width:1000px;">
@@ -395,7 +395,7 @@
                 <div class="table-data">
                         <div class="head">
                             <h5 class="text-success">Cabin Check</h5>
-                            <td style="text-align:center;"><input type="button" value="+" class=" btn btn-success btn-sm border-0" id=btn-add-row2 style="text-align:center;"></td>
+                            {{-- <td style="text-align:center;"><input type="button" value="+" class=" btn btn-success btn-sm border-0" id=btn-add-row2 style="text-align:center;"></td> --}}
 
                         </div>
                         <div>
