@@ -21,4 +21,5 @@ class Cabin extends Model
         'notes',
         'action'
         ];
+
 }

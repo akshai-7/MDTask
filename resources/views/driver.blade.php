@@ -200,7 +200,8 @@
 				<div class="order">
 					<div class="head">
 						<h3 class="text-success">Driver Details</h3>
-                        {{-- <a href="/createdriver/{}"><input type="submit" value="Add-User" class="text-primary" id="add"></a> --}}
+                        {{-- <a href="/createdriver/{user_id}"><input type="submit" value="Add-User" class="text-primary" id="add"></a> --}}
+                        {{-- @dd($id); --}}
 					</div>
                     <table class="" >
                         <thead class="text-primary">
@@ -212,16 +213,18 @@
                             <th style="text-align:center;" class="text-primary">Number Plate</th>
                             <th style="text-align:center;">Creation Date</th>
                             <th style="text-align:center;">Action</th>
+
                         </thead>
                         <tbody>
                             @foreach($driver as $driver)
+                            {{-- @dd($driver); --}}
                                  <tr>
                                     <td style="text-align:center;">{{$loop->iteration}}</td>
                                     <td style="text-align:center;">{{$driver->drivername}}</td>
                                     <td style="text-align:center;">{{$driver->company}}</td>
                                     <td style="text-align:center;">{{$driver->deliveryemail}}</td>
                                     <td style="text-align:center;">{{$driver->phone}}</td>
-                                    <td style="text-align:center;">{{$driver->report->number_plate}}</td>
+                                    {{-- <td style="text-align:center;">{{$driver->report->number_plate}}</td> --}}
                                     <td style="text-align:center;">{{$driver->created_at}}</td>
                                     <td style="text-align:center;">
                                     <a href="/report/{{$driver->user_id}}"><i class="fa-solid fa-eye btn btn-primary" ></i></a>

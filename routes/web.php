@@ -16,11 +16,16 @@ use App\Http\Controllers\AdminController;
 Route::view('/','login');
 Route::post('/user',[AdminController::class,'admin']);
 Route::get('/user',[AdminController::class,'create']);
-//user
 Route::get('/user',[AdminController::class,'userlist']);
+Route::get('/createuser',[AdminController::class,'newuser']);
+Route::post('/createuser',[AdminController::class,'createuser']);
+Route::get('/updateuser/{id}',[AdminController::class,'updateuser']);
+Route::Post('/updateuserdetails/{id}',[AdminController::class,'updateuserdetails']);
 Route::get('/delete/{id}',[AdminController::class,'delete']);
 //driver
 Route::get('/driver/{user_id}',[AdminController::class,'driverlist']);
+Route::get('/createdriver/{user_id}',[AdminController::class,'newdriver']);
+Route::post('/store/{id}',[AdminController::class,'store']);
 Route::get('/remove/{id}',[AdminController::class,'remove']);
 //vehicle
 Route::get('/report/{user_id}',[AdminController::class,'reportlist']);
@@ -31,18 +36,15 @@ Route::get('/details/{user_id}',[AdminController::class,'check']);
 //updatevehiclecheck
 Route::get('/updatevehiclecheck/{id}',[AdminController::class,'updatevehiclecheck']);
 Route::post('/vehicleupdate/{user_id}',[AdminController::class,'vehicleupdate']);
+Route::get('/delete/{id}',[AdminController::class,'deletevehicle']);
 //updatevisualcheck
 Route::get('/updatevisualcheck/{id}',[AdminController::class,'updatevisualcheck']);
 Route::post('/visualupdate/{user_id}',[AdminController::class,'visualupdate']);
+Route::get('/delete/{id}',[AdminController::class,'deletevisual']);
 //updatecabincheck
 Route::get('/updatecabincheck/{id}',[AdminController::class,'updatecabincheck']);
 Route::post('/cabinupdate/{user_id}',[AdminController::class,'cabinupdate']);
+Route::get('/delete/{id}',[AdminController::class,'deletecabin']);
 
-Route::get('/createuser',[AdminController::class,'newuser']);
-Route::post('/createuser',[AdminController::class,'createuser']);
-Route::get('/updateuser/{id}',[AdminController::class,'updateuser']);
-Route::Post('/updateuserdetails/{id}',[AdminController::class,'updateuserdetails']);
 
-Route::get('/createdriver/{user_id}',[AdminController::class,'newdriver']);
-Route::post('/store/{id}',[AdminController::class,'store']);
 

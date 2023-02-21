@@ -18,4 +18,5 @@ class Driver extends Model
         return $this->belongsTo(Report::class,'user_id');
     }
 
+
 }

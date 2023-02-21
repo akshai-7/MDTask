@@ -26,6 +26,7 @@ class AdminController extends Controller
             }
             return redirect('/user');
         }
+ //user
         public function create(){
             return view('/user');
         }
@@ -33,20 +34,177 @@ class AdminController extends Controller
             $user= User::all();
             return view('/user',['user'=>$user]);
         }
-        public function delete($id){
-            $driver=User::find($id);
-            $driver->delete();
+        public function newuser(){
+            return view('/createuser');
+        }
+        public function createuser(Request $request){
+            return view('/createdriver');
+            $validator = Validator::make($request->all(),[
+                'name'=>'required',
+                'email'=>'required|email',
+                'password'=>'required',
+            ]);
+            if ($validator->fails()){
+                return response()->json(['message'=>'Validator error'],401);
+            }else{
+            $user = new User();
+            $user->name=$request['name'];
+            $user->email=$request['email'];
+            $user->password=Hash::make($request['password']);
+            $user->save();
+            return redirect('/user');
+            }
+        }
+        public function updateuser($id){
+            $user=User::where('id',$id)->get();
+            return view('/updateuser',['user'=>$user]);
+        }
+
+        public function updateuserdetails(Request $request,$id){
+            $validator = Validator::make($request->all(),[
+                'name'=>'required',
+                'email'=>'required',
+                'role'=>'required',
+                'date'=>'required',
+
+            ]);
+            if ($validator->fails()){
+                return response()->json(['message'=>'Validator error'],401);
+            }
+            $id= $request->id;
+                $data1=User::find($id);
+                if ($data1==null){
+                    return response()->json(['message'=>'Invalid Id'],401);
+                }
+
+            $user= User::where('id',$id)->first();
+            $user->name=$request['name'];
+            $user->email=$request['email'];
+            $user->role=$request['role'];
+            $user->created_at=$request['date'];
+            $user->save();
             return redirect('/user');
         }
+
+        public function delete($id){
+            User::find($id)->delete();
+            return redirect('/user');
+        }
+//user
         public function driverlist($user_id){
             $driver = Driver::with('report')->where('user_id',$user_id)->get();
+            dd($driver);
             return view('/driver',['driver'=>$driver]);
+        }
+        public function newdriver($id){
+            return view('/createdriver',compact('id'));
+        }
+        public function store(Request $request){
+            $validator = Validator::make($request->all(),[
+                'drivername'=>'required',
+                'company'=>'required',
+                'deliveryemail'=>'required',
+                'phone'=>'required',
+                'date_of_incident'=>'required',
+                'location'=>'required',
+                'witnessed_by'=>'required',
+                'phone_number_of_witness'=>'required',
+                'brief_statement'=>'required',
+                'upload_image'=>'required',
+                'report'=>'required',
+                'date'=>'required',
+                'number_plate'=>'required',
+                'mileage'=>'required',
+                'view'=>'required',
+                'image'=>'required',
+                'feedback'=>'required',
+                'action'=>'required'
+            ]);
+            if ($validator->fails()){
+                return response()->json(['message'=>'Validator error'],401);
+            }else{
+            $user_id=Auth::id();
+            dd($user_id);
+            $data = new Driver();
+            $data->user_id =1;
+            $data->drivername=$request['drivername'];
+            $data->company=$request['company'];
+            $data->deliveryemail=$request['deliveryemail'];
+            $data->phone=$request['phone'];
+            $data->save();
+
+            $user = new Report();
+            $user->user_id=1;
+            $user->date_of_incident =$request['date_of_incident'];
+            $user->location =$request['location'];
+            $user->witnessed_by =$request['witnessed_by'];
+            $user->phone_number_of_witness =$request['phone_number_of_witness'];
+            $user->brief_statement =$request['brief_statement'];
+            $user->upload_image =$request['upload_image'];
+                if($request->hasfile('upload_image')){
+                    $upload_image =$request->file('upload_image');
+                    $filename = time().'.'.$upload_image->getClientOriginalExtension();
+                    $location = public_path('public/images'.$filename);
+                    Report::make($upload_image)->resize(300, 300)->save($location);
+                }
+            $user->report =$request['report'];
+            $user->date =$request['date'];
+            $user->number_plate =$request['number_plate'];
+            $user->mileage=$request['mileage'];
+            $user->save();
+
+
+
+            $data= $request->all();
+            $user_id=$request->user_id;
+            foreach($data['view'] as $row =>$value){
+                $data1=array(
+                'user_id'=>$request->user_id,
+                'view'=>$data['view'][$row],
+                'image'=> $data['image'][$row],
+                'feedback'=>$data['feedback'][$row],
+                'notes'=> $data['notes'][$row],
+                'action'=> $data['action'][$row],
+                );
+                Visual::create($data1);
+                }
+
+                $data2= $request->all();
+            foreach($data2['view'] as $key =>$value){
+                $data3=array(
+                'user_id'=>$request->user_id,
+                'view'=>$data2['view1'][$key],
+                'image'=> $data2['image1'][$key],
+                'feedback'=>$data2['feedback1'][$key],
+                'notes'=> $data2['notes1'][$key],
+                'action'=> $data2['action1'][$key],
+                );
+                Vehicle::create($data3);
+                }
+
+
+                $data4= $request->all();
+            foreach($data4['view'] as $list =>$value){
+                $data5=array(
+                'user_id'=>$request->user_id,
+                'view'=>$data4['view2'][$list],
+                'image'=> $data4['image2'][$list],
+                'feedback'=>$data4['feedback2'][$list],
+                'notes'=> $data4['notes2'][$list],
+                'action'=> $data4['action2'][$list],
+                );
+                Cabin::create($data5);
+                }
+            return redirect('/driver/'.$user_id);
+            }
         }
         public function remove($id){
             $driver=Driver::find($id);
             $driver->delete();
             return view('/driver');
         }
+
+
         public function reportlist($user_id){
             $report = Report::where('user_id',$user_id)->get();
             return view('/report',['report'=>$report]);
@@ -56,6 +214,7 @@ class AdminController extends Controller
             $driver->delete();
             return view('/report');
         }
+//check;
         public function check($user_id){
             $visual= Visual::where('user_id',$user_id)->get();
             $vehicle = Vehicle::where('user_id',$user_id)->get();
@@ -99,6 +258,10 @@ class AdminController extends Controller
                 $vehicle->save();
                 return redirect('/details/'.$data1->id);
         }
+        public function deletevehicle($id){
+            Vehicle::find($id)->delete();
+            // return view('/user');
+        }
         public function updatevisualcheck($id){
                 $visual = Visual::where('id',$id)->get();
                 return view('/updatevisualcheck',['visual'=>$visual ]);
@@ -134,6 +297,10 @@ class AdminController extends Controller
                 $visual->feedback=$request['feedback'];
                 $visual->save();
                 return redirect('/details/'.$data1->id);
+        }
+        public function deletevisual($id){
+                    Visual::find($id)->delete();
+                    // return view('/user');
         }
         public function updatecabincheck($id){
                 $cabin = Cabin::where('id',$id)->get();
@@ -171,159 +338,11 @@ class AdminController extends Controller
                 $cabin->save();
                 return redirect('/details/'.$data1->id);
             }
-//user
-            public function newuser(){
-                return view('/createuser');
-            }
-            public function createuser(Request $request){
-                return view('/createdriver');
-                $validator = Validator::make($request->all(),[
-                    'name'=>'required',
-                    'email'=>'required|email',
-                    'password'=>'required',
-                ]);
-                if ($validator->fails()){
-                    return response()->json(['message'=>'Validator error'],401);
-                }else{
-                $user = new User();
-                $user->name=$request['name'];
-                $user->email=$request['email'];
-                $user->password=Hash::make($request['password']);
-                $user->save();
-                return redirect('/user');
-                }
-            }
-            public function updateuser($id){
-                $user=User::where('id',$id)->get();
-                return view('/updateuser',['user'=>$user]);
+            public function deletecabin($id){
+                Cabin::find($id)->delete();
+                // return view('/user');
             }
 
-            public function updateuserdetails(Request $request,$id){
-                $validator = Validator::make($request->all(),[
-                    'name'=>'required',
-                    'email'=>'required',
-                    'role'=>'required',
-                    'date'=>'required',
-
-                ]);
-                if ($validator->fails()){
-                    return response()->json(['message'=>'Validator error'],401);
-                }
-                $id= $request->id;
-                    $data1=User::find($id);
-                    if ($data1==null){
-                        return response()->json(['message'=>'Invalid Id'],401);
-                    }
-
-                $user= User::where('id',$id)->first();
-                $user->name=$request['name'];
-                $user->email=$request['email'];
-                $user->role=$request['role'];
-                $user->created_at=$request['date'];
-                $user->save();
-                return redirect('/user');
-            }
-//user
-            public function newdriver($id){
-                return view('/createdriver',compact('id'));
-            }
-            public function store(Request $request){
-                $validator = Validator::make($request->all(),[
-                    'drivername'=>'required',
-                    'company'=>'required',
-                    'deliveryemail'=>'required',
-                    'phone'=>'required',
-                    'date_of_incident'=>'required',
-                    'location'=>'required',
-                    'witnessed_by'=>'required',
-                    'phone_number_of_witness'=>'required',
-                    'brief_statement'=>'required',
-                    'upload_image'=>'required',
-                    'report'=>'required',
-                    'date'=>'required',
-                    'number_plate'=>'required',
-                    'mileage'=>'required',
-                    'view'=>'required',
-                    'image'=>'required',
-                    'feedback'=>'required',
-                    'action'=>'required'
-                ]);
-                if ($validator->fails()){
-                    return response()->json(['message'=>'Validator error'],401);
-                }else{
-                $user_id=Auth::id();
-                dd($user_id);
-                $data = new Driver();
-                $data->user_id =1;
-                $data->drivername=$request['drivername'];
-                $data->company=$request['company'];
-                $data->deliveryemail=$request['deliveryemail'];
-                $data->phone=$request['phone'];
-                $data->save();
-
-                $user = new Report();
-                $user->user_id=1;
-                $user->date_of_incident =$request['date_of_incident'];
-                $user->location =$request['location'];
-                $user->witnessed_by =$request['witnessed_by'];
-                $user->phone_number_of_witness =$request['phone_number_of_witness'];
-                $user->brief_statement =$request['brief_statement'];
-                $user->upload_image =$request['upload_image'];
-                    if($request->hasfile('upload_image')){
-                        $upload_image =$request->file('upload_image');
-                        $filename = time().'.'.$upload_image->getClientOriginalExtension();
-                        $location = public_path('public/images'.$filename);
-                        Report::make($upload_image)->resize(300, 300)->save($location);
-                    }
-                $user->report =$request['report'];
-                $user->date =$request['date'];
-                $user->number_plate =$request['number_plate'];
-                $user->mileage=$request['mileage'];
-                $user->save();
 
 
-
-                $data= $request->all();
-                $user_id=$request->user_id;
-                foreach($data['view'] as $row =>$value){
-                    $data1=array(
-                    'user_id'=>$request->user_id,
-                    'view'=>$data['view'][$row],
-                    'image'=> $data['image'][$row],
-                    'feedback'=>$data['feedback'][$row],
-                    'notes'=> $data['notes'][$row],
-                    'action'=> $data['action'][$row],
-                    );
-                    Visual::create($data1);
-                    }
-
-                    $data2= $request->all();
-                foreach($data2['view'] as $key =>$value){
-                    $data3=array(
-                    'user_id'=>$request->user_id,
-                    'view'=>$data2['view'][$key],
-                    'image'=> $data2['image'][$key],
-                    'feedback'=>$data2['feedback'][$key],
-                    'notes'=> $data2['notes'][$key],
-                    'action'=> $data2['action'][$key],
-                    );
-                    Vehicle::create($data3);
-                    }
-
-
-                    $data4= $request->all();
-                foreach($data4['view'] as $list =>$value){
-                    $data5=array(
-                    'user_id'=>$request->user_id,
-                    'view'=>$data4['view'][$list],
-                    'image'=> $data4['image'][$list],
-                    'feedback'=>$data4['feedback'][$list],
-                    'notes'=> $data4['notes'][$list],
-                    'action'=> $data4['action'][$list],
-                    );
-                    Cabin::create($data5);
-                    }
-                return redirect('/driver/'.$user_id);
-                }
-            }
 }

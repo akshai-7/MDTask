@@ -232,7 +232,7 @@
                                         <td style="text-align:center;">{{$report->mileage}}</td>
                                         <td style="text-align:center;">{{$report->report}}</td>
                                         <td style="text-align:center;">
-                                        <a href="/details/{{$report->id}}" data-toggle="tooltip" title="View"><i class="fa-solid fa-eye btn btn-primary" ></i></a>
+                                        <a href="/details/{{$report->user_id}}" data-toggle="tooltip" title="View"><i class="fa-solid fa-eye btn btn-primary" ></i></a>
                                         <a href="/removereport/{{$report->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
                                         {{-- @dd($report->id); --}}
                                     </tr>

@@ -430,7 +430,6 @@
                                         <td style="text-align:center;"><input type="text"  class="form-control"  name="feedback" value="{{$vehicle->feedback}}"></td>
                                         <td style="text-align:center;"><a href="/details/{{$vehicle->id}}/{{$vehicle->user_id}}"><input type="submit" name="submit" value="Submit" class="btn btn-primary"></a>
                                         </td>
-                                        {{-- @dd($vehicle->user_id); --}}
                                     </tr>
                                 @endforeach
                             </tbody>
