@@ -486,12 +486,12 @@
                                             <tr>
                                                 <td style="text-align:center;">{{$loop->iteration}}</td>
                                                 <td style="text-align:center;">{{$visual->view}}</td>
-                                                {{-- <td style="text-align:center;">{{$visual->image}}</td> --}}
-                                                <td style="text-align:center;"><img src="{{asset('public/images'.$visual->image)}}"  width="50px" height="50px" alt=""></td>
+                                                <td style="text-align:center;"><img src="{{url('images/'.$visual->image)}}"  width="70px" height="70px" alt=""></td>
                                                 <td style="text-align:center;">{{$visual->feedback}}</td>
                                                 <td style="text-align:center;">
+
                                                 <a href="/updatevisualcheck/{{$visual->id}}"><i class="fa-solid fa-edit btn btn-primary" ></i></a>
-                                                <a href="/delete/{{$visual->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
+                                                <a href="/deletevisual/{{$visual->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
 
                                             </tr>
                                         @endforeach
@@ -520,12 +520,11 @@
                                          <tr>
                                             <td style="text-align:center;">{{$loop->iteration}}</td>
                                             <td style="text-align:center;">{{$vehicle->view}}</td>
-                                            {{-- <td style="text-align:center;">{{$vehicle->image}}</td> --}}
-                                            <td style="text-align:center;"><img src="{{asset('public/images'.$vehicle->image)}}"  width="50px" height="50px" alt=""></td>
+                                            <td style="text-align:center;"><img src="{{url('images/'.$vehicle->image)}}"  width="50px" height="50px" alt=""></td>
                                             <td style="text-align:center;">{{$vehicle->feedback}}</td>
                                             <td style="text-align:center;">
                                             <a href="/updatevehiclecheck/{{$vehicle->id}}"><i class="fa-solid fa-edit btn btn-primary" ></i></a>
-                                            <a href="/delete/{{$vehicle->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
+                                            <a href="/deletevehicle/{{$vehicle->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -554,12 +553,11 @@
                                             <tr>
                                                 <td style="text-align:center;">{{$loop->iteration}}</td>
                                                 <td style="text-align:center;">{{$cabin->view}}</td>
-                                                {{-- <td style="text-align:center;">{{$cabin->image}}</td> --}}
-                                                <td style="text-align:center;"><img src="{{asset('public/images'.$cabin->image)}}"  width="50px" height="50px" alt=""></td>
+                                                <td style="text-align:center;"><img src="{{url('images/'.$cabin->image)}}"  width="50px" height="50px" alt=""></td>
                                                 <td style="text-align:center;">{{$cabin->feedback}}</td>
                                                 <td style="text-align:center;">
                                                     <a href="/updatecabincheck/{{$cabin->id}}"><i class="fa-solid fa-edit btn btn-primary" ></i></a>
-                                                    <a href="/delete/{{$cabin->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
+                                                    <a href="/deletecabin/{{$cabin->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
                                             </tr>
                                         @endforeach
                                     </tbody>

@@ -36,15 +36,15 @@ Route::get('/details/{user_id}',[AdminController::class,'check']);
 //updatevehiclecheck
 Route::get('/updatevehiclecheck/{id}',[AdminController::class,'updatevehiclecheck']);
 Route::post('/vehicleupdate/{user_id}',[AdminController::class,'vehicleupdate']);
-Route::get('/delete/{id}',[AdminController::class,'deletevehicle']);
+Route::get('/deletevehicle/{id}',[AdminController::class,'deletevehicle']);
 //updatevisualcheck
 Route::get('/updatevisualcheck/{id}',[AdminController::class,'updatevisualcheck']);
 Route::post('/visualupdate/{user_id}',[AdminController::class,'visualupdate']);
-Route::get('/delete/{id}',[AdminController::class,'deletevisual']);
+Route::get('/deletevisual/{id}',[AdminController::class,'deletevisual']);
 //updatecabincheck
 Route::get('/updatecabincheck/{id}',[AdminController::class,'updatecabincheck']);
 Route::post('/cabinupdate/{user_id}',[AdminController::class,'cabinupdate']);
-Route::get('/delete/{id}',[AdminController::class,'deletecabin']);
+Route::get('/deletecabin/{id}',[AdminController::class,'deletecabin']);
 
 
 

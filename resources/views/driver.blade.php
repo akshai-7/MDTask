@@ -217,14 +217,14 @@
                         </thead>
                         <tbody>
                             @foreach($driver as $driver)
-                            {{-- @dd($driver); --}}
+
                                  <tr>
                                     <td style="text-align:center;">{{$loop->iteration}}</td>
                                     <td style="text-align:center;">{{$driver->drivername}}</td>
                                     <td style="text-align:center;">{{$driver->company}}</td>
                                     <td style="text-align:center;">{{$driver->deliveryemail}}</td>
                                     <td style="text-align:center;">{{$driver->phone}}</td>
-                                    {{-- <td style="text-align:center;">{{$driver->report->number_plate}}</td> --}}
+                                    <td style="text-align:center;">{{$driver->report->number_plate}}</td>
                                     <td style="text-align:center;">{{$driver->created_at}}</td>
                                     <td style="text-align:center;">
                                     <a href="/report/{{$driver->user_id}}"><i class="fa-solid fa-eye btn btn-primary" ></i></a>

@@ -90,10 +90,10 @@ class AdminController extends Controller
             User::find($id)->delete();
             return redirect('/user');
         }
-//user
+//users
         public function driverlist($user_id){
             $driver = Driver::with('report')->where('user_id',$user_id)->get();
-            dd($driver);
+            // dd($driver);
             return view('/driver',['driver'=>$driver]);
         }
         public function newdriver($id){
@@ -299,7 +299,8 @@ class AdminController extends Controller
                 return redirect('/details/'.$data1->id);
         }
         public function deletevisual($id){
-                    Visual::find($id)->delete();
+                   $user= Visual::find($id);
+                   $user->delete();
                     // return view('/user');
         }
         public function updatecabincheck($id){
@@ -339,7 +340,7 @@ class AdminController extends Controller
                 return redirect('/details/'.$data1->id);
             }
             public function deletecabin($id){
-                Cabin::find($id)->delete();
+                Cabin::find($id)->delete($id);
                 // return view('/user');
             }
 
