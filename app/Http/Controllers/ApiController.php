@@ -164,13 +164,12 @@ class ApiController extends Controller
                 $user->phone_number_of_witness =$request['phone_number_of_witness'];
                 $user->brief_statement =$request['brief_statement'];
                 $user->upload_image =$request['upload_image'];
-                // dd($user);
-                    // if($request->hasfile('upload_image')){
-                    //     $upload_image =$request->file('upload_image');
-                    //     $filename = time().'.'.$upload_image->getClientOriginalExtension();
-                    //     $location = public_path('public/images'.$filename);
-                    //     Report::make($upload_image)->resize(300, 300)->save($location);
-                    // }
+                    if($request->hasfile('upload_image')){
+                        $upload_image =$request->file('upload_image');
+                        $filename = time().'.'.$upload_image->getClientOriginalExtension();
+                        $location = public_path('public/images'.$filename);
+                        Report::make($upload_image)->resize(300, 300)->save($location);
+                    }
                 $user->report =$request['report'];
                 $user->date =$request['date'];
                 $user->number_plate =$request['number_plate'];
@@ -213,10 +212,10 @@ class ApiController extends Controller
                     return response()->json(['message'=>'Validator error'],401);
                 }
                 $data2=$report_id;
-                    if ($data3==null){
+                    if ($data2==null){
                         return response()->json(['message'=>'Invalid Id'],401);
                     }
-                $user=Report::where('user_id',Auth::user()->id)->where('id',$data3->id)->first();
+                $user=Report::where('user_id',Auth::user()->id)->where('id',$data2->id)->first();
                 $user->user_id =Auth::user()->id;
                 $user->date_of_incident =$request['date_of_incident'];
                 $user->location =$request['location'];
@@ -224,13 +223,12 @@ class ApiController extends Controller
                 $user->phone_number_of_witness =$request['phone_number_of_witness'];
                 $user->brief_statement =$request['brief_statement'];
                 $user->upload_image =$request['upload_image'];
-
-                    // if($request->hasfile('upload_image')){
-                    //     $upload_image =$request->file('upload_image');
-                    //     $filename = time().'.'.$upload_image->getClientOriginalExtension();
-                    //     $location = public_path('public/images'.$filename);
-                    //     Report::make($upload_image)->resize(300, 300)->save($location);
-                    // }
+                    if($request->hasfile('upload_image')){
+                        $upload_image =$request->file('upload_image');
+                        $filename = time().'.'.$upload_image->getClientOriginalExtension();
+                        $location = public_path('images'.$filename);
+                        Report::make($upload_image)->resize(300, 300)->save($location);
+                    }
                 $user->report =$request['report'];
                 $user->date =$request['date'];
                 $user->number_plate =$request['number_plate'];
@@ -276,13 +274,12 @@ class ApiController extends Controller
                 $data->user_id =$user;
                 $data->view=$request['view'];
                 $data->image =$request['image'];
-                // dd($data);
-                        // if($request->hasfile('image')){
-                        //     $image =$request->file('image');
-                        //     $time = time().'.'.$image->getClientOriginalExtension();
-                        //     $location=public_path('public/images'.$time);
-                        //     Visual::make($image)->resize(300, 300)->save($location);
-                        // }
+                        if($request->hasfile('image')){
+                            $image =$request->file('image');
+                            $time = time().'.'.$image->getClientOriginalExtension();
+                            $location=public_path('/images'.$time);
+                            // Visual::make($image)->resize(300, 300)->save($location);
+                        }
                 $data->feedback=$request['feedback'];
                 $data->action=$request['action'];
                 $data->save();
@@ -309,7 +306,7 @@ class ApiController extends Controller
             public function updatedamage(Request $request,$visual_id){
                 $validator = Validator::make($request->all(),[
                     'view'=>'required',
-                    'image'=>'required',
+                    'image'=>'required|file',
                     'feedback'=>'required',
                     'action'=>'required',
                 ]);
@@ -333,7 +330,7 @@ class ApiController extends Controller
                         if($request->hasfile('image')){
                             $image =$request->file('image');
                             $time = time().'.'.$image->getClientOriginalExtension();
-                            $location = public_path('public/images'.$time);
+                            $location = public_path('/images'.$time);
                             Visual::make($image)->resize(300, 300)->save($location);
                         }
                 $data->feedback=$request['feedback'];
@@ -361,7 +358,6 @@ class ApiController extends Controller
 
     //vehiclechecks:
             public function vehiclechecks(Request $request){
-                // dd($request);
                 $validator = Validator::make($request->all(),[
                     'view'=>'required',
                     'image'=>'required',
@@ -383,9 +379,8 @@ class ApiController extends Controller
                 $user->image =$request['image'];
                         if($request->hasfile('image')){
                             $image =$request->file('image');
-                            // dd($image);
                             $time = time().'.'.$image->getClientOriginalExtension();
-                            $location = public_path('public/images'.$time);
+                            $location = public_path('/images'.$time);
                             Vehicle::make($image)->resize(300, 300)->save($location);
                         }
                 $user->feedback=$request['feedback'];
@@ -441,7 +436,7 @@ class ApiController extends Controller
                         if($request->hasfile('image')){
                             $image =$request->file('image');
                             $time = time().'.'.$image->getClientOriginalExtension();
-                            $location = public_path('public/images'.$time);
+                            $location = public_path('/images'.$time);
                             Vehicle::make($image)->resize(300, 300)->save($location);
                         }
                 $user->feedback=$request['feedback'];
@@ -492,7 +487,7 @@ class ApiController extends Controller
                         if($request->hasfile('image')){
                             $image =$request->file('image');
                             $time = time().'.'.$image->getClientOriginalExtension();
-                            $location = public_path('public/images'.$time);
+                            $location = public_path('/images'.$time);
                             Cabin::make($image)->resize(300, 300)->save($location);
                         }
                 $data->feedback=$request['feedback'];
@@ -547,7 +542,7 @@ class ApiController extends Controller
                         if($request->hasfile('image')){
                             $image =$request->file('image');
                             $time = time().'.'.$image->getClientOriginalExtension();
-                            $location = public_path('public/images'.$time);
+                            $location = public_path('/images'.$time);
                             Cabin::make($image)->resize(300, 300)->save($location);
                         }
                 $data->feedback=$request['feedback'];

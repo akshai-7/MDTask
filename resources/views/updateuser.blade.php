@@ -10,7 +10,6 @@
 	<title>M&D Foundations</title>
 </head>
 <style>
-    @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
     :root{--header-height: 3rem;--nav-width: 68px;--first-color: #4723D9;--first-color-light: #AFA5D9;--white-color: #F7F6FB;--body-font: 'Nunito', sans-serif;--normal-font-size: 1rem;--z-fixed: 100}*,::before,::after{box-sizing: border-box}
     body{
         position: relative;
@@ -265,7 +264,6 @@
 
 </style>
 <body id="body-pd">
-	<!-- SIDEBAR -->
 	<section id="sidebar">
         <header class="header" id="header">
             <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
@@ -273,34 +271,25 @@
         </header>
         <div class="l-navbar" id="nav-bar">
             <nav class="nav">
-                <div> <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">M&D Foundations</span> </a>
-                    <div class="nav_list"> <a href="/user" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Dashboard</span> </a>
+                <div>
+                    <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">M&D Foundations</span> </a>
+                    <div class="nav_list">
+                        <a href="#" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Dashboard</span> </a>
                         <a href="/driver" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Users</span> </a>
-                        {{-- <a href="#" class="nav_link"> <i class='bx bx-message-square-detail nav_icon'></i> <span class="nav_name">Messages</span> </a>
-                         <a href="#" class="nav_link"> <i class='bx bx-bookmark nav_icon'></i> <span class="nav_name">Bookmark</span> </a>
-                          <a href="#" class="nav_link"> <i class='bx bx-folder nav_icon'></i> <span class="nav_name">Files</span> </a>
-                           <a href="#" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Stats</span> </a> </div> --}}
-                </div> <a href="/" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">SignOut</span> </a>
+                    </div>
+                    <a href="/" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">SignOut</span> </a>
+                </div>
             </nav>
         </div>
 	</section>
-
-	<!-- CONTENT -->
 	<section id="content">
 		<main>
-			<div class="head-title">
-				<div class="left">
-					{{-- <h2 class="text-secondary">Dashboard</h2> --}}
-				</div>
-			</div>
 			<div class="table-data">
 				<div class="order">
 					<div class="head">
-						<h3 class="text-success">User</h3>
-
+						<h3 class="text-success">User Details</h3>
 					</div>
                     <form action="/updateuserdetails/{id}" method="POST" autocomplete="off">
-
                         @csrf
                         <table class="" style="width:1100px">
                             <thead class="">
@@ -310,11 +299,9 @@
                                 <th style="text-align:center;" class="col-md-2 text-primary">Role</th>
                                 <th style="text-align:center;" class="col-md-3 text-primary">Creation Date </th>
                                 <th style="text-align:center;" class="col-md-2 text-primary">Action</th>
-
                             </thead>
                             <tbody>
                                 @foreach($user as $users)
-                                {{-- @dd($users); --}}
                                     <tr>
                                         <td style="text-align:center;"><input type="text"  class="form-control"   name="id" value="{{$users->id}}"></td>
                                         <td style="text-align:center;"><input type="text"  class="form-control"   name="name" value="{{$users->name}}"></td>
@@ -326,49 +313,45 @@
                                     </tr>
                                 @endforeach
                             </tbody>
-                    </table>
+                        </table>
                     </form>
 				</div>
 			</div>
 		</main>
 	</section>
     <script>
+
         document.addEventListener("DOMContentLoaded", function(event) {
+        const showNavbar = (toggleId, navId, bodyId, headerId) =>{
+        const toggle = document.getElementById(toggleId),
+        nav = document.getElementById(navId),
+        bodypd = document.getElementById(bodyId),
+        headerpd = document.getElementById(headerId)
 
-       const showNavbar = (toggleId, navId, bodyId, headerId) =>{
-       const toggle = document.getElementById(toggleId),
-       nav = document.getElementById(navId),
-       bodypd = document.getElementById(bodyId),
-       headerpd = document.getElementById(headerId)
 
-                // Validate that all variables exist
-                if(toggle && nav && bodypd && headerpd){
-                toggle.addEventListener('click', ()=>{
-                // show navbar
-                nav.classList.toggle('show')
-                // change icon
-                toggle.classList.toggle('bx-x')
-                // add padding to header
-                headerpd.classList.toggle('body-pd')
-                })
-                }
-            }
+                 if(toggle && nav && bodypd && headerpd){
+                 toggle.addEventListener('click', ()=>{
 
-                showNavbar('header-toggle','nav-bar','body-pd','header')
+                 nav.classList.toggle('show')
 
-                /*===== LINK ACTIVE =====*/
-                const linkColor = document.querySelectorAll('.nav_link')
+                 toggle.classList.toggle('bx-x')
 
-                function colorLink(){
-                if(linkColor){
-                linkColor.forEach(l=> l.classList.remove('active'))
-                this.classList.add('active')
-                }
-                }
-                linkColor.forEach(l=> l.addEventListener('click', colorLink))
+                 headerpd.classList.toggle('body-pd')
+                 })
+                 }
+             }
+                 showNavbar('header-toggle','nav-bar','body-pd','header')
+                 const linkColor = document.querySelectorAll('.nav_link')
 
-                    // Your code to run since DOM is loaded and ready
-       });
-    </script>
+                 function colorLink(){
+                 if(linkColor){
+                 linkColor.forEach(l=> l.classList.remove('active'))
+                 this.classList.add('active')
+                 }
+                 }
+                 linkColor.forEach(l=> l.addEventListener('click', colorLink))
+
+        });
+     </script>
 </body>
 </html>

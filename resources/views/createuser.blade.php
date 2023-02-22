@@ -265,34 +265,27 @@
 
 </style>
 <body id="body-pd">
-	<!-- SIDEBAR -->
 	<section id="sidebar">
         <section id="sidebar">
             <header class="header" id="header">
-               <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
-               <div class="header_img"> <img src="{{url('img/m-d-foundation.png')}}" alt=""> </div>
-           </header>
-           <div class="l-navbar" id="nav-bar">
-               <nav class="nav">
-                   <div> <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">M&D Foundations</span> </a>
-                       <div class="nav_list"> <a href="/user" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Dashboard</span> </a>
-                           <a href="/driver" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Users</span> </a>
-                           {{-- <a href="#" class="nav_link"> <i class='bx bx-message-square-detail nav_icon'></i> <span class="nav_name">Messages</span> </a>
-                            <a href="#" class="nav_link"> <i class='bx bx-bookmark nav_icon'></i> <span class="nav_name">Bookmark</span> </a>
-                             <a href="#" class="nav_link"> <i class='bx bx-folder nav_icon'></i> <span class="nav_name">Files</span> </a>
-                              <a href="#" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Stats</span> </a> </div> --}}
-                   </div> <a href="/" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">SignOut</span> </a>
-               </nav>
+                <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+                <div class="header_img"> <img src="{{url('img/m-d-foundation.png')}}" alt=""> </div>
+            </header>
+            <div class="l-navbar" id="nav-bar">
+                <nav class="nav">
+                    <div>
+                        <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">M&D Foundations</span> </a>
+                        <div class="nav_list">
+                            <a href="#" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Dashboard</span> </a>
+                            <a href="/driver" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Users</span> </a>
+                        </div>
+                        <a href="/" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">SignOut</span> </a>
+                    </div>
+                </nav>
+            </div>
 	</section>
-
-	<!-- CONTENT -->
 	<section id="content">
 		<main>
-			<div class="head-title">
-				<div class="left" >
-					{{-- <h2 class="text-black">Dashboard</h2> --}}
-				</div>
-			</div>
 			<div class="table-data">
 				<div class="order">
 					<div class="head">
@@ -314,7 +307,6 @@
                                 <td style="text-align:center;"><input type="text" class="form-control" name="password"></td>
                                 <td style="text-align:center;"><a href="/user"><input type="submit" name="submit" value="Submit" class="btn btn-primary"></a></td>
                             </tr>
-
                         </tbody>
                     </table>
                    </form>
@@ -324,30 +316,27 @@
 	</section>
 </body>
 <script>
-    document.addEventListener("DOMContentLoaded", function(event) {
 
+   document.addEventListener("DOMContentLoaded", function(event) {
    const showNavbar = (toggleId, navId, bodyId, headerId) =>{
    const toggle = document.getElementById(toggleId),
    nav = document.getElementById(navId),
    bodypd = document.getElementById(bodyId),
    headerpd = document.getElementById(headerId)
 
-            // Validate that all variables exist
+
             if(toggle && nav && bodypd && headerpd){
             toggle.addEventListener('click', ()=>{
-            // show navbar
+
             nav.classList.toggle('show')
-            // change icon
+
             toggle.classList.toggle('bx-x')
-            // add padding to header
+
             headerpd.classList.toggle('body-pd')
             })
             }
         }
-
             showNavbar('header-toggle','nav-bar','body-pd','header')
-
-            /*===== LINK ACTIVE =====*/
             const linkColor = document.querySelectorAll('.nav_link')
 
             function colorLink(){
@@ -358,7 +347,6 @@
             }
             linkColor.forEach(l=> l.addEventListener('click', colorLink))
 
-                // Your code to run since DOM is loaded and ready
    });
 </script>
 </html>

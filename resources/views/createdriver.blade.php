@@ -241,7 +241,6 @@
             }
 </style>
 <body id="body-pd">
-	<!-- SIDEBAR -->
 	<section id="sidebar">
         <header class="header" id="header">
             <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
@@ -249,23 +248,21 @@
         </header>
         <div class="l-navbar" id="nav-bar">
             <nav class="nav">
-                <div> <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">M&D Foundations</span> </a>
-                    <div class="nav_list"> <a href="/user" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Dashboard</span> </a>
+                <div>
+                    <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">M&D Foundations</span> </a>
+                    <div class="nav_list">
+                        <a href="#" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Dashboard</span> </a>
                         <a href="/driver" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Users</span> </a>
-                        {{-- <a href="#" class="nav_link"> <i class='bx bx-message-square-detail nav_icon'></i> <span class="nav_name">Messages</span> </a>
-                         <a href="#" class="nav_link"> <i class='bx bx-bookmark nav_icon'></i> <span class="nav_name">Bookmark</span> </a>
-                          <a href="#" class="nav_link"> <i class='bx bx-folder nav_icon'></i> <span class="nav_name">Files</span> </a>
-                           <a href="#" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Stats</span> </a> </div> --}}
-                </div> <a href="/" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">SignOut</span> </a>
+                    </div>
+                    <a href="/" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">SignOut</span> </a>
+                </div>
             </nav>
         </div>
 	</section>
-	<!-- CONTENT -->
 	<section id="content">
         <form action="/store/{id}" method="POST" autocomplete="off">
         @csrf
         <input type="hidden" name="user_id" value="{{$id}}">
-        {{-- @dd($id) --}}
             <main>
                 <div class="table-data" >
                         <div class="head1">
@@ -339,16 +336,12 @@
                 <div class="table-data">
                         <div class="head">
                             <h5 class="text-success">Visual Check</h5>
-                            {{-- <input type="button" value="+" class=" btn btn-success btn-sm border-0" id="btn-add-row" style="text-align:center;"> --}}
-
                         </div>
-
                         <div>
                             <table class="table table-bordered mt-3" >
                                 <thead class="">
                                         <tr>
                                             <th class="col-md-1 text-primary" style="text-align:center;">S.no</th>
-
                                             <th style="text-align:center;" class="col-md-2 text-primary">View</th>
                                             <th style="text-align:center;" class="col-md-2 text-primary">Image</th>
                                             <th style="text-align:center;" class="col-md-2 text-primary">Feed Back</th>
@@ -368,7 +361,6 @@
                                             <td><input type="text"  name="action[]"  class="form-control action border-0" style="text-align:center;" id='action'></td>
                                         </tr>
                                         <tr class="list">
-
                                             <td class="col-md-1"><input type="text"  name="sno[]"    class="form-control col-md-1 border-0" style="text-align:center;" value="2" id="sno"></td>
                                             <td><input type="text"  name="view[]"   class="form-control view border-0" style="text-align:center;" id='view' value="Near Side"></td>
                                             <td><input type="file"  name="image[]"  class="form-control image border-0" style="text-align:center;" id='image'></td>
@@ -377,7 +369,6 @@
                                             <td><input type="text"  name="action[]"  class="form-control action border-0" style="text-align:center;" id='action'></td>
                                         </tr>
                                         <tr class="list">
-
                                             <td class="col-md-1"><input type="text"  name="sno[]"    class="form-control col-md-1 border-0" style="text-align:center;" value="3" id="sno"></td>
                                             <td><input type="text"  name="view[]"   class="form-control view border-0" style="text-align:center;" id='view' value="Rear"></td>
                                             <td><input type="file"  name="image[]"  class="form-control image border-0" style="text-align:center;" id='image'></td>
@@ -386,7 +377,6 @@
                                             <td><input type="text"  name="action[]"  class="form-control action border-0" style="text-align:center;" id='action'></td>
                                         </tr>
                                         <tr class="list">
-
                                             <td class="col-md-1"><input type="text"  name="sno[]"    class="form-control col-md-1 border-0" style="text-align:center;" value="4" id="sno"></td>
                                             <td><input type="text"  name="view[]"   class="form-control view border-0" style="text-align:center;" id='view' value="Off-side"></td>
                                             <td><input type="file"  name="image[]"  class="form-control image border-0" style="text-align:center;" id='image'></td>
@@ -401,14 +391,12 @@
                 <div class="table-data">
                         <div class="head">
                             <h5 class="text-success">Vehicle Check</h5>
-                            {{-- <td style="text-align:center;"><input type="button" value="+" class=" btn btn-success btn-sm border-0" id=btn-add-row1 style="text-align:center;"></td> --}}
                         </div>
                          <div>
                                 <table class="table table-bordered mt-3" >
                                     <thead class="">
                                         <tr>
                                             <th class="col-md-1 text-primary" style="text-align:center;">S.no</th>
-
                                             <th style="text-align:center;" class="col-md-2 text-primary">View</th>
                                             <th style="text-align:center;" class="col-md-2 text-primary">Image</th>
                                             <th style="text-align:center;" class="col-md-2 text-primary">Feed Back</th>
@@ -419,7 +407,6 @@
                                     </thead>
                                     <tbody id='row1' >
                                         <tr class="list">
-
                                             <td class="col-md-1"><input type="text"  name="sno[]"    class="form-control col-md-1 border-0" style="text-align:center;" value="1" id="sno"></td>
                                             <td><input type="text"  name="view1[]"   class="form-control view border-0" style="text-align:center;" id='view' value="Adblue levels"></td>
                                             <td><input type="file"  name="image1[]"  class="form-control image border-0" style="text-align:center;" id='image'></td>
@@ -428,7 +415,6 @@
                                             <td><input type="text"  name="action1[]"  class="form-control action border-0" style="text-align:center;" id='action'></td>
                                         </tr>
                                         <tr class="list">
-
                                             <td class="col-md-1"><input type="text"  name="sno[]"    class="form-control col-md-1 border-0" style="text-align:center;" value="2" id="sno"></td>
                                             <td><input type="text"  name="view1[]"   class="form-control view border-0" style="text-align:center;" id='view' value="Fuel/oil Leaks"></td>
                                             <td><input type="file"  name="image1[]"  class="form-control image border-0" style="text-align:center;" id='image'></td>
@@ -437,7 +423,6 @@
                                             <td><input type="text"  name="action1[]"  class="form-control action border-0" style="text-align:center;" id='action'></td>
                                         </tr>
                                         <tr class="list">
-
                                             <td class="col-md-1"><input type="text"  name="sno[]"    class="form-control col-md-1 border-0" style="text-align:center;" value="3" id="sno"></td>
                                             <td><input type="text"  name="view1[]"   class="form-control view border-0" style="text-align:center;" id='view' value="Lights"></td>
                                             <td><input type="file"  name="image1[]"  class="form-control image border-0" style="text-align:center;" id='image'></td>
@@ -446,7 +431,6 @@
                                             <td><input type="text"  name="action1[]"  class="form-control action border-0" style="text-align:center;" id='action'></td>
                                         </tr>
                                         <tr class="list">
-
                                             <td class="col-md-1"><input type="text"  name="sno[]"    class="form-control col-md-1 border-0" style="text-align:center;" value="4" id="sno"></td>
                                             <td><input type="text"  name="view1[]"   class="form-control view border-0" style="text-align:center;" id='view' value="Indicators/Signals"></td>
                                             <td><input type="file"  name="image1[]"  class="form-control image border-0" style="text-align:center;" id='image'></td>
@@ -461,15 +445,12 @@
                 <div class="table-data">
                         <div class="head">
                             <h5 class="text-success">Cabin Check</h5>
-                            {{-- <td style="text-align:center;"><input type="button" value="+" class=" btn btn-success btn-sm border-0" id=btn-add-row2 style="text-align:center;"></td> --}}
-
                         </div>
                         <div>
                                 <table class="table table-bordered mt-3">
                                     <thead class="">
                                         <tr>
                                             <th class="col-md-1 text-primary" style="text-align:center;">S.no</th>
-
                                             <th style="text-align:center;" class="col-md-2 text-primary">View</th>
                                             <th style="text-align:center;" class="col-md-2 text-primary">Image</th>
                                             <th style="text-align:center;" class="col-md-2 text-primary">Feed Back</th>
@@ -480,7 +461,6 @@
                                     </thead>
                                     <tbody id='row2' >
                                         <tr class="list">
-
                                             <td class="col-md-1"><input type="text"  name="sno[]"    class="form-control col-md-1 border-0" style="text-align:center;" value="1" id="sno"></td>
                                             <td><input type="text"  name="view2[]"   class="form-control view border-0" style="text-align:center;" id='view' value="Steering"></td>
                                             <td><input type="file"  name="image2[]"  class="form-control image border-0" style="text-align:center;" id='image'></td>
@@ -489,7 +469,6 @@
                                             <td><input type="text"  name="action2[]"  class="form-control action border-0" style="text-align:center;" id='action'></td>
                                         </tr>
                                         <tr class="list">
-
                                             <td class="col-md-1"><input type="text"  name="sno[]"    class="form-control col-md-1 border-0" style="text-align:center;" value="2" id="sno"></td>
                                             <td><input type="text"  name="view2[]"   class="form-control view border-0" style="text-align:center;" id='view' value="Wipers"></td>
                                             <td><input type="file"  name="image2[]"  class="form-control image border-0" style="text-align:center;" id='image'></td>
@@ -498,7 +477,6 @@
                                             <td><input type="text"  name="action2[]"  class="form-control action border-0" style="text-align:center;" id='action'></td>
                                         </tr>
                                         <tr class="list">
-
                                             <td class="col-md-1"><input type="text"  name="sno[]"    class="form-control col-md-1 border-0" style="text-align:center;" value="3" id="sno"></td>
                                             <td><input type="text"  name="view2[]"   class="form-control view border-0" style="text-align:center;" id='view' value="Washers"></td>
                                             <td><input type="file"  name="image2[]"  class="form-control image border-0" style="text-align:center;" id='image'></td>
@@ -516,7 +494,6 @@
                                             <td><input type="text"  name="action2[]"  class="form-control action border-0" style="text-align:center;" id='action'></td>
                                         </tr>
                                         <tr class="list">
-
                                             <td class="col-md-1"><input type="text"  name="sno[]"    class="form-control col-md-1 border-0" style="text-align:center;" value="5" id="sno"></td>
                                             <td><input type="text"  name="view2[]"   class="form-control view border-0" style="text-align:center;" id='view' value="Breakes inc.ABS/EBS"></td>
                                             <td><input type="file"  name="image2[]"  class="form-control image border-0" style="text-align:center;" id='image'></td>
@@ -525,7 +502,6 @@
                                             <td><input type="text"  name="action2[]"  class="form-control action border-0" style="text-align:center;" id='action'></td>
                                         </tr>
                                         <tr class="list">
-
                                             <td class="col-md-1"><input type="text"  name="sno[]"    class="form-control col-md-1 border-0" style="text-align:center;" value="6" id="sno"></td>
                                             <td><input type="text"  name="view2[]"   class="form-control view border-0" style="text-align:center;" id='view' value="Mirrors/Glass/Visibility"></td>
                                             <td><input type="file"  name="image2[]"  class="form-control image border-0" style="text-align:center;" id='image'></td>
@@ -543,7 +519,6 @@
                                             <td><input type="text"  name="action2[]"  class="form-control action border-0" style="text-align:center;" id='action'></td>
                                         </tr>
                                         <tr class="list">
-
                                             <td class="col-md-1"><input type="text"  name="sno[]"    class="form-control col-md-1 border-0" style="text-align:center;" value="8" id="sno"></td>
                                             <td><input type="text"  name="view2[]"   class="form-control view border-0" style="text-align:center;" id='view' value="Warining Lamps/MIL"></td>
                                             <td><input type="file"  name="image2[]"  class="form-control image border-0" style="text-align:center;" id='image'></td>
@@ -560,64 +535,38 @@
         </form>
 	</section>
     <script>
-        $(document).ready (function(){
-                // var i=1;
-                // $("#btn-add-row").click(function(){
-                // i++
-                // $("#row").append("<tr class='list'><td id='row_num "+i+"'><input type='text' required name='sno[]' class='form-control' value="+i+" style='text-align:center;'></td>'+'<td><input type='text'  name='view[]' class='form-control view border-0' style='text-align:center;'></td>'+' <td><input type='file'  name='image[]' class='form-control image border-0' style='text-align:center;'></td>'+'<td><input type='text'  name='feedback[]' class='form-control feedback border-0' style='text-align:center;'></td>'+'<td><input type='text'  name='notes[]' class='form-control notes border-0' style='text-align:center;'></td>'+'<td><input type='text'  name='action[]' class='form-control action border-0' style='text-align:center;'></td></tr>");
-                // })
 
-                // var j=1;
-                // $("#btn-add-row1").click(function(){
-                // j++
-                // $("#row1").append("<tr class='list'><td id='row_num "+j+"'><input type='text' required name='sno[]' class='form-control' value="+j+" style='text-align:center;'></td>'+'<td><input type='text'  name='view[]' class='form-control view border-0' style='text-align:center;'></td>'+' <td><input type='file'  name='image[]' class='form-control image border-0' style='text-align:center;'></td>'+'<td><input type='text'  name='feedback[]' class='form-control feedback border-0' style='text-align:center;'></td>'+'<td><input type='text'  name='notes[]' class='form-control notes border-0' style='text-align:center;'></td>'+'<td><input type='text'  name='action[]' class='form-control action border-0' style='text-align:center;'></td></tr>");
-                // })
-
-                // var k=1;
-                // $("#btn-add-row2").click(function(){
-                // k++
-                // $("#row2").append("<tr class='list'><td id='row_num "+k+"'><input type='text' required name='sno[]' class='form-control' value="+k+" style='text-align:center;'></td>'+'<td><input type='text'  name='view[]' class='form-control view border-0' style='text-align:center;'></td>'+' <td><input type='file'  name='image[]' class='form-control image border-0' style='text-align:center;'></td>'+'<td><input type='text'  name='feedback[]' class='form-control feedback border-0' style='text-align:center;'></td>'+'<td><input type='text'  name='notes[]' class='form-control notes border-0' style='text-align:center;'></td>'+'<td><input type='text'  name='action[]' class='form-control action border-0' style='text-align:center;'></td></tr>");
-                // })
-         });
-
-    </script>
-    <script>
         document.addEventListener("DOMContentLoaded", function(event) {
+        const showNavbar = (toggleId, navId, bodyId, headerId) =>{
+        const toggle = document.getElementById(toggleId),
+        nav = document.getElementById(navId),
+        bodypd = document.getElementById(bodyId),
+        headerpd = document.getElementById(headerId)
 
-       const showNavbar = (toggleId, navId, bodyId, headerId) =>{
-       const toggle = document.getElementById(toggleId),
-       nav = document.getElementById(navId),
-       bodypd = document.getElementById(bodyId),
-       headerpd = document.getElementById(headerId)
 
-                // Validate that all variables exist
-                if(toggle && nav && bodypd && headerpd){
-                toggle.addEventListener('click', ()=>{
-                // show navbar
-                nav.classList.toggle('show')
-                // change icon
-                toggle.classList.toggle('bx-x')
-                // add padding to header
-                headerpd.classList.toggle('body-pd')
-                })
-                }
-            }
+                 if(toggle && nav && bodypd && headerpd){
+                 toggle.addEventListener('click', ()=>{
 
-                showNavbar('header-toggle','nav-bar','body-pd','header')
+                 nav.classList.toggle('show')
 
-                /*===== LINK ACTIVE =====*/
-                const linkColor = document.querySelectorAll('.nav_link')
+                 toggle.classList.toggle('bx-x')
 
-                function colorLink(){
-                if(linkColor){
-                linkColor.forEach(l=> l.classList.remove('active'))
-                this.classList.add('active')
-                }
-                }
-                linkColor.forEach(l=> l.addEventListener('click', colorLink))
+                 headerpd.classList.toggle('body-pd')
+                 })
+                 }
+             }
+                 showNavbar('header-toggle','nav-bar','body-pd','header')
+                 const linkColor = document.querySelectorAll('.nav_link')
 
-                    // Your code to run since DOM is loaded and ready
-       });
-    </script>
+                 function colorLink(){
+                 if(linkColor){
+                 linkColor.forEach(l=> l.classList.remove('active'))
+                 this.classList.add('active')
+                 }
+                 }
+                 linkColor.forEach(l=> l.addEventListener('click', colorLink))
+
+        });
+     </script>
 </body>
 </html>

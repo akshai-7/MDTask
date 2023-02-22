@@ -265,7 +265,6 @@
 
 </style>
 <body id="body-pd">
-	<!-- SIDEBAR -->
     <section id="sidebar">
         <header class="header" id="header">
             <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
@@ -273,32 +272,23 @@
         </header>
         <div class="l-navbar" id="nav-bar">
             <nav class="nav">
-                <div> <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">M&D Foundations</span> </a>
-                    <div class="nav_list"> <a href="/user" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Dashboard</span> </a>
+                <div>
+                    <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">M&D Foundations</span> </a>
+                    <div class="nav_list">
+                        <a href="#" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Dashboard</span> </a>
                         <a href="/driver" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Users</span> </a>
-                        {{-- <a href="#" class="nav_link"> <i class='bx bx-message-square-detail nav_icon'></i> <span class="nav_name">Messages</span> </a>
-                         <a href="#" class="nav_link"> <i class='bx bx-bookmark nav_icon'></i> <span class="nav_name">Bookmark</span> </a>
-                          <a href="#" class="nav_link"> <i class='bx bx-folder nav_icon'></i> <span class="nav_name">Files</span> </a>
-                           <a href="#" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Stats</span> </a> </div> --}}
-                </div> <a href="/" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">SignOut</span> </a>
+                    </div>
+                    <a href="/" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">SignOut</span> </a>
+                </div>
             </nav>
         </div>
 	</section>
-
-	<!-- CONTENT -->
 	<section id="content">
 		<main>
-			<div class="head-title">
-				<div class="left">
-					{{-- <h2 class="text-secondary">Dashboard</h2> --}}
-				</div>
-			</div>
 			<div class="table-data">
 				<div class="order">
 					<div class="head">
 						<h3 class="text-success">Rental Details</h3>
-                        {{-- <a href="/createdriver/{user_id}"><input type="submit" value="Add-User" class="text-primary" id="add"></a> --}}
-                        {{-- @dd($id); --}}
 					</div>
                     <table class="" >
                         <thead class="text-primary">
@@ -310,11 +300,9 @@
                             <th style="text-align:center;" class="text-primary">Vehicle Number Plate</th>
                             <th style="text-align:center;">Creation Date</th>
                             <th style="text-align:center;">Action</th>
-
                         </thead>
                         <tbody>
                             @foreach($driver as $driver)
-
                                  <tr>
                                     <td style="text-align:center;">{{$loop->iteration}}</td>
                                     <td style="text-align:center;">{{$driver->drivername}}</td>
@@ -332,47 +320,42 @@
                         </tbody>
                     </table>
 				</div>
-
 			</div>
 		</main>
 	</section>
     <script>
+
         document.addEventListener("DOMContentLoaded", function(event) {
+        const showNavbar = (toggleId, navId, bodyId, headerId) =>{
+        const toggle = document.getElementById(toggleId),
+        nav = document.getElementById(navId),
+        bodypd = document.getElementById(bodyId),
+        headerpd = document.getElementById(headerId)
 
-       const showNavbar = (toggleId, navId, bodyId, headerId) =>{
-       const toggle = document.getElementById(toggleId),
-       nav = document.getElementById(navId),
-       bodypd = document.getElementById(bodyId),
-       headerpd = document.getElementById(headerId)
 
-                // Validate that all variables exist
-                if(toggle && nav && bodypd && headerpd){
-                toggle.addEventListener('click', ()=>{
-                // show navbar
-                nav.classList.toggle('show')
-                // change icon
-                toggle.classList.toggle('bx-x')
-                // add padding to header
-                headerpd.classList.toggle('body-pd')
-                })
-                }
-            }
+                 if(toggle && nav && bodypd && headerpd){
+                 toggle.addEventListener('click', ()=>{
 
-                showNavbar('header-toggle','nav-bar','body-pd','header')
+                 nav.classList.toggle('show')
 
-                /*===== LINK ACTIVE =====*/
-                const linkColor = document.querySelectorAll('.nav_link')
+                 toggle.classList.toggle('bx-x')
 
-                function colorLink(){
-                if(linkColor){
-                linkColor.forEach(l=> l.classList.remove('active'))
-                this.classList.add('active')
-                }
-                }
-                linkColor.forEach(l=> l.addEventListener('click', colorLink))
+                 headerpd.classList.toggle('body-pd')
+                 })
+                 }
+             }
+                 showNavbar('header-toggle','nav-bar','body-pd','header')
+                 const linkColor = document.querySelectorAll('.nav_link')
 
-                    // Your code to run since DOM is loaded and ready
-       });
-    </script>
+                 function colorLink(){
+                 if(linkColor){
+                 linkColor.forEach(l=> l.classList.remove('active'))
+                 this.classList.add('active')
+                 }
+                 }
+                 linkColor.forEach(l=> l.addEventListener('click', colorLink))
+
+        });
+     </script>
 </body>
 </html>
