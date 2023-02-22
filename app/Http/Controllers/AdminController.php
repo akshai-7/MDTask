@@ -340,4 +340,10 @@ class AdminController extends Controller
             return view('/allrentallist',['driver'=>$driver ]);
             dd($driver);
         }
+        public function summary($user_id){
+            $visual= Visual::where('user_id',$user_id)->get();
+            $vehicle = Vehicle::where('user_id',$user_id)->get();
+            $cabin= Cabin::where('user_id',$user_id)->get();
+            return view('/summary',['cabin'=>$cabin,'visual'=>$visual,'vehicle'=>$vehicle]);
+        }
 }

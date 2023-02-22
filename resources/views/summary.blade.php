@@ -319,19 +319,7 @@
                 .board{
                 margin-top: 150px;
                 }
-                #add{
-                background: rgb(254,231,154);
-                border-radius: 5px;
-                border: 1px solid #D69E31;
-                color: #85592e;
-                cursor: pointer;
-                float: right;
 
-                margin-right: 70px;
-                height: 30px;
-                position: relative;
-                width: 80px;
-            }
 
     </style>
 <body id="body-pd">
@@ -353,7 +341,7 @@
             </nav>
         </div>
 	</section>
-        <section id='content'>
+        {{-- <section id='content'>
             <main>
                 <div class="button">
                 <button class="tablinks " onclick="openCheck(event, 'Visual')" id="defaultOpen"><h5 >Visual Damage</h5></button>
@@ -362,7 +350,8 @@
               </div>
             </main>
 
-        </section>
+        </section> --}}
+        <div><h5 >Visual Damage</h5></div>
         <div id="Visual" class="tabcontent">
             <section id="content">
                 <main>
@@ -370,22 +359,14 @@
                         <div class="order">
                             <table class="" >
                                     <thead class=" col-md-1">
-                                        <th style="text-align:;" class="text-primary">S.No</th>
                                         <th style="text-align:center;" class="text-primary">View</th>
-                                        <th style="text-align:center;" class="text-primary">Image</th>
-                                        <th style="text-align:center;" class="text-primary">Feed Back</th>
                                         <th style="text-align:center;" class="text-primary">Action</th>
                                     </thead>
                                     <tbody>
                                         @foreach($visual as $visual)
                                             <tr>
-                                                <td style="text-align:center;">{{$loop->iteration}}</td>
                                                 <td style="text-align:center;">{{$visual->view}}</td>
-                                                <td style="text-align:center;"><img src="{{url('images/'.$visual->image)}}"  width="50px" height="50px" alt=""></td>
-                                                <td style="text-align:center;">{{$visual->feedback}}</td>
-                                                <td style="text-align:center;">
-                                                <a href="/updatevisualcheck/{{$visual->id}}"><i class="fa-solid fa-edit btn btn-primary" ></i></a>
-                                                <a href="/deletevisual/{{$visual->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
+                                                <td style="text-align:center;">{{$visual->action}}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -395,29 +376,18 @@
                 </main>
             </section>
         </div>
+        <div><h5 >Visual Damage</h5></div>
         <div id="Vehicle" class="tabcontent">
             <section id="content">
                 <main>
                     <div class="table-data">
                         <div class="order">
                             <table class="col-md-1">
-                                    <thead class="">
-                                        <th style="text-align:;" class="text-primary">S.No</th>
-                                        <th style="text-align:center;" class="text-primary">View</th>
-                                        <th style="text-align:center;" class="text-primary">Image</th>
-                                        <th style="text-align:center;" class="text-primary">Feed Back</th>
-                                        <th style="text-align:center;" class="text-primary">Action</th>
-                                    </thead>
                                     <tbody>
                                         @foreach($vehicle as $vehicle)
                                          <tr>
-                                            <td style="text-align:center;">{{$loop->iteration}}</td>
                                             <td style="text-align:center;">{{$vehicle->view}}</td>
-                                            <td style="text-align:center;"><img src="{{url('images/'.$vehicle->image)}}"  width="50px" height="50px" alt=""></td>
-                                            <td style="text-align:center;">{{$vehicle->feedback}}</td>
-                                            <td style="text-align:center;">
-                                            <a href="/updatevehiclecheck/{{$vehicle->id}}"><i class="fa-solid fa-edit btn btn-primary" ></i></a>
-                                            <a href="/deletevehicle/{{$vehicle->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
+                                            <td style="text-align:center;">{{$vehicle->action}}</td>
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -427,29 +397,18 @@
                 </main>
             </section>
         </div>
+        <div><h5>Visual Damage</h5></div>
         <div id="Cabin" class="tabcontent">
             <section id="content">
                 <main>
                     <div class="table-data">
                         <div class="order">
                             <table class="col-md-1">
-                                <thead class="">
-                                    <th style="text-align:;" class="text-primary col-md-1">S.No</th>
-                                    <th style="text-align:center;" class="text-primary">View</th>
-                                    <th style="text-align:center;" class="text-primary">Image</th>
-                                    <th style="text-align:center;" class="text-primary">Feed Back</th>
-                                    <th style="text-align:center;" class="text-primary">Action</th>
-                                </thead>
                                     <tbody>
                                         @foreach($cabin as $cabin)
                                             <tr>
-                                                <td style="text-align:center;">{{$loop->iteration}}</td>
                                                 <td style="text-align:center;">{{$cabin->view}}</td>
-                                                <td style="text-align:center;"><img src="{{url('images/'.$cabin->image)}}"  width="50px" height="50px" alt=""></td>
-                                                <td style="text-align:center;">{{$cabin->feedback}}</td>
-                                                <td style="text-align:center;">
-                                                    <a href="/updatecabincheck/{{$cabin->id}}"><i class="fa-solid fa-edit btn btn-primary" ></i></a>
-                                                    <a href="/deletecabin/{{$cabin->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
+                                                <td style="text-align:center;">{{$cabin->action}}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -459,25 +418,7 @@
                 </main>
             </section>
         </div>
-        <div>
-            <a href="/summary/{{$cabin->user_id}}"><input type="submit" value="Summary" class="text-primary" id="add"></a>
-        </div>
         <script>
-        function openCheck(evt,Name) {
-          var i, tabcontent, tablinks;
-          tabcontent = document.getElementsByClassName("tabcontent");
-          for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-          }
-          tablinks = document.getElementsByClassName("tablinks");
-          for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-          }
-          document.getElementById(Name).style.display = "block";
-          evt.currentTarget.className +=" active";
-
-        }
-        document.getElementById("defaultOpen").click();
 
 //sidebar
         document.addEventListener("DOMContentLoaded", function(event) {

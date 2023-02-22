@@ -43,7 +43,6 @@
     }
     #content h3 {
         color: #7E7E7E;
-        /* font: bold 25px Helvetica, Arial, sans-serif; */
         letter-spacing: -0.05em;
         line-height: 20px;
         margin: 10px 0 30px;

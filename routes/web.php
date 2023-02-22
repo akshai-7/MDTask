@@ -47,3 +47,5 @@ Route::get('/deletecabin/{id}',[AdminController::class,'deletecabin']);
 
 Route::get('/allrentallist',[AdminController::class,'allrentallist']);
 
+Route::get('/summary/{user_id}',[AdminController::class,'summary']);
+
