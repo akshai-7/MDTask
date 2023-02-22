@@ -335,4 +335,9 @@ class AdminController extends Controller
             $data1=$data->user_id;
             return redirect('/details/'.$data1);
         }
+        public function allrentallist(){
+            $driver = Driver::with('report')->get();
+            return view('/allrentallist',['driver'=>$driver ]);
+            dd($driver);
+        }
 }

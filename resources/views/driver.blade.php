@@ -162,44 +162,16 @@
         overflow-x: hidden;
         font-family: 'Times New Roman', Times, serif;
     }
-     #sidebar {
-        /* position: fixed; */
-        /* top: 0;
-        left: 0;
-        width: 230px;
-        height: 100%;
-        background: var(--light);
-        z-index: 2000;
-        font-family: var(--lato);
-        transition: .3s ease;
-        overflow-x: hidden;
-        scrollbar-width: none; */
-    }
-    #sidebar .brand {
-        height: 40px;
-        position: fixed;
-        top: 20px;
-        margin-left: 40px;
-    }
-    #sidebar .side-menu li.active::before {
-        content: '';
-        position: absolute;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        top: -40px;
-        right: 0;
-        z-index: -1;
-    }
+
     #content {
         position: relative;
-        width: 85%;
+        /* width: 100%; */
         /* width: calc(100% - 280px); */
-        left: 120px;
+        left: 115px;
         transition: .3s ease;
     }
     #content main {
-        width: 120%;
+        width: 105%;
         /* padding: 36px 24px; */
         font-family: var(--poppins);
         max-height: calc(100vh - 56px);
@@ -231,7 +203,7 @@
 
     }
     #content main .table-data .order table {
-        width: 100%;
+        width:100%;
         border-collapse: collapse;
         margin-top: 30px;
     }
@@ -275,8 +247,8 @@
                 <div>
                     <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">M&D Foundations</span> </a>
                     <div class="nav_list">
-                        <a href="#" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Dashboard</span> </a>
-                        <a href="/driver" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Users</span> </a>
+                        <a href="/user" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Dashboard</span> </a>
+                        <a href="/allrentallist" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Users</span> </a>
                     </div>
                     <a href="/" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">SignOut</span> </a>
                 </div>
@@ -290,29 +262,32 @@
 					<div class="head">
 						<h3 class="text-success">Rental Details</h3>
 					</div>
-                    <table class="" >
+                    <table class="" style="width:1150px">
                         <thead class="text-primary">
-                            <th style="text-align:;">S.No</th>
+                            <th style="text-align:center;" class="">Report</th>
                             <th style="text-align:center;">Driver Name</th>
                             <th style="text-align:center;">Company</th>
                             <th style="text-align:center;">Email</th>
                             <th style="text-align:center;">Phone</th>
-                            <th style="text-align:center;" class="text-primary">Vehicle Number Plate</th>
+                            <th style="text-align:center;" > Number Plate</th>
+                            <th style="text-align:center;">Mileage</th>
                             <th style="text-align:center;">Creation Date</th>
                             <th style="text-align:center;">Action</th>
                         </thead>
                         <tbody>
                             @foreach($driver as $driver)
                                  <tr>
-                                    <td style="text-align:center;">{{$loop->iteration}}</td>
+                                    {{-- <td style="text-align:center;">{{$loop->iteration}}</td> --}}
+                                    <td style="text-align:;">{{$driver->report->report}}</td>
                                     <td style="text-align:center;">{{$driver->drivername}}</td>
                                     <td style="text-align:center;">{{$driver->company}}</td>
                                     <td style="text-align:center;">{{$driver->deliveryemail}}</td>
                                     <td style="text-align:center;">{{$driver->phone}}</td>
                                     <td style="text-align:center;">{{$driver->report->number_plate}}</td>
+                                    <td style="text-align:center;">{{$driver->report->mileage}}Km</td>
                                     <td style="text-align:center;">{{$driver->created_at}}</td>
                                     <td style="text-align:center;">
-                                    <a href="/report/{{$driver->user_id}}"><i class="fa-solid fa-eye btn btn-primary" ></i></a>
+                                    <a href="/details/{{$driver->user_id}}"><i class="fa-solid fa-eye btn btn-primary" ></i></a>
                                     <a href="/createdriver/{{$driver->user_id}}"><i class="fa-solid fa-plus btn btn-secondary"></i></a>
                                     <a href="/remove/{{$driver->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
                                 </tr>

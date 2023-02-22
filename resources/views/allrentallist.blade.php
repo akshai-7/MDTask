@@ -10,6 +10,7 @@
 	<title>M&D Foundations</title>
 </head>
 <style>
+    @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
     :root{--header-height: 3rem;--nav-width: 68px;--first-color: #4723D9;--first-color-light: #AFA5D9;--white-color: #F7F6FB;--body-font: 'Nunito', sans-serif;--normal-font-size: 1rem;--z-fixed: 100}*,::before,::after{box-sizing: border-box}
     body{
         position: relative;
@@ -161,44 +162,16 @@
         overflow-x: hidden;
         font-family: 'Times New Roman', Times, serif;
     }
-     #sidebar {
-        /* position: fixed; */
-        /* top: 0;
-        left: 0;
-        width: 230px;
-        height: 100%;
-        background: var(--light);
-        z-index: 2000;
-        font-family: var(--lato);
-        transition: .3s ease;
-        overflow-x: hidden;
-        scrollbar-width: none; */
-    }
-    /* #sidebar .brand {
-        height: 40px;
-        position: fixed;
-        top: 20px;
-        margin-left: 40px;
-    }
-    #sidebar .side-menu li.active::before {
-        content: '';
-        position: absolute;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        top: -40px;
-        right: 0;
-        z-index: -1;
-    } */
+
     #content {
         position: relative;
-        width: 85%;
+        /* width: 100%; */
         /* width: calc(100% - 280px); */
-        left: 120px;
+        left: 115px;
         transition: .3s ease;
     }
     #content main {
-        width: 120%;
+        width: 105%;
         /* padding: 36px 24px; */
         font-family: var(--poppins);
         max-height: calc(100vh - 56px);
@@ -230,7 +203,7 @@
 
     }
     #content main .table-data .order table {
-        width: 100%;
+        width:100%;
         border-collapse: collapse;
         margin-top: 30px;
     }
@@ -264,7 +237,7 @@
 
 </style>
 <body id="body-pd">
-	<section id="sidebar">
+    <section id="sidebar">
         <header class="header" id="header">
             <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
             <div class="header_img"> <img src="{{url('img/m-d-foundation.png')}}" alt=""> </div>
@@ -274,8 +247,8 @@
                 <div>
                     <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">M&D Foundations</span> </a>
                     <div class="nav_list">
-                        <a href="/user" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Dashboard</span> </a>
-                        <a href="/allrentallistr" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Users</span> </a>
+                        <a href="/user" class="nav_link "> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Dashboard</span> </a>
+                        <a href="#" class="nav_link active"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Users</span> </a>
                     </div>
                     <a href="/" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">SignOut</span> </a>
                 </div>
@@ -287,34 +260,41 @@
 			<div class="table-data">
 				<div class="order">
 					<div class="head">
-						<h3 class="text-success">User Details</h3>
+						<h3 class="text-success">Rental Details</h3>
 					</div>
-                    <form action="/updateuserdetails/{id}" method="POST" autocomplete="off">
-                        @csrf
-                        <table class="" style="width:1100px">
-                            <thead class="">
-                                <th style="text-align:center;" class="col-md-1 text-primary">ID</th>
-                                <th style="text-align:center;" class="col-md-1 text-primary" >Name</th>
-                                <th style="text-align:center;" class="col-md-2 text-primary">Email</th>
-                                <th style="text-align:center;" class="col-md-2 text-primary">Role</th>
-                                <th style="text-align:center;" class="col-md-3 text-primary">Creation Date </th>
-                                <th style="text-align:center;" class="col-md-2 text-primary">Action</th>
-                            </thead>
-                            <tbody>
-                                @foreach($user as $users)
-                                    <tr>
-                                        <td style="text-align:center;"><input type="text"  class="form-control"   name="id" value="{{$users->id}}"></td>
-                                        <td style="text-align:center;"><input type="text"  class="form-control"   name="name" value="{{$users->name}}"></td>
-                                        <td style="text-align:center;"><input type="text" class="form-control"   name="email" value="{{$users->email}}"></td>
-                                        <td style="text-align:center;"><input type="text" class="form-control"   name="role" value="{{$users->role}}"></td>
-                                        <td style="text-align:center;"><input type="text"  class="form-control"  name="date" value="{{$users->created_at}}"></td>
-                                        <td style="text-align:center;"><a href="/user"><input type="submit" name="submit" value="Submit" class="btn btn-primary"></a>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </form>
+                    <table class="table table-bordered" style="width:1250px">
+                        <thead class="text-primary">
+                            <th style="text-align:center;" class="">S.No</th>
+                            <th style="text-align:center;" class="">Report</th>
+                            <th style="text-align:center;">Driver Name</th>
+                            <th style="text-align:center;">Company</th>
+                            <th style="text-align:center;">Email</th>
+                            <th style="text-align:center;">Phone</th>
+                            <th style="text-align:center;" > Number Plate</th>
+                            <th style="text-align:center;">Mileage</th>
+                            <th style="text-align:center;">Creation Date</th>
+                            <th style="text-align:center;">Action</th>
+                        </thead>
+                        <tbody>
+                            @foreach($driver as $driver)
+                                 <tr>
+                                    <td style="text-align:center;">{{$loop->iteration}}</td>
+                                    <td style="text-align:center;">{{$driver->report->report}}</td>
+                                    <td style="text-align:center;">{{$driver->drivername}}</td>
+                                    <td style="text-align:center;">{{$driver->company}}</td>
+                                    <td style="text-align:center;">{{$driver->deliveryemail}}</td>
+                                    <td style="text-align:center;">{{$driver->phone}}</td>
+                                    <td style="text-align:center;">{{$driver->report->number_plate}}</td>
+                                    <td style="text-align:center;">{{$driver->report->mileage}}Km</td>
+                                    <td style="text-align:center;">{{$driver->created_at}}</td>
+                                    <td style="text-align:center;">
+                                    <a href="/details/{{$driver->user_id}}"><i class="fa-solid fa-eye btn btn-primary" ></i></a>
+                                    {{-- <a href="/createdriver/{{$driver->user_id}}"><i class="fa-solid fa-plus btn btn-secondary"></i></a> --}}
+                                    <a href="/remove/{{$driver->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
 				</div>
 			</div>
 		</main>

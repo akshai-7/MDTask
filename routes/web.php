@@ -45,5 +45,5 @@ Route::get('/updatecabincheck/{id}',[AdminController::class,'updatecabincheck'])
 Route::post('/cabinupdate/{user_id}',[AdminController::class,'cabinupdate']);
 Route::get('/deletecabin/{id}',[AdminController::class,'deletecabin']);
 
-
+Route::get('/allrentallist',[AdminController::class,'allrentallist']);
 
