@@ -38,7 +38,7 @@ class AdminController extends Controller
             return view('/createuser');
         }
         public function createuser(Request $request){
-            return view('/createdriver');
+
             $validator = Validator::make($request->all(),[
                 'name'=>'required',
                 'email'=>'required|email',
@@ -124,7 +124,6 @@ class AdminController extends Controller
                 return response()->json(['message'=>'Validator error'],401);
             }else{
             $user_id=Auth::id();
-            dd($user_id);
             $data = new Driver();
             $data->user_id =1;
             $data->drivername=$request['drivername'];
@@ -251,7 +250,7 @@ class AdminController extends Controller
                         if($request->hasfile('image')){
                             $image =$request->file('image');
                             $time = time().'.'.$image->getClientOriginalExtension();
-                            $location = public_path('public/images'.$time);
+                            $location = public_path('images'.$time);
                             Vehicle::make($image)->resize(300, 300)->save($location);
                         }
                 $vehicle->feedback=$request['feedback'];
@@ -259,8 +258,10 @@ class AdminController extends Controller
                 return redirect('/details/'.$data1->id);
         }
         public function deletevehicle($id){
-            Vehicle::find($id)->delete();
-            // return view('/user');
+            $user=Vehicle::find($id);
+            $user->delete();
+            $user1=$user->user_id;
+            return redirect('/details/'.$user1);
         }
         public function updatevisualcheck($id){
                 $visual = Visual::where('id',$id)->get();
@@ -299,10 +300,11 @@ class AdminController extends Controller
                 return redirect('/details/'.$data1->id);
         }
         public function deletevisual($id){
-                   $user= Visual::find($id);
-                   $user->delete();
-                    // return view('/user');
-        }
+                    $user= Visual::find($id);
+                    $user->delete();
+                    $data=$user->user_id;
+                    return redirect('/details/'.$data);
+                }
         public function updatecabincheck($id){
                 $cabin = Cabin::where('id',$id)->get();
                 return view('/updatecabincheck',['cabin'=>$cabin ]);
@@ -340,8 +342,12 @@ class AdminController extends Controller
                 return redirect('/details/'.$data1->id);
             }
             public function deletecabin($id){
-                Cabin::find($id)->delete($id);
-                // return view('/user');
+                $data=Cabin::find($id);
+                $data->delete($id);
+                $data1=$data->user_id;
+                return redirect('/details/'.$data1);
+            }
+            public function retallist(){
             }
 
 

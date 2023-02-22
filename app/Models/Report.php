@@ -15,6 +15,6 @@ class Report extends Model
     }
     public function driver()
     {
-        return $this->belongsTo(Driver::class,'user_id');
+        return $this->belongsTo(Driver::class,'user_id','user_id');
     }
 }

@@ -11,14 +11,14 @@
 	<title>M&D Foundations</title>
 </head>
 <style>
-            @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
             :root{--header-height: 3rem;--nav-width: 68px;--first-color: #4723D9;--first-color-light: #AFA5D9;--white-color: #F7F6FB;--body-font: 'Nunito', sans-serif;--normal-font-size: 1rem;--z-fixed: 100}*,::before,::after{box-sizing: border-box}
             body{
                 position: relative;
                 margin: var(--header-height) 0 0 0;
-                padding: 0 1rem;font-family:
-                var(--body-font);font-size:
-                var(--normal-font-size);
+                padding: 0 1rem;
+                font-family:
+                var(--body-font);
+                font-size:var(--normal-font-size);
                 transition: .5s
             }
             a{text-decoration: none}
@@ -163,35 +163,7 @@
                 overflow-x: hidden;
                 font-family: 'Times New Roman', Times, serif;
             }
-             #sidebar {
-                /* position: fixed; */
-                /* top: 0;
-                left: 0;
-                width: 230px;
-                height: 100%;
-                background: var(--light);
-                z-index: 2000;
-                font-family: var(--lato);
-                transition: .3s ease;
-                overflow-x: hidden;
-                scrollbar-width: none; */
-            }
-            #sidebar .brand {
-                height: 40px;
-                position: fixed;
-                top: 20px;
-                margin-left: 40px;
-            }
-            #sidebar .side-menu li.active::before {
-                content: '';
-                position: absolute;
-                width: 40px;
-                height: 40px;
-                border-radius: 50%;
-                top: -40px;
-                right: 0;
-                z-index: -1;
-            }
+
             #content {
                 position: relative;
                 width: 85%;
@@ -269,7 +241,7 @@
 	<section id="sidebar">
      <header class="header" id="header">
         <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
-        <div class="header_img"> <img src="{{('img/m-d-foundation.png')}}" alt=""> </div>
+        <div class="header_img"> <img src="{{url('img/m-d-foundation.png')}}" alt=""> </div>
     </header>
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
@@ -316,6 +288,7 @@
                                     <td style="text-align:center;">
                                     <a href="/driver/{{$user->id}}" ><i class="fa-solid fa-eye btn btn-primary" ></i></a>
                                     <a href="/updateuser/{{$user->id}}" ><i class="fa-solid fa-edit btn btn-success" ></i></i></a>
+                                    <a href="/createdriver/{{$user->id}}"><i class="fa-solid fa-plus btn btn-secondary"></i></a>
                                     <a href="/delete/{{$user->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
                                 </tr>
                             @endforeach

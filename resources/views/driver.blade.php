@@ -269,12 +269,12 @@
     <section id="sidebar">
         <header class="header" id="header">
             <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
-            <div class="header_img"> <img src="{{('img/m-d-foundation.png')}}" alt=""> </div>
+            <div class="header_img"> <img src="{{url('img/m-d-foundation.png')}}" alt=""> </div>
         </header>
         <div class="l-navbar" id="nav-bar">
             <nav class="nav">
                 <div> <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">M&D Foundations</span> </a>
-                    <div class="nav_list"> <a href="#" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Dashboard</span> </a>
+                    <div class="nav_list"> <a href="/user" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Dashboard</span> </a>
                         <a href="/driver" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Users</span> </a>
                         {{-- <a href="#" class="nav_link"> <i class='bx bx-message-square-detail nav_icon'></i> <span class="nav_name">Messages</span> </a>
                          <a href="#" class="nav_link"> <i class='bx bx-bookmark nav_icon'></i> <span class="nav_name">Bookmark</span> </a>
@@ -307,7 +307,7 @@
                             <th style="text-align:center;">Company</th>
                             <th style="text-align:center;">Email</th>
                             <th style="text-align:center;">Phone</th>
-                            <th style="text-align:center;" class="text-primary">Number Plate</th>
+                            <th style="text-align:center;" class="text-primary">Vehicle Number Plate</th>
                             <th style="text-align:center;">Creation Date</th>
                             <th style="text-align:center;">Action</th>
 
@@ -325,7 +325,7 @@
                                     <td style="text-align:center;">{{$driver->created_at}}</td>
                                     <td style="text-align:center;">
                                     <a href="/report/{{$driver->user_id}}"><i class="fa-solid fa-eye btn btn-primary" ></i></a>
-                                    <a href="/createdriver/{{$driver->user_id}}"><i class="fa-solid fa-plus btn btn-success"></i></a>
+                                    <a href="/createdriver/{{$driver->user_id}}"><i class="fa-solid fa-plus btn btn-secondary"></i></a>
                                     <a href="/remove/{{$driver->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
                                 </tr>
                             @endforeach

@@ -144,7 +144,7 @@
         <section id="content">
             <form action="/user" method="POST" autocomplete="off">
                 @csrf
-                <h5 class="text-pink"> M&D Fundations </h5>
+                {{-- <h5 class="text-pink"> M&D Fundations </h5> --}}
                 <h5 class="text-primary">Login Form</h5>
                 <div>
                     <input type="text" placeholder="Enter Email" required name="email" />

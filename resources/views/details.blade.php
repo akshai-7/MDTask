@@ -216,35 +216,7 @@
                     grid-gap: 10px;
                     font-weight: 500;
                 }
-                #content main .box-info {
-                    display: grid;
-                    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-                    grid-gap: 24px;
-                    margin-top: 36px;
-                }
-                #content main .box-info li {
-                    padding: 24px;
-                    /* background: var(--light); */
-                    border-radius: 3px;
-                    display: flex;
-                    align-items: center;
-                    grid-gap: 24px;
-                }
-                #content main .box-info li .bx {
-                    width: 80px;
-                    height: 80px;
-                    border-radius: 10px;
-                    font-size: 36px;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                }
 
-                #content main .box-info li .text h3 {
-                    font-size: 24px;
-                    font-weight: 600;
-                    color: var(--dark);
-                }
 
                 #content main .table-data {
                     display: flex;
@@ -324,7 +296,6 @@
                     margin-top: 60px;
                 }
                 .tablinks{
-
                     padding: 5px 5px;
                     border: none;
                     border-radius: 4px;
@@ -354,12 +325,12 @@
 	<section id="sidebar">
         <header class="header" id="header">
             <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
-            <div class="header_img"> <img src="{{('img/m-d-foundation.png')}}" alt=""> </div>
+            <div class="header_img"> <img src="{{url('img/m-d-foundation.png')}}" alt=""> </div>
         </header>
         <div class="l-navbar" id="nav-bar">
             <nav class="nav">
                 <div> <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">M&D Foundations</span> </a>
-                    <div class="nav_list"> <a href="#" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Dashboard</span> </a>
+                    <div class="nav_list"> <a href="/user" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Dashboard</span> </a>
                         <a href="/driver" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Users</span> </a>
                         {{-- <a href="#" class="nav_link"> <i class='bx bx-message-square-detail nav_icon'></i> <span class="nav_name">Messages</span> </a>
                          <a href="#" class="nav_link"> <i class='bx bx-bookmark nav_icon'></i> <span class="nav_name">Bookmark</span> </a>
@@ -377,9 +348,9 @@
                     </div>
                 </div>
                 <div class="button">
-                <button class="tablinks " onclick="openCheck(event, 'Visual')" id="defaultOpen"><h5 >Visual Check</h5></button>
+                <button class="tablinks " onclick="openCheck(event, 'Visual')" id="defaultOpen"><h5 >Visual Damage</h5></button>
                 <button class="tablinks" onclick="openCheck(event, 'Vehicle')"><h5 >Vehicle Check</h5></button>
-                <button class="tablinks" onclick="openCheck(event,'Cabin')"><h5 >Cabin Check</h5></button>
+                <button class="tablinks" onclick="openCheck(event,'Cabin')"><h5 >Cabin Checks</h5></button>
               </div>
             </main>
         </section>
@@ -389,7 +360,7 @@
                 <main>
                     <div class="table-data">
                         <div class="order">
-                            <table class="" style="width:1000px">
+                            <table class="" >
                                     <thead class=" col-md-1">
                                         <th style="text-align:;" class="text-primary">S.No</th>
                                         <th style="text-align:center;" class="text-primary">View</th>
@@ -422,7 +393,7 @@
                 <main>
                     <div class="table-data">
                         <div class="order">
-                            <table class="col-md-1" style="width:1000px">
+                            <table class="col-md-1">
                                     <thead class="">
                                         <th style="text-align:;" class="text-primary">S.No</th>
                                         <th style="text-align:center;" class="text-primary">View</th>
@@ -455,7 +426,7 @@
                 <main>
                     <div class="table-data">
                         <div class="order">
-                            <table class="col-md-1" style="width:1000px">
+                            <table class="col-md-1">
                                 <thead class="">
                                     <th style="text-align:;" class="text-primary col-md-1">S.No</th>
                                     <th style="text-align:center;" class="text-primary">View</th>
