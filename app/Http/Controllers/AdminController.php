@@ -190,7 +190,8 @@ class AdminController extends Controller
         public function remove($id){
             $driver=Driver::find($id);
             $driver->delete();
-            return view('/driver');
+            $driver1=$driver->user_id;
+            return view('/driver/'.$driver1);
         }
         public function reportlist($user_id){
             $report = Report::where('user_id',$user_id)->get();

@@ -10,7 +10,6 @@
 	<title>M&D Foundations</title>
 </head>
     <style>
-                 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
             :root{--header-height: 3rem;--nav-width: 68px;--first-color: #4723D9;--first-color-light: #AFA5D9;--white-color: #F7F6FB;--body-font: 'Nunito', sans-serif;--normal-font-size: 1rem;--z-fixed: 100}*,::before,::after{box-sizing: border-box}
             body{
                 position: relative;
@@ -114,9 +113,7 @@
                 height: 32px;
                 background-color: var(--white-color)
             }
-            /* .height-100{
-                height:100vh
-            } */
+
             @media screen and (min-width: 768px){body{margin: calc(var(--header-height) + 1rem) 0 0 0;padding-left: calc(var(--nav-width) + 2rem)}
             .header{height: calc(var(--header-height) + 1rem);padding: 0 2rem 0 calc(var(--nav-width) + 2rem)}
             .header_img{width: 40px;height: 40px}
@@ -133,8 +130,7 @@
             }
 
             :root {
-                /* --poppins: 'Poppins', sans-serif; */
-                /* --lato: 'Lato', sans-serif; */
+
                 --light: #F9F9F9;
                 --blue: #3C91E6;
                 --light-blue: #CFE8FF;
@@ -169,82 +165,16 @@
                 }
             /* MAIN */
                 #content main {
-                    width: 100%;
-                    padding: 36px 24px;
-                    font-family: var(--poppins);
-                    max-height: calc(100vh - 56px);
-                    overflow-y: auto;
-                }
-                #content main .head-title {
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    grid-gap: 16px;
-                    flex-wrap: wrap;
-                }
-                #content main .head-title .left h1 {
-                    font-size: 36px;
-                    font-weight: 600;
-                    margin-bottom: 10px;
-                    color: var(--dark);
-                }
-                #content main .head-title .left .breadcrumb {
-                    display: flex;
-                    align-items: center;
-                    grid-gap: 16px;
-                }
-                #content main .head-title .left .breadcrumb li {
-                    color: var(--dark);
-                }
-                #content main .head-title .left .breadcrumb li a {
-                    color: var(--dark-grey);
-                    pointer-events: none;
-                }
-                #content main .head-title .left .breadcrumb li a.active {
-                    color: var(--blue);
-                    pointer-events: unset;
-                }
-                #content main .head-title .btn-download {
-                    height: 36px;
-                    padding: 0 16px;
-                    border-radius: 3px;
-                    background: var(--blue);
-                    color: var(--light);
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    grid-gap: 10px;
-                    font-weight: 500;
-                }
+                    width: 70%;
+                    margin-left: 200px;
+                    /* margin-top: 100px; */
 
-
-                #content main .table-data {
-                    display: flex;
-                    flex-wrap: wrap;
-                    grid-gap: 24px;
-                    margin-top: -30px;
-                    width: 100%;
-                    color: var(--dark);
                 }
                 #content main .table-data > div {
-                    border-radius: 4px;
+                    border-radius:  0;
                     background: var(--light);
-                    padding: 24px;
+                    padding: 14px;
                     overflow-x: auto;
-                }
-                #content main .table-data .head {
-                    display: flex;
-                    align-items: center;
-                    grid-gap: 16px;
-                    margin-bottom: 24px;
-                }
-                #content main .table-data .head h3 {
-                    margin-right: auto;
-                    font-size: 20px;
-                    font-weight: 600;
-                }
-                #content main .table-data .head .bx {
-                    cursor: pointer;
                 }
 
                 #content main .table-data .order {
@@ -258,24 +188,10 @@
                 #content main .table-data .order table th {
                     padding-bottom: 12px;
                     font-size: 17px;
-                    text-align: left;
-                    border-bottom: 1px solid var(--grey);
+                    border-bottom: 2px solid var(--grey);
                 }
                 #content main .table-data .order table td {
-                    padding: 16px 0;
-                }
-                #content main .table-data .order table tr td:first-child {
-                    display: flex;
-                    align-items: center;
-                    grid-gap: 12px;
-                    padding-left: 6px;
-                }
-                #content main .table-data .order table td img
-                {
-                    width: 36px;
-                    height: 36px;
-                    border-radius: 50%;
-                    object-fit: cover;
+                    padding: 16px 5px;
                 }
                 #content main .table-data .order table tbody tr:hover {
                     background: var(--grey);
@@ -287,39 +203,18 @@
                     border-radius: 20px;
                     font-weight: 700;
                 }
-                button{
-                    color:	#228B22;
-                    padding: 20px;
-                }
-                .button{
-                    margin-right: 600px;
-                    margin-top: 60px;
-                }
-                .tablinks{
-                    padding: 5px 5px;
-                    border: none;
-                    border-radius: 4px;
-                    outline: none;
-                    cursor: pointer;
-                    transition: 0.2s;
-                    overflow: hidden;
-                }
+
                  button.active {
                 /* background-color:#0d6efd; */
-                color: #0d6efd;
+                    color: #0d6efd;
                 }
-
-                .btnid{
-                    display: flex;
+                .first{
+                    margin-top: 40px;
                 }
-
-                .log{
-                margin-top: 20px;
+                .print{
+                    margin-top: 40px;
+                    margin-left: 1150px;
                 }
-                .board{
-                margin-top: 150px;
-                }
-
 
     </style>
 <body id="body-pd">
@@ -341,32 +236,28 @@
             </nav>
         </div>
 	</section>
-        {{-- <section id='content'>
-            <main>
-                <div class="button">
-                <button class="tablinks " onclick="openCheck(event, 'Visual')" id="defaultOpen"><h5 >Visual Damage</h5></button>
-                <button class="tablinks" onclick="openCheck(event, 'Vehicle')"><h5 >Vehicle Check</h5></button>
-                <button class="tablinks" onclick="openCheck(event,'Cabin')"><h5 >Cabin Checks</h5></button>
-              </div>
-            </main>
+    <h3>Summary</h3>
+            <div class="print">
+                <a href="/"><i class="fa-solid fa-print btn btn-danger"></i></a>
+                <a href="/"><i class="fa-solid fa-edit btn btn-secondary"></i></a>
 
-        </section> --}}
-        <div><h5 >Visual Damage</h5></div>
-        <div id="Visual" class="tabcontent">
-            <section id="content">
+            </div>
+            <div id="Visual" class="tabcontent">
+            <section id="content" class="first" >
                 <main>
                     <div class="table-data">
                         <div class="order">
-                            <table class="" >
+                            <table class="table table-bordered">
+                                <div class="check"><h5 class="text-secondary" >Visual Damage</h5></div>
                                     <thead class=" col-md-1">
-                                        <th style="text-align:center;" class="text-primary">View</th>
-                                        <th style="text-align:center;" class="text-primary">Action</th>
+                                        <th style="text-align:center;" class="text-primary col-md-2">View</th>
+                                        <th style="text-align:center;" class="text-primary col-md-2">Action</th>
                                     </thead>
                                     <tbody>
                                         @foreach($visual as $visual)
                                             <tr>
-                                                <td style="text-align:center;">{{$visual->view}}</td>
-                                                <td style="text-align:center;">{{$visual->action}}</td>
+                                                <td style="text-align:center;" class="col-md-2">{{$visual->view}}</td>
+                                                <td style="text-align:center;" class="col-md-2">{{$visual->action}}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -376,19 +267,19 @@
                 </main>
             </section>
         </div>
-        <div><h5 >Visual Damage</h5></div>
         <div id="Vehicle" class="tabcontent">
             <section id="content">
                 <main>
                     <div class="table-data">
                         <div class="order">
-                            <table class="col-md-1">
+                            <table class="table table-bordered" >
+                                <div class="check"><h5 class="text-secondary">Vehicle Check</h5></div>
                                     <tbody>
                                         @foreach($vehicle as $vehicle)
-                                         <tr>
-                                            <td style="text-align:center;">{{$vehicle->view}}</td>
-                                            <td style="text-align:center;">{{$vehicle->action}}</td>
-                                        </tr>
+                                            <tr>
+                                                <td style="text-align:center;" class="col-md-2">{{$vehicle->view}}</td>
+                                                <td style="text-align:center;" class="col-md-2">{{$vehicle->action}}</td>
+                                            </tr>
                                         @endforeach
                                     </tbody>
                             </table>
@@ -397,18 +288,19 @@
                 </main>
             </section>
         </div>
-        <div><h5>Visual Damage</h5></div>
+
         <div id="Cabin" class="tabcontent">
             <section id="content">
                 <main>
                     <div class="table-data">
                         <div class="order">
-                            <table class="col-md-1">
+                            <table class="table table-bordered">
+                                <div class="check"><h5 class="text-secondary">Cabin Check</h5></div>
                                     <tbody>
                                         @foreach($cabin as $cabin)
                                             <tr>
-                                                <td style="text-align:center;">{{$cabin->view}}</td>
-                                                <td style="text-align:center;">{{$cabin->action}}</td>
+                                                <td style="text-align:center;" class="col-md-2">{{$cabin->view}}</td>
+                                                <td style="text-align:center;" class="col-md-2">{{$cabin->action}}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -419,8 +311,7 @@
             </section>
         </div>
         <script>
-
-//sidebar
+    //sidebar
         document.addEventListener("DOMContentLoaded", function(event) {
         const showNavbar = (toggleId, navId, bodyId, headerId) =>{
         const toggle = document.getElementById(toggleId),

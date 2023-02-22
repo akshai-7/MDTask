@@ -168,7 +168,7 @@ class ApiController extends Controller
                         $upload_image =$request->file('upload_image');
                         $filename = time().'.'.$upload_image->getClientOriginalExtension();
                         $location = public_path('public/images'.$filename);
-                        Report::make($upload_image)->resize(300, 300)->save($location);
+                        // Report::make($upload_image)->resize(300, 300)->save($location);
                     }
                 $user->report =$request['report'];
                 $user->date =$request['date'];
@@ -279,7 +279,7 @@ class ApiController extends Controller
                             $image =$request->file('image');
                             $time = time().'.'.$image->getClientOriginalExtension();
                             $location=public_path('public/images'.$time);
-                            Visual::make($image)->resize(300, 300)->save($location);
+                            // Visual::make($image)->resize(300, 300)->save($location);
                         }
                 $data->feedback=$request['feedback'];
                 $data->action=$request['action'];
@@ -360,11 +360,11 @@ class ApiController extends Controller
     //vehiclechecks:
             public function vehiclechecks(Request $request){
                 $validator = Validator::make($request->all(),[
-                    'view'=>'required',
-                    'image'=>'required',
-                    'feedback'=>'required',
-                    'action'=>'required',
-                    'notes'=>'required',
+                    // 'view'=>'required',
+                    // 'image'=>'required',
+                    // 'feedback'=>'required',
+                    // 'action'=>'required',
+                    // 'notes'=>'required',
                 ]);
                 if($validator->fails()){
                     return response()->json(['message'=>'Validator error'],401);
@@ -382,7 +382,7 @@ class ApiController extends Controller
                             $image =$request->file('image');
                             $time = time().'.'.$image->getClientOriginalExtension();
                             $location = public_path('/images'.$time);
-                            Vehicle::make($image)->resize(300, 300)->save($location);
+                            // Vehicle::make($image)->resize(300, 300)->save($location);
                         }
                 $user->feedback=$request['feedback'];
                 $user->action=$request['action'];
@@ -411,11 +411,11 @@ class ApiController extends Controller
         //updatevehiclechecks:
             public function updatevehiclechecks(Request $request,$vehicle_id){
                 $validator = Validator::make($request->all(),[
-                    'view'=>'required',
-                    'image'=>'required',
-                    'feedback'=>'required',
-                    'action'=>'required',
-                    'notes'=>'required',
+                    // 'view'=>'required',
+                    // 'image'=>'required',
+                    // 'feedback'=>'required',
+                    // 'action'=>'required',
+                    // 'notes'=>'required',
                 ]);
                 if ($validator->fails()){
                     return response()->json(['message'=>'Validator error'],401);
@@ -438,7 +438,7 @@ class ApiController extends Controller
                             $image =$request->file('image');
                             $time = time().'.'.$image->getClientOriginalExtension();
                             $location = public_path('/images'.$time);
-                            Vehicle::make($image)->resize(300, 300)->save($location);
+                            // Vehicle::make($image)->resize(300, 300)->save($location);
                         }
                 $user->feedback=$request['feedback'];
                 $user->action=$request['action'];
@@ -489,7 +489,7 @@ class ApiController extends Controller
                             $image =$request->file('image');
                             $time = time().'.'.$image->getClientOriginalExtension();
                             $location = public_path('/images'.$time);
-                            Cabin::make($image)->resize(300, 300)->save($location);
+                            // Cabin::make($image)->resize(300, 300)->save($location);
                         }
                 $data->feedback=$request['feedback'];
                 $data->action=$request['action'];
@@ -544,7 +544,7 @@ class ApiController extends Controller
                             $image =$request->file('image');
                             $time = time().'.'.$image->getClientOriginalExtension();
                             $location = public_path('/images'.$time);
-                            Cabin::make($image)->resize(300, 300)->save($location);
+                            // Cabin::make($image)->resize(300, 300)->save($location);
                         }
                 $data->feedback=$request['feedback'];
                 $data->action=$request['action'];
