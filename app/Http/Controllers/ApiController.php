@@ -569,4 +569,5 @@ class ApiController extends Controller
                 $user->delete();
                 return response()->json(['message'=>'Deleted'],200);
             }
+
 }

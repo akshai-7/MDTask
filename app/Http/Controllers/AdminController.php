@@ -94,24 +94,25 @@ class AdminController extends Controller
         }
         public function store(Request $request){
             $validator = Validator::make($request->all(),[
-                'drivername'=>'required',
-                'company'=>'required',
-                'deliveryemail'=>'required',
-                'phone'=>'required',
-                'date_of_incident'=>'required',
-                'location'=>'required',
-                'witnessed_by'=>'required',
-                'phone_number_of_witness'=>'required',
-                'brief_statement'=>'required',
-                'upload_image'=>'required',
-                'report'=>'required',
-                'date'=>'required',
-                'number_plate'=>'required',
-                'mileage'=>'required',
-                'view'=>'required',
-                'image'=>'required',
-                'feedback'=>'required',
-                'action'=>'required'
+                // 'drivername'=>'required',
+                // 'company'=>'required',
+                // 'deliveryemail'=>'required',
+                // 'phone'=>'required',
+                // 'date_of_incident'=>'required',
+                // 'location'=>'required',
+                // 'witnessed_by'=>'required',
+                // 'phone_number_of_witness'=>'required',
+                // 'brief_statement'=>'required',
+                // 'upload_image'=>'required',
+                // 'report'=>'required',
+                // 'date'=>'required',
+                // 'number_plate'=>'required',
+                // 'mileage'=>'required',
+                // 'view'=>'required',
+                // 'image'=>'required',
+                // 'feedback'=>'required',
+                // 'action'=>'required',
+                // 'notes'=>'required',
             ]);
             if ($validator->fails()){
                 return response()->json(['message'=>'Validator error'],401);
@@ -126,7 +127,7 @@ class AdminController extends Controller
             $data->save();
 
             $user = new Report();
-            $user->user_id=1;
+            $user->user_id=$user_id;
             $user->date_of_incident =$request['date_of_incident'];
             $user->location =$request['location'];
             $user->witnessed_by =$request['witnessed_by'];
@@ -173,6 +174,7 @@ class AdminController extends Controller
                 }
 
             $data4= $request->all();
+            // dd($data4);
             foreach($data4['view'] as $list =>$value){
                 $data5=array(
                 'user_id'=>$request->user_id,
@@ -257,9 +259,9 @@ class AdminController extends Controller
         }
         public function vehicleupdate(Request $request,$user_id){
             $validator = Validator::make($request->all(),[
-                'view'=>'required',
-                'image'=>'required',
-                'feedback'=>'required',
+                // 'view'=>'required',
+                // 'image'=>'required',
+                // 'feedback'=>'required',
             ]);
             if ($validator->fails()){
                 return response()->json(['message'=>'Validator error'],401);
@@ -277,9 +279,12 @@ class AdminController extends Controller
             $vehicle= Vehicle::where('user_id',$data1->id)->where('id',$data3->id)->first();
             $vehicle->view=$request['view'];
             $vehicle->image =$request['image'];
-                    if($request->hasfile('image')){
+                    if($request->image)
+                    dd($request->image);
+                    {
                         $image =$request->file('image');
-                        $time = time().'.'.$image->getClientOriginalExtension();
+                        dd($image);
+                        $time = time().'.'.$image->getClientOriginalName();
                         $location = public_path('images'.$time);
                         Vehicle::make($image)->resize(300, 300)->save($location);
                     }
@@ -353,5 +358,8 @@ class AdminController extends Controller
             $cabin= Cabin::get();
             $pdf = Pdf::loadView('pdf.userpdf',['cabin'=>$cabin,'visual'=>$visual,'vehicle'=>$vehicle]);
             return $pdf->download('userpdf.pdf');
+        }
+        public function edit($user_id){
+            return redirect('/details/'.$user_id);
         }
 }

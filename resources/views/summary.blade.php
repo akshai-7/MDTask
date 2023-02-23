@@ -165,7 +165,7 @@
                 }
             /* MAIN */
                 #content main {
-                    width: 70%;
+                    width: 90%;
                     margin-left: 100px;
                     /* margin-top: 100px; */
 
@@ -212,8 +212,9 @@
                     margin-top: 20px;
                 }
                 .print{
-                    margin-top: 40px;
-                    margin-left: 1150px;
+                    margin-top: 70px;
+                    margin-bottom: 30px;
+                    margin-left: 1050px;
                 }
 
     </style>
@@ -236,12 +237,8 @@
             </nav>
         </div>
 	</section>
-            <h3>Summary</h3>
-            <div class="print">
-                <a href="/pdf"><i class="fa-solid fa-print btn btn-danger"></i></a>
-                <a href="/"><i class="fa-solid fa-edit btn btn-secondary"></i></a>
+            <h3> Report Summary</h3>
 
-            </div>
             <div id="Visual" class="tabcontent">
             <section id="content" class="first" >
                 <main>
@@ -309,6 +306,10 @@
                     </div>
                 </main>
             </section>
+        </div>
+        <div class="print">
+            <a href="/pdf"><i class="fa-solid fa-print btn btn-danger"></i></a>
+            <a href="/edit/{{$cabin->user_id}}"><i class="fa-solid fa-edit btn btn-secondary"></i></a>
         </div>
         <script>
     //sidebar

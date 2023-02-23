@@ -494,7 +494,7 @@
                                             <td><input type="text"  name="action2[]"  class="form-control action border-0" style="text-align:center;" id='action'></td>
                                         </tr>
                                         <tr class="list">
-                                            <td class="col-md-1"><input type="text"  name="sno[]"    class="form-control col-md-1 border-0" style="text-align:center;" value="5" id="sno"></td>
+                                            <td class="col-md-1"><input type="text"  name="sno[]"    class="form-control col-md-1 border-0" style="text-align:center;" value="1" id="sno"></td>
                                             <td><input type="text"  name="view2[]"   class="form-control view border-0" style="text-align:center;" id='view' value="Breakes inc.ABS/EBS"></td>
                                             <td><input type="file"  name="image2[]"  class="form-control image border-0" style="text-align:center;" id='image'></td>
                                             <td><input type="text"  name="feedback2[]"  class="form-control feedback border-0" style="text-align:center;" id='feedback'></td>
@@ -502,7 +502,7 @@
                                             <td><input type="text"  name="action2[]"  class="form-control action border-0" style="text-align:center;" id='action'></td>
                                         </tr>
                                         <tr class="list">
-                                            <td class="col-md-1"><input type="text"  name="sno[]"    class="form-control col-md-1 border-0" style="text-align:center;" value="6" id="sno"></td>
+                                            <td class="col-md-1"><input type="text"  name="sno[]"    class="form-control col-md-1 border-0" style="text-align:center;" value="2" id="sno"></td>
                                             <td><input type="text"  name="view2[]"   class="form-control view border-0" style="text-align:center;" id='view' value="Mirrors/Glass/Visibility"></td>
                                             <td><input type="file"  name="image2[]"  class="form-control image border-0" style="text-align:center;" id='image'></td>
                                             <td><input type="text"  name="feedback2[]"  class="form-control feedback border-0" style="text-align:center;" id='feedback'></td>
@@ -510,8 +510,7 @@
                                             <td><input type="text"  name="action2[]"  class="form-control action border-0" style="text-align:center;" id='action'></td>
                                         </tr>
                                         <tr class="list">
-
-                                            <td class="col-md-1"><input type="text"  name="sno[]"    class="form-control col-md-1 border-0" style="text-align:center;" value="7" id="sno"></td>
+                                            <td class="col-md-1"><input type="text"  name="sno[]"    class="form-control col-md-1 border-0" style="text-align:center;" value="3" id="sno"></td>
                                             <td><input type="text"  name="view2[]"   class="form-control view border-0" style="text-align:center;" id='view' value="Truck Interior/Seat Belt"></td>
                                             <td><input type="file"  name="image2[]"  class="form-control image border-0" style="text-align:center;" id='image'></td>
                                             <td><input type="text"  name="feedback2[]"  class="form-control feedback border-0" style="text-align:center;" id='feedback'></td>
@@ -519,13 +518,16 @@
                                             <td><input type="text"  name="action2[]"  class="form-control action border-0" style="text-align:center;" id='action'></td>
                                         </tr>
                                         <tr class="list">
-                                            <td class="col-md-1"><input type="text"  name="sno[]"    class="form-control col-md-1 border-0" style="text-align:center;" value="8" id="sno"></td>
+
+                                            <td class="col-md-1"><input type="text"  name="sno[]"    class="form-control col-md-1 border-0" style="text-align:center;" value="4" id="sno"></td>
                                             <td><input type="text"  name="view2[]"   class="form-control view border-0" style="text-align:center;" id='view' value="Warining Lamps/MIL"></td>
                                             <td><input type="file"  name="image2[]"  class="form-control image border-0" style="text-align:center;" id='image'></td>
                                             <td><input type="text"  name="feedback2[]"  class="form-control feedback border-0" style="text-align:center;" id='feedback'></td>
                                             <td><input type="text"  name="notes2[]" class="form-control notes border-0" style="text-align:center;" id='notes'></td>
                                             <td><input type="text"  name="action2[]"  class="form-control action border-0" style="text-align:center;" id='action'></td>
                                         </tr>
+
+
                                     </tbody>
                                 </table>
                         </div>

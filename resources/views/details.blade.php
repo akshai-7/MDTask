@@ -10,7 +10,6 @@
 	<title>M&D Foundations</title>
 </head>
     <style>
-                 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
             :root{--header-height: 3rem;--nav-width: 68px;--first-color: #4723D9;--first-color-light: #AFA5D9;--white-color: #F7F6FB;--body-font: 'Nunito', sans-serif;--normal-font-size: 1rem;--z-fixed: 100}*,::before,::after{box-sizing: border-box}
             body{
                 position: relative;
@@ -193,29 +192,7 @@
                     align-items: center;
                     grid-gap: 16px;
                 }
-                #content main .head-title .left .breadcrumb li {
-                    color: var(--dark);
-                }
-                #content main .head-title .left .breadcrumb li a {
-                    color: var(--dark-grey);
-                    pointer-events: none;
-                }
-                #content main .head-title .left .breadcrumb li a.active {
-                    color: var(--blue);
-                    pointer-events: unset;
-                }
-                #content main .head-title .btn-download {
-                    height: 36px;
-                    padding: 0 16px;
-                    border-radius: 3px;
-                    background: var(--blue);
-                    color: var(--light);
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    grid-gap: 10px;
-                    font-weight: 500;
-                }
+
 
 
                 #content main .table-data {
@@ -282,7 +259,7 @@
                 }
                 #content main .table-data .order table tr td .status {
                     font-size: 10px;
-                    padding: 6px 16px;
+                    padding: 6px 20px;
                     color: var(--light);
                     border-radius: 20px;
                     font-weight: 700;
@@ -331,6 +308,9 @@
                 height: 30px;
                 position: relative;
                 width: 80px;
+            }
+             img{
+                border-radius: 0px;
             }
 
     </style>
@@ -381,7 +361,7 @@
                                             <tr>
                                                 <td style="text-align:center;">{{$loop->iteration}}</td>
                                                 <td style="text-align:center;">{{$visual->view}}</td>
-                                                <td style="text-align:center;"><img src="{{url('images/'.$visual->image)}}"  width="50px" height="50px" alt=""></td>
+                                                <td style="text-align:center;" class=""><img src="{{url('images/'.$visual->image)}}" class="rounded-0 border border-secondary" ></td>
                                                 <td style="text-align:center;">{{$visual->feedback}}</td>
                                                 <td style="text-align:center;">
                                                 <a href="/updatevisualcheck/{{$visual->id}}"><i class="fa-solid fa-edit btn btn-primary" ></i></a>
@@ -413,7 +393,7 @@
                                          <tr>
                                             <td style="text-align:center;">{{$loop->iteration}}</td>
                                             <td style="text-align:center;">{{$vehicle->view}}</td>
-                                            <td style="text-align:center;"><img src="{{url('images/'.$vehicle->image)}}"  width="50px" height="50px" alt=""></td>
+                                            <td style="text-align:center;"><img src="{{url('images/'.$vehicle->image)}}"  width="50px" height="50px" alt="" class="rounded-0 border border-secondary " ></td>
                                             <td style="text-align:center;">{{$vehicle->feedback}}</td>
                                             <td style="text-align:center;">
                                             <a href="/updatevehiclecheck/{{$vehicle->id}}"><i class="fa-solid fa-edit btn btn-primary" ></i></a>
@@ -445,7 +425,7 @@
                                             <tr>
                                                 <td style="text-align:center;">{{$loop->iteration}}</td>
                                                 <td style="text-align:center;">{{$cabin->view}}</td>
-                                                <td style="text-align:center;"><img src="{{url('images/'.$cabin->image)}}"  width="50px" height="50px" alt=""></td>
+                                                <td style="text-align:center;"><img src="{{url('images/'.$cabin->image)}}"  width="70" height="70" alt="" class="rounded-0 border border-secondary"></td>
                                                 <td style="text-align:center;">{{$cabin->feedback}}</td>
                                                 <td style="text-align:center;">
                                                     <a href="/updatecabincheck/{{$cabin->id}}"><i class="fa-solid fa-edit btn btn-primary" ></i></a>

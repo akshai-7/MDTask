@@ -14,18 +14,32 @@
         border:1px solid black;
         padding: 10px;
         margin-left: 50px;
-        border-spacing: 10px;
+
         }
         .check{
             margin-left: 50px;
         }
-
+        .sign{
+            margin-left: 550px;
+            margin-top: 100px;
+        }
+        .date{
+            margin-left: 550px;
+            margin-top: -30px;
+        }
+        .first{
+            margin-top: 30px;
+        }
 
     </style>
 <body>
+
      <h2> Report Summary</h2>
-        <h5 class="text-secondary" class="check">Visual Damage</h5>
-        <table style="width:80%" class="table table-bordered">
+     <div class="date">
+        <strong> Date : {{ date("d.m.Y") }}  </strong>
+    </div>
+        <h5 class="text-secondary" class="check first">Visual Damage</h5>
+        <table style="width:80%" class="">
             <tr>
                 <th class="col-md-5">View</th>
                 <th style="text-align: ">Action</th>
@@ -59,5 +73,7 @@
                 </tr>
         @endforeach
         </table>
+
+        <h4 class="sign">Signature</h4>
 </body>
 </html>

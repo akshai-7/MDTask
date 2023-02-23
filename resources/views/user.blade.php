@@ -232,7 +232,6 @@
                 width: 80px;
             }
 
-
 </style>
 <body id="body-pd">
 	<section id="sidebar">
@@ -245,7 +244,7 @@
                 <div>
                     <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">M&D Foundations</span> </a>
                     <div class="nav_list">
-                        <a href="/user" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Dashboard</span> </a>
+                        <a href="/user" class="nav_link active"><i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Dashboard</span> </a>
                         <a href="/allrentallist" class="nav_link"> <i class="fa-solid fa-list"></i> <span class="nav_name">Rental</span> </a>
                     </div>
                     <a href="/" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">SignOut</span> </a>
@@ -278,7 +277,7 @@
                                     <td style="text-align:center;">{{$user->role}}</td>
                                     <td style="text-align:center;">{{$user->created_at}}</td>
                                     <td style="text-align:center;">
-                                    <a href="/driver/{{$user->id}}" ><i class="fa-solid fa-eye btn btn-primary" ></i></a>
+                                    <a href="/driver/{{$user->id}}"><i class="fa-solid fa-eye btn btn-primary"  ></i></a>
                                     <a href="/updateuser/{{$user->id}}" ><i class="fa-solid fa-edit btn btn-success" ></i></i></a>
                                     <a href="/createdriver/{{$user->id}}"><i class="fa-solid fa-plus btn btn-secondary"></i></a>
                                     <a href="/delete/{{$user->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
@@ -322,7 +321,6 @@
             }
             }
             linkColor.forEach(l=> l.addEventListener('click', colorLink))
-
 
    });
 </script>
