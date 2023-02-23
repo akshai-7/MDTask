@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
-
+use Barryvdh\DomPDF\Facade\Pdf;
 class AdminController extends Controller
 {
     public function admin(Request $request){
@@ -346,5 +346,12 @@ class AdminController extends Controller
             $vehicle = Vehicle::where('user_id',$user_id)->get();
             $cabin= Cabin::where('user_id',$user_id)->get();
             return view('/summary',['cabin'=>$cabin,'visual'=>$visual,'vehicle'=>$vehicle]);
+        }
+        public function pdf(){
+            $visual= Visual::get();
+            $vehicle = Vehicle::get();
+            $cabin= Cabin::get();
+            $pdf = Pdf::loadView('pdf.userpdf',['cabin'=>$cabin,'visual'=>$visual,'vehicle'=>$vehicle]);
+            return $pdf->download('userpdf.pdf');
         }
 }

@@ -166,7 +166,7 @@
             /* MAIN */
                 #content main {
                     width: 70%;
-                    margin-left: 200px;
+                    margin-left: 100px;
                     /* margin-top: 100px; */
 
                 }
@@ -209,7 +209,7 @@
                     color: #0d6efd;
                 }
                 .first{
-                    margin-top: 40px;
+                    margin-top: 20px;
                 }
                 .print{
                     margin-top: 40px;
@@ -236,9 +236,9 @@
             </nav>
         </div>
 	</section>
-    <h3>Summary</h3>
+            <h3>Summary</h3>
             <div class="print">
-                <a href="/"><i class="fa-solid fa-print btn btn-danger"></i></a>
+                <a href="/pdf"><i class="fa-solid fa-print btn btn-danger"></i></a>
                 <a href="/"><i class="fa-solid fa-edit btn btn-secondary"></i></a>
 
             </div>
