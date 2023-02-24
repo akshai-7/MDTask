@@ -273,14 +273,14 @@ class ApiController extends Controller
                 $data = new Visual();
                 $data->user_id =$user;
                 $data->view=$request['view'];
-                $data->image =$request['image'];
-
+                $data->image=$request['image'];
                         if($request->hasfile('image')){
-                            $image =$request->file('image');
-                            $time = time().'.'.$image->getClientOriginalExtension();
-                            $location=public_path('/images'.$time);
-                            // Visual::make($image)->resize(300, 300)->save($location);
+                            $image = $request->file('image');
+                            $time = $image->getClientOriginalName();
+                            $location=public_path($time);
+                            $data->image =$time;
                         }
+
                 $data->feedback=$request['feedback'];
                 $data->action=$request['action'];
                 $data->save();
@@ -299,17 +299,17 @@ class ApiController extends Controller
                         if ($data1==null){
                             return response()->json(['message'=>'Invalid Id'],401);
                         }
-                $user=Visual::where('user_id',$user1->id)->where('id',$data1->id)->first();
+                $user=Visual::where('user_id',$user1->id)->where('id',$data1->id)->get();
                 return response()->json(['success'=>true,'data'=> $user],200);
             }
 
         //updatedamage:
             public function updatedamage(Request $request,$visual_id){
                 $validator = Validator::make($request->all(),[
-                    'view'=>'required',
-                    'image'=>'required|file',
-                    'feedback'=>'required',
-                    'action'=>'required',
+                    // 'view'=>'required',
+                    // 'image'=>'required|file',
+                    // 'feedback'=>'required',
+                    // 'action'=>'required',
                 ]);
                 if ($validator->fails()){
                     return response()->json(['message'=>'Validator error'],401);
@@ -319,21 +319,22 @@ class ApiController extends Controller
                         if ($user1==null){
                             return response()->json(['message'=>'Invalid Id'],401);
                         }
+                        // dd($user1->id);
                 $user2=$visual_id;
                         $user3=Visual::find($user2);
                         if ($user3==null){
                             return response()->json(['message'=>'Invalid Id'],401);
                         }
                 $data = Visual::where('user_id',$user1->id)->where('id',$user3->id)->first();
-                $data->user_id =$user1->id;
+                $data->user_id = $user1->id;
                 $data->view=$request['view'];
                 $data->image =$request['image'];
-                        if($request->hasfile('image')){
-                            $image =$request->file('image');
-                            $time = time().'.'.$image->getClientOriginalExtension();
-                            $location = public_path('/images'.$time);
-                            Visual::make($image)->resize(300, 300)->save($location);
-                        }
+                if($request->hasfile('image')){
+                    $image = $request->file('image');
+                    $time = $image->getClientOriginalName();
+                    $location=public_path($time);
+                    $data->image =$time;
+                }
                 $data->feedback=$request['feedback'];
                 $data->action=$request['action'];
                 $data->save();

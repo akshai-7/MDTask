@@ -30,25 +30,15 @@
         align-items: center;
         justify-content: space-between;
         padding: 0 1rem;
-        background-color: var(--white-color);
+        /* background-color: var(--white-color); */
         z-index: var(--z-fixed);
-        transition: .5s
+        transition: .3s
     }
     .header_toggle{
         color: var(--first-color);
         font-size: 1.5rem;
         cursor: pointer}
-    .header_img{
-        width:65px;
-        height: 35px;
-        /* display: flex; */
-        /* justify-content: center; */
-        /* border-radius: 30%; */
-        overflow: hidden
-    }
-    .header_img img{
-        width: 40px
-    }
+
     .l-navbar{
         position: fixed;
         top: 0;
@@ -56,6 +46,7 @@
         width: var(--nav-width);
         height: 100vh;
         background-color:var(--first-color);
+
         padding: .5rem 1rem 0 0;
         transition: .5s;
         z-index:var(--z-fixed)
@@ -96,9 +87,6 @@
     .nav_icon{
         font-size: 1.25rem
     }
-    /* .show{
-        left: 0
-    } */
     .body-pd{
         padding-left: calc(var(--nav-width) + 1rem)
     }
@@ -113,9 +101,6 @@
         height: 32px;
         background-color: var(--white-color)
     }
-    /* .height-100{
-        height:100vh
-    } */
     @media screen and (min-width: 768px){body{margin: calc(var(--header-height) + 1rem) 0 0 0;padding-left: calc(var(--nav-width) + 2rem)}
     .header{height: calc(var(--header-height) + 1rem);padding: 0 2rem 0 calc(var(--nav-width) + 2rem)}
     .header_img{width: 40px;height: 40px}
@@ -149,13 +134,6 @@
     html {
         overflow-x: hidden;
     }
-
-    body.dark {
-        /* --light: #0C0C1E; */
-        /* --grey: #060714; */
-        /* --dark: #FBFBFB; */
-    }
-
     body {
         background: var(--grey);
         overflow-x: hidden;
@@ -164,14 +142,11 @@
 
     #content {
         position: relative;
-        /* width: 100%; */
-        /* width: calc(100% - 280px); */
         left: 115px;
         transition: .3s ease;
     }
     #content main {
         width: 105%;
-        /* padding: 36px 24px; */
         font-family: var(--poppins);
         max-height: calc(100vh - 56px);
         overflow-y: auto;s
@@ -186,7 +161,6 @@
         padding: 24px;
         overflow-x: auto;
         margin-right: 200px;
-        /* position: fixed; */
     }
     #content main .table-data .head {
         display: flex;
@@ -210,41 +184,53 @@
 
         padding-bottom: 12px;
         font-size: 17px;
+        color: black;
         text-align: left;
         border-bottom: 1px solid var(--grey);
     }
     #content main .table-data .order table td {
         padding: 16px 0;
+        /* background:var(--grey); */
 
     }
-    #content main .table-data .order table tbody tr:hover {
-        background: var(--grey);
-    }
+
     #add{
         background: rgb(254,231,154);
         border-radius: 5px;
         border: 1px solid #D69E31;
         color: #85592e;
         cursor: pointer;
-        /* float: right; */
         top:-5px;
         height: 30px;
         position: relative;
         width: 80px;
     }
 
-
+    .table_row {
+    background: rgb(237, 233, 233);
+   }
+   .table_row:hover {
+    background: white
+   }
+   .table_row:hover  .table_data{
+    color: black;
+   }
+    /* #content main .table-data .order table tbody tr:hover {
+        background: var(--grey);
+        color: black;
+    } */
 </style>
 <body id="body-pd">
     <section id="sidebar">
         <header class="header" id="header">
             <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
-            <div class="header_img"> <img src="{{url('img/m-d-foundation.png')}}" alt=""> </div>
+            <div class="header_img"> <img src="{{url('img/m-d-foundation.png')}}"  width="px" alt="" style="border-radius:20px"> </div>
         </header>
         <div class="l-navbar" id="nav-bar">
             <nav class="nav">
                 <div>
-                    <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">M&D Foundations</span> </a>
+                    {{-- <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">M&D Foundations</span> </a> --}}
+                    <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name"> <img src="{{url('img/m&d trans.png')}}" width="120px" alt=""></span> </a>
                     <div class="nav_list">
                         <a href="/user" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Dashboard</span> </a>
                         <a href="/allrentallist" class="nav_link"> <i class="fa-solid fa-list"></i> <span class="nav_name">Rental</span> </a>
@@ -259,7 +245,7 @@
 			<div class="table-data">
 				<div class="order">
 					<div class="head">
-						<h3 class="text-success">Rental Details</h3>
+						<h3 class="text-suc" style="color:	#06064b;">Rental Details</h3>
 					</div>
                     <table class="" style="width:1150px">
                         <thead class="text-primary">
@@ -275,20 +261,20 @@
                         </thead>
                         <tbody>
                             @foreach($driver as $driver)
-                                 <tr>
+                                 <tr class="table_row">
                                     {{-- <td style="text-align:center;">{{$loop->iteration}}</td> --}}
-                                    <td style="text-align:;">{{$driver->report->report}}</td>
-                                    <td style="text-align:center;">{{$driver->drivername}}</td>
-                                    <td style="text-align:center;">{{$driver->company}}</td>
-                                    <td style="text-align:center;">{{$driver->deliveryemail}}</td>
-                                    <td style="text-align:center;">{{$driver->phone}}</td>
-                                    <td style="text-align:center;">{{$driver->report->number_plate}}</td>
-                                    <td style="text-align:center;">{{$driver->report->mileage}}Km</td>
-                                    <td style="text-align:center;">{{$driver->created_at->format('d.m.Y')}}</td>
-                                    <td style="text-align:center;">
+                                    <td style="text-align:center;" class="table_data">{{$driver->report->report}}</td>
+                                    <td style="text-align:center;" class="table_data">{{$driver->drivername}}</td>
+                                    <td style="text-align:center;" class="table_data">{{$driver->company}}</td>
+                                    <td style="text-align:center;" class="table_data">{{$driver->deliveryemail}}</td>
+                                    <td style="text-align:center;" class="table_data">{{$driver->phone}}</td>
+                                    <td style="text-align:center;" class="table_data">{{$driver->report->number_plate}}</td>
+                                    <td style="text-align:center;" class="table_data">{{$driver->report->mileage}}Km</td>
+                                    <td style="text-align:center;" class="table_data">{{$driver->created_at->format('d.m.Y')}}</td>
+                                    <td style="text-align:center;" class="table_data">
                                     <a href="/details/{{$driver->user_id}}"><i class="fa-solid fa-eye btn btn-primary" ></i></a>
                                     <a href="/createdriver/{{$driver->user_id}}"><i class="fa-solid fa-plus btn btn-secondary"></i></a>
-                                    <a href="/remove/{{$driver->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
+                                    <a href="/remove/{{$driver->id}}"  style="color:#bb1138;"><i class="fa-solid fa-trash btn btn-danger" ></i></a></td>
                                 </tr>
                             @endforeach
                         </tbody>

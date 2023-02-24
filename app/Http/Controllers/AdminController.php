@@ -144,12 +144,12 @@ class AdminController extends Controller
             $user->phone_number_of_witness =$request['phone_number_of_witness'];
             $user->brief_statement =$request['brief_statement'];
             $user->upload_image =$request['upload_image'];
-                if($request->hasfile('upload_image')){
-                    $upload_image =$request->file('upload_image');
-                    $filename = time().'.'.$upload_image->getClientOriginalExtension();
-                    $location = public_path('images'.$filename);
-                    Report::make($upload_image)->resize(300, 300)->save($location);
-                }
+            if($request->hasfile('upload_image')){
+                $image = $request->file('imupload_imageage');
+                $name = $image->getClientOriginalName();
+                $location=public_path($name);
+                $user->image =$name;
+            }
             $user->report =$request['report'];
             $user->date =$request['date'];
             $user->number_plate =$request['number_plate'];
@@ -247,14 +247,13 @@ class AdminController extends Controller
             $visual= Visual::where('user_id',$data1->id)->where('id',$data3->id)->first();
             $visual->view=$request['view'];
             $visual->image =$request['image'];
-                    // dd($visual);
                     if($request->hasfile('image')){
-                        $image =$request->file('image');
-                        // dd($image);
-                        $time = time().'.'.$image->getClientOriginalExtension();
-                        $location = public_path('public/images'.$time);
-                        // Vehicle::make($image)->resize(300, 300)->save($location);
-                    }
+                            $image = $request->file('image');
+                            $name = $image->getClientOriginalName();
+                            $location=public_path($name);
+                            $visual->image =$name;
+                        }
+
             $visual->feedback=$request['feedback'];
             $visual->save();
             return redirect('/details/'.$data1->id);
@@ -291,15 +290,12 @@ class AdminController extends Controller
             $vehicle= Vehicle::where('user_id',$data1->id)->where('id',$data3->id)->first();
             $vehicle->view=$request['view'];
             $vehicle->image =$request['image'];
-                    if($request->image)
-                    // dd($request->image);
-                    {
-                        $image =$request->file('image');
-                        // dd($image);
-                        $time = time().'.'.$image->getClientOriginalName();
-                        $location = public_path('images'.$time);
-                        Vehicle::make($image)->resize(300, 300)->save($location);
-                    }
+                if($request->hasfile('image')){
+                    $image = $request->file('image');
+                    $name = $image->getClientOriginalName();
+                    $location=public_path($name);
+                    $vehicle->image =$name;
+                }
             $vehicle->feedback=$request['feedback'];
             $vehicle->save();
             return redirect('/details/'.$data1->id);
@@ -337,12 +333,12 @@ class AdminController extends Controller
             $cabin= Cabin::where('user_id',$data1->id)->where('id',$data3->id)->first();
             $cabin->view=$request['view'];
             $cabin->image =$request['image'];
-                    if($request->hasfile('image')){
-                        $image =$request->file('image');
-                        $time = time().'.'.$image->getClientOriginalExtension();
-                        $location = public_path('public/images'.$time);
-                        Vehicle::make($image)->resize(300, 300)->save($location);
-                    }
+                if($request->hasfile('image')){
+                    $image = $request->file('image');
+                    $name = $image->getClientOriginalName();
+                    $location=public_path($name);
+                    $cabin->image =$name;
+                }
             $cabin->feedback=$request['feedback'];
             $cabin->save();
             return redirect('/details/'.$data1->id);

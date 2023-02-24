@@ -304,7 +304,7 @@
                                         <td style="text-align:center;"><input type="text"  class="form-control"   name="id" value="{{$cabin->id}}"></td>
                                         <td style="text-align:center;"><input type="text"  class="form-control"   name="user_id" value="{{$cabin->user_id}}"></td>
                                         <td style="text-align:center;"><input type="text" class="form-control"   name="view" value="{{$cabin->view}}"></td>
-                                        <td style="text-align:center;"><img src="{{url('images/'.$cabin->image)}}"  width="50px" height="50px" class="rounded-0 border border-secondary" alt=""></td>
+                                        <td style="text-align:center;"><img src="{{url('images/'.$cabin->image)}}"  width="50px" height="50px" class="rounded-0 border border-secondary" alt=""><input type="file" name="image"></td>
                                         <td style="text-align:center;"><input type="text"  class="form-control"  name="feedback" value="{{$cabin->feedback}}"></td>
                                         <td style="text-align:center;"><a href="/details/{{$cabin->id}}/{{$cabin->user_id}}"><input type="submit" name="submit" value="Submit" class="btn btn-primary"></a>
                                         </td>

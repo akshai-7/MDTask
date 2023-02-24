@@ -425,7 +425,7 @@
                                             <tr>
                                                 <td style="text-align:center;">{{$loop->iteration}}</td>
                                                 <td style="text-align:center;">{{$cabin->view}}</td>
-                                                <td style="text-align:center;"><img src="{{url('images/'.$cabin->image)}}"   width="50px" height="50px" alt="" class="rounded-0 border border-secondary"></td>
+                                                <td style="text-align:center;"><img src="{{url('images/'.$cabin->image)}}"  width="70" height="70" alt="" class="rounded-0 border border-secondary"></td>
                                                 <td style="text-align:center;">{{$cabin->feedback}}</td>
                                                 <td style="text-align:center;">
                                                     <a href="/updatecabincheck/{{$cabin->id}}"><i class="fa-solid fa-edit btn btn-primary" ></i></a>

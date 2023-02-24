@@ -272,7 +272,7 @@
                                         <td style="text-align:center;"><input type="text"  class="form-control"   name="id" value="{{$visual->id}}"></td>
                                         <td style="text-align:center;"><input type="text"  class="form-control"   name="user_id" value="{{$visual->user_id}}"></td>
                                         <td style="text-align:center;"><input type="text" class="form-control"   name="view" value="{{$visual->view}}"></td>
-                                        <td style="text-align:center;"><img src="{{url('images/'.$visual->image)}}"   name="image" width="50px" height="50px" alt="" class="rounded-0 border border-secondary"> </td>
+                                        <td style="text-align:center;"><img src="{{url('images/'.$visual->image)}}"   name="image" width="50px" height="50px" alt="" class="rounded-0 border border-secondary"><input type="file" name="image"> </td>
                                         {{-- <td style="text-align:center;"><input type="file" class="form-control"   name="image" value="{{$visual->image}}"></td> --}}
                                         <td style="text-align:center;"><input type="text"  class="form-control"  name="feedback" value="{{$visual->feedback}}"></td>
                                         <td style="text-align:center;"><a href="/details/{{$visual->id}}/{{$visual->user_id}}"><input type="submit" name="submit" value="Submit" class="btn btn-primary"></a>

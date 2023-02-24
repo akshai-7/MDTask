@@ -306,7 +306,7 @@
                                         <td style="text-align:center;"><input type="text"  class="form-control"   name="id" value="{{$vehicle->id}}"></td>
                                         <td style="text-align:center;"><input type="text"  class="form-control"   name="user_id" value="{{$vehicle->user_id}}"></td>
                                         <td style="text-align:center;"><input type="text" class="form-control"   name="view" value="{{$vehicle->view}}"></td>
-                                        <td style="text-align:center;"><img src="{{url('images/'.$vehicle->image)}}"  width="50px" height="50px" class="rounded-0 border border-secondary" alt=""></td>
+                                        <td style="text-align:center;"><img src="{{url('images/'.$vehicle->image)}}"  width="50px" height="50px" class="rounded-0 border border-secondary" alt=""><input type="file" name="image"></td>
                                         <td style="text-align:center;"><input type="text"  class="form-control"  name="feedback" value="{{$vehicle->feedback}}"></td>
                                         <td style="text-align:center;"><a href="/details/{{$vehicle->id}}/{{$vehicle->user_id}}"><input type="submit" name="submit" value="Submit" class="btn btn-primary"></a>
                                         </td>
