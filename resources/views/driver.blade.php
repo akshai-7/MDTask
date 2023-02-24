@@ -10,7 +10,6 @@
 	<title>M&D Foundations</title>
 </head>
 <style>
-    @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
     :root{--header-height: 3rem;--nav-width: 68px;--first-color: #4723D9;--first-color-light: #AFA5D9;--white-color: #F7F6FB;--body-font: 'Nunito', sans-serif;--normal-font-size: 1rem;--z-fixed: 100}*,::before,::after{box-sizing: border-box}
     body{
         position: relative;
@@ -285,7 +284,7 @@
                                     <td style="text-align:center;">{{$driver->phone}}</td>
                                     <td style="text-align:center;">{{$driver->report->number_plate}}</td>
                                     <td style="text-align:center;">{{$driver->report->mileage}}Km</td>
-                                    <td style="text-align:center;">{{$driver->created_at}}</td>
+                                    <td style="text-align:center;">{{$driver->created_at->format('d.m.Y')}}</td>
                                     <td style="text-align:center;">
                                     <a href="/details/{{$driver->user_id}}"><i class="fa-solid fa-eye btn btn-primary" ></i></a>
                                     <a href="/createdriver/{{$driver->user_id}}"><i class="fa-solid fa-plus btn btn-secondary"></i></a>

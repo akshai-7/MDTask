@@ -307,7 +307,7 @@
                                         <td style="text-align:center;"><input type="text"  class="form-control"   name="name" value="{{$users->name}}"></td>
                                         <td style="text-align:center;"><input type="text" class="form-control"   name="email" value="{{$users->email}}"></td>
                                         <td style="text-align:center;"><input type="text" class="form-control"   name="role" value="{{$users->role}}"></td>
-                                        <td style="text-align:center;"><input type="text"  class="form-control"  name="date" value="{{$users->created_at}}"></td>
+                                        <td style="text-align:center;"><input type="text"  class="form-control"  name="date" value="{{$users->created_at->format('d.m.Y')}}"></td>
                                         <td style="text-align:center;"><a href="/user"><input type="submit" name="submit" value="Submit" class="btn btn-primary"></a>
                                         </td>
                                     </tr>

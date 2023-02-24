@@ -94,32 +94,42 @@ class AdminController extends Controller
         }
         public function store(Request $request){
             $validator = Validator::make($request->all(),[
-                // 'drivername'=>'required',
-                // 'company'=>'required',
-                // 'deliveryemail'=>'required',
-                // 'phone'=>'required',
-                // 'date_of_incident'=>'required',
-                // 'location'=>'required',
-                // 'witnessed_by'=>'required',
-                // 'phone_number_of_witness'=>'required',
-                // 'brief_statement'=>'required',
-                // 'upload_image'=>'required',
-                // 'report'=>'required',
-                // 'date'=>'required',
-                // 'number_plate'=>'required',
-                // 'mileage'=>'required',
-                // 'view'=>'required',
-                // 'image'=>'required',
-                // 'feedback'=>'required',
-                // 'action'=>'required',
-                // 'notes'=>'required',
+                'drivername'=>'required',
+                'company'=>'required',
+                'deliveryemail'=>'required|email',
+                'phone'=>'required|min:10',
+                'date_of_incident'=>'required',
+                'location'=>'required',
+                'witnessed_by'=>'required',
+                'phone_number_of_witness'=>'required|min:10',
+                'brief_statement'=>'required',
+                'upload_image'=>'required',
+                'report'=>'required',
+                'date'=>'required',
+                'number_plate'=>'required',
+                'mileage'=>'required',
+                'view'=>'required',
+                'image'=>'required',
+                'feedback'=>'required',
+                'action'=>'required',
+                'notes'=>'required',
+                'view1'=>'required',
+                'image1'=>'required',
+                'feedback1'=>'required',
+                'action1'=>'required',
+                'notes1'=>'required',
+                'view2'=>'required',
+                'image2'=>'required',
+                'feedback2'=>'required',
+                'action2'=>'required',
+                'notes2'=>'required',
             ]);
             if ($validator->fails()){
                 return response()->json(['message'=>'Validator error'],401);
             }else{
             $user_id=Auth::id();
             $data = new Driver();
-            $data->user_id =1;
+            $data->user_id =$user_id;
             $data->drivername=$request['drivername'];
             $data->company=$request['company'];
             $data->deliveryemail=$request['deliveryemail'];
@@ -217,9 +227,9 @@ class AdminController extends Controller
         }
         public function visualupdate(Request $request,$user_id){
             $validator = Validator::make($request->all(),[
-                'view'=>'required',
-                'image'=>'required',
-                'feedback'=>'required',
+                // 'view'=>'required',
+                // 'image'=>'required',
+                // 'feedback'=>'required',
             ]);
             if ($validator->fails()){
                 return response()->json(['message'=>'Validator error']);
@@ -237,11 +247,13 @@ class AdminController extends Controller
             $visual= Visual::where('user_id',$data1->id)->where('id',$data3->id)->first();
             $visual->view=$request['view'];
             $visual->image =$request['image'];
+                    // dd($visual);
                     if($request->hasfile('image')){
                         $image =$request->file('image');
+                        // dd($image);
                         $time = time().'.'.$image->getClientOriginalExtension();
                         $location = public_path('public/images'.$time);
-                        Vehicle::make($image)->resize(300, 300)->save($location);
+                        // Vehicle::make($image)->resize(300, 300)->save($location);
                     }
             $visual->feedback=$request['feedback'];
             $visual->save();
@@ -280,10 +292,10 @@ class AdminController extends Controller
             $vehicle->view=$request['view'];
             $vehicle->image =$request['image'];
                     if($request->image)
-                    dd($request->image);
+                    // dd($request->image);
                     {
                         $image =$request->file('image');
-                        dd($image);
+                        // dd($image);
                         $time = time().'.'.$image->getClientOriginalName();
                         $location = public_path('images'.$time);
                         Vehicle::make($image)->resize(300, 300)->save($location);

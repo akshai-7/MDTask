@@ -113,9 +113,7 @@
         height: 32px;
         background-color: var(--white-color)
     }
-    /* .height-100{
-        height:100vh
-    } */
+
     @media screen and (min-width: 768px){body{margin: calc(var(--header-height) + 1rem) 0 0 0;padding-left: calc(var(--nav-width) + 2rem)}
     .header{height: calc(var(--header-height) + 1rem);padding: 0 2rem 0 calc(var(--nav-width) + 2rem)}
     .header_img{width: 40px;height: 40px}
@@ -262,7 +260,7 @@
                         <table class="" style="width:1100px">
                             <thead class="">
                                 <th style="text-align:center;" class="col-md-1 text-primary">Id</th>
-                                <th style="text-align:center;" class="col-md-1 text-primary" >User_id</th>
+                                <th style="text-align:center;" class="col-md-1 text-primary">User_id</th>
                                 <th style="text-align:center;" class="col-md-2 text-primary">View</th>
                                 <th style="text-align:center;" class="col-md-2 text-primary">Image</th>
                                 <th style="text-align:center;" class="col-md-3 text-primary">Feed Back</th>
@@ -274,7 +272,8 @@
                                         <td style="text-align:center;"><input type="text"  class="form-control"   name="id" value="{{$visual->id}}"></td>
                                         <td style="text-align:center;"><input type="text"  class="form-control"   name="user_id" value="{{$visual->user_id}}"></td>
                                         <td style="text-align:center;"><input type="text" class="form-control"   name="view" value="{{$visual->view}}"></td>
-                                        <td style="text-align:center;"><img src="{{url('images/'.$visual->image)}}"  width="50px" height="50px" alt=""></td>
+                                        <td style="text-align:center;"><img src="{{url('images/'.$visual->image)}}"   name="image" width="50px" height="50px" alt="" class="rounded-0 border border-secondary"> </td>
+                                        {{-- <td style="text-align:center;"><input type="file" class="form-control"   name="image" value="{{$visual->image}}"></td> --}}
                                         <td style="text-align:center;"><input type="text"  class="form-control"  name="feedback" value="{{$visual->feedback}}"></td>
                                         <td style="text-align:center;"><a href="/details/{{$visual->id}}/{{$visual->user_id}}"><input type="submit" name="submit" value="Submit" class="btn btn-primary"></a>
                                         </td>

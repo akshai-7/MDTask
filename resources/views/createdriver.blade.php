@@ -13,7 +13,6 @@
 	<title>M&D Foundations</title>
 </head>
 <style>
-           @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
             :root{--header-height: 3rem;--nav-width: 68px;--first-color: #4723D9;--first-color-light: #AFA5D9;--white-color: #F7F6FB;--body-font: 'Nunito', sans-serif;--normal-font-size: 1rem;--z-fixed: 100}*,::before,::after{box-sizing: border-box}
             body{
                 position: relative;
@@ -285,7 +284,7 @@
                                     </div>
                                     <div class="form-group col-sm-7 mb-3">
                                         <label class="mb-2"> <i class="fa-solid fa-phone "></i> Phone</label>
-                                        <input type="number" name="phone"  class="form-control">
+                                        <input type="text" name="phone"  class="form-control">
                                     </div>
                                     <div class="form-group col-sm-7 mb-3">
                                         <label class="mb-2"> <i class="fa-solid fa-calendar-days"></i> Date</label>
@@ -301,7 +300,7 @@
                                     </div>
                                     <div class="form-group col-sm-7 mb-3">
                                         <label class="mb-2"><i class="fa-solid fa-gauge "></i> Report </label>
-                                        <input type="text" name="report"  class="form-control">
+                                        <input type="text" name="report"  class="form-control" value="">
                                     </div>
                             </div>
                             <div class="col-md-5 ">

@@ -275,7 +275,7 @@
                                     <td style="text-align:center;">{{$user->name}}</td>
                                     <td style="text-align:center;">{{$user->email}}</td>
                                     <td style="text-align:center;">{{$user->role}}</td>
-                                    <td style="text-align:center;">{{$user->created_at}}</td>
+                                    <td style="text-align:center;">{{$user->created_at->format('d.m.Y')}}</td>
                                     <td style="text-align:center;">
                                     <a href="/driver/{{$user->id}}"><i class="fa-solid fa-eye btn btn-primary"  ></i></a>
                                     <a href="/updateuser/{{$user->id}}" ><i class="fa-solid fa-edit btn btn-success" ></i></i></a>

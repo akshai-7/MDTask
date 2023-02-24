@@ -361,7 +361,7 @@
                                             <tr>
                                                 <td style="text-align:center;">{{$loop->iteration}}</td>
                                                 <td style="text-align:center;">{{$visual->view}}</td>
-                                                <td style="text-align:center;" class=""><img src="{{url('images/'.$visual->image)}}" class="rounded-0 border border-secondary" ></td>
+                                                <td style="text-align:center;" class=""><img src="{{url('images/'.$visual->image)}}" class="rounded-0 border border-secondary"  width="50px" height="50px" ></td>
                                                 <td style="text-align:center;">{{$visual->feedback}}</td>
                                                 <td style="text-align:center;">
                                                 <a href="/updatevisualcheck/{{$visual->id}}"><i class="fa-solid fa-edit btn btn-primary" ></i></a>
@@ -425,11 +425,12 @@
                                             <tr>
                                                 <td style="text-align:center;">{{$loop->iteration}}</td>
                                                 <td style="text-align:center;">{{$cabin->view}}</td>
-                                                <td style="text-align:center;"><img src="{{url('images/'.$cabin->image)}}"  width="70" height="70" alt="" class="rounded-0 border border-secondary"></td>
+                                                <td style="text-align:center;"><img src="{{url('images/'.$cabin->image)}}"   width="50px" height="50px" alt="" class="rounded-0 border border-secondary"></td>
                                                 <td style="text-align:center;">{{$cabin->feedback}}</td>
                                                 <td style="text-align:center;">
                                                     <a href="/updatecabincheck/{{$cabin->id}}"><i class="fa-solid fa-edit btn btn-primary" ></i></a>
-                                                    <a href="/deletecabin/{{$cabin->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
+                                                    <a href="/deletecabin/{{$cabin->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a>
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>

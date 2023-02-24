@@ -257,10 +257,10 @@ class ApiController extends Controller
     //visual damage:
             public function visualdamage(Request $request){
                 $validator = Validator::make($request->all(),[
-                    'view'=>'required',
-                    'image'=>'required',
-                    'feedback'=>'required',
-                    'action'=>'required',
+                    // 'view'=>'required',
+                    // 'image'=>'required',
+                    // 'feedback'=>'required',
+                    // 'action'=>'required',
                 ]);
                 if ($validator->fails()){
                     return response()->json(['message'=>'Validator error'],401);
@@ -274,11 +274,11 @@ class ApiController extends Controller
                 $data->user_id =$user;
                 $data->view=$request['view'];
                 $data->image =$request['image'];
-                // dd($data);
+
                         if($request->hasfile('image')){
                             $image =$request->file('image');
                             $time = time().'.'.$image->getClientOriginalExtension();
-                            $location=public_path('public/images'.$time);
+                            $location=public_path('/images'.$time);
                             // Visual::make($image)->resize(300, 300)->save($location);
                         }
                 $data->feedback=$request['feedback'];

@@ -10,7 +10,6 @@
 	<title>M&D Foundations</title>
 </head>
 <style>
-    @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
     :root{--header-height: 3rem;--nav-width: 68px;--first-color: #4723D9;--first-color-light: #AFA5D9;--white-color: #F7F6FB;--body-font: 'Nunito', sans-serif;--normal-font-size: 1rem;--z-fixed: 100}*,::before,::after{box-sizing: border-box}
     body{
         position: relative;
@@ -305,7 +304,7 @@
                                         <td style="text-align:center;"><input type="text"  class="form-control"   name="id" value="{{$cabin->id}}"></td>
                                         <td style="text-align:center;"><input type="text"  class="form-control"   name="user_id" value="{{$cabin->user_id}}"></td>
                                         <td style="text-align:center;"><input type="text" class="form-control"   name="view" value="{{$cabin->view}}"></td>
-                                        <td style="text-align:center;"><img src="{{url('images/'.$cabin->image)}}"  width="50px" height="50px" alt=""></td>
+                                        <td style="text-align:center;"><img src="{{url('images/'.$cabin->image)}}"  width="50px" height="50px" class="rounded-0 border border-secondary" alt=""></td>
                                         <td style="text-align:center;"><input type="text"  class="form-control"  name="feedback" value="{{$cabin->feedback}}"></td>
                                         <td style="text-align:center;"><a href="/details/{{$cabin->id}}/{{$cabin->user_id}}"><input type="submit" name="submit" value="Submit" class="btn btn-primary"></a>
                                         </td>
