@@ -152,11 +152,7 @@
                 overflow-x: hidden;
             }
 
-            body.dark {
-                /* --light: #0C0C1E;
-                --grey: #060714;
-                --dark: #FBFBFB; */
-            }
+
 
             body {
                 background: var(--grey);
@@ -207,13 +203,14 @@
                 /* padding-bottom: 12px; */
                 font-size: 17px;
                 text-align: left;
+                color: black;
                 border-bottom: 1px solid var(--grey);
             }
             #content main .table-data .order table td {
                 padding: 16px 0;
             }
             #content main .table-data .order table tbody tr:hover {
-                background: var(--grey);
+                /* background: var(--grey); */
             }
 
             #add{
@@ -235,9 +232,8 @@
             }
             .report{
                 margin-left: 150px;
-
-
             }
+
 </style>
 <body id="body-pd">
 	<section id="sidebar">
@@ -265,7 +261,7 @@
             <main>
                 <div class="table-data" >
                         <div class="head1">
-                            <h3 class="text-success">New Rental Details</h3>
+                            <h3 class="" style="color:#06064b;">New Rental Details</h3>
                         </div>
                         <div id="main">
                             <div class="col-md-5 report">
@@ -339,27 +335,26 @@
                         <div>
                             <table class="table table-bordered mt-3" >
                                 <thead class="">
-                                        <tr>
-                                            <th class="col-md-1 text-primary" style="text-align:center;">S.no</th>
-                                            <th style="text-align:center;" class="col-md-2 text-primary">View</th>
-                                            <th style="text-align:center;" class="col-md-2 text-primary">Image</th>
-                                            <th style="text-align:center;" class="col-md-2 text-primary">Feed Back</th>
-                                            <th style="text-align:center;" class="col-md-2 text-primary">Notes</th>
-                                            <th style="text-align:center;" class="col-md-2 text-primary">Action</th>
-                                            <th class="col-md-1 text-primary d-none" style="text-align:center;">User_id</th>
+                                        <tr class="">
+                                            <th class="col-md-1 text-prmary" style="text-align:center;">S.no</th>
+                                            <th style="text-align:center;" class="col-md-2 text-primay">View</th>
+                                            <th style="text-align:center;" class="col-md-2 text-pimary">Image</th>
+                                            <th style="text-align:center;" class="col-md-2 text-prry">Feed Back</th>
+                                            <th style="text-align:center;" class="col-md-2 text-rimary">Notes</th>
+                                            <th style="text-align:center;" class="col-md-2 text-rimary">Action</th>
+                                            <th class="col-md-1 text-priary d-none" style="text-align:center;">User_id</th>
                                         </tr>
                                 </thead>
                                 <tbody id='row' >
-                                        <tr class="list">
-
-                                            <td class="col-md-1"><input type="text"  name="sno[]"    class="form-control col-md-1 border-0" style="text-align:center;" value="1" id="sno"></td>
+                                        <tr class="">
+                                            <td class="col-md-1" ><input type="text"  name="sno[]"    class="form-control col-md-1 border-0" style="text-align:center;" value="1" id="sno"></td>
                                             <td><input type="text"  name="view[]"   class="form-control view border-0" style="text-align:center;" id='view' value="Front"></td>
                                             <td><input type="file"  name="image[]"  class="form-control image border-0" style="text-align:center;" id='image'></td>
                                             <td><input type="text"  name="feedback[]"  class="form-control feedback border-0" style="text-align:center;" id='feedback'></td>
                                             <td><input type="text"  name="notes[]" class="form-control notes border-0" style="text-align:center;" id='notes'></td>
                                             <td><input type="text"  name="action[]"  class="form-control action border-0" style="text-align:center;" id='action'></td>
                                         </tr>
-                                        <tr class="list">
+                                        <tr>
                                             <td class="col-md-1"><input type="text"  name="sno[]"    class="form-control col-md-1 border-0" style="text-align:center;" value="2" id="sno"></td>
                                             <td><input type="text"  name="view[]"   class="form-control view border-0" style="text-align:center;" id='view' value="Near Side"></td>
                                             <td><input type="file"  name="image[]"  class="form-control image border-0" style="text-align:center;" id='image'></td>
@@ -367,7 +362,7 @@
                                             <td><input type="text"  name="notes[]" class="form-control notes border-0" style="text-align:center;" id='notes'></td>
                                             <td><input type="text"  name="action[]"  class="form-control action border-0" style="text-align:center;" id='action'></td>
                                         </tr>
-                                        <tr class="list">
+                                        <tr>
                                             <td class="col-md-1"><input type="text"  name="sno[]"    class="form-control col-md-1 border-0" style="text-align:center;" value="3" id="sno"></td>
                                             <td><input type="text"  name="view[]"   class="form-control view border-0" style="text-align:center;" id='view' value="Rear"></td>
                                             <td><input type="file"  name="image[]"  class="form-control image border-0" style="text-align:center;" id='image'></td>
@@ -375,7 +370,7 @@
                                             <td><input type="text"  name="notes[]" class="form-control notes border-0" style="text-align:center;" id='notes'></td>
                                             <td><input type="text"  name="action[]"  class="form-control action border-0" style="text-align:center;" id='action'></td>
                                         </tr>
-                                        <tr class="list">
+                                        <tr>
                                             <td class="col-md-1"><input type="text"  name="sno[]"    class="form-control col-md-1 border-0" style="text-align:center;" value="4" id="sno"></td>
                                             <td><input type="text"  name="view[]"   class="form-control view border-0" style="text-align:center;" id='view' value="Off-side"></td>
                                             <td><input type="file"  name="image[]"  class="form-control image border-0" style="text-align:center;" id='image'></td>

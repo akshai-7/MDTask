@@ -149,47 +149,12 @@
     html {
         overflow-x: hidden;
     }
-
-    body.dark {
-        /* --light: #0C0C1E; */
-        /* --grey: #060714; */
-        /* --dark: #FBFBFB; */
-    }
-
     body {
         background: var(--grey);
         overflow-x: hidden;
         font-family: 'Times New Roman', Times, serif;
     }
-     #sidebar {
-        /* position: fixed; */
-        /* top: 0;
-        left: 0;
-        width: 230px;
-        height: 100%;
-        background: var(--light);
-        z-index: 2000;
-        font-family: var(--lato);
-        transition: .3s ease;
-        overflow-x: hidden;
-        scrollbar-width: none; */
-    }
-    /* #sidebar .brand {
-        height: 40px;
-        position: fixed;
-        top: 20px;
-        margin-left: 40px;
-    }
-    #sidebar .side-menu li.active::before {
-        content: '';
-        position: absolute;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        top: -40px;
-        right: 0;
-        z-index: -1;
-    } */
+
     #content {
         position: relative;
         width: 85%;
@@ -239,6 +204,7 @@
         padding-bottom: 12px;
         font-size: 17px;
         text-align: left;
+        color: black;
         border-bottom: 1px solid var(--grey);
     }
     #content main .table-data .order table td {
@@ -287,18 +253,18 @@
 			<div class="table-data">
 				<div class="order">
 					<div class="head">
-						<h3 class="text-success">User Details</h3>
+						<h3 class="" style="color:#06064b;">User Details</h3>
 					</div>
                     <form action="/updateuserdetails/{id}" method="POST" autocomplete="off">
                         @csrf
                         <table class="" style="width:1100px">
                             <thead class="">
-                                <th style="text-align:center;" class="col-md-1 text-primary">ID</th>
-                                <th style="text-align:center;" class="col-md-1 text-primary" >Name</th>
-                                <th style="text-align:center;" class="col-md-2 text-primary">Email</th>
-                                <th style="text-align:center;" class="col-md-2 text-primary">Role</th>
-                                <th style="text-align:center;" class="col-md-3 text-primary">Creation Date </th>
-                                <th style="text-align:center;" class="col-md-2 text-primary">Action</th>
+                                <th style="text-align:center;" class="col-md-1 ">ID</th>
+                                <th style="text-align:center;" class="col-md-1 " >Name</th>
+                                <th style="text-align:center;" class="col-md-2 ">Email</th>
+                                <th style="text-align:center;" class="col-md-2 ">Role</th>
+                                <th style="text-align:center;" class="col-md-3 ">Creation Date </th>
+                                <th style="text-align:center;" class="col-md-2 ">Action</th>
                             </thead>
                             <tbody>
                                 @foreach($user as $users)

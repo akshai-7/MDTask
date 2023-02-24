@@ -215,10 +215,7 @@
    .table_row:hover  .table_data{
     color: black;
    }
-    /* #content main .table-data .order table tbody tr:hover {
-        background: var(--grey);
-        color: black;
-    } */
+
 </style>
 <body id="body-pd">
     <section id="sidebar">
@@ -245,7 +242,7 @@
 			<div class="table-data">
 				<div class="order">
 					<div class="head">
-						<h3 class="text-suc" style="color:	#06064b;">Rental Details</h3>
+						<h3 class="" style="color:	#06064b;">Rental Details</h3>
 					</div>
                     <table class="" style="width:1150px">
                         <thead class="text-primary">

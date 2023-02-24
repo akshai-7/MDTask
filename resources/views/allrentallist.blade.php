@@ -209,15 +209,14 @@
         padding-bottom: 12px;
         font-size: 17px;
         text-align: left;
+        color: black;
         border-bottom: 1px solid var(--grey);
     }
     #content main .table-data .order table td {
         padding: 16px 0;
 
     }
-    #content main .table-data .order table tbody tr:hover {
-        background: var(--grey);
-    }
+
     #add{
         background: rgb(254,231,154);
         border-radius: 5px;
@@ -230,6 +229,15 @@
         position: relative;
         width: 80px;
     }
+    .table_row {
+    background: rgb(237, 233, 233);
+   }
+   .table_row:hover {
+    background: white
+   }
+   .table_row:hover  .table_data{
+    color: black;
+   }
 
 
 </style>
@@ -257,10 +265,10 @@
 			<div class="table-data">
 				<div class="order">
 					<div class="head">
-						<h3 class="text-success">Rental Details</h3>
+						<h3 class="" style="color:#06064b;">Rental Details</h3>
 					</div>
                     <table class="table table-bordered" style="width:1250px">
-                        <thead class="text-primary">
+                        <thead class="">
                             <th style="text-align:center;" class="">S.No</th>
                             <th style="text-align:center;" class="">Report</th>
                             <th style="text-align:center;">Driver Name</th>
@@ -274,17 +282,17 @@
                         </thead>
                         <tbody>
                             @foreach($driver as $driver)
-                                 <tr>
-                                    <td style="text-align:center;">{{$loop->iteration}}</td>
-                                    <td style="text-align:center;">{{$driver->report->report}}</td>
-                                    <td style="text-align:center;">{{$driver->drivername}}</td>
-                                    <td style="text-align:center;">{{$driver->company}}</td>
-                                    <td style="text-align:center;">{{$driver->deliveryemail}}</td>
-                                    <td style="text-align:center;">{{$driver->phone}}</td>
-                                    <td style="text-align:center;">{{$driver->report->number_plate}}</td>
-                                    <td style="text-align:center;">{{$driver->report->mileage}}Km</td>
-                                    <td style="text-align:center;">{{$driver->created_at->format('d.m.Y')}}</td>
-                                    <td style="text-align:center;">
+                                 <tr class="table_row ">
+                                    <td style="text-align:center;" class="table_data">{{$loop->iteration}}</td>
+                                    <td style="text-align:center;" class="table_data">{{$driver->report->report}}</td>
+                                    <td style="text-align:center;" class="table_data">{{$driver->drivername}}</td>
+                                    <td style="text-align:center;" class="table_data">{{$driver->company}}</td>
+                                    <td style="text-align:center;" class="table_data"> {{$driver->deliveryemail}}</td>
+                                    <td style="text-align:center;" class="table_data">{{$driver->phone}}</td>
+                                    <td style="text-align:center;" class="table_data">{{$driver->report->number_plate}}</td>
+                                    <td style="text-align:center;" class="table_data">{{$driver->report->mileage}}Km</td>
+                                    <td style="text-align:center;" class="table_data">{{$driver->created_at->format('d.m.Y')}}</td>
+                                    <td style="text-align:center;" class="table_data">
                                     <a href="/details/{{$driver->user_id}}"><i class="fa-solid fa-eye btn btn-primary" ></i></a>
                                     {{-- <a href="/createdriver/{{$driver->user_id}}"><i class="fa-solid fa-plus btn btn-secondary"></i></a> --}}
                                     <a href="/remove/{{$driver->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>

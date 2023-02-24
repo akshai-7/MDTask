@@ -236,10 +236,11 @@
                     padding-bottom: 12px;
                     font-size: 17px;
                     text-align: left;
-                    border-bottom: 1px solid var(--grey);
+                    /* border-bottom: 1px solid var(--grey); */
                 }
                 #content main .table-data .order table td {
                     padding: 16px 0;
+                    border-radius: 5px;
                 }
                 #content main .table-data .order table tr td:first-child {
                     display: flex;
@@ -254,18 +255,18 @@
                     border-radius: 50%;
                     object-fit: cover;
                 }
-                #content main .table-data .order table tbody tr:hover {
+                /* #content main .table-data .order table tbody tr:hover {
                     background: var(--grey);
-                }
+                } */
                 #content main .table-data .order table tr td .status {
                     font-size: 10px;
                     padding: 6px 20px;
-                    color: var(--light);
+                    /* color: var(--light); */
                     border-radius: 20px;
                     font-weight: 700;
                 }
                 button{
-                    color:	#228B22;
+                    color:	#06064b;
                     padding: 20px;
                 }
                 .button{
@@ -312,6 +313,15 @@
              img{
                 border-radius: 0px;
             }
+            .table_row {
+    background: rgb(237, 233, 233);
+   }
+   .table_row:hover {
+    background: white
+   }
+   .table_row:hover  .table_data{
+    color: black;
+   }
 
     </style>
 <body id="body-pd">
@@ -350,20 +360,20 @@
                         <div class="order">
                             <table class="" >
                                     <thead class=" col-md-1">
-                                        <th style="text-align:;" class="text-primary">S.No</th>
-                                        <th style="text-align:center;" class="text-primary">View</th>
-                                        <th style="text-align:center;" class="text-primary">Image</th>
-                                        <th style="text-align:center;" class="text-primary">Feed Back</th>
-                                        <th style="text-align:center;" class="text-primary">Action</th>
+                                        <th style="text-align:;">S.No</th>
+                                        <th style="text-align:center;">View</th>
+                                        <th style="text-align:center;">Image</th>
+                                        <th style="text-align:center;">Feed Back</th>
+                                        <th style="text-align:center;">Action</th>
                                     </thead>
                                     <tbody>
                                         @foreach($visual as $visual)
-                                            <tr>
-                                                <td style="text-align:center;">{{$loop->iteration}}</td>
-                                                <td style="text-align:center;">{{$visual->view}}</td>
+                                            <tr class="table_row">
+                                                <td style="text-align:center;" class="table_data">{{$loop->iteration}}</td>
+                                                <td style="text-align:center;" class="table_data">{{$visual->view}}</td>
                                                 <td style="text-align:center;" class=""><img src="{{url('images/'.$visual->image)}}" class="rounded-0 border border-secondary"  width="50px" height="50px" ></td>
-                                                <td style="text-align:center;">{{$visual->feedback}}</td>
-                                                <td style="text-align:center;">
+                                                <td style="text-align:center;" class="table_data">{{$visual->feedback}}</td>
+                                                <td style="text-align:center;" class="table_data">
                                                 <a href="/updatevisualcheck/{{$visual->id}}"><i class="fa-solid fa-edit btn btn-primary" ></i></a>
                                                 <a href="/deletevisual/{{$visual->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
                                             </tr>
@@ -382,20 +392,20 @@
                         <div class="order">
                             <table class="col-md-1">
                                     <thead class="">
-                                        <th style="text-align:;" class="text-primary">S.No</th>
-                                        <th style="text-align:center;" class="text-primary">View</th>
-                                        <th style="text-align:center;" class="text-primary">Image</th>
-                                        <th style="text-align:center;" class="text-primary">Feed Back</th>
-                                        <th style="text-align:center;" class="text-primary">Action</th>
+                                        <th style="text-align:;">S.No</th>
+                                        <th style="text-align:center;">View</th>
+                                        <th style="text-align:center;">Image</th>
+                                        <th style="text-align:center;">Feed Back</th>
+                                        <th style="text-align:center;">Action</th>
                                     </thead>
                                     <tbody>
                                         @foreach($vehicle as $vehicle)
-                                         <tr>
-                                            <td style="text-align:center;">{{$loop->iteration}}</td>
-                                            <td style="text-align:center;">{{$vehicle->view}}</td>
-                                            <td style="text-align:center;"><img src="{{url('images/'.$vehicle->image)}}"  width="50px" height="50px" alt="" class="rounded-0 border border-secondary " ></td>
-                                            <td style="text-align:center;">{{$vehicle->feedback}}</td>
-                                            <td style="text-align:center;">
+                                         <tr class="table_row">
+                                            <td style="text-align:center;" class="table_data">{{$loop->iteration}}</td>
+                                            <td style="text-align:center;" class="table_data">{{$vehicle->view}}</td>
+                                            <td style="text-align:center;" class="table_data"><img src="{{url('images/'.$vehicle->image)}}"  width="50px" height="50px" alt="" class="rounded-0 border border-secondary " ></td>
+                                            <td style="text-align:center;" class="table_data">{{$vehicle->feedback}}</td>
+                                            <td style="text-align:center;" class="table_data">
                                             <a href="/updatevehiclecheck/{{$vehicle->id}}"><i class="fa-solid fa-edit btn btn-primary" ></i></a>
                                             <a href="/deletevehicle/{{$vehicle->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
                                         </tr>
@@ -414,20 +424,20 @@
                         <div class="order">
                             <table class="col-md-1">
                                 <thead class="">
-                                    <th style="text-align:;" class="text-primary col-md-1">S.No</th>
-                                    <th style="text-align:center;" class="text-primary">View</th>
-                                    <th style="text-align:center;" class="text-primary">Image</th>
-                                    <th style="text-align:center;" class="text-primary">Feed Back</th>
-                                    <th style="text-align:center;" class="text-primary">Action</th>
+                                    <th style="text-align:;">S.No</th>
+                                    <th style="text-align:center;">View</th>
+                                    <th style="text-align:center;">Image</th>
+                                    <th style="text-align:center;">Feed Back</th>
+                                    <th style="text-align:center;">Action</th>
                                 </thead>
                                     <tbody>
                                         @foreach($cabin as $cabin)
-                                            <tr>
-                                                <td style="text-align:center;">{{$loop->iteration}}</td>
-                                                <td style="text-align:center;">{{$cabin->view}}</td>
-                                                <td style="text-align:center;"><img src="{{url('images/'.$cabin->image)}}"  width="70" height="70" alt="" class="rounded-0 border border-secondary"></td>
-                                                <td style="text-align:center;">{{$cabin->feedback}}</td>
-                                                <td style="text-align:center;">
+                                            <tr class="table_row">
+                                                <td style="text-align:center;" class="table_data">{{$loop->iteration}}</td>
+                                                <td style="text-align:center;" class="table_data">{{$cabin->view}}</td>
+                                                <td style="text-align:center;" class="table_data"><img src="{{url('images/'.$cabin->image)}}"  width="70" height="70" alt="" class="rounded-0 border border-secondary"></td>
+                                                <td style="text-align:center;" class="table_data">{{$cabin->feedback}}</td>
+                                                <td style="text-align:center;" class="table_data">
                                                     <a href="/updatecabincheck/{{$cabin->id}}"><i class="fa-solid fa-edit btn btn-primary" ></i></a>
                                                     <a href="/deletecabin/{{$cabin->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a>
                                                 </td>

@@ -209,6 +209,7 @@
 
                 padding-bottom: 12px;
                 font-size: 17px;
+                color: black;
                 text-align: left;
                 border-bottom: 1px solid var(--grey);
             }
@@ -216,9 +217,7 @@
                 padding: 16px 0;
 
             }
-            #content main .table-data .order table tbody tr:hover {
-                background: var(--grey);
-            }
+
             #add{
                 background: rgb(254,231,154);
                 border-radius: 5px;
@@ -230,6 +229,15 @@
                 height: 30px;
                 position: relative;
                 width: 80px;
+            }
+            .table_row {
+                background: rgb(237, 233, 233);
+            }
+            .table_row:hover {
+                background: white
+            }
+            .table_row:hover  .table_data{
+                color: black;
             }
 
 </style>
@@ -256,7 +264,7 @@
             <div class="table-data">
                 <div class="order">
                     <div class="head">
-                        <h3 class="text-success">User Details</h3>
+                        <h3 class="" style="color:#06064b;">User Details</h3>
                         <a href="/createuser"><input type="submit" value="Add-User" class="text-primary" id="add"></a>
                     </div>
                     <table class="">
@@ -270,13 +278,13 @@
                         </thead>
                         <tbody>
                             @foreach($user as $user)
-                                 <tr>
-                                    <td style="text-align:center;">{{$loop->iteration}}</td>
-                                    <td style="text-align:center;">{{$user->name}}</td>
-                                    <td style="text-align:center;">{{$user->email}}</td>
-                                    <td style="text-align:center;">{{$user->role}}</td>
-                                    <td style="text-align:center;">{{$user->created_at->format('d.m.Y')}}</td>
-                                    <td style="text-align:center;">
+                                 <tr class="table_row">
+                                    <td style="text-align:center;" class="table_data">{{$loop->iteration}}</td>
+                                    <td style="text-align:center;" class="table_data">{{$user->name}}</td>
+                                    <td style="text-align:center;" class="table_data">{{$user->email}}</td>
+                                    <td style="text-align:center;" class="table_data">{{$user->role}}</td>
+                                    <td style="text-align:center;" class="table_data">{{$user->created_at->format('d.m.Y')}}</td>
+                                    <td style="text-align:center;" class="table_data">
                                     <a href="/driver/{{$user->id}}"><i class="fa-solid fa-eye btn btn-primary"  ></i></a>
                                     <a href="/updateuser/{{$user->id}}" ><i class="fa-solid fa-edit btn btn-success" ></i></i></a>
                                     <a href="/createdriver/{{$user->id}}"><i class="fa-solid fa-plus btn btn-secondary"></i></a>

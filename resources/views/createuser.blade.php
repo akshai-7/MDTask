@@ -161,35 +161,7 @@
         overflow-x: hidden;
         font-family: 'Times New Roman', Times, serif;
     }
-     #sidebar {
-        /* position: fixed; */
-        /* top: 0;
-        left: 0;
-        width: 230px;
-        height: 100%;
-        background: var(--light);
-        z-index: 2000;
-        font-family: var(--lato);
-        transition: .3s ease;
-        overflow-x: hidden;
-        scrollbar-width: none; */
-    }
-    #sidebar .brand {
-        height: 40px;
-        position: fixed;
-        top: 20px;
-        margin-left: 40px;
-    }
-    #sidebar .side-menu li.active::before {
-        content: '';
-        position: absolute;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        top: -40px;
-        right: 0;
-        z-index: -1;
-    }
+
     #content {
         position: relative;
         width: 85%;
@@ -254,7 +226,6 @@
         border: 1px solid #D69E31;
         color: #85592e;
         cursor: pointer;
-        /* float: right; */
         top:-5px;
         height: 30px;
         position: relative;
@@ -288,7 +259,7 @@
 			<div class="table-data">
 				<div class="order">
 					<div class="head">
-						<h3 class="text-success">New User</h3>
+						<h3 class="" style="color:#06064b;">New User</h3>
 					</div>
                    <form action="/createuser" method="POST" autocomplete="off">
                     @csrf
@@ -300,7 +271,7 @@
                             <th style="text-align:center;">Action</th>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr class="table_row">
                                 <td style="text-align:center;"><input type="text" class="form-control" name="name"></td>
                                 <td style="text-align:center;"><input type="text" class="form-control" name="email"></td>
                                 <td style="text-align:center;"><input type="text" class="form-control" name="password"></td>
