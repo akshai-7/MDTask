@@ -310,6 +310,7 @@
         body{
             font-family: 'Times New Roman', Times, serif;
             background: var(--grey);
+            overflow: hidden;
         }
         a{
             text-decoration: none;
@@ -410,44 +411,34 @@
             font-size: 1.25rem
         }
         main {
-            width: 100%;
             position: relative;
             width: 85%;
             left: 120px;
+            margin-top: 70px;
         }
         .table-data{
-            margin-top: 10%;
             border-radius:8px;
             background: var(--light);
             padding: 24px;
             overflow-x: auto;
         }
-        .head {
-            display: flex;
-        }
-        .head h3 {
-            margin-right: auto;
-            font-weight: 600;
-            color: #06064b;
-        }
-        .order table {
+        table {
             width: 100%;
             margin-top: 2%;
         }
-        .order table th {
+         table th {
             padding-bottom: 12px;
             font-size: 17px;
             color: black;
             border-bottom: 1px solid var(--grey);
         }
-        .order table td {
-            padding: 16px 0;
+        table td {
+            padding: 10px ;
         }
         #add{
             background: #74e5d2;
             border-radius: 5px;
             border: 1px solid #74e5d2;
-
             cursor: pointer;
             top:50px;
             height: 30px;
@@ -462,33 +453,27 @@
         .table_row:hover {
             background: white
         }
-        .table_row:hover  .table_data{
+        .table_row:hover .table_data{
             color: black;
         }
-        button{
-                    color:	#06064b;
-                    margin-top: 10%;
-                    /* padding: 20px; */
-        }
-        .button{
-                    /* margin-right: 600px; */
-              /* margin-top: 30px; */
-        }
         .tablinks{
-                    padding: 5px 5px;
-                    border: none;
-                    border-radius: 4px;
-                    outline: none;
-                    cursor: pointer;
-                    transition: 0.2s;
-                    /* overflow: hidden; */
+            padding: 5px 5px;
+            border: none;
+            border-radius: 4px;
+            outline: none;
+            cursor: pointer;
+            transition: 0.6s;
         }
         button.active {
-            color: #0d6efd;
+            background:#b7f3e9;
         }
-        #Visual{
-            margin-top:100px;
+        .main{
+            margin-top: 50px;
         }
+        .tabcontent{
+            margin-top: 20px;
+        }
+
 </style>
 <body>
 	<section id="container">
@@ -501,234 +486,120 @@
              <a  class="nav_list"href="/" > <div class="icon-name"><i class='bx bx-log-out nav_icon'></i> </div><span class="nav_name">SignOut</span> </a>
         </div>
         <div id="div-2">
-             <header class="headers" id="headers">
+            <header class="headers" id="headers">
                  <div class="header_toggle" id="toggle-container"> <i class='bx bx-menu ' id="header-toggle"></i> </div>
                  <div class="header_img"> <img src="{{url('img/m-d-foundation.png')}}" class="img"> </div>
-             </header>
-             <main>
+            </header>
+            <main class="main">
                 <div class="button">
-                <button class="tablinks " onclick="openCheck(event, 'Visual')" id="defaultOpen"><h5 >Visual Damage</h5></button>
-                <button class="tablinks" onclick="openCheck(event, 'Vehicle')"><h5 >Vehicle Check</h5></button>
-                <button class="tablinks" onclick="openCheck(event,'Cabin')"><h5 >Cabin Checks</h5></button>
-              </div>
-            </main>
-            <div id="Visual" class="tabcontent">
-                    <main>
-                        <div class="table-data">
-                            <div class="order">
-                                <table class="" >
-                                        <thead class=" col-md-1">
-                                            <th style="text-align:;">S.No</th>
-                                            <th style="text-align:center;">View</th>
-                                            <th style="text-align:center;">Image</th>
-                                            <th style="text-align:center;">Feed Back</th>
-                                            <th style="text-align:center;">Action</th>
-                                        </thead>
-                                        <tbody>
-                                            @foreach($visual as $visual)
-                                                <tr class="table_row">
-                                                    <td style="text-align:center;" class="table_data">{{$loop->iteration}}</td>
-                                                    <td style="text-align:center;" class="table_data">{{$visual->view}}</td>
-                                                    <td style="text-align:center;" class=""><img src="{{url('images/'.$visual->image)}}" class="rounded-0 border border-secondary"  width="50px" height="50px" ></td>
-                                                    <td style="text-align:center;" class="table_data">{{$visual->feedback}}</td>
-                                                    <td style="text-align:center;" class="table_data">
-                                                    <a href="/updatevisualcheck/{{$visual->id}}"><i class="fa-solid fa-edit btn btn-success" ></i></a>
-                                                    <a href="/deletevisual/{{$visual->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </main>
-            </div>
-            <div id="Vehicle" class="tabcontent">
-                    <main>
-                        <div class="table-data">
-                            <div class="order">
-                                <table class="col-md-1">
-                                        <thead class="">
-                                            <th style="text-align:;">S.No</th>
-                                            <th style="text-align:center;">View</th>
-                                            <th style="text-align:center;">Image</th>
-                                            <th style="text-align:center;">Feed Back</th>
-                                            <th style="text-align:center;">Action</th>
-                                        </thead>
-                                        <tbody>
-                                            @foreach($vehicle as $vehicle)
-                                             <tr class="table_row">
-                                                <td style="text-align:centercen;" class="table_data">{{$loop->iteration}}</td>
-                                                <td style="text-align:center;" class="table_data">{{$vehicle->view}}</td>
-                                                <td style="text-align:center;" class="table_data"><img src="{{url('images/'.$vehicle->image)}}"  width="50px" height="50px" alt="" class="rounded-0 border border-secondary " ></td>
-                                                <td style="text-align:center;" class="table_data">{{$vehicle->feedback}}</td>
-                                                <td style="text-align:center;" class="table_data">
-                                                <a href="/updatevehiclecheck/{{$vehicle->id}}"><i class="fa-solid fa-edit btn btn-success" ></i></a>
-                                                <a href="/deletevehicle/{{$vehicle->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </main>
-
-            </div>
-            <div id="Cabin" class="tabcontent">
-
-                    <main>
-                        <div class="table-data">
-                            <div class="order">
-                                <table class="col-md-1">
-                                    <thead class="">
-                                        <th style="text-align:;">S.No</th>
-                                        <th style="text-align:center;">View</th>
-                                        <th style="text-align:center;">Image</th>
-                                        <th style="text-align:center;">Feed Back</th>
-                                        <th style="text-align:center;">Action</th>
-                                    </thead>
-                                        <tbody>
-                                            @foreach($cabin as $cabin)
-                                                <tr class="table_row">
-                                                    <td style="text-align:center;" class="table_data">{{$loop->iteration}}</td>
-                                                    <td style="text-align:center;" class="table_data">{{$cabin->view}}</td>
-                                                    <td style="text-align:center;" class="table_data"><img src="{{url('images/'.$cabin->image)}}"  width="70" height="70" alt="" class="rounded-0 border border-secondary"></td>
-                                                    <td style="text-align:center;" class="table_data">{{$cabin->feedback}}</td>
-                                                    <td style="text-align:center;" class="table_data">
-                                                        <a href="/updatecabincheck/{{$cabin->id}}"><i class="fa-solid fa-edit btn btn-success" ></i></a>
-                                                        <a href="/deletecabin/{{$cabin->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </main>
-
-            </div>
+                    <button class="tablinks " onclick="openCheck(event, 'Visual')" id="defaultOpen"><h5 >Visual Damage</h5></button>
+                    <button class="tablinks" onclick="openCheck(event, 'Vehicle')"><h5 >Vehicle Check</h5></button>
+                    <button class="tablinks" onclick="openCheck(event,'Cabin')"><h5 >Cabin Checks</h5></button>
+                </div>
+                <div id="Visual" class="tabcontent">
+                    <div class="table-data">
+                        <table >
+                            <thead>
+                                <th style="text-align:center;">S.No</th>
+                                <th style="text-align:center;">View</th>
+                                <th style="text-align:center;">Image</th>
+                                <th style="text-align:center;">Feed Back</th>
+                                <th style="text-align:center;">Action</th>
+                            </thead>
+                            <tbody>
+                                @foreach($visual as $visual)
+                                    <tr class="table_row">
+                                        <td style="text-align:center;" class="table_data">{{$loop->iteration}}</td>
+                                        <td style="text-align:center;" class="table_data">{{$visual->view}}</td>
+                                        <td style="text-align:center;" class="table_data"><img src="{{url('images/'.$visual->image)}}" class="rounded-0 border border-secondary"  width="50px" height="50px" ></td>
+                                        <td style="text-align:center;" class="table_data">{{$visual->feedback}}</td>
+                                        <td style="text-align:center;" class="table_data">
+                                        <a href="/updatevisualcheck/{{$visual->id}}"><i class="fa-solid fa-edit btn btn-success" ></i></a>
+                                        <a href="/deletevisual/{{$visual->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                    </table>
+                    </div>
+                </div>
+                <div id="Vehicle" class="tabcontent">
+                    <div class="table-data">
+                        <table>
+                            <thead>
+                                <th style="text-align:center;">S.No</th>
+                                <th style="text-align:center;">View</th>
+                                <th style="text-align:center;">Image</th>
+                                <th style="text-align:center;">Feed Back</th>
+                                <th style="text-align:center;">Action</th>
+                            </thead>
+                            <tbody>
+                                @foreach($vehicle as $vehicle)
+                                 <tr class="table_row">
+                                    <td style="text-align:center;" class="table_data">{{$loop->iteration}}</td>
+                                    <td style="text-align:center;" class="table_data">{{$vehicle->view}}</td>
+                                    <td style="text-align:center;" class="table_data"><img src="{{url('images/'.$vehicle->image)}}"  width="50px" height="50px" alt="" class="rounded-0 border border-secondary " ></td>
+                                    <td style="text-align:center;" class="table_data">{{$vehicle->feedback}}</td>
+                                    <td style="text-align:center;" class="table_data">
+                                    <a href="/updatevehiclecheck/{{$vehicle->id}}"><i class="fa-solid fa-edit btn btn-success" ></i></a>
+                                    <a href="/deletevehicle/{{$vehicle->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div id="Cabin" class="tabcontent">
+                    <div class="table-data">
+                        <table>
+                            <thead>
+                                <th style="text-align:center;">S.No</th>
+                                <th style="text-align:center;">View</th>
+                                <th style="text-align:center;">Image</th>
+                                <th style="text-align:center;">Feed Back</th>
+                                <th style="text-align:center;">Action</th>
+                            </thead>
+                            <tbody>
+                                @foreach($cabin as $cabin)
+                                <tr class="table_row">
+                                    <td style="text-align:center;" class="table_data">{{$loop->iteration}}</td>
+                                    <td style="text-align:center;" class="table_data">{{$cabin->view}}</td>
+                                    <td style="text-align:center;" class="table_data"><img src="{{url('images/'.$cabin->image)}}"  width="50px" height="50px" alt="" class="rounded-0 border border-secondary"></td>
+                                    <td style="text-align:center;" class="table_data">{{$cabin->feedback}}</td>
+                                    <td style="text-align:center;" class="table_data">
+                                        <a href="/updatecabincheck/{{$cabin->id}}"><i class="fa-solid fa-edit btn btn-success" ></i></a>
+                                        <a href="/deletecabin/{{$cabin->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                 </div>
+           </main>
             <div>
                 <a href="/summary/{{$cabin->user_id}}"><input type="submit" value="Summary" class="text-black" id="add"></a>
             </div>
         </div>
     </section>
-
-        {{-- <div id="Visual" class="tabcontent">
-            <section id="content">
-                <main>
-                    <div class="table-data">
-                        <div class="order">
-                            <table class="" >
-                                    <thead class=" col-md-1">
-                                        <th style="text-align:;">S.No</th>
-                                        <th style="text-align:center;">View</th>
-                                        <th style="text-align:center;">Image</th>
-                                        <th style="text-align:center;">Feed Back</th>
-                                        <th style="text-align:center;">Action</th>
-                                    </thead>
-                                    <tbody>
-                                        @foreach($visual as $visual)
-                                            <tr class="table_row">
-                                                <td style="text-align:center;" class="table_data">{{$loop->iteration}}</td>
-                                                <td style="text-align:center;" class="table_data">{{$visual->view}}</td>
-                                                <td style="text-align:center;" class=""><img src="{{url('images/'.$visual->image)}}" class="rounded-0 border border-secondary"  width="50px" height="50px" ></td>
-                                                <td style="text-align:center;" class="table_data">{{$visual->feedback}}</td>
-                                                <td style="text-align:center;" class="table_data">
-                                                <a href="/updatevisualcheck/{{$visual->id}}"><i class="fa-solid fa-edit btn btn-success" ></i></a>
-                                                <a href="/deletevisual/{{$visual->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </main>
-            </section>
-        </div>
-        <div id="Vehicle" class="tabcontent">
-            <section id="content">
-                <main>
-                    <div class="table-data">
-                        <div class="order">
-                            <table class="col-md-1">
-                                    <thead class="">
-                                        <th style="text-align:;">S.No</th>
-                                        <th style="text-align:center;">View</th>
-                                        <th style="text-align:center;">Image</th>
-                                        <th style="text-align:center;">Feed Back</th>
-                                        <th style="text-align:center;">Action</th>
-                                    </thead>
-                                    <tbody>
-                                        @foreach($vehicle as $vehicle)
-                                         <tr class="table_row">
-                                            <td style="text-align:centercen;" class="table_data">{{$loop->iteration}}</td>
-                                            <td style="text-align:center;" class="table_data">{{$vehicle->view}}</td>
-                                            <td style="text-align:center;" class="table_data"><img src="{{url('images/'.$vehicle->image)}}"  width="50px" height="50px" alt="" class="rounded-0 border border-secondary " ></td>
-                                            <td style="text-align:center;" class="table_data">{{$vehicle->feedback}}</td>
-                                            <td style="text-align:center;" class="table_data">
-                                            <a href="/updatevehiclecheck/{{$vehicle->id}}"><i class="fa-solid fa-edit btn btn-success" ></i></a>
-                                            <a href="/deletevehicle/{{$vehicle->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </main>
-            </section>
-        </div>
-        <div id="Cabin" class="tabcontent">
-            <section id="content">
-                <main>
-                    <div class="table-data">
-                        <div class="order">
-                            <table class="col-md-1">
-                                <thead class="">
-                                    <th style="text-align:;">S.No</th>
-                                    <th style="text-align:center;">View</th>
-                                    <th style="text-align:center;">Image</th>
-                                    <th style="text-align:center;">Feed Back</th>
-                                    <th style="text-align:center;">Action</th>
-                                </thead>
-                                    <tbody>
-                                        @foreach($cabin as $cabin)
-                                            <tr class="table_row">
-                                                <td style="text-align:center;" class="table_data">{{$loop->iteration}}</td>
-                                                <td style="text-align:center;" class="table_data">{{$cabin->view}}</td>
-                                                <td style="text-align:center;" class="table_data"><img src="{{url('images/'.$cabin->image)}}"  width="70" height="70" alt="" class="rounded-0 border border-secondary"></td>
-                                                <td style="text-align:center;" class="table_data">{{$cabin->feedback}}</td>
-                                                <td style="text-align:center;" class="table_data">
-                                                    <a href="/updatecabincheck/{{$cabin->id}}"><i class="fa-solid fa-edit btn btn-success" ></i></a>
-                                                    <a href="/deletecabin/{{$cabin->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </main>
-            </section>
-        </div>
-        <div>
-            <a href="/summary/{{$cabin->user_id}}"><input type="submit" value="Su" class="text-black" id="add"></a>
-        </div> --}}
 <script>
-        function openCheck(evt,Name) {
-          var i, tabcontent, tablinks;
-          tabcontent = document.getElementsByClassName("tabcontent");
-          for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-          }
-          tablinks = document.getElementsByClassName("tablinks");
-          for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-          }
-          document.getElementById(Name).style.display = "block";
-          evt.currentTarget.className +=" active";
+            function openCheck(evt,Name) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(Name).style.display = "block";
+            evt.currentTarget.className +=" active";
 
-        }
-        document.getElementById("defaultOpen").click();
+            }
+            document.getElementById("defaultOpen").click();
 
+
+        //sidebar
             var toggleBtn=document.getElementById("toggle-container");
             var isOpen=false;
             toggleBtn.addEventListener("click",()=>{

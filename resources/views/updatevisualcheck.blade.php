@@ -128,7 +128,6 @@
         font-size: 1.25rem
     }
     main {
-        width: 100%;
         position: relative;
         width: 85%;
         left: 120px;
@@ -140,13 +139,10 @@
         padding: 24px;
         overflow-x: auto;
     }
-    .head {
-        display: flex;
-    }
-    .head h3 {
+    h3{
         margin-right: auto;
         font-weight: 600;
-        color: #06064b;
+        color:#06064b;
     }
     .order table {
         width: 100%;
@@ -189,9 +185,7 @@
          <main>
 			<div class="table-data">
 				<div class="order">
-					<div class="head">
 						<h3>Visual Check</h3>
-					</div>
                     <form action="/visualupdate/{user_id}" method="POST" autocomplete="off">
                         @csrf
                         <table >

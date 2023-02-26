@@ -36,7 +36,6 @@
         height: 100vh;
         display: flex;
         flex-direction: row
-
     }
     #div-1{
         width: 5%;
@@ -128,7 +127,6 @@
         font-size: 1.25rem
     }
     main {
-        width: 100%;
         position: relative;
         width: 85%;
         left: 120px;

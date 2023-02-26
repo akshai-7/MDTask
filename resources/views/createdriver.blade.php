@@ -30,6 +30,7 @@
     body{
         font-family: 'Times New Roman', Times, serif;
         background: var(--grey);
+        overflow: hidden;
     }
     a{
         text-decoration: none;
@@ -131,24 +132,17 @@
         font-size: 1.25rem
     }
     main {
-        width: 100%;
         position: relative;
         width: 85%;
         left: 120px;
     }
     .table-data{
-        margin-top: 10%;
-        border-radius:8px;
         background: var(--light);
         padding: 24px;
-        overflow-x: auto;
     }
-    .head {
-        display: flex;
-    }
-    .head h3 {
-        margin-right: auto;
-        font-weight: 600;
+    h3{
+        margin-left: 20px;
+        margin-top: 20px;
         color: #06064b;
     }
     .order table {
@@ -165,15 +159,16 @@
         padding: 16px 0;
     }
     #add{
-        background: rgb(254,231,154);
+        background: #74e5d2;
         border-radius: 5px;
-        border: 1px solid #D69E31;
-        color: #85592e;
+        border: 1px solid #74e5d2;
         cursor: pointer;
-        top:-5px;
+        top:20px;
         height: 30px;
         position: relative;
         width: 80px;
+        float:right;
+        margin-right: 100px;
     }
     .table_row {
         background: rgb(237, 233, 233);
@@ -186,7 +181,16 @@
     }
     #main{
         display: flex;
-        margin-left: 10%;
+        justify-content: space-between;
+        margin-left: 15%;
+    }
+    .main{
+        margin-top: 20px;
+        height: 75%;
+        overflow: scroll;
+    }
+    .main::-webkit-scrollbar {
+        display: none;
     }
 </style>
 <body>
@@ -204,14 +208,13 @@
                  <div class="header_toggle" id="toggle-container"> <i class='bx bx-menu ' id="header-toggle"></i> </div>
                  <div class="header_img"> <img src="{{url('img/m-d-foundation.png')}}" class="img"> </div>
              </header>
-             <form action="/store/{id}" method="POST" autocomplete="off">
+                <h3>New Rental Details</h3>
+             <form action="/store/{id}" method="POST" autocomplete="off" class="main">
                 @csrf
                 <input type="hidden" name="user_id" value="{{$id}}">
-                    <main>
+                    <main >
                         <div class="table-data" >
-                                <div class="head1">
-                                    <h3>New Rental Details</h3>
-                                </div>
+
                                 <div id="main">
                                     <div class="col-md-5 report">
                                         <h5 class="text-secondary mb-3 mt-4" > <i class="fa-solid fa-user"></i> Driver & Vehicle Details</h5>
@@ -469,15 +472,14 @@
                                                     <td><input type="text"  name="notes2[]" class="form-control notes border-0" style="text-align:center;" id='notes'></td>
                                                     <td><input type="text"  name="action2[]"  class="form-control action border-0" style="text-align:center;" id='action'></td>
                                                 </tr>
-
-
                                             </tbody>
                                         </table>
                                 </div>
                         </div>
-                        <a href=""><input type="submit" value="Submit" class="text-black" id="add"></a>
                     </main>
+                    <a href=""><input type="submit" value="Submit" class="text-black" id="add"></a>
             </form>
+
          </div>
 </section>
 <script>

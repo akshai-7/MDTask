@@ -129,7 +129,6 @@
                 font-size: 1.25rem
             }
             main {
-
                 position: relative;
                 width: 85%;
                 left: 120px;

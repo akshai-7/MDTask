@@ -128,7 +128,6 @@
         font-size: 1.25rem
     }
     main {
-        width: 100%;
         position: relative;
         width: 85%;
         left: 120px;
@@ -140,10 +139,7 @@
         padding: 24px;
         overflow-x: auto;
     }
-    .head {
-        display: flex;
-    }
-    .head h3 {
+    h3 {
         margin-right: auto;
         font-weight: 600;
         color: #06064b;
