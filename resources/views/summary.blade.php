@@ -10,19 +10,44 @@
 	<title>M&D Foundations</title>
 </head>
     <style>
-            :root{--header-height: 3rem;--nav-width: 68px;--first-color: #4723D9;--first-color-light: #AFA5D9;--white-color: #F7F6FB;--body-font: 'Nunito', sans-serif;--normal-font-size: 1rem;--z-fixed: 100}*,::before,::after{box-sizing: border-box}
+            :root{
+                --header-height: 3rem;
+                --nav-width: 68px;
+                --first-color: #4723D9;
+                --first-color-light: #AFA5D9;
+                --white-color: #F7F6FB;
+                --body-font: 'Nunito', sans-serif;
+                --normal-font-size: 1rem;
+                --z-fixed: 100;
+                --light: #F9F9F9;
+                --blue: #3C91E6;
+                --light-blue: #CFE8FF;
+                --grey: #eee;
+                --dark-grey: #AAAAAA;
+                --dark: #342E37;s
+                --red: #DB504A;
+                --yellow: #FFCE26;
+                --light-yellow: #FFF2C6;
+                --orange: #FD7238;
+                --light-orange: #FFE0D3;
+            }
+            html {
+                overflow-x: hidden;
+            }
             body{
                 position: relative;
                 margin: var(--header-height) 0 0 0;
-                padding: 0 1rem;font-family:
-                var(--body-font);font-size:
-                var(--normal-font-size);
-                transition: .5s
+                padding: 0 1rem;
+                font-size:var(--normal-font-size);
+                transition: .5s;
+                background: var(--grey);
+                overflow-x: hidden;
+                font-family: 'Times New Roman', Times, serif;
             }
             a{text-decoration: none}
             .header{
-                width: 100%;height:
-                var(--header-height);
+                width: 100%;
+                height:var(--header-height);
                 position: fixed;
                 top: 0;
                 left: 0;
@@ -39,16 +64,10 @@
                 font-size: 1.5rem;
                 cursor: pointer}
             .header_img{
-                width:65px;
-                height: 35px;
-                /* display: flex; */
-                /* justify-content: center; */
-                /* border-radius: 30%; */
-                overflow: hidden
+                width: 100%;
+                height:var(--header-height);
             }
-            .header_img img{
-                width: 40px
-            }
+
             .l-navbar{
                 position: fixed;
                 top: 0;
@@ -96,12 +115,7 @@
             .nav_icon{
                 font-size: 1.25rem
             }
-            /* .show{
-                left: 0
-            } */
-            .body-pd{
-                padding-left: calc(var(--nav-width) + 1rem)
-            }
+
             .active{
                 color: var(--white-color)
             }
@@ -121,38 +135,10 @@
             .l-navbar{left: 0;padding: 1rem 1rem 0 0}
             .show{width: calc(var(--nav-width) + 156px)}
             .body-pd{padding-left: calc(var(--nav-width) + 188px)}}
-            a {
-                text-decoration: none;
-            }
 
             li {
                 list-style: none;
             }
-
-            :root {
-
-                --light: #F9F9F9;
-                --blue: #3C91E6;
-                --light-blue: #CFE8FF;
-                --grey: #eee;
-                --dark-grey: #AAAAAA;
-                --dark: #342E37;s
-                --red: #DB504A;
-                --yellow: #FFCE26;
-                --light-yellow: #FFF2C6;
-                --orange: #FD7238;
-                --light-orange: #FFE0D3;
-            }
-
-            html {
-                overflow-x: hidden;
-            }
-            body {
-                background: var(--grey);
-                overflow-x: hidden;
-                font-family: 'Times New Roman', Times, serif;
-            }
-
                 #content {
                     position: relative;
                     width: calc(100% - 280px);
@@ -163,12 +149,9 @@
                     width: calc(100% - 60px);
                     left: 60px;
                 }
-            /* MAIN */
                 #content main {
                     width: 90%;
                     margin-left: 100px;
-                    /* margin-top: 100px; */
-
                 }
                 #content main .table-data > div {
                     border-radius:  0;
@@ -205,7 +188,7 @@
                 }
 
                  button.active {
-                /* background-color:#0d6efd; */
+
                     color: #0d6efd;
                 }
                 .first{
@@ -237,7 +220,7 @@
             </nav>
         </div>
 	</section>
-            <h3> Report Summary</h3>
+            <h3  style="color:	#06064b;"> Report Summary</h3>
 
             <div id="Visual" class="tabcontent">
             <section id="content" class="first" >
