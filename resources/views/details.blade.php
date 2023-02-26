@@ -9,11 +9,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 	<title>M&D Foundations</title>
 </head>
-    <style>
+    {{-- <style>
             :root{
                 --header-height: 3rem;
                 --nav-width: 68px;
-                --first-color: #4723D9;
+                --first-color: #74e5d2;
                 --first-color-light: #AFA5D9;
                 --white-color: #F7F6FB;
                 --body-font: 'Nunito', sans-serif;
@@ -61,7 +61,7 @@
                 transition: .5s
             }
             .header_toggle{
-                color: var(--first-color);
+                color: black;
                 font-size: 1.5rem;
                 cursor: pointer}
             .header_img{
@@ -99,26 +99,26 @@
             }
             .nav_logo-icon{
                 font-size: 1.25rem;
-                color: var(--white-color)
+                color: black;
             }
             .nav_logo-name{
-                color: var(--white-color);
+                color: black;
                 font-weight: 700
             }
             .nav_link{
                 position: relative;
-                color: var(--first-color-light);
+                color:black;
                 margin-bottom: 1.5rem;
                 transition: .3s}
             .nav_link:hover{
-                color: var(--white-color)
+                color: var(--white-color);
             }
             .nav_icon{
                 font-size: 1.25rem
             }
 
             .active{
-                color: var(--white-color)
+                color: blue;
             }
             .active::before{
                 content: '';
@@ -267,10 +267,10 @@
 
 
                 #add{
-                background: rgb(254,231,154);
+                background:#74e5d2;
                 border-radius: 5px;
-                border: 1px solid #D69E31;
-                color: #85592e;
+                border: #74e5d2;
+
                 cursor: pointer;
                 float: right;
                 margin-right: 70px;
@@ -291,37 +291,328 @@
                 color: black;
             }
 
-    </style>
-<body id="body-pd">
-	<section id="sidebar">
-        <header class="header" id="header">
-            <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
-            <div class="header_img"> <img src="{{url('img/m-d-foundation.png')}}" alt=""> </div>
-        </header>
-        <div class="l-navbar" id="nav-bar">
-            <nav class="nav">
-                <div>
-                    <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">M&D Foundations</span> </a>
-                    <div class="nav_list">
-                        <a href="/user" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Dashboard</span> </a>
-                        <a href="/allrentallist" class="nav_link"> <i class="fa-solid fa-list"></i> <span class="nav_name">Rental</span> </a>
-                    </div>
-                    <a href="/" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">SignOut</span> </a>
-                </div>
-            </nav>
+    </style> --}}
+    <style>
+        :root{
+            --header-height: 3rem;
+            --first-color: #74e5d2;
+            --first-color-light:black;
+            --white-color: #F7F6FB;
+            --z-fixed: 100;
+            --light: #F9F9F9;
+            --grey: #eee;
+            --dark-grey: #AAAAAA;
+            --dark: #342E37;s
+        }
+        html {
+            overflow-x: hidden;
+        }
+        body{
+            font-family: 'Times New Roman', Times, serif;
+            background: var(--grey);
+        }
+        a{
+            text-decoration: none;
+        }
+        #container{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: row
+
+        }
+        #div-1{
+            width: 5%;
+            height: 200;
+            background: var(--first-color);
+        }
+        #div-2{
+            width: 95%;
+            height: 200;
+        }
+        #headers{
+            width: 100%;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-content: center;
+            background: #fff;
+        }
+        .icon-name{
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            display: flex;
+           flex: 1
+
+        }
+        .nav_name{
+            flex: 2;
+            display: none;
+        }
+
+        .header{
+            width: inherit;
+            height: var(--header-height);
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1rem;
+            background-color: var(--white-color);
+            z-index: var(--z-fixed);
+            transition: .5s
+        }
+        .header_toggle{
+            color: black;
+            font-size: 1.5rem;
+            cursor: pointer
+        }
+        .img {
+            width: 60px;
+            height:40px;
+        }
+        #img-container{
+            width: 100%;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center
+        }
+        #img-logo{
+            width: 60%;
+        }
+        .nav_list{
+            width: 100%;
+            padding: 0 10px;
+            height: 7vh;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            color: black
+        }
+        .nav_list:hover{
+            width: 100%;
+            padding: 0 10px;
+            height: 7vh;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            border-radius: 10px;
+            background: #edf7f8;
+            color:#269784;
+        }
+        .nav_icon{
+            font-size: 1.25rem
+        }
+        main {
+            width: 100%;
+            position: relative;
+            width: 85%;
+            left: 120px;
+        }
+        .table-data{
+            margin-top: 10%;
+            border-radius:8px;
+            background: var(--light);
+            padding: 24px;
+            overflow-x: auto;
+        }
+        .head {
+            display: flex;
+        }
+        .head h3 {
+            margin-right: auto;
+            font-weight: 600;
+            color: #06064b;
+        }
+        .order table {
+            width: 100%;
+            margin-top: 2%;
+        }
+        .order table th {
+            padding-bottom: 12px;
+            font-size: 17px;
+            color: black;
+            border-bottom: 1px solid var(--grey);
+        }
+        .order table td {
+            padding: 16px 0;
+        }
+        #add{
+            background: #74e5d2;
+            border-radius: 5px;
+            border: 1px solid #74e5d2;
+
+            cursor: pointer;
+            top:50px;
+            height: 30px;
+            position: relative;
+            width: 80px;
+            float: right;
+            margin-right: 100px;
+        }
+        .table_row {
+            background: rgb(237, 233, 233);
+        }
+        .table_row:hover {
+            background: white
+        }
+        .table_row:hover  .table_data{
+            color: black;
+        }
+        button{
+                    color:	#06064b;
+                    margin-top: 10%;
+                    /* padding: 20px; */
+        }
+        .button{
+                    /* margin-right: 600px; */
+              /* margin-top: 30px; */
+        }
+        .tablinks{
+                    padding: 5px 5px;
+                    border: none;
+                    border-radius: 4px;
+                    outline: none;
+                    cursor: pointer;
+                    transition: 0.2s;
+                    /* overflow: hidden; */
+        }
+        button.active {
+            color: #0d6efd;
+        }
+        #Visual{
+            margin-top:100px;
+        }
+</style>
+<body>
+	<section id="container">
+        <div id="div-1">
+            <div id="img-container">
+             <img  id="img-logo" src="{{url('img/m-d-foundation.png')}}">
+            </div>
+             <a class="nav_list" href="/user" ><div class="icon-name"><i class='bx bx-grid-alt nav_icon'></i></div> <div class="nav_name">Dashboard </div> </a>
+             <a  class="nav_list" href="/allrentallist" ><div class="icon-name"> <i class="fa-solid fa-list"></i> </div><span class="nav_name">Rental</span> </a>
+             <a  class="nav_list"href="/" > <div class="icon-name"><i class='bx bx-log-out nav_icon'></i> </div><span class="nav_name">SignOut</span> </a>
         </div>
-	</section>
-        <section id='content'>
-            <main>
+        <div id="div-2">
+             <header class="headers" id="headers">
+                 <div class="header_toggle" id="toggle-container"> <i class='bx bx-menu ' id="header-toggle"></i> </div>
+                 <div class="header_img"> <img src="{{url('img/m-d-foundation.png')}}" class="img"> </div>
+             </header>
+             <main>
                 <div class="button">
                 <button class="tablinks " onclick="openCheck(event, 'Visual')" id="defaultOpen"><h5 >Visual Damage</h5></button>
                 <button class="tablinks" onclick="openCheck(event, 'Vehicle')"><h5 >Vehicle Check</h5></button>
                 <button class="tablinks" onclick="openCheck(event,'Cabin')"><h5 >Cabin Checks</h5></button>
               </div>
             </main>
+            <div id="Visual" class="tabcontent">
+                    <main>
+                        <div class="table-data">
+                            <div class="order">
+                                <table class="" >
+                                        <thead class=" col-md-1">
+                                            <th style="text-align:;">S.No</th>
+                                            <th style="text-align:center;">View</th>
+                                            <th style="text-align:center;">Image</th>
+                                            <th style="text-align:center;">Feed Back</th>
+                                            <th style="text-align:center;">Action</th>
+                                        </thead>
+                                        <tbody>
+                                            @foreach($visual as $visual)
+                                                <tr class="table_row">
+                                                    <td style="text-align:center;" class="table_data">{{$loop->iteration}}</td>
+                                                    <td style="text-align:center;" class="table_data">{{$visual->view}}</td>
+                                                    <td style="text-align:center;" class=""><img src="{{url('images/'.$visual->image)}}" class="rounded-0 border border-secondary"  width="50px" height="50px" ></td>
+                                                    <td style="text-align:center;" class="table_data">{{$visual->feedback}}</td>
+                                                    <td style="text-align:center;" class="table_data">
+                                                    <a href="/updatevisualcheck/{{$visual->id}}"><i class="fa-solid fa-edit btn btn-success" ></i></a>
+                                                    <a href="/deletevisual/{{$visual->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </main>
+            </div>
+            <div id="Vehicle" class="tabcontent">
+                    <main>
+                        <div class="table-data">
+                            <div class="order">
+                                <table class="col-md-1">
+                                        <thead class="">
+                                            <th style="text-align:;">S.No</th>
+                                            <th style="text-align:center;">View</th>
+                                            <th style="text-align:center;">Image</th>
+                                            <th style="text-align:center;">Feed Back</th>
+                                            <th style="text-align:center;">Action</th>
+                                        </thead>
+                                        <tbody>
+                                            @foreach($vehicle as $vehicle)
+                                             <tr class="table_row">
+                                                <td style="text-align:centercen;" class="table_data">{{$loop->iteration}}</td>
+                                                <td style="text-align:center;" class="table_data">{{$vehicle->view}}</td>
+                                                <td style="text-align:center;" class="table_data"><img src="{{url('images/'.$vehicle->image)}}"  width="50px" height="50px" alt="" class="rounded-0 border border-secondary " ></td>
+                                                <td style="text-align:center;" class="table_data">{{$vehicle->feedback}}</td>
+                                                <td style="text-align:center;" class="table_data">
+                                                <a href="/updatevehiclecheck/{{$vehicle->id}}"><i class="fa-solid fa-edit btn btn-success" ></i></a>
+                                                <a href="/deletevehicle/{{$vehicle->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </main>
 
-        </section>
-        <div id="Visual" class="tabcontent">
+            </div>
+            <div id="Cabin" class="tabcontent">
+
+                    <main>
+                        <div class="table-data">
+                            <div class="order">
+                                <table class="col-md-1">
+                                    <thead class="">
+                                        <th style="text-align:;">S.No</th>
+                                        <th style="text-align:center;">View</th>
+                                        <th style="text-align:center;">Image</th>
+                                        <th style="text-align:center;">Feed Back</th>
+                                        <th style="text-align:center;">Action</th>
+                                    </thead>
+                                        <tbody>
+                                            @foreach($cabin as $cabin)
+                                                <tr class="table_row">
+                                                    <td style="text-align:center;" class="table_data">{{$loop->iteration}}</td>
+                                                    <td style="text-align:center;" class="table_data">{{$cabin->view}}</td>
+                                                    <td style="text-align:center;" class="table_data"><img src="{{url('images/'.$cabin->image)}}"  width="70" height="70" alt="" class="rounded-0 border border-secondary"></td>
+                                                    <td style="text-align:center;" class="table_data">{{$cabin->feedback}}</td>
+                                                    <td style="text-align:center;" class="table_data">
+                                                        <a href="/updatecabincheck/{{$cabin->id}}"><i class="fa-solid fa-edit btn btn-success" ></i></a>
+                                                        <a href="/deletecabin/{{$cabin->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </main>
+
+            </div>
+            <div>
+                <a href="/summary/{{$cabin->user_id}}"><input type="submit" value="Summary" class="text-black" id="add"></a>
+            </div>
+        </div>
+    </section>
+
+        {{-- <div id="Visual" class="tabcontent">
             <section id="content">
                 <main>
                     <div class="table-data">
@@ -419,9 +710,9 @@
             </section>
         </div>
         <div>
-            <a href="/summary/{{$cabin->user_id}}"><input type="submit" value="Summary" class="text-primary" id="add"></a>
-        </div>
-        <script>
+            <a href="/summary/{{$cabin->user_id}}"><input type="submit" value="Su" class="text-black" id="add"></a>
+        </div> --}}
+<script>
         function openCheck(evt,Name) {
           var i, tabcontent, tablinks;
           tabcontent = document.getElementsByClassName("tabcontent");
@@ -438,38 +729,37 @@
         }
         document.getElementById("defaultOpen").click();
 
-//sidebar
-        document.addEventListener("DOMContentLoaded", function(event) {
-        const showNavbar = (toggleId, navId, bodyId, headerId) =>{
-        const toggle = document.getElementById(toggleId),
-        nav = document.getElementById(navId),
-        bodypd = document.getElementById(bodyId),
-        headerpd = document.getElementById(headerId)
+            var toggleBtn=document.getElementById("toggle-container");
+            var isOpen=false;
+            toggleBtn.addEventListener("click",()=>{
+                if(isOpen){
+                    var divsToHide = document.getElementsByClassName("nav_name");
+                    document.getElementById("div-1").style.width="5%";
+                    document.getElementById("div-1").style.transition="0.6s";
+                    document.getElementById("div-2").style.width="95%";//divsToHide is an array
 
+                    document.getElementById("toggle-container").innerHTML = "<i class='bx bx-menu' id='header-toggle'></i>";
+                        for(var i = 0; i < divsToHide.length; i++){
 
-                if(toggle && nav && bodypd && headerpd){
-                toggle.addEventListener('click', ()=>{
+                            divsToHide[i].style.display = "none"; // depending on what you're doing
+                        }
 
-                nav.classList.toggle('show')
+                    isOpen=!isOpen;
+                }else{
 
-                toggle.classList.toggle('bx-x')
+                    document.getElementById("div-1").style.width="15%";
+                    document.getElementById("div-2").style.transition="0.6s";
+                    var divsToHide = document.getElementsByClassName("nav_name"); //divsToHide is an array
+                    document.getElementById("toggle-container").innerHTML = "<i class='bx bx-x' id='header-toggle'></i>";
 
-                headerpd.classList.toggle('body-pd')
-                })
+                        for(var i = 0; i < divsToHide.length; i++){
+                            divsToHide[i].style.display = "block"; // depending on what you're doing
+                        }
+                    document.getElementById("div-2").style.width="85%";
+                    isOpen=!isOpen;
                 }
-            }
-                showNavbar('header-toggle','nav-bar','body-pd','header')
-                const linkColor = document.querySelectorAll('.nav_link')
+        })
+</script>
 
-                function colorLink(){
-                if(linkColor){
-                linkColor.forEach(l=> l.classList.remove('active'))
-                this.classList.add('active')
-                }
-                }
-                linkColor.forEach(l=> l.addEventListener('click', colorLink))
-
-        });
-        </script>
 </body>
 </html>

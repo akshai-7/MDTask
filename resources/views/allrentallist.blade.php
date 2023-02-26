@@ -10,224 +10,199 @@
 	<title>M&D Foundations</title>
 </head>
 <style>
-             :root{
-                --header-height: 3rem;
-                --nav-width: 68px;
-                --first-color: #4723D9;
-                --first-color-light: #AFA5D9;
-                --white-color: #F7F6FB;
-                --body-font: 'Nunito', sans-serif;
-                --normal-font-size: 1rem;
-                --z-fixed: 100;
-                --light: #F9F9F9;
-                --blue: #3C91E6;
-                --light-blue: #CFE8FF;
-                --grey: #eee;
-                --dark-grey: #AAAAAA;
-                --dark: #342E37;s
-                --red: #DB504A;
-                --yellow: #FFCE26;
-                --light-yellow: #FFF2C6;
-                --orange: #FD7238;
-                --light-orange: #FFE0D3;
-            }
+    :root{
+        --header-height: 3rem;
+        --first-color: #74e5d2;
+        --first-color-light:black;
+        --white-color: #F7F6FB;
+        --z-fixed: 100;
+        --light: #F9F9F9;
+        --grey: #eee;
+        --dark-grey: #AAAAAA;
+        --dark: #342E37;s
+    }
+    html {
+        overflow-x: hidden;
+    }
+    body{
+        font-family: 'Times New Roman', Times, serif;
+        background: var(--grey);
+    }
+    a{
+        text-decoration: none;
+    }
+    #container{
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: row
 
-            html {
-                overflow-x: hidden;
-            }
-            body{
-                position: relative;
-                margin: var(--header-height) 0 0 0;
-                padding: 0 1rem;
-                font-size:var(--normal-font-size);
-                transition: .5s;
-                background: var(--grey);
-                overflow-x: hidden;
-                font-family: 'Times New Roman', Times, serif;
-            }
-            a{text-decoration: none}
-            .header{
-                width: 100%;
-                height:var(--header-height);
-                position: fixed;
-                top: 0;
-                left: 0;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                padding: 0 1rem;
-                background-color: var(--white-color);
-                z-index: var(--z-fixed);
-                transition: .5s
-            }
-            .header_toggle{
-                color: var(--first-color);
-                font-size: 1.5rem;
-                cursor: pointer}
-            .header_img{
-                width: 100%;
-                height:var(--header-height);
-            }
-            .l-navbar{
-                position: fixed;
-                top: 0;
-                left: -30%;
-                width: var(--nav-width);
-                height: 100vh;
-                background-color:var(--first-color);
-                padding: .5rem 1rem 0 0;
-                transition: .5s;
-                z-index:var(--z-fixed)
-                }
-            .nav{
-                height: 100%;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                overflow: hidden
-            }
-            .nav_logo, .nav_link{
-                display: grid;
-                grid-template-columns: max-content max-content;
-                align-items: center;
-                column-gap: 1rem;
-                padding: .5rem 0 .5rem 1.5rem
-            }
-            .nav_logo{
-                margin-bottom: 2rem
-            }
-            .nav_logo-icon{
-                font-size: 1.25rem;
-                color: var(--white-color)
-            }
-            .nav_logo-name{
-                color: var(--white-color);
-                font-weight: 700
-            }
-            .nav_link{
-                position: relative;
-                color: var(--first-color-light);
-                margin-bottom: 1.5rem;
-                transition: .3s}
-            .nav_link:hover{
-                color: var(--white-color)
-            }
-            .nav_icon{
-                font-size: 1.25rem
-            }
+    }
+    #div-1{
+        width: 5%;
+        height: 200;
+        /* margin-right:200px; */
+        background: var(--first-color);
+    }
+    #div-2{
+        width: 95%;
+        height: 200;
+    }
+    #headers{
+        width: 100%;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-content: center;
+        background: #fff;
+    }
+    .icon-name{
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        display: flex;
+       flex: 1
 
-            .active{
-                color: var(--white-color)
-            }
-            .active::before{
-                content: '';
-                position: absolute;
-                left: 0;
-                width: 2px;
-                height: 32px;
-                background-color: var(--white-color)
-            }
+    }
+    .nav_name{
+        flex: 2;
+        display: none;
+    }
 
-            @media screen and (min-width: 768px){body{margin: calc(var(--header-height) + 1rem) 0 0 0;padding-left: calc(var(--nav-width) + 2rem)}
-            .header{height: calc(var(--header-height) + 1rem);padding: 0 2rem 0 calc(var(--nav-width) + 2rem)}
-            .header_img{width: 40px;height: 40px}
-            .header_img img{width: 45px}
-            .l-navbar{left: 0;padding: 1rem 1rem 0 0}
-            .show{width: calc(var(--nav-width) + 156px)}
-            .body-pd{padding-left: calc(var(--nav-width) + 188px)}
-            }
-            li {
-                list-style: none;
-            }
-            #content {
-                position: relative;
-                width: 100%;
-                left: 115px;
-                transition: .3s ease;
-            }
-            #content main {
-                width: 105%;
-                font-family: var(--poppins);
-                max-height: calc(100vh - 56px);
-                overflow-y: auto;s
-            }
-            #content main .table-data {
-                margin-top: 80px;
-            }
-            #content main .table-data > div {
-                border-radius:8px;
-                background: var(--light);
-                padding: 24px;
-                overflow-x: auto;
-                margin-right: 200px;
-            }
-            #content main .table-data .head {
-                display: flex;
-            }
-            #content main .table-data .head h3 {
-                margin-right: auto;
-                font-weight: 600;
-
-            }
-            #content main .table-data .order {
-                flex-grow: 1;
-                flex-basis: 500px;
-
-            }
-            #content main .table-data .order table {
-                width:100%;
-                border-collapse: collapse;
-                margin-top: 30px;
-            }
-            #content main .table-data .order table th {
-
-                padding-bottom: 12px;
-                font-size: 17px;
-                text-align: left;
-                color: black;
-                border-bottom: 1px solid var(--grey);
-            }
-            #content main .table-data .order table td {
-                padding: 16px 0;
-            }
-            .table_row {
-            background: rgb(237, 233, 233);
-            }
-            .table_row:hover {
-                background: white
-            }
-            .table_row:hover  .table_data{
-                color: black;
-            }
-
-
+    .header{
+        width: inherit;
+        height: var(--header-height);
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 1rem;
+        background-color: var(--white-color);
+        z-index: var(--z-fixed);
+        transition: .5s
+    }
+    .header_toggle{
+        color: black;
+        font-size: 1.5rem;
+        cursor: pointer
+    }
+    .img {
+        width: 60px;
+        height:40px;
+    }
+    #img-container{
+        width: 100%;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center
+    }
+    #img-logo{
+        width: 60%;
+    }
+    .nav_list{
+        width: 100%;
+        padding: 0 10px;
+        height: 7vh;
+        border-radius: 4px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        color: black
+    }
+    .nav_list:hover{
+        width: 100%;
+        padding: 0 10px;
+        height: 7vh;
+        border-radius: 4px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        border-radius: 10px;
+        background: #edf7f8;
+        color:#269784;
+    }
+    .nav_icon{
+        font-size: 1.25rem
+    }
+    main {
+        width: 100%;
+        position: relative;
+        width: 85%;
+        left: 120px;
+    }
+    .table-data{
+        margin-top: 10%;
+        border-radius:8px;
+        background: var(--light);
+        padding: 24px;
+        overflow-x: auto;
+    }
+    .head {
+        display: flex;
+    }
+    .head h3 {
+        margin-right: auto;
+        font-weight: 600;
+        color: #06064b;
+    }
+    .order table {
+        width: 100%;
+        margin-top: 2%;
+    }
+    .order table th {
+        padding-bottom: 12px;
+        font-size: 17px;
+        color: black;
+        border-bottom: 1px solid var(--grey);
+    }
+    .order table td {
+        padding: 16px 0;
+    }
+    #add{
+        background: rgb(254,231,154);
+        border-radius: 5px;
+        border: 1px solid #D69E31;
+        color: #85592e;
+        cursor: pointer;
+        top:-5px;
+        height: 30px;
+        position: relative;
+        width: 80px;
+    }
+    .table_row {
+        background: rgb(237, 233, 233);
+    }
+    .table_row:hover {
+        background: white
+    }
+    .table_row:hover  .table_data{
+        color: black;
+    }
 </style>
-<body id="body-pd">
-    <section id="sidebar">
-        <header class="header" id="header">
-            <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
-            <div class="header_img"> <img src="{{url('img/m-d-foundation.png')}}" alt=""> </div>
-        </header>
-        <div class="l-navbar" id="nav-bar">
-            <nav class="nav">
-                <div>
-                    <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">M&D Foundations</span> </a>
-                    <div class="nav_list">
-                        <a href="/user" class="nav_link "> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Dashboard</span> </a>
-                        <a href="#" class="nav_link"> <i class="fa-solid fa-list"></i> <span class="nav_name">Rental</span> </a>
-                    </div>
-                    <a href="/" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">SignOut</span> </a>
-                </div>
-            </nav>
+<body>
+<section id="container">
+    <div id="div-1">
+        <div id="img-container">
+         <img  id="img-logo" src="{{url('img/m-d-foundation.png')}}">
         </div>
-	</section>
-	<section id="content">
-		<main>
-			<div class="table-data">
-				<div class="order">
-					<div class="head">
-						<h3 class="" style="color:#06064b;">Rental Details</h3>
-					</div>
+         <a class="nav_list" href="/user" ><div class="icon-name"><i class='bx bx-grid-alt nav_icon'></i></div> <div class="nav_name">Dashboard </div> </a>
+         <a  class="nav_list" href="/allrentallist" ><div class="icon-name"> <i class="fa-solid fa-list"></i> </div><span class="nav_name">Rental</span> </a>
+         <a  class="nav_list"href="/" > <div class="icon-name"><i class='bx bx-log-out nav_icon'></i> </div><span class="nav_name">SignOut</span> </a>
+     </div>
+     <div id="div-2">
+        <header class="headers" id="headers">
+            <div class="header_toggle" id="toggle-container"> <i class='bx bx-menu ' id="header-toggle"></i> </div>
+            <div class="header_img"> <img src="{{url('img/m-d-foundation.png')}}" class="img"> </div>
+        </header>
+        <main>
+            <div class="table-data">
+                <div class="order">
+                    <div class="head">
+                        <h3>Rental Details</h3>
+                    </div>
                     <table>
                         <thead class="">
                             <th style="text-align:center;" class="">S.No</th>
@@ -254,50 +229,49 @@
                                     <td style="text-align:center;" class="table_data">{{$driver->report->mileage}}Km</td>
                                     <td style="text-align:center;" class="table_data">{{$driver->created_at->format('d.m.Y')}}</td>
                                     <td style="text-align:center;" class="table_data">
-                                    <a href="/details/{{$driver->user_id}}"><i class="fa-solid fa-eye btn btn-primary" ></i></a>
+                                    <a href="/details/{{$driver->user_id}}"><i class="fa-solid fa-eye btn  text-white" style="background:#74e5d2" ></i></a>
                                     {{-- <a href="/createdriver/{{$driver->user_id}}"><i class="fa-solid fa-plus btn btn-secondary"></i></a> --}}
                                     <a href="/remove/{{$driver->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
-				</div>
-			</div>
-		</main>
-	</section>
-    <script>
+                </div>
+            </div>
+        </main>
+    </div>
+</section>
+<script>
+    var toggleBtn=document.getElementById("toggle-container");
+    var isOpen=false;
+    toggleBtn.addEventListener("click",()=>{
+        if(isOpen){
+            var divsToHide = document.getElementsByClassName("nav_name");
+            document.getElementById("div-1").style.width="5%";
+            document.getElementById("div-1").style.transition="0.6s";
+            document.getElementById("div-2").style.width="95%";//divsToHide is an array
 
-        document.addEventListener("DOMContentLoaded", function(event) {
-        const showNavbar = (toggleId, navId, bodyId, headerId) =>{
-        const toggle = document.getElementById(toggleId),
-        nav = document.getElementById(navId),
-        bodypd = document.getElementById(bodyId),
-        headerpd = document.getElementById(headerId)
+            document.getElementById("toggle-container").innerHTML = "<i class='bx bx-menu' id='header-toggle'></i>";
+                for(var i = 0; i < divsToHide.length; i++){
 
+                    divsToHide[i].style.display = "none"; // depending on what you're doing
+                }
 
-                 if(toggle && nav && bodypd && headerpd){
-                 toggle.addEventListener('click', ()=>{
+            isOpen=!isOpen;
+        }else{
 
-                 nav.classList.toggle('show')
+            document.getElementById("div-1").style.width="15%";
+            document.getElementById("div-2").style.transition="0.6s";
+            var divsToHide = document.getElementsByClassName("nav_name"); //divsToHide is an array
+            document.getElementById("toggle-container").innerHTML = "<i class='bx bx-x' id='header-toggle'></i>";
 
-                 toggle.classList.toggle('bx-x')
-
-                 headerpd.classList.toggle('body-pd')
-                 })
-                 }
-             }
-                 showNavbar('header-toggle','nav-bar','body-pd','header')
-                 const linkColor = document.querySelectorAll('.nav_link')
-
-                 function colorLink(){
-                 if(linkColor){
-                 linkColor.forEach(l=> l.classList.remove('active'))
-                 this.classList.add('active')
-                 }
-                 }
-                 linkColor.forEach(l=> l.addEventListener('click', colorLink))
-
-        });
-     </script>
+                for(var i = 0; i < divsToHide.length; i++){
+                    divsToHide[i].style.display = "block"; // depending on what you're doing
+                }
+            document.getElementById("div-2").style.width="85%";
+            isOpen=!isOpen;
+        }
+})
+</script>
 </body>
 </html>
