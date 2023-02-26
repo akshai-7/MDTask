@@ -176,9 +176,7 @@
                 #content main .table-data .order table td {
                     padding: 16px 5px;
                 }
-                #content main .table-data .order table tbody tr:hover {
-                    background: var(--grey);
-                }
+
                 #content main .table-data .order table tr td .status {
                     font-size: 10px;
                     padding: 6px 16px;
@@ -188,7 +186,6 @@
                 }
 
                  button.active {
-
                     color: #0d6efd;
                 }
                 .first{
@@ -198,6 +195,15 @@
                     margin-top: 70px;
                     margin-bottom: 30px;
                     margin-left: 1050px;
+                }
+                .table_row {
+                background: rgb(237, 233, 233);
+                }
+                .table_row:hover {
+                    background: white
+                }
+                .table_row:hover  .table_data{
+                    color: black;
                 }
 
     </style>
@@ -228,16 +234,16 @@
                     <div class="table-data">
                         <div class="order">
                             <table class="table table-bordered">
-                                <div class="check"><h5 class="text-secondary" >Visual Damage</h5></div>
+                                <div class="check"><h5 class="" style="color:	#06064b;">Visual Damage</h5></div>
                                     <thead class=" col-md-1">
-                                        <th style="text-align:center;" class="text-primary col-md-2">View</th>
-                                        <th style="text-align:center;" class="text-primary col-md-2">Action</th>
+                                        <th style="text-align:center;" class="text-black col-md-2">View</th>
+                                        <th style="text-align:center;" class="text-black col-md-2">Action</th>
                                     </thead>
                                     <tbody>
                                         @foreach($visual as $visual)
-                                            <tr>
-                                                <td style="text-align:center;" class="col-md-2">{{$visual->view}}</td>
-                                                <td style="text-align:center;" class="col-md-2">{{$visual->action}}</td>
+                                            <tr class="table_row">
+                                                <td style="text-align:center;" class="col-md-2 table_data">{{$visual->view}}</td>
+                                                <td style="text-align:center;" class="col-md-2 table_data">{{$visual->action}}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -253,12 +259,12 @@
                     <div class="table-data">
                         <div class="order">
                             <table class="table table-bordered" >
-                                <div class="check"><h5 class="text-secondary">Vehicle Check</h5></div>
+                                <div class="check"><h5 class="" style="color:	#06064b;"> Vehicle Check</h5></div>
                                     <tbody>
                                         @foreach($vehicle as $vehicle)
-                                            <tr>
-                                                <td style="text-align:center;" class="col-md-2">{{$vehicle->view}}</td>
-                                                <td style="text-align:center;" class="col-md-2">{{$vehicle->action}}</td>
+                                            <tr class="table_row">
+                                                <td style="text-align:center;" class="col-md-2 table_data">{{$vehicle->view}}</td>
+                                                <td style="text-align:center;" class="col-md-2 table_data">{{$vehicle->action}}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -275,12 +281,12 @@
                     <div class="table-data">
                         <div class="order">
                             <table class="table table-bordered">
-                                <div class="check"><h5 class="text-secondary">Cabin Check</h5></div>
+                                <div class="check"><h5 class="" style="color:	#06064b;">Cabin Check</h5></div>
                                     <tbody>
                                         @foreach($cabin as $cabin)
-                                            <tr>
-                                                <td style="text-align:center;" class="col-md-2">{{$cabin->view}}</td>
-                                                <td style="text-align:center;" class="col-md-2">{{$cabin->action}}</td>
+                                            <tr class="table_row">
+                                                <td style="text-align:center;" class="col-md-2 table_data">{{$cabin->view}}</td>
+                                                <td style="text-align:center;" class="col-md-2 table_data">{{$cabin->action}}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>

@@ -223,7 +223,7 @@
 					<div class="head">
 						<h3 class="" style="color:	#06064b;">Rental Details</h3>
 					</div>
-                    <table class="" style="width:1150px">
+                    <table class="" style="width:">
                         <thead class="text-primary">
                             <th style="text-align:center;" class="">Report</th>
                             <th style="text-align:center;">Driver Name</th>

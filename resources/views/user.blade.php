@@ -14,7 +14,7 @@
             :root{
                 --header-height: 3rem;
                 --nav-width: 68px;
-                --first-color: #4723D9;
+                --first-color: #74e5d2;
                 --first-color-light: #AFA5D9;
                 --white-color: #F7F6FB;
                 --body-font: 'Nunito', sans-serif;
@@ -32,7 +32,7 @@
                 --orange: #FD7238;
                 --light-orange: #FFE0D3;
             }
-            /* *,::before,::after{box-sizing: border-box} */
+
             html {
                 overflow-x: hidden;
             }
@@ -150,7 +150,7 @@
                 width: 120%;
                 font-family: var(--poppins);
                 max-height: calc(100vh - 56px);
-                overflow-y: auto;s
+                overflow-y: auto;
             }
             #content main .table-data {
                 margin-top: 80px;
@@ -209,6 +209,11 @@
             .table_row:hover  .table_data{
                 color: black;
             }
+            .btn1{
+                background: #74e5d2;
+                outline: none;
+                border: none;
+            }
 
 </style>
 <body id="body-pd">
@@ -255,7 +260,7 @@
                                     <td style="text-align:center;" class="table_data">{{$user->role}}</td>
                                     <td style="text-align:center;" class="table_data">{{$user->created_at->format('d.m.Y')}}</td>
                                     <td style="text-align:center;" class="table_data">
-                                    <a href="/driver/{{$user->id}}"><i class="fa-solid fa-eye btn btn-primary"  ></i></a>
+                                    <a href="/driver/{{$user->id}}"><i class="fa-solid fa-eye btn btn1 btn-info text-white"></i></a>
                                     <a href="/updateuser/{{$user->id}}" ><i class="fa-solid fa-edit btn btn-success" ></i></i></a>
                                     <a href="/createdriver/{{$user->id}}"><i class="fa-solid fa-plus btn btn-secondary"></i></a>
                                     <a href="/delete/{{$user->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
