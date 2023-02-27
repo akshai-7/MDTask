@@ -469,11 +469,22 @@
         }
         .main{
             margin-top: 50px;
+
         }
         .tabcontent{
             margin-top: 20px;
         }
-
+        #Cabin{
+            overflow: scroll;
+            height: 65%;
+            position: relative;
+            width: 85%;
+            left: 120px;
+            margin-top: 20px;
+        }
+        #Cabin::-webkit-scrollbar{
+                display: none;
+        }
 </style>
 <body>
 	<section id="container">
@@ -548,38 +559,38 @@
                         </table>
                     </div>
                 </div>
-                <div id="Cabin" class="tabcontent">
-                    <div class="table-data">
-                        <table>
-                            <thead>
-                                <th style="text-align:center;">S.No</th>
-                                <th style="text-align:center;">View</th>
-                                <th style="text-align:center;">Image</th>
-                                <th style="text-align:center;">Feed Back</th>
-                                <th style="text-align:center;">Action</th>
-                            </thead>
-                            <tbody>
-                                @foreach($cabin as $cabin)
-                                <tr class="table_row">
-                                    <td style="text-align:center;" class="table_data">{{$loop->iteration}}</td>
-                                    <td style="text-align:center;" class="table_data">{{$cabin->view}}</td>
-                                    <td style="text-align:center;" class="table_data"><img src="{{url('images/'.$cabin->image)}}"  width="50px" height="50px" alt="" class="rounded-0 border border-secondary"></td>
-                                    <td style="text-align:center;" class="table_data">{{$cabin->feedback}}</td>
-                                    <td style="text-align:center;" class="table_data">
-                                        <a href="/updatecabincheck/{{$cabin->id}}"><i class="fa-solid fa-edit btn btn-success" ></i></a>
-                                        <a href="/deletecabin/{{$cabin->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a>
-                                    </td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                 </div>
            </main>
+            <div id="Cabin" class="tabcontent">
+             <div class="table-data">
+                <table>
+                    <thead>
+                        <th style="text-align:center;">S.No</th>
+                        <th style="text-align:center;">View</th>
+                        <th style="text-align:center;">Image</th>
+                        <th style="text-align:center;">Feed Back</th>
+                        <th style="text-align:center;">Action</th>
+                    </thead>
+                    <tbody>
+                        @foreach($cabin as $cabin)
+                        <tr class="table_row">
+                            <td style="text-align:center;" class="table_data">{{$loop->iteration}}</td>
+                            <td style="text-align:center;" class="table_data">{{$cabin->view}}</td>
+                            <td style="text-align:center;" class="table_data"><img src="{{url('images/'.$cabin->image)}}"  width="50px" height="50px" alt="" class="rounded-0 border border-secondary"></td>
+                            <td style="text-align:center;" class="table_data">{{$cabin->feedback}}</td>
+                            <td style="text-align:center;" class="table_data">
+                                <a href="/updatecabincheck/{{$cabin->id}}"><i class="fa-solid fa-edit btn btn-success" ></i></a>
+                                <a href="/deletecabin/{{$cabin->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+             </div>
+            </div>
             <div>
                 <a href="/summary/{{$cabin->user_id}}"><input type="submit" value="Summary" class="text-black" id="add"></a>
             </div>
-        </div>
+            </div>
     </section>
 <script>
             function openCheck(evt,Name) {

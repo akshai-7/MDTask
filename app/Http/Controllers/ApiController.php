@@ -165,10 +165,10 @@ class ApiController extends Controller
                 $user->brief_statement =$request['brief_statement'];
                 $user->upload_image =$request['upload_image'];
                     if($request->hasfile('upload_image')){
-                        $upload_image =$request->file('upload_image');
-                        $filename = time().'.'.$upload_image->getClientOriginalExtension();
-                        $location = public_path('public/images'.$filename);
-                        // Report::make($upload_image)->resize(300, 300)->save($location);
+                        $image = $request->file('upload_image');
+                        $time = $image->getClientOriginalName();
+                        $location=public_path($time);
+                        $user->image =$time;
                     }
                 $user->report =$request['report'];
                 $user->date =$request['date'];
@@ -223,12 +223,12 @@ class ApiController extends Controller
                 $user->phone_number_of_witness =$request['phone_number_of_witness'];
                 $user->brief_statement =$request['brief_statement'];
                 $user->upload_image =$request['upload_image'];
-                    if($request->hasfile('upload_image')){
-                        $upload_image =$request->file('upload_image');
-                        $filename = time().'.'.$upload_image->getClientOriginalExtension();
-                        $location = public_path('images'.$filename);
-                        Report::make($upload_image)->resize(300, 300)->save($location);
-                    }
+                if($request->hasfile('upload_image')){
+                    $image = $request->file('upload_image');
+                    $time = $image->getClientOriginalName();
+                    $location=public_path($time);
+                    $user->image =$time;
+                }
                 $user->report =$request['report'];
                 $user->date =$request['date'];
                 $user->number_plate =$request['number_plate'];
@@ -379,12 +379,12 @@ class ApiController extends Controller
                 $user->user_id =$data1->id;
                 $user->view=$request['view'];
                 $user->image =$request['image'];
-                        if($request->hasfile('image')){
-                            $image =$request->file('image');
-                            $time = time().'.'.$image->getClientOriginalExtension();
-                            $location = public_path('/images'.$time);
-                            // Vehicle::make($image)->resize(300, 300)->save($location);
-                        }
+                if($request->hasfile('image')){
+                    $image = $request->file('image');
+                    $time = $image->getClientOriginalName();
+                    $location=public_path($time);
+                    $user->image =$time;
+                }
                 $user->feedback=$request['feedback'];
                 $user->action=$request['action'];
                 $user->notes=$request['notes'];
@@ -435,12 +435,12 @@ class ApiController extends Controller
                 $user->user_id =$data1->id;
                 $user->view=$request['view'];
                 $user->image =$request['image'];
-                        if($request->hasfile('image')){
-                            $image =$request->file('image');
-                            $time = time().'.'.$image->getClientOriginalExtension();
-                            $location = public_path('/images'.$time);
-                            // Vehicle::make($image)->resize(300, 300)->save($location);
-                        }
+                if($request->hasfile('image')){
+                    $image = $request->file('image');
+                    $time = $image->getClientOriginalName();
+                    $location=public_path($time);
+                    $user->image =$time;
+                }
                 $user->feedback=$request['feedback'];
                 $user->action=$request['action'];
                 $user->notes=$request['notes'];
@@ -486,12 +486,12 @@ class ApiController extends Controller
                 $data->user_id=$data1->id;
                 $data->view=$request['view'];
                 $data->image =$request['image'];
-                        if($request->hasfile('image')){
-                            $image =$request->file('image');
-                            $time = time().'.'.$image->getClientOriginalExtension();
-                            $location = public_path('/images'.$time);
-                            // Cabin::make($image)->resize(300, 300)->save($location);
-                        }
+                    if($request->hasfile('image')){
+                        $image = $request->file('image');
+                        $time = $image->getClientOriginalName();
+                        $location=public_path($time);
+                        $data->image =$time;
+                    }
                 $data->feedback=$request['feedback'];
                 $data->action=$request['action'];
                 $data->notes=$request['notes'];
@@ -541,12 +541,12 @@ class ApiController extends Controller
                 $data->user_id=$user1->id;
                 $data->view=$request['view'];
                 $data->image =$request['image'];
-                        if($request->hasfile('image')){
-                            $image =$request->file('image');
-                            $time = time().'.'.$image->getClientOriginalExtension();
-                            $location = public_path('/images'.$time);
-                            // Cabin::make($image)->resize(300, 300)->save($location);
-                        }
+                    if($request->hasfile('image')){
+                        $image = $request->file('image');
+                        $time = $image->getClientOriginalName();
+                        $location=public_path($time);
+                        $data->image =$time;
+                    }
                 $data->feedback=$request['feedback'];
                 $data->action=$request['action'];
                 $data->notes=$request['notes'];

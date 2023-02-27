@@ -196,6 +196,13 @@
             <div class="header_toggle" id="toggle-container"> <i class='bx bx-menu ' id="header-toggle"></i> </div>
             <div class="header_img"> <img src="{{url('img/m-d-foundation.png')}}" class="img"> </div>
         </header>
+        <div class="message">
+            @if (session()->has('message'))
+                <div class="alert alert-success">
+                    {{session('message')}}
+                </div>
+            @endif
+        </div>
         <main>
 			<div class="table-data">
 				<div class="order">
@@ -213,7 +220,7 @@
                         </thead>
                         <tbody>
                             <tr class="table_row">
-                                <td style="text-align:center;"><input type="text" class="form-control" name="name"></td>
+                                <td style="text-align:center;"><input type="text" class="form-control" name="name" ></td>
                                 <td style="text-align:center;"><input type="text" class="form-control" name="email"></td>
                                 <td style="text-align:center;"><input type="text" class="form-control" name="password"></td>
                                 <td style="text-align:center;"><a href="/user"><input type="submit" name="submit" value="Submit" class="btn text-black " style="background:#74e5d2 "></a></td>

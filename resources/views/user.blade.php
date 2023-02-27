@@ -8,6 +8,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@2.8.2/dist/alpine.min.js"></script>
+
 	<title>M&D Foundations</title>
 </head>
 <style>
@@ -48,6 +52,13 @@
             #div-2{
                 width: 95%;
                 height: 200;
+                position: relative;
+            }
+            #message{
+                position:fixed;
+                top: 70px;
+                right: 10px;
+                animation-duration: 1s;
             }
             #headers{
                 width: 100%;
@@ -182,8 +193,10 @@
                 color: black;
             }
 </style>
+
 <body>
 <section id="container">
+
     <div id="div-1">
        <div id="img-container">
         <img  id="img-logo" src="{{url('img/m-d-foundation.png')}}">
@@ -197,6 +210,24 @@
             <div class="header_toggle" id="toggle-container"> <i class='bx bx-menu ' id="header-toggle"></i> </div>
             <div class="header_img"> <img src="{{url('img/m-d-foundation.png')}}" class="img"> </div>
         </header>
+        <div class="message" id="message">
+            @if (session()->has('message'))
+            <div x-data="{show: true}" x-init="setTimeout(() => show = false, 3000)" x-show="show" style="width: 200px;height:20px">
+            <div   div class="alert alert-success">
+                {{session('message')}}
+            </div>
+        </div>
+            @endif
+        </div>
+        <div class="message1" id="message">
+            @if (session()->has('message1'))
+                <div x-data="{show: true}" x-init="setTimeout(() => show = false, 3000)" x-show="show" style="width: 200px;height:20px;">
+                    <div class="alert alert-danger">
+                        {{session('message1')}}
+                    </div>
+                </div>
+            @endif
+        </div>
         <main>
             <div class="table-data">
                 <div class="order">
@@ -267,5 +298,8 @@
                     isOpen=!isOpen;
                 }
         })
+
+
+
 </script>
-</html>
+</html>`

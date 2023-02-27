@@ -41,15 +41,22 @@ class AdminController extends Controller
                 'name'=>'required',
                 'email'=>'required|email',
                 'password'=>'required',
+            ],
+            [
+                'name.required' => 'Name is required',
+                'password.required' => 'Password is required'
             ]);
             if ($validator->fails()){
+                session()->flash('message','email error');
                 return response()->json(['message'=>'Validator error']);
-            }else{
+            }else
+            {
             $user = new User();
             $user->name=$request['name'];
             $user->email=$request['email'];
             $user->password=Hash::make($request['password']);
             $user->save();
+            session()->flash('message','User Is Created');
             return redirect('/user');
             }
         }
@@ -82,6 +89,7 @@ class AdminController extends Controller
         }
         public function delete($id){
             User::find($id)->delete();
+            session()->flash('message1',' User is Deleted');
             return redirect('/user');
         }
     //user
