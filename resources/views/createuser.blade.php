@@ -69,8 +69,7 @@
                 align-items: center;
                 align-content: center;
                 display: flex;
-               flex: 1
-
+                flex: 1;
             }
             .nav_name{
                 flex: 2;

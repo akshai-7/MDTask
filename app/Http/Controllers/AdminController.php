@@ -38,7 +38,7 @@ class AdminController extends Controller
         }
         public function createuser(Request $request){
 
-             $request->validate([
+            $request->validate([
                 'name'=>'required',
                 'email'=>'required|email',
                 'password'=>'required|min:8',
@@ -50,22 +50,18 @@ class AdminController extends Controller
             $user->save();
             session()->flash('message',' User is Created');
             return redirect('/user');
-
         }
         public function updateuser($id){
             $user=User::where('id',$id)->get();
             return view('/updateuser',['user'=>$user]);
         }
         public function updateuserdetails(Request $request,$id){
-            $validator = Validator::make($request->all(),[
+           $request->validate([
                 'name'=>'required',
-                'email'=>'required',
+                'email'=>'required|email',
                 'role'=>'required',
                 'date'=>'required',
             ]);
-            if ($validator->fails()){
-                return response()->json(['message'=>'Validator error']);
-            }
             $id= $request->id;
                 $data1=User::find($id);
                 if ($data1==null){
@@ -77,6 +73,7 @@ class AdminController extends Controller
             $user->role=$request['role'];
             $user->created_at=$request['date'];
             $user->save();
+            session()->flash('message',' Updated Successfully');
             return redirect('/user');
         }
         public function delete($id){

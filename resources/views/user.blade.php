@@ -32,6 +32,8 @@
             body{
                 font-family: 'Times New Roman', Times, serif;
                 background: var(--grey);
+                overflow: hidden;
+
             }
             a{
                 text-decoration: none;
@@ -40,14 +42,15 @@
                 width: 100%;
                 height: 100vh;
                 display: flex;
-                flex-direction: row
-
+                flex-direction: row;
             }
             #div-1{
                 width: 5%;
                 height: 200;
-                /* margin-right:200px; */
-                background: var(--first-color);
+                /* background:var( --light); */
+                background:	#ddddfc;
+                /* background:#f5f5f5; */
+                /* border-right: 1px solid #bebef6; */
             }
             #div-2{
                 width: 95%;
@@ -66,7 +69,7 @@
                 display: flex;
                 justify-content: space-between;
                 align-content: center;
-                background: #fff;
+                background: rgb(195, 195, 195);
             }
             .icon-name{
                 justify-content: center;
@@ -101,8 +104,8 @@
                 cursor: pointer
             }
             .img {
-                width: 60px;
-                height:40px;
+                width: 100px;
+                /* height:40px; */
             }
             #img-container{
                 width: 100%;
@@ -133,8 +136,10 @@
                 justify-content: space-evenly;
                 align-items: center;
                 border-radius: 10px;
-                background: #edf7f8;
-                color:#269784;
+                /* background: #edf7f8;
+                color:#269784; */
+                background: whitesmoke;
+                color:blue
             }
             .nav_icon{
                 font-size: 1.25rem
@@ -147,7 +152,7 @@
             .table-data{
                 margin-top: 10%;
                 border-radius:8px;
-                background: var(--light);
+                background: #ddddfc;
                 padding: 24px;
                 overflow-x: auto;
             }
@@ -192,6 +197,14 @@
             .table_row:hover  .table_data{
                 color: black;
             }
+            .main{
+        margin-top: 20px;
+        height: 75%;
+        overflow: scroll;
+    }
+    .main::-webkit-scrollbar {
+        display: none;
+    }
 </style>
 
 <body>
@@ -228,7 +241,7 @@
                 </div>
             @endif
         </div>
-        <main>
+        <main class="main">
             <div class="table-data">
                 <div class="order">
                     <div class="head">
@@ -298,8 +311,5 @@
                     isOpen=!isOpen;
                 }
         })
-
-
-
 </script>
 </html>`

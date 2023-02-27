@@ -41,25 +41,25 @@
         text-shadow: 0 1px 0 #fff;
         width: 400px;
     }
-    #content h3 {
+    #content h4 {
         color: #7E7E7E;
         letter-spacing: -0.05em;
         line-height: 20px;
         margin: 10px 0 30px;
     }
-    #content h3:before,
-    #content h3:after {
+    #content h4:before,
+    #content h4:after {
         content: "";
         height: 1px;
         position: absolute;
         top: 10px;
         width: 27%;
     }
-    #content h3:after {
+    #content h4:after {
         background: rgb(126,126,126);
      right: 0;
     }
-    #content h3:before {
+    #content h4:before {
      background: rgb(126,126,126);
      left: 0;
     }
@@ -109,7 +109,7 @@
     border: 1px solid #D69E31;
     color: #85592e;
     cursor: pointer;
-    float: left;
+    float: right;
     height: 35px;
     margin: 20px 0 35px 15px;
     position: relative;
@@ -122,18 +122,6 @@
        font-size: 15px;
     }
 
-    #content form a input{
-        background: rgb(254,231,154);
-        border-radius: 30px;
-        border: 1px solid #D69E31;
-        color: #85592e;
-        cursor: pointer;
-        float: right;
-        height: 35px;
-        margin: 20px 0 3px 15px;
-        position: relative;
-        width: 120px;
-    }
 
 
 </style>
@@ -143,8 +131,8 @@
         <section id="content">
             <form action="/user" method="POST" autocomplete="off">
                 @csrf
-                {{-- <h5 class="text-pink"> M&D Fundations </h5> --}}
-                <h5 class="text-primary">Login Form</h5>
+
+                <h4 style="color: #06064b;">Login Form</h4>
                 <div>
                     <input type="text" placeholder="Enter Email" required name="email" />
                 </div>

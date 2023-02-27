@@ -221,7 +221,7 @@
                                     <tr class="table_row">
                                         <td style="text-align:center;"><input type="text"  class="form-control table_data"   name="id" value="{{$users->id}}"></td>
                                         <td style="text-align:center;"><input type="text"  class="form-control table_data"   name="name" value="{{$users->name}}"></td>
-                                        <td style="text-align:center;"><input type="text" class="form-control table_data"   name="email" value="{{$users->email}}"></td>
+                                        <td style="text-align:center;"><input type="text" class="form-control table_data"   name="email" value="{{$users->email}}"><div style="color:rgb(216, 31, 31);;"> @error('email')*{{$message}}@enderror</div></td>
                                         <td style="text-align:center;"><input type="text" class="form-control table_data"   name="role" value="{{$users->role}}"></td>
                                         <td style="text-align:center;"><input type="text"  class="form-control table_data"  name="date" value="{{$users->created_at->format('d.m.Y')}}"></td>
                                         <td style="text-align:center;"><a href="/user"><input type="submit" name="submit" value="Submit" class="btn text-black table_data" style="background:#74e5d2 "></a>
