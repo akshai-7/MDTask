@@ -12,7 +12,7 @@
 <style>
     :root{
         --header-height: 3rem;
-        --first-color: #74e5d2;
+        --first-color:#ddddfc;
         --first-color-light:black;
         --white-color: #F7F6FB;
         --z-fixed: 100;
@@ -54,7 +54,7 @@
         display: flex;
         justify-content: space-between;
         align-content: center;
-        background: #fff;
+        background: #ddddfc;
     }
     .icon-name{
         justify-content: center;
@@ -121,8 +121,8 @@
         justify-content: space-evenly;
         align-items: center;
         border-radius: 10px;
-        background: #edf7f8;
-        color:#269784;
+        background: whitesmoke;
+        color:blue;
     }
     .nav_icon{
         font-size: 1.25rem
@@ -224,7 +224,7 @@
                                         <td style="text-align:center;"><input type="text" class="form-control table_data"   name="email" value="{{$users->email}}"><div style="color:rgb(216, 31, 31);;"> @error('email')*{{$message}}@enderror</div></td>
                                         <td style="text-align:center;"><input type="text" class="form-control table_data"   name="role" value="{{$users->role}}"></td>
                                         <td style="text-align:center;"><input type="text"  class="form-control table_data"  name="date" value="{{$users->created_at->format('d.m.Y')}}"></td>
-                                        <td style="text-align:center;"><a href="/user"><input type="submit" name="submit" value="Submit" class="btn text-black table_data" style="background:#74e5d2 "></a>
+                                        <td style="text-align:center;"><a href="/user"><input type="submit" name="submit" value="Submit" class="btn text-white table_data" style="background:#06064b "></a>
                                         </td>
                                     </tr>
                                 @endforeach

@@ -17,7 +17,7 @@
 <style>
             :root{
                 --header-height: 3rem;
-                --first-color: #74e5d2;
+                --first-color:#ddddfc;
                 --first-color-light:black;
                 --white-color: #F7F6FB;
                 --z-fixed: 100;
@@ -27,7 +27,7 @@
                 --dark: #342E37;s
             }
             html {
-                overflow-x: hidden;
+                overflow-y: hidden;
             }
             body{
                 font-family: 'Times New Roman', Times, serif;
@@ -47,10 +47,9 @@
             #div-1{
                 width: 5%;
                 height: 200;
-                /* background:var( --light); */
+
                 background:	#ddddfc;
-                /* background:#f5f5f5; */
-                /* border-right: 1px solid #bebef6; */
+
             }
             #div-2{
                 width: 95%;
@@ -69,7 +68,7 @@
                 display: flex;
                 justify-content: space-between;
                 align-content: center;
-                background: rgb(195, 195, 195);
+                background: #ddddfc;
             }
             .icon-name{
                 justify-content: center;
@@ -136,10 +135,8 @@
                 justify-content: space-evenly;
                 align-items: center;
                 border-radius: 10px;
-                /* background: #edf7f8;
-                color:#269784; */
                 background: whitesmoke;
-                color:blue
+                color:blue;
             }
             .nav_icon{
                 font-size: 1.25rem
@@ -152,7 +149,7 @@
             .table-data{
                 margin-top: 10%;
                 border-radius:8px;
-                background: #ddddfc;
+                background: #fff;
                 padding: 24px;
                 overflow-x: auto;
             }
@@ -198,14 +195,15 @@
                 color: black;
             }
             .main{
-        margin-top: 20px;
-        height: 75%;
-        overflow: scroll;
-    }
-    .main::-webkit-scrollbar {
-        display: none;
-    }
+                /* margin-top: 30px; */
+                height: 80%;
+                overflow: scroll;
+            }
+            .main::-webkit-scrollbar {
+             display: none;
+            }
 </style>
+
 
 <body>
 <section id="container">
@@ -266,7 +264,7 @@
                                     <td style="text-align:center;" class="table_data">{{$user->role}}</td>
                                     <td style="text-align:center;" class="table_data">{{$user->created_at->format('d.m.Y')}}</td>
                                     <td style="text-align:center;" class="table_data">
-                                    <a href="/driver/{{$user->id}}"><i class="fa-solid fa-eye btn  text-white" style="background:#74e5d2 "></i></a>
+                                    <a href="/driver/{{$user->id}}"><i class="fa-solid fa-eye btn  text-white" style="background:#06064b"></i></a>
                                     <a href="/updateuser/{{$user->id}}" ><i class="fa-solid fa-edit btn btn-success" ></i></i></a>
                                     <a href="/createdriver/{{$user->id}}"><i class="fa-solid fa-plus btn btn-secondary"></i></a>
                                     <a href="/delete/{{$user->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>

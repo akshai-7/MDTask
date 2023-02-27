@@ -12,7 +12,7 @@
 <style>
     :root{
         --header-height: 3rem;
-        --first-color: #74e5d2;
+        --first-color:#ddddfc;
         --first-color-light:black;
         --white-color: #F7F6FB;
         --z-fixed: 100;
@@ -55,7 +55,7 @@
         display: flex;
         justify-content: space-between;
         align-content: center;
-        background: #fff;
+        background: #ddddfc;
     }
     .icon-name{
         justify-content: center;
@@ -122,8 +122,8 @@
         justify-content: space-evenly;
         align-items: center;
         border-radius: 10px;
-        background: #edf7f8;
-        color:#269784;
+        background: whitesmoke;
+        color:blue;
     }
     .nav_icon{
         font-size: 1.25rem

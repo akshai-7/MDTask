@@ -14,7 +14,7 @@
 <style>
             :root{
                 --header-height: 3rem;
-                --first-color: #74e5d2;
+                --first-color:#ddddfc;
                 --first-color-light:black;
                 --white-color: #F7F6FB;
                 --z-fixed: 100;
@@ -62,7 +62,7 @@
                 display: flex;
                 justify-content: space-between;
                 align-content: center;
-                background: #fff;
+                background: #ddddfc;
             }
             .icon-name{
                 justify-content: center;
@@ -128,8 +128,8 @@
                 justify-content: space-evenly;
                 align-items: center;
                 border-radius: 10px;
-                background: #edf7f8;
-                color:#269784;
+                background: whitesmoke;
+                color:blue;
             }
             .nav_icon{
                 font-size: 1.25rem
@@ -140,7 +140,7 @@
                 left: 300px;
             }
             .table-data{
-                margin-top: 10%;
+                margin-top: 20%;
                 border-radius:8px;
                 background: var(--light);
                 padding: 24px;
@@ -154,19 +154,7 @@
                 font-weight: 600;
                 color: #06064b;
             }
-            .order table {
-                width: 100%;
-                margin-top: 2%;
-            }
-            .order table th {
-                padding-bottom: 12px;
-                font-size: 17px;
-                color: black;
-                border-bottom: 1px solid var(--grey);
-            }
-            .order table td {
-                padding: 16px 10px;
-            }
+
             #add{
                 background: rgb(254,231,154);
                 border-radius: 5px;
@@ -178,19 +166,10 @@
                 position: relative;
                 width: 80px;
             }
-            .table_row {
-                background: rgb(237, 233, 233);
-            }
-            .table_row:hover {
-                background: white
-            }
-            .table_row:hover  .table_data{
-                color: black;
-            }
             form{
-                /* padding: 20px 10px; */
-               margin-left: 100px;
+                padding: 20px 20px;
                font-size: 17px;
+               background: var(--dark-grey)
             }
 </style>
 <body id="body-pd">
@@ -214,9 +193,9 @@
 					<div class="head">
 						<h3>New User</h3>
 					</div>
-                    <form action="/createuser" method="POST" autocomplete="off">
+                    <form action="/createuser" method="POST" autocomplete="off" >
                         @csrf
-                        <div class="form-group row mt-5 ">
+                        <div class="form-group row mt-5">
                             <label for="" class="col-sm-2  col-form-label"> Name</label>
                             <div class="col-sm-8">
                               <input type="text" name="name" class="form-control" id="inputPassword" placeholder="User Name"><div style="color:rgb(216, 31, 31);;"> @error('name')*{{$message}}@enderror</div>
@@ -232,7 +211,7 @@
                             <label for="" class="col-sm-2 col-form-label">Password</label>
                             <div class="col-sm-8">
                                 <input type="password" class="form-control" name="password" placeholder=" Enter Password"><div style="color:rgb(216, 31, 31);;"> @error('password')*{{$message}}@enderror</div>
-                            <a href="/user"><input type="submit" name="submit" value="Submit" class="btn text-black   mt-5" style="background:#74e5d2;float:right; "></a>
+                            <a href="/user"><input type="submit" name="submit" value="Submit" class="btn text-white mt-5" style="float:right;background:#06064b;"></a>
                           </div>
                     </form>
 				</div>

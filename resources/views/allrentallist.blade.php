@@ -12,7 +12,7 @@
 <style>
     :root{
         --header-height: 3rem;
-        --first-color: #74e5d2;
+        --first-color:#ddddfc;
         --first-color-light:black;
         --white-color: #F7F6FB;
         --z-fixed: 100;
@@ -54,7 +54,7 @@
         display: flex;
         justify-content: space-between;
         align-content: center;
-        background: #fff;
+        background: #ddddfc;
     }
     .icon-name{
         justify-content: center;
@@ -121,8 +121,8 @@
         justify-content: space-evenly;
         align-items: center;
         border-radius: 10px;
-        background: #edf7f8;
-        color:#269784;
+        background: whitesmoke;
+        color:blue;
     }
     .nav_icon{
         font-size: 1.25rem
@@ -228,7 +228,7 @@
                                     <td style="text-align:center;" class="table_data">{{$driver->report->mileage}}Km</td>
                                     <td style="text-align:center;" class="table_data">{{$driver->created_at->format('d.m.Y')}}</td>
                                     <td style="text-align:center;" class="table_data">
-                                    <a href="/details/{{$driver->user_id}}"><i class="fa-solid fa-eye btn  text-white" style="background:#74e5d2" ></i></a>
+                                    <a href="/details/{{$driver->user_id}}"><i class="fa-solid fa-eye btn  text-white" style="background:#06064b" ></i></a>
                                     {{-- <a href="/createdriver/{{$driver->user_id}}"><i class="fa-solid fa-plus btn btn-secondary"></i></a> --}}
                                     <a href="/remove/{{$driver->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
                                 </tr>

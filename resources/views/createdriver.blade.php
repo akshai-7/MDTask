@@ -15,7 +15,7 @@
 <style>
     :root{
         --header-height: 3rem;
-        --first-color: #74e5d2;
+        --first-color:#ddddfc;
         --first-color-light:black;
         --white-color: #F7F6FB;
         --z-fixed: 100;
@@ -58,7 +58,7 @@
         display: flex;
         justify-content: space-between;
         align-content: center;
-        background: #fff;
+        background: #ddddfc;
     }
     .icon-name{
         justify-content: center;
@@ -125,8 +125,8 @@
         justify-content: space-evenly;
         align-items: center;
         border-radius: 10px;
-        background: #edf7f8;
-        color:#269784;
+        background: whitesmoke;
+        color:blue;
     }
     .nav_icon{
         font-size: 1.25rem
@@ -159,9 +159,9 @@
         padding: 16px 0;
     }
     #add{
-        background: #74e5d2;
+        background:#ddddfc;
         border-radius: 5px;
-        border: 1px solid #74e5d2;
+        border: 1px solid#ddddfc;
         cursor: pointer;
         top:20px;
         height: 30px;
@@ -180,9 +180,9 @@
         color: black;
     }
     #main{
+
         display: flex;
-        justify-content: space-between;
-        margin-left: 15%;
+        /* justify-content: space-between; */
     }
     .main{
         margin-top: 20px;
@@ -192,6 +192,23 @@
     .main::-webkit-scrollbar {
         display: none;
     }
+.report{
+    margin-left: 50px;
+    width: 40%;
+
+
+
+}
+.subreport{
+    margin-left: 50px;
+    width: 40%;
+
+
+}
+.form-group {
+    display: flex;
+    justify-content: space-between;
+}
 </style>
 <body>
 <section id="container">
@@ -213,72 +230,162 @@
                 @csrf
                 <input type="hidden" name="user_id" value="{{$id}}">
                     <main >
-                        <div class="table-data" >
-
-                                <div id="main">
-                                    <div class="col-md-5 report">
-                                        <h5 class="text-secondary mb-3 mt-4" > <i class="fa-solid fa-user"></i> Driver & Vehicle Details</h5>
-                                            <div class="form-group col-sm-7 mb-3">
-                                                <label class="mb-2"> <i class="fa-solid fa-user"></i> Name</label>
-                                                <input type="text" name="drivername"  class="form-control">
+                        <div class="table-data">
+                                    <h5 class="" style="color:#06064b;" > <i class="fa-solid fa-user"></i> Driver & Vehicle Details</h5>
+                                    <div class="" id="main">
+                                        <div class="report">
+                                            <div class="form-group row mt-5 ">
+                                                <label for="" class="col-sm-2  col-form-label"> Name</label>
+                                                <div class="col-sm-9">
+                                                  <input type="text" name="name" class="form-control" ><div style="color:rgb(216, 31, 31);;"> @error('name')*{{$message}}@enderror</div>
+                                                </div>
+                                              </div>
+                                                {{-- <div class="form-group col-sm-7 mb-3">
+                                                    <label class="mb-2"> <i class="fa-solid fa-user"></i> Name</label>
+                                                    <input type="text" name="drivername"  class="form-control">
+                                                </div> --}}
+                                                <div class="form-group row mt-5 ">
+                                                    <label for="" class="col-sm-2  col-form-label"> Company</label>
+                                                    <div class="col-sm-9">
+                                                      <input type="text" name="company" class="form-control" ><div style="color:rgb(216, 31, 31);;"> @error('company')*{{$message}}@enderror</div>
+                                                    </div>
+                                                </div>
+                                                {{-- <div class="form-group col-sm-7 mb-3">
+                                                    <label class="mb-2"> <i class="fa-solid fa-location-dot "></i> Company</label>
+                                                    <input type="text" name="company"  class="form-control">
+                                                </div> --}}
+                                                <div class="form-group row mt-5 ">
+                                                    <label for="" class="col-sm-2  col-form-label"> Email</label>
+                                                    <div class="col-sm-9">
+                                                      <input type="text" name="deliveryemail" class="form-control" ><div style="color:rgb(216, 31, 31);;"> @error('email')*{{$message}}@enderror</div>
+                                                    </div>
+                                                </div>
+                                                {{-- <div class="form-group col-sm-7 mb-3">
+                                                    <label class="mb-2"><i class="fa-solid fa-envelope "></i> Email</label>
+                                                    <input type="text" name="deliveryemail" class="form-control">
+                                                </div> --}}
+                                                <div class="form-group row mt-5 ">
+                                                    <label for="" class="col-sm-2 col-form-label"> Phone</label>
+                                                    <div class="col-sm-9">
+                                                      <input type="text" name="phone" class="form-control" ><div style="color:rgb(216, 31, 31);;"> @error('phone')*{{$message}}@enderror</div>
+                                                    </div>
+                                                </div>
+                                                {{-- <div class="form-group col-sm-7 mb-3">
+                                                    <label class="mb-2"> <i class="fa-solid fa-phone "></i> Phone</label>
+                                                    <input type="text" name="phone"  class="form-control">
+                                                </div> --}}
+                                        </div>
+                                        <div class="subreport">
+                                            <div class="form-group row mt-5">
+                                                <label for="" class="col-sm-2  col-form-label"> Date</label>
+                                                <div class="col-sm-9">
+                                                  <input type="date" name="date" class="form-control" ><div style="color:rgb(216, 31, 31);;"> @error('date')*{{$message}}@enderror</div>
+                                                </div>
                                             </div>
-                                            <div class="form-group col-sm-7 mb-3">
-                                                <label class="mb-2"> <i class="fa-solid fa-location-dot "></i> Company</label>
-                                                <input type="text" name="company"  class="form-control">
-                                            </div>
-                                            <div class="form-group col-sm-7 mb-3">
-                                                <label class="mb-2"><i class="fa-solid fa-envelope "></i> Email</label>
-                                                <input type="text" name="deliveryemail" class="form-control">
-                                            </div>
-                                            <div class="form-group col-sm-7 mb-3">
-                                                <label class="mb-2"> <i class="fa-solid fa-phone "></i> Phone</label>
-                                                <input type="text" name="phone"  class="form-control">
-                                            </div>
-                                            <div class="form-group col-sm-7 mb-3">
+                                            {{-- <div class="form-group col-sm-7 mb-3">
                                                 <label class="mb-2"> <i class="fa-solid fa-calendar-days"></i> Date</label>
                                                 <input type="date" name="date" class="form-control">
+                                            </div> --}}
+                                            <div class="form-group row mt-5 ">
+                                                <label for="" class="col-sm-3 col-form-label">NumberPlate</label>
+                                                <div class="col-sm-9">
+                                                  <input type="text" name="number_plate" class="form-control" ><div style="color:rgb(216, 31, 31);;"> @error('number_plate')*{{$message}}@enderror</div>
+                                                </div>
                                             </div>
-                                            <div class="form-group col-sm-7 mb-3">
+                                            {{-- <div class="form-group col-sm-7 mb-3">
                                                 <label class="mb-2"> <i class="fa-solid fa-ticket "></i>  NumberPlate</label>
                                                 <input type="text" name="number_plate"  class="form-control">
+                                            </div> --}}
+                                            <div class="form-group row mt-5 ">
+                                                <label for="" class="col-sm-2 col-form-label"> Mileage</label>
+                                                <div class="col-sm-9">
+                                                  <input type="text" name="mileage" class="form-control" ><div style="color:rgb(216, 31, 31);;"> @error('mileage')*{{$message}}@enderror</div>
+                                                </div>
                                             </div>
-                                            <div class="form-group col-sm-7 mb-3">
+                                            {{-- <div class="form-group col-sm-7 mb-3">
                                                 <label class="mb-2"><i class="fa-solid fa-gauge "></i> Mileage </label>
                                                 <input type="text" name="mileage"  class="form-control">
+                                            </div> --}}
+                                            <div class="form-group row mt-5 ">
+                                                <label for="" class="col-sm-2 col-form-label"> Report</label>
+                                                <div class="col-sm-9">
+                                                  <input type="text" name="report" class="form-control" ><div style="color:rgb(216, 31, 31);;"> @error('report')*{{$message}}@enderror</div>
+                                                </div>
                                             </div>
-                                            <div class="form-group col-sm-7 mb-3">
+                                            {{-- <div class="form-group col-sm-7 mb-3">
                                                 <label class="mb-2"><i class="fa-solid fa-gauge "></i> Report </label>
                                                 <input type="text" name="report"  class="form-control" value="">
-                                            </div>
+                                            </div> --}}
+                                        </div>
                                     </div>
-                                    <div class="col-md-5 ">
+
+
+
+                                    {{-- <div class="col-md-5 ">
                                         <h5 class="text-secondary mb-3 mt-4" > <i class="fa-solid fa-user"></i> Report on Incident</h5>
+                                            <div class="form-group row mt-5 ">
+                                                <label for="" class="col-sm-4  col-form-label"> Date</label>
+                                                <div class="col-sm-9">
+                                                    <input type="date" name="date_of_incident" class="form-control" ><div style="color:rgb(216, 31, 31);;"> @error('date_of_incident')*{{$message}}@enderror</div>
+                                                </div>
+                                            </div>
                                             <div class="form-group col-sm-7 mb-3">
                                                 <label class="mb-2"> <i class="fa-solid fa-calendar-days"></i> Date</label>
                                                 <input type="date" name="date_of_incident"  class="form-control" value="none">
                                             </div>
-                                            <div class="form-group col-sm-7 mb-3">
+                                            <div class="form-group row mt-5 ">
+                                                <label for="" class="col-sm-4  col-form-label"> Location</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" name="location" class="form-control" value="none"><div style="color:rgb(216, 31, 31);;"> @error('location')*{{$message}}@enderror</div>
+                                                </div>
+                                            </div>
+                                             <div class="form-group col-sm-7 mb-3">
                                                 <label class="mb-2"> <i class="fa-solid fa-location-dot "></i> Location</label>
                                                 <input type="text" name="location"  class="form-control" value="none">
                                             </div>
-                                            <div class="form-group col-sm-7 mb-3">
+                                            <div class="form-group row mt-5 ">
+                                                <label for="" class="col-sm-4  col-form-label"> Witnessed_by</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" name="witnessed_by" class="form-control" value="none"><div style="color:rgb(216, 31, 31);;"> @error('witnessed_by')*{{$message}}@enderror</div>
+                                                </div>
+                                            </div>
+                                        <div class="form-group col-sm-7 mb-3">
                                                 <label class="mb-2"><i class="fa-solid fa-user "></i> Witnessed_by</label>
                                                 <input type="text" name="witnessed_by"  class="form-control" value="none">
                                             </div>
-                                            <div class="form-group col-sm-7 mb-3">
+                                            <div class="form-group row mt-5 ">
+                                                <label for="" class="col-sm-4  col-form-label"> Phone</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" name="phone_number_of_witness" class="form-control" value="none"><div style="color:rgb(216, 31, 31);;"> @error('phone_number_of_witness')*{{$message}}@enderror</div>
+                                                </div>
+                                            </div>
+                                             <div class="form-group col-sm-7 mb-3">
                                                 <label class="mb-2"> <i class="fa-solid fa-phone "></i> Phone</label>
                                                 <input type="text" name="phone_number_of_witness"  class="form-control" value="none">
                                             </div>
+                                            <div class="form-group row mt-5 ">
+                                                <label for="" class="col-sm-4  col-form-label"> Statement</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" name="brief_statement" class="form-control" value="none"><div style="color:rgb(216, 31, 31);;"> @error('brief_statement')*{{$message}}@enderror</div>
+                                                </div>
+                                            </div>
+
                                             <div class="form-group col-sm-7 mb-3">
                                                 <label class="mb-2"> <i class="fa-solid fa-file "></i> Statement</label>
                                                 <input type="text" name="brief_statement"  class="form-control" value="none">
                                             </div>
+                                            <div class="form-group row mt-5 ">
+                                                <label for="" class="col-sm-4  col-form-label"> Image</label>
+                                                <div class="col-sm-9">
+                                                    <input type="file" name="upload_image" class="form-control" value="none"><div style="color:rgb(216, 31, 31);;"> @error('upload_image')*{{$message}}@enderror</div>
+                                                </div>
+                                            </div>
                                             <div class="form-group col-sm-7 mb-3">
                                                 <label class="mb-2"><i class="fa-solid fa-image"></i> Image </label>
                                                 <input type="file" name="upload_image"  class="form-control" value="none">
-                                            </div>
-                                    </div>
-                                </div>
+                                            </div> -
+                                    </div> --}}
+
                         </div>
                         <div class="table-data">
                                 <div class="head">
