@@ -37,28 +37,20 @@ class AdminController extends Controller
             return view('/createuser');
         }
         public function createuser(Request $request){
-            $validator = Validator::make($request->all(),[
+
+             $request->validate([
                 'name'=>'required',
                 'email'=>'required|email',
-                'password'=>'required',
-            ],
-            [
-                'name.required' => 'Name is required',
-                'password.required' => 'Password is required'
+                'password'=>'required|min:8',
             ]);
-            if ($validator->fails()){
-                session()->flash('message','email error');
-                return response()->json(['message'=>'Validator error']);
-            }else
-            {
             $user = new User();
             $user->name=$request['name'];
             $user->email=$request['email'];
             $user->password=Hash::make($request['password']);
             $user->save();
-            session()->flash('message','User Is Created');
+            session()->flash('message',' User is Created');
             return redirect('/user');
-            }
+
         }
         public function updateuser($id){
             $user=User::where('id',$id)->get();

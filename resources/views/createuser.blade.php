@@ -7,6 +7,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@2.8.2/dist/alpine.min.js"></script>
+
 	<title>M&D Foundations</title>
 </head>
 <style>
@@ -47,6 +49,12 @@
             #div-2{
                 width: 95%;
                 height: 200;
+            }
+            #message{
+                position:fixed;
+                top: 80px;
+                right: 10px;
+                display: flex;
             }
             #headers{
                 width: 100%;
@@ -129,8 +137,8 @@
             }
             main {
                 position: relative;
-                width: 85%;
-                left: 120px;
+                width: 45%;
+                left: 300px;
             }
             .table-data{
                 margin-top: 10%;
@@ -180,6 +188,11 @@
             .table_row:hover  .table_data{
                 color: black;
             }
+            form{
+                /* padding: 20px 10px; */
+               margin-left: 100px;
+               font-size: 17px;
+            }
 </style>
 <body id="body-pd">
 <section id="container">
@@ -196,38 +209,33 @@
             <div class="header_toggle" id="toggle-container"> <i class='bx bx-menu ' id="header-toggle"></i> </div>
             <div class="header_img"> <img src="{{url('img/m-d-foundation.png')}}" class="img"> </div>
         </header>
-        <div class="message">
-            @if (session()->has('message'))
-                <div class="alert alert-success">
-                    {{session('message')}}
-                </div>
-            @endif
-        </div>
         <main>
 			<div class="table-data">
 				<div class="order">
 					<div class="head">
 						<h3>New User</h3>
 					</div>
-                   <form action="/createuser" method="POST" autocomplete="off">
-                    @csrf
-                    <table class="">
-                        <thead class="text-black">
-                            <th style="text-align:center;">Name</th>
-                            <th style="text-align:center;">Email</th>
-                            <th style="text-align:center;">Password</th>
-                            <th style="text-align:center;">Action</th>
-                        </thead>
-                        <tbody>
-                            <tr class="table_row">
-                                <td style="text-align:center;"><input type="text" class="form-control" name="name" ></td>
-                                <td style="text-align:center;"><input type="text" class="form-control" name="email"></td>
-                                <td style="text-align:center;"><input type="text" class="form-control" name="password"></td>
-                                <td style="text-align:center;"><a href="/user"><input type="submit" name="submit" value="Submit" class="btn text-black " style="background:#74e5d2 "></a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                   </form>
+                    <form action="/createuser" method="POST" autocomplete="off">
+                        @csrf
+                        <div class="form-group row mt-5 ">
+                            <label for="" class="col-sm-2  col-form-label"> Name</label>
+                            <div class="col-sm-8">
+                              <input type="text" name="name" class="form-control" id="inputPassword" placeholder="User Name"><div style="color:rgb(216, 31, 31);;"> @error('name')*{{$message}}@enderror</div>
+                            </div>
+                          </div>
+                        <div class="form-group row  mt-5">
+                            <label for="" class="col-sm-2  col-form-label">Email</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="email" placeholder=" Enter Your Email"><div style="color:rgb(216, 31, 31);;"> @error('email')*{{$message}}@enderror</div>
+                            </div>
+                          </div>
+                          <div class="form-group row  mt-5">
+                            <label for="" class="col-sm-2 col-form-label">Password</label>
+                            <div class="col-sm-8">
+                                <input type="password" class="form-control" name="password" placeholder=" Enter Password"><div style="color:rgb(216, 31, 31);;"> @error('password')*{{$message}}@enderror</div>
+                            <a href="/user"><input type="submit" name="submit" value="Submit" class="btn text-black   mt-5" style="background:#74e5d2;float:right; "></a>
+                          </div>
+                    </form>
 				</div>
 			</div>
 		</main>
