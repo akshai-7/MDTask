@@ -90,8 +90,8 @@
         cursor: pointer
     }
     .img {
-        width: 60px;
-        height:40px;
+        width: 100px;
+        /* height:40px; */
     }
     #img-container{
         width: 100%;
@@ -205,7 +205,7 @@
      <div id="div-2">
         <div class="headers" id="headers">
              <div class="header_toggle" id="toggle-container"> <i class='bx bx-menu ' id="header-toggle"></i> </div>
-             <div class="header_img"> <img src="{{url('img/m-d-foundation.png')}}" class="img"> </div>
+             {{-- <div class="header_img"> <img src="{{url('img/m-d-foundation.png')}}" class="img"> </div> --}}
         </div>
         <h3> Report Summary</h3>
         <main class="main">
@@ -260,7 +260,7 @@
             </div>
         </main>
         <div class="print">
-            <a href="/pdf"><i class="fa-solid fa-print btn btn-danger"></i></a>
+            <a href="/pdf/{{$cabin->user_id}}"><i class="fa-solid fa-print btn btn-danger"></i></a>
             <a href="/edit/{{$cabin->user_id}}"><i class="fa-solid fa-edit btn btn-success"></i></a>
         </div>
 </section>

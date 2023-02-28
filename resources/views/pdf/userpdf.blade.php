@@ -67,10 +67,6 @@
                     <td >{{$cabin->view}}</td>
                     <td style="text-align: center">{{$cabin->action}}</td>
                 </tr>
-                <tr>
-                    <td >{{$cabin->view}}</td>
-                    <td style="text-align:center; ">{{$cabin->action}}</td>
-                </tr>
         @endforeach
         </table>
 

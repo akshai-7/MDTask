@@ -89,8 +89,8 @@
         cursor: pointer
     }
     .img {
-        width: 60px;
-        height:40px;
+        width: 100px;
+        /* height:40px; */
     }
     #img-container{
         width: 100%;
@@ -197,13 +197,13 @@
      <div id="div-2">
         <header class="headers" id="headers">
             <div class="header_toggle" id="toggle-container"> <i class='bx bx-menu ' id="header-toggle"></i> </div>
-            <div class="header_img"> <img src="{{url('img/m-d-foundation.png')}}" class="img"> </div>
+            {{-- <div class="header_img"> <img src="{{url('img/m-d-foundation.png')}}" class="img"> </div> --}}
         </header>
         <main>
 			<div class="table-data">
 				<div class="order">
 					<div class="head">
-						<h3>User Details</h3>
+						<h3> Update User Details</h3>
 					</div>
                     <form action="/updateuserdetails/{id}" method="POST" autocomplete="off">
                         @csrf

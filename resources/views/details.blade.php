@@ -90,8 +90,8 @@
             cursor: pointer
         }
         .img {
-            width: 60px;
-            height:40px;
+            width: 100px;
+            /* height:40px; */
         }
         #img-container{
             width: 100%;
@@ -164,12 +164,13 @@
             width: 80px;
             float: right;
             margin-right: 100px;
+            text-decoration: none;
         }
         .table_row {
             background: rgb(237, 233, 233);
         }
         .table_row:hover {
-            background: white
+            background: white;
         }
         .table_row:hover .table_data{
             color: black;
@@ -183,7 +184,8 @@
             transition: 0.6s;
         }
         button.active {
-            background:white;
+            background:#bb1138;
+            color: white
         }
         .main{
             margin-top: 50px;
@@ -217,7 +219,7 @@
         <div id="div-2">
             <header class="headers" id="headers">
                  <div class="header_toggle" id="toggle-container"> <i class='bx bx-menu ' id="header-toggle"></i> </div>
-                 <div class="header_img"> <img src="{{url('img/m-d-foundation.png')}}" class="img"> </div>
+                 {{-- <div class="header_img"> <img src="{{url('img/m-d-foundation.png')}}" class="img"> </div> --}}
             </header>
             <main class="main">
                 <div class="button">

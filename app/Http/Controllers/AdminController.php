@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Barryvdh\DomPDF\Facade\Pdf;
+
 class AdminController extends Controller
 {
     public function admin(Request $request){
@@ -181,7 +182,6 @@ class AdminController extends Controller
                 }
 
             $data4= $request->all();
-            // dd($data4);
             foreach($data4['view'] as $list =>$value){
                 $data5=array(
                 'user_id'=>$request->user_id,
@@ -200,7 +200,7 @@ class AdminController extends Controller
             $driver=Driver::find($id);
             $driver->delete();
             $driver1=$driver->user_id;
-            return view('/driver/'.$driver1);
+            return redirect('/driver/'.$driver1);
         }
         public function reportlist($user_id){
             $report = Report::where('user_id',$user_id)->get();
@@ -224,9 +224,9 @@ class AdminController extends Controller
         }
         public function visualupdate(Request $request,$user_id){
             $validator = Validator::make($request->all(),[
-                // 'view'=>'required',
-                // 'image'=>'required',
-                // 'feedback'=>'required',
+                'view'=>'required',
+                'image'=>'required',
+                'feedback'=>'required',
             ]);
             if ($validator->fails()){
                 return response()->json(['message'=>'Validator error']);
@@ -267,9 +267,9 @@ class AdminController extends Controller
         }
         public function vehicleupdate(Request $request,$user_id){
             $validator = Validator::make($request->all(),[
-                // 'view'=>'required',
-                // 'image'=>'required',
-                // 'feedback'=>'required',
+                'view'=>'required',
+                'image'=>'required',
+                'feedback'=>'required',
             ]);
             if ($validator->fails()){
                 return response()->json(['message'=>'Validator error'],401);
@@ -349,7 +349,7 @@ class AdminController extends Controller
         public function allrentallist(){
             $driver = Driver::with('report')->get();
             return view('/allrentallist',['driver'=>$driver ]);
-            dd($driver);
+
         }
         public function summary($user_id){
             $visual= Visual::where('user_id',$user_id)->get();
@@ -357,10 +357,10 @@ class AdminController extends Controller
             $cabin= Cabin::where('user_id',$user_id)->get();
             return view('/summary',['cabin'=>$cabin,'visual'=>$visual,'vehicle'=>$vehicle]);
         }
-        public function pdf(){
-            $visual= Visual::get();
-            $vehicle = Vehicle::get();
-            $cabin= Cabin::get();
+        public function pdf($user_id){
+            $visual= Visual::where('user_id',$user_id)->get();
+            $vehicle = Vehicle::where('user_id',$user_id)->get();
+            $cabin= Cabin::where('user_id',$user_id)->get();
             $pdf = Pdf::loadView('pdf.userpdf',['cabin'=>$cabin,'visual'=>$visual,'vehicle'=>$vehicle]);
             return $pdf->download('userpdf.pdf');
         }

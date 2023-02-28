@@ -180,7 +180,7 @@
         <div id="div-2">
              <header class="headers" id="headers">
                  <div class="header_toggle" id="toggle-container"> <i class='bx bx-menu ' id="header-toggle"></i> </div>
-                 <div class="header_img"> <img src="{{url('img/m-d-foundation.png')}}" class="img"> </div>
+                 {{-- <div class="header_img"> <img src="{{url('img/m-d-foundation.png')}}" class="img"> </div> --}}
              </header>
              <main>
                 <div class="table-data">
@@ -207,7 +207,7 @@
                                             <td style="text-align:center;"><input type="text" class="form-control table_data"   name="view" value="{{$cabin->view}}"></td>
                                             <td style="text-align:center;"><img src="{{url('images/'.$cabin->image)}}"  width="50px" height="50px" class="rounded-0 border border-secondary table_data" alt=""><input type="file" name="image"></td>
                                             <td style="text-align:center;"><input type="text"  class="form-control table_data"  name="feedback" value="{{$cabin->feedback}}"></td>
-                                            <td style="text-align:center;"><a href="/details/{{$cabin->id}}/{{$cabin->user_id}}"><input type="submit" name="submit" value="Submit" class="btn text-black table_data " style="background:#06064b "></a>
+                                            <td style="text-align:center;"><a href="/details/{{$cabin->id}}/{{$cabin->user_id}}"><input type="submit" name="submit" value="Submit" class="btn text-white table_data " style="background:#06064b "></a>
                                             </td>
                                         </tr>
                                     @endforeach

@@ -49,7 +49,7 @@ Route::get('/allrentallist',[AdminController::class,'allrentallist']);
 
 Route::get('/summary/{user_id}',[AdminController::class,'summary']);
 
-Route::get('/pdf',[AdminController::class,'pdf']);
+Route::get('/pdf/{user_id}',[AdminController::class,'pdf']);
 Route::get('/edit/{user_id}',[AdminController::class,'edit']);
 
 

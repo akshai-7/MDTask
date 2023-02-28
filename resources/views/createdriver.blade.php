@@ -93,8 +93,8 @@
         cursor: pointer
     }
     .img {
-        width: 60px;
-        height:40px;
+        width: 100px;
+        /* height:40px; */
     }
     #img-container{
         width: 100%;
@@ -159,9 +159,9 @@
         padding: 16px 0;
     }
     #add{
-        background:#ddddfc;
+        background:#06064b;
         border-radius: 5px;
-        border: 1px solid#ddddfc;
+        border: 1px solid#06064b;
         cursor: pointer;
         top:20px;
         height: 30px;
@@ -236,7 +236,7 @@
          <div id="div-2">
              <header class="headers" id="headers">
                  <div class="header_toggle" id="toggle-container"> <i class='bx bx-menu ' id="header-toggle"></i> </div>
-                 <div class="header_img"> <img src="{{url('img/m-d-foundation.png')}}" class="img"> </div>
+                 {{-- <div class="header_img"> <img src="{{url('img/m-d-foundation.png')}}" class="img"> </div> --}}
              </header>
                 <h3>New Rental Details</h3>
              <form action="/store/{id}" method="POST" autocomplete="off" class="main">
@@ -551,7 +551,7 @@
                                 </div>
                         </div>
                     </main>
-                    <a href=""><input type="submit" value="Submit" class="text-black" id="add"></a>
+                    <a href=""><input type="submit" value="Submit" class="text-white" id="add" style="color:#06064b;"></a>
             </form>
 
          </div>

@@ -166,9 +166,9 @@ class ApiController extends Controller
                 $user->upload_image =$request['upload_image'];
                     if($request->hasfile('upload_image')){
                         $image = $request->file('upload_image');
-                        $time = $image->getClientOriginalName();
-                        $location=public_path($time);
-                        $user->image =$time;
+                        $name = $image->getClientOriginalName();
+                        $location=public_path($name);
+                        $user->image =$name;
                     }
                 $user->report =$request['report'];
                 $user->date =$request['date'];
@@ -225,9 +225,9 @@ class ApiController extends Controller
                 $user->upload_image =$request['upload_image'];
                 if($request->hasfile('upload_image')){
                     $image = $request->file('upload_image');
-                    $time = $image->getClientOriginalName();
-                    $location=public_path($time);
-                    $user->image =$time;
+                    $name = $image->getClientOriginalName();
+                    $location=public_path($name);
+                    $user->image =$name;
                 }
                 $user->report =$request['report'];
                 $user->date =$request['date'];
@@ -276,9 +276,9 @@ class ApiController extends Controller
                 $data->image=$request['image'];
                         if($request->hasfile('image')){
                             $image = $request->file('image');
-                            $time = $image->getClientOriginalName();
-                            $location=public_path($time);
-                            $data->image =$time;
+                            $name = $image->getClientOriginalName();
+                            $location=public_path($name);
+                            $data->image =$name;
                         }
 
                 $data->feedback=$request['feedback'];
@@ -331,9 +331,9 @@ class ApiController extends Controller
                 $data->image =$request['image'];
                 if($request->hasfile('image')){
                     $image = $request->file('image');
-                    $time = $image->getClientOriginalName();
-                    $location=public_path($time);
-                    $data->image =$time;
+                    $name = $image->getClientOriginalName();
+                    $location=public_path($name);
+                    $data->image =$name;
                 }
                 $data->feedback=$request['feedback'];
                 $data->action=$request['action'];
@@ -381,9 +381,9 @@ class ApiController extends Controller
                 $user->image =$request['image'];
                 if($request->hasfile('image')){
                     $image = $request->file('image');
-                    $time = $image->getClientOriginalName();
-                    $location=public_path($time);
-                    $user->image =$time;
+                    $name = $image->getClientOriginalName();
+                    $location=public_path($name);
+                    $user->image =$name;
                 }
                 $user->feedback=$request['feedback'];
                 $user->action=$request['action'];
@@ -437,9 +437,9 @@ class ApiController extends Controller
                 $user->image =$request['image'];
                 if($request->hasfile('image')){
                     $image = $request->file('image');
-                    $time = $image->getClientOriginalName();
-                    $location=public_path($time);
-                    $user->image =$time;
+                    $name = $image->getClientOriginalName();
+                    $location=public_path($name);
+                    $user->image =$name;
                 }
                 $user->feedback=$request['feedback'];
                 $user->action=$request['action'];
@@ -488,9 +488,9 @@ class ApiController extends Controller
                 $data->image =$request['image'];
                     if($request->hasfile('image')){
                         $image = $request->file('image');
-                        $time = $image->getClientOriginalName();
-                        $location=public_path($time);
-                        $data->image =$time;
+                        $name = $image->getClientOriginalName();
+                        $location=public_path($name);
+                        $data->image =$name;
                     }
                 $data->feedback=$request['feedback'];
                 $data->action=$request['action'];
@@ -543,9 +543,9 @@ class ApiController extends Controller
                 $data->image =$request['image'];
                     if($request->hasfile('image')){
                         $image = $request->file('image');
-                        $time = $image->getClientOriginalName();
-                        $location=public_path($time);
-                        $data->image =$time;
+                        $name = $image->getClientOriginalName();
+                        $location=public_path($name);
+                        $data->image =$name;
                     }
                 $data->feedback=$request['feedback'];
                 $data->action=$request['action'];

@@ -47,7 +47,6 @@
             #div-1{
                 width: 5%;
                 height: 200;
-
                 background:	#ddddfc;
 
             }
@@ -149,7 +148,7 @@
             .table-data{
                 margin-top: 10%;
                 border-radius:8px;
-                background: #fff;
+                background:var(--light);
                 padding: 24px;
                 overflow-x: auto;
             }
@@ -219,7 +218,7 @@
     <div id="div-2">
         <header class="headers" id="headers">
             <div class="header_toggle" id="toggle-container"> <i class='bx bx-menu ' id="header-toggle"></i> </div>
-            <div class="header_img"> <img src="{{url('img/m-d-foundation.png')}}" class="img"> </div>
+            {{-- <div class="header_img"> <img src="{{url('img/m-d-foundation.png')}}" class="img"> </div> --}}
         </header>
         <div class="message" id="message">
             @if (session()->has('message'))

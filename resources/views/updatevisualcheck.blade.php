@@ -89,8 +89,8 @@
         cursor: pointer
     }
     .img {
-        width: 60px;
-        height:40px;
+        width: 100px;
+        /* height:40px; */
     }
     #img-container{
         width: 100%;
@@ -180,7 +180,7 @@
     <div id="div-2">
          <header class="headers" id="headers">
              <div class="header_toggle" id="toggle-container"> <i class='bx bx-menu ' id="header-toggle"></i> </div>
-             <div class="header_img"> <img src="{{url('img/m-d-foundation.png')}}" class="img"> </div>
+             {{-- <div class="header_img"> <img src="{{url('img/m-d-foundation.png')}}" class="img"> </div> --}}
          </header>
          <main>
 			<div class="table-data">
@@ -206,7 +206,7 @@
                                         <td style="text-align:center;"><img src="{{url('images/'.$visual->image)}}"   name="image" width="50px" height="50px" alt="" class="rounded-0 border border-secondary table_data"><input type="file" name="image"> </td>
                                         {{-- <td style="text-align:center;"><input type="file" class="form-control"   name="image" value="{{$visual->image}}"></td> --}}
                                         <td style="text-align:center;"><input type="text"  class="form-control table_data"  name="feedback" value="{{$visual->feedback}}"></td>
-                                        <td style="text-align:center;"><a href="/details/{{$visual->id}}/{{$visual->user_id}}"><input type="submit" name="submit" value="Submit" class="btn text-black table_data" style="background:#06064b "></a>
+                                        <td style="text-align:center;"><a href="/details/{{$visual->id}}/{{$visual->user_id}}"><input type="submit" name="submit" value="Submit" class="btn text-white table_data" style="background:#06064b "></a>
                                         </td>
                                     </tr>
                                 @endforeach
