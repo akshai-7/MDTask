@@ -205,6 +205,19 @@
 
 
 }
+.report1{
+    /* margin-left: 50px; */
+    width: 40%;
+
+
+
+}
+.subreport1{
+    /* margin-left: 50px; */
+    width: 40%;
+
+
+}
 .form-group {
     display: flex;
     justify-content: space-between;
@@ -295,48 +308,49 @@
 
                                         </div>
                                     </div>
+                                    <h5 class="mt-4" style="color:#06064b;"> <i class="fa-solid fa-user"></i> Report on Incident</h5>
                                     <div class="" id="main">
-                                        <h5 class="text-secondary "> <i class="fa-solid fa-user"></i> Report on Incident</h5>
-                                            <div class="report">
-                                                <div class="form-group row mt-5 ">
-                                                    <label for="" class="col-sm-2 col-form-label"> Date</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="date" name="date_of_incident" class="form-control" ><div style="color:rgb(216, 31, 31);;"> @error('date_of_incident')*{{$message}}@enderror</div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row mt-5 ">
-                                                    <label for="" class="col-sm-2  col-form-label"> Location</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="text" name="location" class="form-control" value="none"><div style="color:rgb(216, 31, 31);;"> @error('location')*{{$message}}@enderror</div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row mt-5 ">
-                                                    <label for="" class="col-sm-2  col-form-label"> Witnessed_by</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="text" name="witnessed_by" class="form-control" value="none"><div style="color:rgb(216, 31, 31);;"> @error('witnessed_by')*{{$message}}@enderror</div>
-                                                    </div>
+                                        <div class="report">
+                                            <div class="form-group row mt-5 ">
+                                                <label for="" class="col-sm-2 col-form-label"> Date</label>
+                                                <div class="col-sm-9">
+                                                    <input type="date" name="date_of_incident" class="form-control" ><div style="color:rgb(216, 31, 31);;"> @error('date_of_incident')*{{$message}}@enderror</div>
                                                 </div>
                                             </div>
-                                            <div class="suberport">
-                                                <div class="form-group row mt-5 ">
-                                                    <label for="" class="col-sm-2  col-form-label"> Phone</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="text" name="phone_number_of_witness" class="form-control" value="none"><div style="color:rgb(216, 31, 31);;"> @error('phone_number_of_witness')*{{$message}}@enderror</div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row mt-5 ">
-                                                    <label for="" class="col-sm-2  col-form-label"> Statement</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="text" name="brief_statement" class="form-control" value="none"><div style="color:rgb(216, 31, 31);;"> @error('brief_statement')*{{$message}}@enderror</div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row mt-5 ">
-                                                    <label for="" class="col-sm-2  col-form-label"> Image</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="file" name="upload_image" class="form-control" value="none"><div style="color:rgb(216, 31, 31);;"> @error('upload_image')*{{$message}}@enderror</div>
-                                                    </div>
+                                            <div class="form-group row mt-5 ">
+                                                <label for="" class="col-sm-2  col-form-label"> Location</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" name="location" class="form-control" value="none"><div style="color:rgb(216, 31, 31);;"> @error('location')*{{$message}}@enderror</div>
                                                 </div>
                                             </div>
+                                            <div class="form-group row mt-5 ">
+                                                <label for="" class="col-sm-2  col-form-label"> Witnessed_by</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" name="witnessed_by" class="form-control" value="none"><div style="color:rgb(216, 31, 31);;"> @error('witnessed_by')*{{$message}}@enderror</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="subreport">
+                                            <div class="form-group row mt-5 ">
+                                                <label for="" class="col-sm-2  col-form-label"> Phone</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" name="phone_number_of_witness" class="form-control" value="none"><div style="color:rgb(216, 31, 31);;"> @error('phone_number_of_witness')*{{$message}}@enderror</div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row mt-5 ">
+                                                <label for="" class="col-sm-2  col-form-label"> Statement</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" name="brief_statement" class="form-control" value="none"><div style="color:rgb(216, 31, 31);;"> @error('brief_statement')*{{$message}}@enderror</div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row mt-5 ">
+                                                <label for="" class="col-sm-2  col-form-label"> Image</label>
+                                                <div class="col-sm-9">
+                                                    <input type="file" name="upload_image" class="form-control" value="none"><div style="color:rgb(216, 31, 31);;"> @error('upload_image')*{{$message}}@enderror</div>
+                                                </div>
+                                            </div>
+
+                                        </div>
                                     </div>
 
                         </div>

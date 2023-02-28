@@ -133,25 +133,25 @@ class AdminController extends Controller
             $data->phone=$request['phone'];
             $data->save();
 
-            // $user = new Report();
-            // $user->user_id=$user_id;
-            // $user->date_of_incident =$request['date_of_incident'];
-            // $user->location =$request['location'];
-            // $user->witnessed_by =$request['witnessed_by'];
-            // $user->phone_number_of_witness =$request['phone_number_of_witness'];
-            // $user->brief_statement =$request['brief_statement'];
-            // $user->upload_image =$request['upload_image'];
-            // if($request->hasfile('upload_image')){
-            //     $image = $request->file('upload_image');
-            //     $name = $image->getClientOriginalName();
-            //     $location=public_path($name);
-            //     $user->image =$name;
-            // }
-            // $user->report =$request['report'];
-            // $user->date =$request['date'];
-            // $user->number_plate =$request['number_plate'];
-            // $user->mileage=$request['mileage'];
-            // $user->save();
+            $user = new Report();
+            $user->user_id=$user_id;
+            $user->date_of_incident =$request['date_of_incident'];
+            $user->location =$request['location'];
+            $user->witnessed_by =$request['witnessed_by'];
+            $user->phone_number_of_witness =$request['phone_number_of_witness'];
+            $user->brief_statement =$request['brief_statement'];
+            $user->upload_image =$request['upload_image'];
+            if($request->hasfile('upload_image')){
+                $image = $request->file('upload_image');
+                $name = $image->getClientOriginalName();
+                $location=public_path($name);
+                $user->image =$name;
+            }
+            $user->report =$request['report'];
+            $user->date =$request['date'];
+            $user->number_plate =$request['number_plate'];
+            $user->mileage=$request['mileage'];
+            $user->save();
 
             $data= $request->all();
             $user_id=$request->user_id;
