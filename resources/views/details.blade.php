@@ -7,6 +7,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@2.8.2/dist/alpine.min.js"></script>
+
 	<title>M&D Foundations</title>
 </head>
 
@@ -49,6 +51,12 @@
             width: 95%;
             height: 200;
         }
+        #message{
+                position:fixed;
+                top: 70px;
+                right: 10px;
+                animation-duration: 1s;
+            }
         #headers{
             width: 100%;
             padding: 10px;
@@ -221,6 +229,15 @@
                  <div class="header_toggle" id="toggle-container"> <i class='bx bx-menu ' id="header-toggle"></i> </div>
                  {{-- <div class="header_img"> <img src="{{url('img/m-d-foundation.png')}}" class="img"> </div> --}}
             </header>
+            <div class="message" id="message">
+                @if (session()->has('message'))
+                <div x-data="{show: true}" x-init="setTimeout(() => show = false, 3000)" x-show="show" style="width: 200px;height:20px">
+                    <div   div class="alert alert-success">
+                        {{session('message')}}
+                    </div>
+                </div>
+                @endif
+            </div>
             <main class="main">
                 <div class="button">
                     <button class="tablinks " onclick="openCheck(event, 'Visual')" id="defaultOpen"><h5 >Visual Damage</h5></button>
@@ -236,6 +253,7 @@
                                 <th style="text-align:center;">Image</th>
                                 <th style="text-align:center;">Feed Back</th>
                                 <th style="text-align:center;">Action</th>
+                                <th style="text-align:center;"></th>
                             </thead>
                             <tbody>
                                 @foreach($visual as $visual)
@@ -244,6 +262,7 @@
                                         <td style="text-align:center;" class="table_data">{{$visual->view}}</td>
                                         <td style="text-align:center;" class="table_data"><img src="{{url('images/'.$visual->image)}}" class="rounded-0 border border-secondary"  width="50px" height="50px" ></td>
                                         <td style="text-align:center;" class="table_data">{{$visual->feedback}}</td>
+                                        <td style="text-align:center;" class="table_data">{{$visual->action}}</td>
                                         <td style="text-align:center;" class="table_data">
                                         <a href="/updatevisualcheck/{{$visual->id}}"><i class="fa-solid fa-edit btn btn-success" ></i></a>
                                         <a href="/deletevisual/{{$visual->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
@@ -262,6 +281,7 @@
                                 <th style="text-align:center;">Image</th>
                                 <th style="text-align:center;">Feed Back</th>
                                 <th style="text-align:center;">Action</th>
+                                <th style="text-align:center;"></th>
                             </thead>
                             <tbody>
                                 @foreach($vehicle as $vehicle)
@@ -270,6 +290,7 @@
                                     <td style="text-align:center;" class="table_data">{{$vehicle->view}}</td>
                                     <td style="text-align:center;" class="table_data"><img src="{{url('images/'.$vehicle->image)}}"  width="50px" height="50px" alt="" class="rounded-0 border border-secondary " ></td>
                                     <td style="text-align:center;" class="table_data">{{$vehicle->feedback}}</td>
+                                    <td style="text-align:center;" class="table_data">{{$vehicle->action}}</td>
                                     <td style="text-align:center;" class="table_data">
                                     <a href="/updatevehiclecheck/{{$vehicle->id}}"><i class="fa-solid fa-edit btn btn-success" ></i></a>
                                     <a href="/deletevehicle/{{$vehicle->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
@@ -289,6 +310,7 @@
                         <th style="text-align:center;">Image</th>
                         <th style="text-align:center;">Feed Back</th>
                         <th style="text-align:center;">Action</th>
+                        <th style="text-align:center;"></th>
                     </thead>
                     <tbody>
                         @foreach($cabin as $cabin)
@@ -297,6 +319,7 @@
                             <td style="text-align:center;" class="table_data">{{$cabin->view}}</td>
                             <td style="text-align:center;" class="table_data"><img src="{{url('images/'.$cabin->image)}}"  width="50px" height="50px" alt="" class="rounded-0 border border-secondary"></td>
                             <td style="text-align:center;" class="table_data">{{$cabin->feedback}}</td>
+                            <td style="text-align:center;" class="table_data">{{$cabin->action}}</td>
                             <td style="text-align:center;" class="table_data">
                                 <a href="/updatecabincheck/{{$cabin->id}}"><i class="fa-solid fa-edit btn btn-success" ></i></a>
                                 <a href="/deletecabin/{{$cabin->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a>

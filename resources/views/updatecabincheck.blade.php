@@ -198,6 +198,7 @@
                                     <th style="text-align:center;" class="col-md-2 ">Image</th>
                                     <th style="text-align:center;" class="col-md-3 ">Feed Back</th>
                                     <th style="text-align:center;" class="col-md-2 t ">Action</th>
+                                    <th style="text-align:center;" class="col-md-2 t "></th>
                                 </thead>
                                 <tbody>
                                     @foreach($cabin as $cabin)
@@ -207,6 +208,7 @@
                                             <td style="text-align:center;"><input type="text" class="form-control table_data"   name="view" value="{{$cabin->view}}"></td>
                                             <td style="text-align:center;"><img src="{{url('images/'.$cabin->image)}}"  width="50px" height="50px" class="rounded-0 border border-secondary table_data" alt=""><input type="file" name="image"></td>
                                             <td style="text-align:center;"><input type="text"  class="form-control table_data"  name="feedback" value="{{$cabin->feedback}}"></td>
+                                            <td style="text-align:center;"><input type="text"  class="form-control table_data"  name="action" value="{{$cabin->action}}"></td>
                                             <td style="text-align:center;"><a href="/details/{{$cabin->id}}/{{$cabin->user_id}}"><input type="submit" name="submit" value="Submit" class="btn text-white table_data " style="background:#06064b "></a>
                                             </td>
                                         </tr>

@@ -12,7 +12,7 @@
         table,th,td
         {
         border:1px solid black;
-        padding: 10px;
+        padding: 8px;
         margin-left: 50px;
 
         }
@@ -30,20 +30,26 @@
         .first{
             margin-top: 30px;
         }
+        h2{
+            margin-left: 250px;
+        }
 
     </style>
 <body>
-
+    <header class="headers" id="headers">
+        {{-- <div class="header_toggle" id="toggle-container"> <i class='bx bx-menu ' id="header-toggle"></i> </div> --}}
+        <div class="header_img"> <img src="{{('img/m-d-foundation.png')}}" class="img" > </div>
+    </header>
      <h2> Report Summary</h2>
      <div class="date">
         <strong> Date : {{ date("d.m.Y") }}  </strong>
     </div>
         <h5 class="text-secondary" class="check first">Visual Damage</h5>
         <table style="width:80%" class="">
-            <tr>
-                <th class="col-md-5">View</th>
-                <th style="text-align: ">Action</th>
-            </tr>
+            {{-- <tr>
+                <th class="col-md-5" style="text-align:center;"> View</th>
+                <th style="text-align:" style="text-align:center;">Action</th>
+            </tr> --}}
             @foreach($visual as $visual)
                 <tr style="tect-align:center;">
                     <td >{{$visual->view}}</td>

@@ -223,14 +223,12 @@ class AdminController extends Controller
             return view('/updatevisualcheck',['visual'=>$visual ]);
         }
         public function visualupdate(Request $request,$user_id){
-            $validator = Validator::make($request->all(),[
+            $request->validate([
                 'view'=>'required',
                 'image'=>'required',
                 'feedback'=>'required',
+                'action'=>'required',
             ]);
-            if ($validator->fails()){
-                return response()->json(['message'=>'Validator error']);
-            }
             $user_id= $request->user_id;
                 $data1=User::find($user_id);
                 if ($data1==null){
@@ -250,9 +248,10 @@ class AdminController extends Controller
                             $location=public_path($name);
                             $visual->image =$name;
                         }
-
             $visual->feedback=$request['feedback'];
+            $visual->action=$request['action'];
             $visual->save();
+            session()->flash('message',' Updated Successfully');
             return redirect('/details/'.$data1->id);
         }
         public function deletevisual($id){
@@ -266,14 +265,12 @@ class AdminController extends Controller
             return view('/updatevehiclecheck',['vehicle'=>$vehicle ]);
         }
         public function vehicleupdate(Request $request,$user_id){
-            $validator = Validator::make($request->all(),[
+            $request->validate([
                 'view'=>'required',
                 'image'=>'required',
                 'feedback'=>'required',
+                'action'=>'required',
             ]);
-            if ($validator->fails()){
-                return response()->json(['message'=>'Validator error'],401);
-            }
             $user_id= $request->user_id;
                 $data1=User::find($user_id);
                 if ($data1==null){
@@ -294,7 +291,9 @@ class AdminController extends Controller
                     $vehicle->image =$name;
                 }
             $vehicle->feedback=$request['feedback'];
+            $vehicle->action=$request['action'];
             $vehicle->save();
+            session()->flash('message',' Updated Successfully');
             return redirect('/details/'.$data1->id);
         }
         public function deletevehicle($id){
@@ -309,14 +308,12 @@ class AdminController extends Controller
             return view('/updatecabincheck',['cabin'=>$cabin ]);
         }
         public function cabinupdate(Request $request,$user_id){
-            $validator = Validator::make($request->all(),[
+            $request->validate([
                 'view'=>'required',
                 'image'=>'required',
                 'feedback'=>'required',
+                'action'=>'required',
             ]);
-            if ($validator->fails()){
-                return response()->json(['message'=>'Validator error'],401);
-            }
             $user_id= $request->user_id;
                 $data1=User::find($user_id);
                 if ($data1==null){
@@ -337,7 +334,9 @@ class AdminController extends Controller
                     $cabin->image =$name;
                 }
             $cabin->feedback=$request['feedback'];
+            $cabin->action=$request['action'];
             $cabin->save();
+            session()->flash('message',' Updated Successfully');
             return redirect('/details/'.$data1->id);
         }
         public function deletecabin($id){

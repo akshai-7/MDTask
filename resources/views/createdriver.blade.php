@@ -378,7 +378,7 @@
                                                     <td><input type="file"  name="image[]"  class="form-control image border-0" style="text-align:center;" id='image'></td>
                                                     <td><input type="text"  name="feedback[]"  class="form-control feedback border-0" style="text-align:center;" id='feedback'></td>
                                                     <td><input type="text"  name="notes[]" class="form-control notes border-0" style="text-align:center;" id='notes'></td>
-                                                    <td><input type="text"  name="action[]"  class="form-control action border-0" style="text-align:center;" id='action'></td>
+                                                    <td><input type="text"  name="action[]"  class="form-control action border-0" style="text-align:center;" id='action' placeholder="Good/Bad" ></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="col-md-1"><input type="text"  name="sno[]"    class="form-control col-md-1 border-0" style="text-align:center;" value="2" id="sno"></td>
@@ -386,7 +386,7 @@
                                                     <td><input type="file"  name="image[]"  class="form-control image border-0" style="text-align:center;" id='image'></td>
                                                     <td><input type="text"  name="feedback[]"  class="form-control feedback border-0" style="text-align:center;" id='feedback'></td>
                                                     <td><input type="text"  name="notes[]" class="form-control notes border-0" style="text-align:center;" id='notes'></td>
-                                                    <td><input type="text"  name="action[]"  class="form-control action border-0" style="text-align:center;" id='action'></td>
+                                                    <td><input type="text"  name="action[]"  class="form-control action border-0" style="text-align:center;" id='action' placeholder="Good/Bad" ></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="col-md-1"><input type="text"  name="sno[]"    class="form-control col-md-1 border-0" style="text-align:center;" value="3" id="sno"></td>
@@ -394,7 +394,7 @@
                                                     <td><input type="file"  name="image[]"  class="form-control image border-0" style="text-align:center;" id='image'></td>
                                                     <td><input type="text"  name="feedback[]"  class="form-control feedback border-0" style="text-align:center;" id='feedback'></td>
                                                     <td><input type="text"  name="notes[]" class="form-control notes border-0" style="text-align:center;" id='notes'></td>
-                                                    <td><input type="text"  name="action[]"  class="form-control action border-0" style="text-align:center;" id='action'></td>
+                                                    <td><input type="text"  name="action[]"  class="form-control action border-0" style="text-align:center;" id='action' placeholder="Good/Bad" ></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="col-md-1"><input type="text"  name="sno[]"    class="form-control col-md-1 border-0" style="text-align:center;" value="4" id="sno"></td>
@@ -402,7 +402,7 @@
                                                     <td><input type="file"  name="image[]"  class="form-control image border-0" style="text-align:center;" id='image'></td>
                                                     <td><input type="text"  name="feedback[]"  class="form-control feedback border-0" style="text-align:center;" id='feedback'></td>
                                                     <td><input type="text"  name="notes[]" class="form-control notes border-0" style="text-align:center;" id='notes'></td>
-                                                    <td><input type="text"  name="action[]"  class="form-control action border-0" style="text-align:center;" id='action'></td>
+                                                    <td><input type="text"  name="action[]"  class="form-control action border-0" style="text-align:center;" id='action' placeholder="Good/Bad" ></td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -432,7 +432,7 @@
                                                     <td><input type="file"  name="image1[]"  class="form-control image border-0" style="text-align:center;" id='image'></td>
                                                     <td><input type="text"  name="feedback1[]"  class="form-control feedback border-0" style="text-align:center;" id='feedback'></td>
                                                     <td><input type="text"  name="notes1[]" class="form-control notes border-0" style="text-align:center;" id='notes'></td>
-                                                    <td><input type="text"  name="action1[]"  class="form-control action border-0" style="text-align:center;" id='action'></td>
+                                                    <td><input type="text"  name="action1[]"  class="form-control action border-0" style="text-align:center;" id='action' placeholder="Good/Bad" ></td>
                                                 </tr>
                                                 <tr class="list">
                                                     <td class="col-md-1"><input type="text"  name="sno[]"    class="form-control col-md-1 border-0" style="text-align:center;" value="2" id="sno"></td>
@@ -440,7 +440,7 @@
                                                     <td><input type="file"  name="image1[]"  class="form-control image border-0" style="text-align:center;" id='image'></td>
                                                     <td><input type="text"  name="feedback1[]"  class="form-control feedback border-0" style="text-align:center;" id='feedback'></td>
                                                     <td><input type="text"  name="notes1[]" class="form-control notes border-0" style="text-align:center;" id='notes'></td>
-                                                    <td><input type="text"  name="action1[]"  class="form-control action border-0" style="text-align:center;" id='action'></td>
+                                                    <td><input type="text"  name="action1[]"  class="form-control action border-0" style="text-align:center;" id='action' placeholder="Good/Bad" ></td>
                                                 </tr>
                                                 <tr class="list">
                                                     <td class="col-md-1"><input type="text"  name="sno[]"    class="form-control col-md-1 border-0" style="text-align:center;" value="3" id="sno"></td>
@@ -448,7 +448,7 @@
                                                     <td><input type="file"  name="image1[]"  class="form-control image border-0" style="text-align:center;" id='image'></td>
                                                     <td><input type="text"  name="feedback1[]"  class="form-control feedback border-0" style="text-align:center;" id='feedback'></td>
                                                     <td><input type="text"  name="notes1[]" class="form-control notes border-0" style="text-align:center;" id='notes'></td>
-                                                    <td><input type="text"  name="action1[]"  class="form-control action border-0" style="text-align:center;" id='action'></td>
+                                                    <td><input type="text"  name="action1[]"  class="form-control action border-0" style="text-align:center;" id='action' placeholder="Good/Bad" ></td>
                                                 </tr>
                                                 <tr class="list">
                                                     <td class="col-md-1"><input type="text"  name="sno[]"    class="form-control col-md-1 border-0" style="text-align:center;" value="4" id="sno"></td>
@@ -456,7 +456,7 @@
                                                     <td><input type="file"  name="image1[]"  class="form-control image border-0" style="text-align:center;" id='image'></td>
                                                     <td><input type="text"  name="feedback1[]"  class="form-control feedback border-0" style="text-align:center;" id='feedback'></td>
                                                     <td><input type="text"  name="notes1[]" class="form-control notes border-0" style="text-align:center;" id='notes'></td>
-                                                    <td><input type="text"  name="action1[]"  class="form-control action border-0" style="text-align:center;" id='action'></td>
+                                                    <td><input type="text"  name="action1[]"  class="form-control action border-0" style="text-align:center;" id='action' placeholder="Good/Bad" ></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -486,7 +486,7 @@
                                                     <td><input type="file"  name="image2[]"  class="form-control image border-0" style="text-align:center;" id='image'></td>
                                                     <td><input type="text"  name="feedback2[]"  class="form-control feedback border-0" style="text-align:center;" id='feedback'></td>
                                                     <td><input type="text"  name="notes2[]" class="form-control notes border-0" style="text-align:center;" id='notes'></td>
-                                                    <td><input type="text"  name="action2[]"  class="form-control action border-0" style="text-align:center;" id='action'></td>
+                                                    <td><input type="text"  name="action2[]"  class="form-control action border-0" style="text-align:center;" id='action' placeholder="Good/Bad" ></td>
                                                 </tr>
                                                 <tr class="list">
                                                     <td class="col-md-1"><input type="text"  name="sno[]"    class="form-control col-md-1 border-0" style="text-align:center;" value="2" id="sno"></td>
@@ -494,7 +494,7 @@
                                                     <td><input type="file"  name="image2[]"  class="form-control image border-0" style="text-align:center;" id='image'></td>
                                                     <td><input type="text"  name="feedback2[]"  class="form-control feedback border-0" style="text-align:center;" id='feedback'></td>
                                                     <td><input type="text"  name="notes2[]" class="form-control notes border-0" style="text-align:center;" id='notes'></td>
-                                                    <td><input type="text"  name="action2[]"  class="form-control action border-0" style="text-align:center;" id='action'></td>
+                                                    <td><input type="text"  name="action2[]"  class="form-control action border-0" style="text-align:center;" id='action' placeholder="Good/Bad" ></td>
                                                 </tr>
                                                 <tr class="list">
                                                     <td class="col-md-1"><input type="text"  name="sno[]"    class="form-control col-md-1 border-0" style="text-align:center;" value="3" id="sno"></td>
@@ -502,7 +502,7 @@
                                                     <td><input type="file"  name="image2[]"  class="form-control image border-0" style="text-align:center;" id='image'></td>
                                                     <td><input type="text"  name="feedback2[]"  class="form-control feedback border-0" style="text-align:center;" id='feedback'></td>
                                                     <td><input type="text"  name="notes2[]" class="form-control notes border-0" style="text-align:center;" id='notes'></td>
-                                                    <td><input type="text"  name="action2[]"  class="form-control action border-0" style="text-align:center;" id='action'></td>
+                                                    <td><input type="text"  name="action2[]"  class="form-control action border-0" style="text-align:center;" id='action' placeholder="Good/Bad" ></td>
                                                 </tr>
                                                 <tr class="list">
 
@@ -511,7 +511,7 @@
                                                     <td><input type="file"  name="image2[]"  class="form-control image border-0" style="text-align:center;" id='image'></td>
                                                     <td><input type="text"  name="feedback2[]"  class="form-control feedback border-0" style="text-align:center;" id='feedback'></td>
                                                     <td><input type="text"  name="notes2[]" class="form-control notes border-0" style="text-align:center;" id='notes'></td>
-                                                    <td><input type="text"  name="action2[]"  class="form-control action border-0" style="text-align:center;" id='action'></td>
+                                                    <td><input type="text"  name="action2[]"  class="form-control action border-0" style="text-align:center;" id='action' placeholder="Good/Bad" ></td>
                                                 </tr>
                                                 <tr class="list">
                                                     <td class="col-md-1"><input type="text"  name="sno[]"    class="form-control col-md-1 border-0" style="text-align:center;" value="1" id="sno"></td>
@@ -519,7 +519,7 @@
                                                     <td><input type="file"  name="image2[]"  class="form-control image border-0" style="text-align:center;" id='image'></td>
                                                     <td><input type="text"  name="feedback2[]"  class="form-control feedback border-0" style="text-align:center;" id='feedback'></td>
                                                     <td><input type="text"  name="notes2[]" class="form-control notes border-0" style="text-align:center;" id='notes'></td>
-                                                    <td><input type="text"  name="action2[]"  class="form-control action border-0" style="text-align:center;" id='action'></td>
+                                                    <td><input type="text"  name="action2[]"  class="form-control action border-0" style="text-align:center;" id='action' placeholder="Good/Bad" ></td>
                                                 </tr>
                                                 <tr class="list">
                                                     <td class="col-md-1"><input type="text"  name="sno[]"    class="form-control col-md-1 border-0" style="text-align:center;" value="2" id="sno"></td>
@@ -527,7 +527,7 @@
                                                     <td><input type="file"  name="image2[]"  class="form-control image border-0" style="text-align:center;" id='image'></td>
                                                     <td><input type="text"  name="feedback2[]"  class="form-control feedback border-0" style="text-align:center;" id='feedback'></td>
                                                     <td><input type="text"  name="notes2[]" class="form-control notes border-0" style="text-align:center;" id='notes'></td>
-                                                    <td><input type="text"  name="action2[]"  class="form-control action border-0" style="text-align:center;" id='action'></td>
+                                                    <td><input type="text"  name="action2[]"  class="form-control action border-0" style="text-align:center;" id='action' placeholder="Good/Bad" ></td>
                                                 </tr>
                                                 <tr class="list">
                                                     <td class="col-md-1"><input type="text"  name="sno[]"    class="form-control col-md-1 border-0" style="text-align:center;" value="3" id="sno"></td>
@@ -535,7 +535,7 @@
                                                     <td><input type="file"  name="image2[]"  class="form-control image border-0" style="text-align:center;" id='image'></td>
                                                     <td><input type="text"  name="feedback2[]"  class="form-control feedback border-0" style="text-align:center;" id='feedback'></td>
                                                     <td><input type="text"  name="notes2[]" class="form-control notes border-0" style="text-align:center;" id='notes'></td>
-                                                    <td><input type="text"  name="action2[]"  class="form-control action border-0" style="text-align:center;" id='action'></td>
+                                                    <td><input type="text"  name="action2[]"  class="form-control action border-0" style="text-align:center;" id='action' placeholder="Good/Bad" ></td>
                                                 </tr>
                                                 <tr class="list">
 
@@ -544,7 +544,7 @@
                                                     <td><input type="file"  name="image2[]"  class="form-control image border-0" style="text-align:center;" id='image'></td>
                                                     <td><input type="text"  name="feedback2[]"  class="form-control feedback border-0" style="text-align:center;" id='feedback'></td>
                                                     <td><input type="text"  name="notes2[]" class="form-control notes border-0" style="text-align:center;" id='notes'></td>
-                                                    <td><input type="text"  name="action2[]"  class="form-control action border-0" style="text-align:center;" id='action'></td>
+                                                    <td><input type="text"  name="action2[]"  class="form-control action border-0" style="text-align:center;" id='action' placeholder="Good/Bad" ></td>
                                                 </tr>
                                             </tbody>
                                         </table>
