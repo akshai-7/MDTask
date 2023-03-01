@@ -20,6 +20,10 @@ class CreateDriversTable extends Migration
             $table->string('company');
             $table->string('deliveryemail')->unique();
             $table->string('phone');
+            $table->string('date');
+            $table->string('number_plate');
+            $table->string('mileage');
+            $table->string('report');
             $table->timestamps();
         });
     }

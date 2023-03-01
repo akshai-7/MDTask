@@ -83,6 +83,10 @@ class ApiController extends Controller
                     'company'=>'required',
                     'deliveryemail'=>'required',
                     'phone'=>'required|min:10',
+                    'report'=>'required',
+                    'date'=>'required',
+                    'number_plate'=>'required',
+                    'mileage'=>'required',
                 ]);
                 if ($validator->fails()){
                     return response()->json(['message'=>'Validator error'],401);
@@ -93,6 +97,10 @@ class ApiController extends Controller
                 $data->company=$request['company'];
                 $data->deliveryemail=$request['deliveryemail'];
                 $data->phone=$request['phone'];
+                $data->report =$request['report'];
+                $data->date =$request['date'];
+                $data->number_plate =$request['number_plate'];
+                $data->mileage=$request['mileage'];
                 $data->save();
                 return response()->json(['success'=>true,'data'=>$data],200);
                 }
@@ -111,6 +119,10 @@ class ApiController extends Controller
                     'company'=>'required',
                     'deliveryemail'=>'required|email',
                     'phone'=>'required',
+                    'report'=>'required',
+                    'date'=>'required',
+                    'number_plate'=>'required',
+                    'mileage'=>'required',
                 ]);
                 if ($validator->fails()){
                     return response()->json(['message'=>'Validator error'],401);
@@ -121,6 +133,10 @@ class ApiController extends Controller
                 $data->company=$request['company'];
                 $data->deliveryemail=$request['deliveryemail'];
                 $data->phone=$request['phone'];
+                $data->report =$request['report'];
+                $data->date =$request['date'];
+                $data->number_plate =$request['number_plate'];
+                $data->mileage=$request['mileage'];
                 $data->save();
                 return response()->json(['message'=>'Updated Successfully'],200);
                 }

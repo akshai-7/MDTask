@@ -34,11 +34,7 @@ class AdminController extends Controller
             $user= User::all();
             return view('/user',['user'=>$user]);
         }
-        public function newuser(){
-            return view('/createuser');
-        }
         public function createuser(Request $request){
-
             $request->validate([
                 'name'=>'required',
                 'email'=>'required|email',
@@ -84,7 +80,7 @@ class AdminController extends Controller
         }
     //user
         public function driverlist($user_id){
-            $driver = Driver::with('report')->where('user_id',$user_id)->get();
+            $driver = Driver::where('user_id',$user_id)->get();
             return view('/driver',['driver'=>$driver]);
         }
         public function newdriver($id){

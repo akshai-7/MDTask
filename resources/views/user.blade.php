@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@2.8.2/dist/alpine.min.js"></script>
+
 	<title>M&D Foundations</title>
 </head>
 <style>
@@ -202,6 +203,44 @@
             .main::-webkit-scrollbar {
              display: none;
             }
+            .popup {
+                display: none;
+                position: fixed;
+                padding: 20px;
+                width: 600px;
+                height: 500px;
+                left: 50%;
+                margin-left: -250px;
+                top: 30%;
+                margin-top: -50px;
+                background: #FFF;
+                z-index: 20;
+            }
+
+            #popup:after {
+                position: fixed;
+                content: "";
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                background: rgba(0,0,0,0.5);
+                z-index: -2;
+            }
+            #popup:before {
+                position: absolute;
+                content: "";
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                background:var(--light);
+                z-index: -1;
+            }
+            form{
+                margin-left: 50px;
+            }
+
 </style>
 
 
@@ -244,7 +283,7 @@
                 <div class="order">
                     <div class="head">
                         <h3>User Details</h3>
-                        <a href="/createuser"><input type="submit" value="Add-User" class="text-primary" id="add"></a>
+                        <a href="#"><input type="submit" value="Add-User" class="text-primary button" id="add" onclick="show('popup')"></a>
                     </div>
                     <table class="">
                         <thead class="text-primary">
@@ -275,8 +314,34 @@
                 </div>
             </div>
         </main>
+
+        <div class="popup" id="popup">
+            <form action="/createuser" method="POST" autocomplete="off" >
+                @csrf
+                <div class=" row mt-5">
+                    <label for="" class="col-sm-2  col-form-label"> Name</label>
+                    <div class="col-sm-8">
+                    <input type="text" name="name" class="form-control"  placeholder="User Name"><div style="color:rgb(216, 31, 31);;"> @error('name')*{{$message}}@enderror</div>
+                    </div>
+                </div>
+                <div class="row  mt-5">
+                    <label for="" class="col-sm-2  col-form-label">Email</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" name="email" placeholder=" Enter Your Email"><div style="color:rgb(216, 31, 31);;"> @error('email')*{{$message}}@enderror</div>
+                    </div>
+                </div>
+                <div class=" row  mt-5">
+                    <label for="" class="col-sm-2 col-form-label">Password</label>
+                    <div class="col-sm-8">
+                        <input type="password" class="form-control" name="password" placeholder=" Enter Password"><div style="color:rgb(216, 31, 31);;"> @error('password')*{{$message}}@enderror</div>
+                        <input type="submit" name="" value="Submit" class="btn text-white mt-5" style="float:right;background:#06064b;">
+                    </div>
+                <a href="#" onclick="hide('popup')" style="color:red;text-align: center;">Close</a>
+            </form>
+        </div>
     </div>
 </section>
+
 </body>
 <script>
             var toggleBtn=document.getElementById("toggle-container");
@@ -309,5 +374,17 @@
                     isOpen=!isOpen;
                 }
         })
+
+
+        $ = function(id) {
+        return document.getElementById(id);
+        }
+
+        var show = function(id) {
+            $(id).style.display ='block';
+        }
+        var hide = function(id) {
+            $(id).style.display ='none';
+        }
 </script>
 </html>`

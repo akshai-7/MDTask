@@ -308,7 +308,7 @@
 
                                         </div>
                                     </div>
-                                    <h5 class="mt-4" style="color:#06064b;"> <i class="fa-solid fa-user"></i> Report on Incident</h5>
+                                    {{-- <h5 class="mt-4" style="color:#06064b;"> <i class="fa-solid fa-user"></i> Report on Incident</h5>
                                     <div class="" id="main">
                                         <div class="report">
                                             <div class="form-group row mt-5 ">
@@ -351,7 +351,7 @@
                                             </div>
 
                                         </div>
-                                    </div>
+                                    </div> --}}
 
                         </div>
                         <div class="table-data">

@@ -17,7 +17,6 @@ Route::view('/','login');
 Route::post('/user',[AdminController::class,'admin']);
 Route::get('/user',[AdminController::class,'create']);
 Route::get('/user',[AdminController::class,'userlist']);
-Route::get('/createuser',[AdminController::class,'newuser']);
 Route::post('/createuser',[AdminController::class,'createuser']) ;
 Route::get('/updateuser/{id}',[AdminController::class,'updateuser']);
 Route::Post('/updateuserdetails/{id}',[AdminController::class,'updateuserdetails']);

@@ -22,10 +22,6 @@ class CreateReportsTable extends Migration
             $table->string('phone_number_of_witness');
             $table->string('brief_statement');
             $table->string('upload_image');
-            $table->string('report');
-            $table->string('date');
-            $table->string('number_plate');
-            $table->string('mileage');
             $table->timestamps();
         });
     }
