@@ -34,6 +34,9 @@ class AdminController extends Controller
             $user= User::all();
             return view('/user',['user'=>$user]);
         }
+        public function newuser(){
+            return view('/createuser');
+        }
         public function createuser(Request $request){
             $request->validate([
                 'name'=>'required',

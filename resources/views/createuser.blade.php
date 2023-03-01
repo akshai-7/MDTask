@@ -134,17 +134,19 @@
             .nav_icon{
                 font-size: 1.25rem
             }
-            main {
-                position: relative;
-                width: 45%;
-                left: 300px;
+            main{
+                display: flex;
+                padding: 20px;
             }
             .table-data{
-                margin-top: 20%;
+                position: relative;
+                margin-top: 50px;
+                margin-left: 50px;
+                width: 300px;
+                height: 300px;
                 border-radius:8px;
                 background: var(--light);
-                padding: 24px;
-                overflow-x: auto;
+
             }
             .head {
                 display: flex;
@@ -166,11 +168,7 @@
                 position: relative;
                 width: 80px;
             }
-            form{
-                padding: 20px 20px;
-               font-size: 17px;
-               background:rgb(237, 233, 233);
-            }
+
 </style>
 <body id="body-pd">
 <section id="container">
@@ -190,32 +188,14 @@
 
         <main>
 			<div class="table-data">
-				<div class="order">
-					<div class="head">
-						<h3>New User</h3>
-					</div>
-                    <form action="/createuser" method="POST" autocomplete="off" >
-                        @csrf
-                        <div class="form-group row mt-5">
-                            <label for="" class="col-sm-2  col-form-label"> Name</label>
-                            <div class="col-sm-8">
-                              <input type="text" name="name" class="form-control" id="inputPassword" placeholder="User Name"><div style="color:rgb(216, 31, 31);;"> @error('name')*{{$message}}@enderror</div>
-                            </div>
-                          </div>
-                        <div class="form-group row  mt-5">
-                            <label for="" class="col-sm-2  col-form-label">Email</label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" name="email" placeholder=" Enter Your Email"><div style="color:rgb(216, 31, 31);;"> @error('email')*{{$message}}@enderror</div>
-                            </div>
-                          </div>
-                          <div class="form-group row  mt-5">
-                            <label for="" class="col-sm-2 col-form-label">Password</label>
-                            <div class="col-sm-8">
-                                <input type="password" class="form-control" name="password" placeholder=" Enter Password"><div style="color:rgb(216, 31, 31);;"> @error('password')*{{$message}}@enderror</div>
-                            <a href="/user"><input type="submit" name="submit" value="Submit" class="btn text-white mt-5" style="float:right;background:#06064b;"></a>
-                          </div>
-                    </form>
-				</div>
+                <div>
+                    <h1>akshai</h1>
+                    <h1>akshai</h1>
+                    <h1>akshai</h1>
+                    <h1>akshai</h1>
+                </div>
+            </div>
+            <div class="table-data">
 			</div>
 		</main>
      </div>
