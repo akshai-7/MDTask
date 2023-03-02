@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Mail\sendEmailUsingGmail;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -51,5 +55,7 @@ Route::get('/summary/{user_id}',[AdminController::class,'summary']);
 
 Route::get('/pdf/{user_id}',[AdminController::class,'pdf']);
 Route::get('/edit/{user_id}',[AdminController::class,'edit']);
+
+
 
 

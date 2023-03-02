@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Notifications\Notification;
+use App\Notifications\sendEmailnotification;
 
 class AdminController extends Controller
 {
@@ -32,10 +35,12 @@ class AdminController extends Controller
         }
         public function userlist(){
             $user= User::all();
-            return view('/user',['user'=>$user]);
+            $user1= User::count();
+            return view('/user',['user'=>$user],['user1'=>$user1]);
         }
         public function newuser(){
-            return view('/createuser');
+            $user= User::count();
+            return view('/createuser',['user'=>$user]);
         }
         public function createuser(Request $request){
             $request->validate([
@@ -131,27 +136,31 @@ class AdminController extends Controller
             $data->company=$request['company'];
             $data->deliveryemail=$request['deliveryemail'];
             $data->phone=$request['phone'];
+            $data->report =$request['report'];
+            $data->date =$request['date'];
+            $data->number_plate =$request['number_plate'];
+            $data->mileage=$request['mileage'];
             $data->save();
 
-            $user = new Report();
-            $user->user_id=$user_id;
-            $user->date_of_incident =$request['date_of_incident'];
-            $user->location =$request['location'];
-            $user->witnessed_by =$request['witnessed_by'];
-            $user->phone_number_of_witness =$request['phone_number_of_witness'];
-            $user->brief_statement =$request['brief_statement'];
-            $user->upload_image =$request['upload_image'];
-            if($request->hasfile('upload_image')){
-                $image = $request->file('upload_image');
-                $name = $image->getClientOriginalName();
-                $location=public_path($name);
-                $user->image =$name;
-            }
-            $user->report =$request['report'];
-            $user->date =$request['date'];
-            $user->number_plate =$request['number_plate'];
-            $user->mileage=$request['mileage'];
-            $user->save();
+            // $user = new Report();
+            // $user->user_id=$user_id;
+            // $user->date_of_incident =$request['date_of_incident'];
+            // $user->location =$request['location'];
+            // $user->witnessed_by =$request['witnessed_by'];
+            // $user->phone_number_of_witness =$request['phone_number_of_witness'];
+            // $user->brief_statement =$request['brief_statement'];
+            // $user->upload_image =$request['upload_image'];
+            // if($request->hasfile('upload_image')){
+            //     $image = $request->file('upload_image');
+            //     $name = $image->getClientOriginalName();
+            //     $location=public_path($name);
+            //     $user->image =$name;
+            // }
+            // $user->report =$request['report'];
+            // $user->date =$request['date'];
+            // $user->number_plate =$request['number_plate'];
+            // $user->mileage=$request['mileage'];
+            // $user->save();
 
             $data= $request->all();
             $user_id=$request->user_id;
@@ -345,7 +354,7 @@ class AdminController extends Controller
             return redirect('/details/'.$data1);
         }
         public function allrentallist(){
-            $driver = Driver::with('report')->get();
+            $driver = Driver::all();
             return view('/allrentallist',['driver'=>$driver ]);
 
         }
@@ -365,4 +374,5 @@ class AdminController extends Controller
         public function edit($user_id){
             return redirect('/details/'.$user_id);
         }
+
 }

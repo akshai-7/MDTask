@@ -240,7 +240,21 @@
             form{
                 margin-left: 50px;
             }
+            .table-data1{
+                position: relative;
+                color: #06064b;
+                margin-top: 50px;
+                margin-left: 120px;
+                width: 220px;
+                height: 90px;
+                border-radius:8px;
+                background: var(--light);
+            }
+            .usercount{
+                margin-left: 15px;
+                padding:10px;
 
+            }
 </style>
 
 
@@ -269,6 +283,12 @@
                 </div>
             </div>
             @endif
+        </div>
+        <div class="table-data1">
+            <div class="usercount">
+                <h4> <i class="fa-solid fa-user"></i> Total Users </h4>
+                <h1 align="right" style="margin-right: 50px;color:blue;font-weight: 600;">{{$user1}}</h1>
+            </div>
         </div>
         <div class="message1" id="message">
             @if (session()->has('message1'))
@@ -315,7 +335,6 @@
                 </div>
             </div>
         </main>
-
         <div class="popup" id="popup">
             <form action="/createuser" method="POST" autocomplete="off" >
                 @csrf
@@ -338,7 +357,9 @@
                         <input type="submit" name="" value="Submit" class="btn text-white mt-5" style="float:right;background:#06064b;">
                     </div>
                 <a href="#" onclick="hide('popup')" style="color:red;text-align: center;">Close</a>
+
             </form>
+            <a href="/sendnotification">Send Mail</a>
         </div>
     </div>
 </section>

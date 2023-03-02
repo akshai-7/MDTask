@@ -219,13 +219,13 @@
                             @foreach($driver as $driver)
                                  <tr class="table_row ">
                                     <td style="text-align:center;" class="table_data">{{$loop->iteration}}</td>
-                                    <td style="text-align:center;" class="table_data">{{$driver->report->report}}</td>
+                                    <td style="text-align:center;" class="table_data">{{$driver->report}}</td>
                                     <td style="text-align:center;" class="table_data">{{$driver->drivername}}</td>
                                     <td style="text-align:center;" class="table_data">{{$driver->company}}</td>
                                     <td style="text-align:center;" class="table_data"> {{$driver->deliveryemail}}</td>
                                     <td style="text-align:center;" class="table_data">{{$driver->phone}}</td>
-                                    <td style="text-align:center;" class="table_data">{{$driver->report->number_plate}}</td>
-                                    <td style="text-align:center;" class="table_data">{{$driver->report->mileage}}Km</td>
+                                    <td style="text-align:center;" class="table_data">{{$driver->number_plate}}</td>
+                                    <td style="text-align:center;" class="table_data">{{$driver->mileage}}Km</td>
                                     <td style="text-align:center;" class="table_data">{{$driver->created_at->format('d.m.Y')}}</td>
                                     <td style="text-align:center;" class="table_data">
                                     <a href="/details/{{$driver->user_id}}"><i class="fa-solid fa-eye btn  text-white" style="background:#06064b" ></i></a>

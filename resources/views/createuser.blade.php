@@ -189,10 +189,7 @@
         <main>
 			<div class="table-data">
                 <div>
-                    <h1>akshai</h1>
-                    <h1>akshai</h1>
-                    <h1>akshai</h1>
-                    <h1>akshai</h1>
+                    {{$user}}
                 </div>
             </div>
             <div class="table-data">
