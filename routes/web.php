@@ -6,6 +6,7 @@ use App\Mail\sendEmailUsingGmail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -57,5 +58,4 @@ Route::get('/pdf/{user_id}',[AdminController::class,'pdf']);
 Route::get('/edit/{user_id}',[AdminController::class,'edit']);
 
 
-
-
+Route::get('/send-email-using-gmail/{user_id}',[AdminController::class,'send']);

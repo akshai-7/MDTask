@@ -361,6 +361,7 @@
             </form>
             <a href="/sendnotification">Send Mail</a>
         </div>
+
     </div>
 </section>
 

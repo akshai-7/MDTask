@@ -7,6 +7,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@2.8.2/dist/alpine.min.js"></script>
+
 	<title>M&D Foundations</title>
 </head>
 <style>
@@ -190,10 +192,25 @@
         margin-right: 100px;
         margin-top: 20px;
     }
+    #message{
+                position:fixed;
+                top: 70px;
+                right: 10px;
+                animation-duration: 1s;
+            }
 
 </style>
 <body>
 <section id="container">
+    <div class="message" id="message">
+        @if (session()->has('message'))
+        <div x-data="{show: true}" x-init="setTimeout(() => show = false, 3000)" x-show="show" style="width: 200px;height:20px">
+            <div   div class="alert alert-success">
+                {{session('message')}}
+            </div>
+        </div>
+        @endif
+    </div>
     <div id="div-1">
         <div id="img-container">
          <img  id="img-logo" src="{{url('img/m-d-foundation.png')}}">
@@ -261,6 +278,7 @@
         </main>
         <div class="print">
             <a href="/pdf/{{$cabin->user_id}}"><i class="fa-solid fa-print btn btn-danger"></i></a>
+            <a href="/send-email-using-gmail/{{$cabin->user_id}}"><i class="fa-solid fa-p btn btn-danger"></i></a>
             <a href="/edit/{{$cabin->user_id}}"><i class="fa-solid fa-edit btn btn-success"></i></a>
         </div>
 </section>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\sendEmailUsingGmail;
 use App\Models\Driver;
 use App\Models\User;
 use App\Models\Report;
@@ -374,5 +375,13 @@ class AdminController extends Controller
         public function edit($user_id){
             return redirect('/details/'.$user_id);
         }
+        public function send($user_id){
+            $user=User::where('id',$user_id)->first();
+            $email=$user->email;
+	        Mail::to($email)->send(new sendEmailUsingGmail);
+            session()->flash('message','Mail Send Successfully !!');
+            return redirect('/summary/'.$user_id);
+        }
+
 
 }
