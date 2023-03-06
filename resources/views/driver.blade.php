@@ -211,6 +211,7 @@
                             <th style="text-align:center;" > Number Plate</th>
                             <th style="text-align:center;">Mileage</th>
                             <th style="text-align:center;">Creation Date</th>
+                            <th style="text-align:center;">Status</th>
                             <th style="text-align:center;">Action</th>
                         </thead>
                         <tbody>
@@ -225,6 +226,10 @@
                                     <td style="text-align:center;" class="table_data">{{$driver->number_plate}}</td>
                                     <td style="text-align:center;" class="table_data">{{$driver->mileage}}Km</td>
                                     <td style="text-align:center;" class="table_data">{{$driver->created_at->format('d.m.Y')}}</td>
+                                    <td style="text-align:center;" class="table_data">{{$driver->created_at->format('')}}
+                                        {{-- <input data-id="{{$driver->created_at->format('')}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="InActive" {{ $driver->status ? 'checked' : '' }}> --}}
+
+                                    </td>
                                     <td style="text-align:center;" class="table_data">
                                     <a href="/details/{{$driver->user_id}}"><i class="fa-solid fa-eye btn  text-white" style="background:#06064b "></i></a>
                                     <a href="/createdriver/{{$driver->user_id}}"><i class="fa-solid fa-plus btn btn-secondary"></i></a>
@@ -266,6 +271,24 @@
             document.getElementById("div-2").style.width="85%";
             isOpen=!isOpen;
         }
+//         $(function() {
+//     $('.toggle-class').change(function() {
+//         var status = $(this).prop('checked') == true ? 1 : 0;
+//         var user_id = $(this).data('id');
+//          console.log(status);
+//         $.ajax({
+//             type: "GET",
+//             dataType: "json",
+//             url: '/userChangeStatus',
+//             data: {'status': status, 'user_id': user_id},
+//             success: function(data){
+//               console.log(data.success)
+//             }
+//         });
+//     })
+//   })
+
+
 })
 </script>
 

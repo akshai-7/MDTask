@@ -59,3 +59,5 @@ Route::get('/edit/{user_id}',[AdminController::class,'edit']);
 
 
 Route::get('/send-email-using-gmail/{user_id}',[AdminController::class,'send']);
+Route::get('/handle/{usee_id}',[AdminController::class,'handle']);
+

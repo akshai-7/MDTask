@@ -17,6 +17,7 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Notifications\Notification;
 use App\Notifications\sendEmailnotification;
+use Illuminate\Support\Carbon;
 
 class AdminController extends Controller
 {
@@ -382,6 +383,4 @@ class AdminController extends Controller
             session()->flash('message','Mail Send Successfully !!');
             return redirect('/summary/'.$user_id);
         }
-
-
 }

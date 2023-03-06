@@ -11,4 +11,4 @@ Thanks,<br>
 {{ config('app.name') }}
 
 @endcomponent --}}
-hi
+ Test email

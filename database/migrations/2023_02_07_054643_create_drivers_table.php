@@ -18,7 +18,7 @@ class CreateDriversTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('drivername');
             $table->string('company');
-            $table->string('deliveryemail')->unique();
+            $table->string('deliveryemail');
             $table->string('phone');
             $table->string('date');
             $table->string('number_plate');
