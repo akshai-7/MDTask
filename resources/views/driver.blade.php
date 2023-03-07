@@ -193,7 +193,6 @@
     <div id="div-2">
         <header class="headers" id="headers">
             <div class="header_toggle" id="toggle-container"> <i class='bx bx-menu ' id="header-toggle"></i> </div>
-            {{-- <div class="header_img"> <img src="{{url('img/m-d-foundation.png')}}" class="img"> </div> --}}
         </header>
         <main>
 			<div class="table-data">
@@ -201,14 +200,14 @@
 					<div class="head">
 						<h3>Rental Details</h3>
 					</div>
-                    <table class="" style="width:1200px;">
+                    <table class="" style="width:px;">
                         <thead class="text-primary">
                             <th style="text-align:center;" class="">Report No</th>
-                            <th style="text-align:center;">Driver Name</th>
+                            {{-- <th style="text-align:center;">Driver Name</th> --}}
                             <th style="text-align:center;">Company</th>
                             {{-- <th style="text-align:center;">Email</th> --}}
                             <th style="text-align:center;">Phone</th>
-                            <th style="text-align:center;" > Number Plate</th>
+                            <th style="text-align:center;">Number Plate</th>
                             <th style="text-align:center;">Mileage</th>
                             <th style="text-align:center;">Inspection Date</th>
                             <th style="text-align:center;">Next Inspection Date</th>
@@ -218,21 +217,20 @@
                         <tbody>
                             @foreach($driver as $driver)
                                  <tr class="table_row">
-                                    {{-- <td style="text-align:center;">{{$loop->iteration}}</td> --}}
                                     <td style="text-align:center;" class="table_data">{{$driver->report}}</td>
-                                    <td style="text-align:center;" class="table_data">{{$driver->drivername}}</td>
+                                    {{-- <td style="text-align:center;" class="table_data">{{$driver->drivername}}</td> --}}
                                     <td style="text-align:center;" class="table_data">{{$driver->company}}</td>
                                     {{-- <td style="text-align:center;" class="table_data">{{$driver->deliveryemail}}</td> --}}
                                     <td style="text-align:center;" class="table_data">{{$driver->phone}}</td>
                                     <td style="text-align:center;" class="table_data">{{$driver->number_plate}}</td>
                                     <td style="text-align:center;" class="table_data">{{$driver->mileage}}Km</td>
                                     <td style="text-align:center;" class="table_data">{{$driver->created_at->format('d.m.Y')}}</td>
-                                    <td style="text-align:center;" class="table_data">{{Carbon\Carbon::now()->endOfWeek(Carbon\Carbon::TUESDAY)->format('d.m.Y')}}</td>
+                                    <td style="text-align:center;" class="table_data">{{ Carbon\Carbon::now()->endOfWeek(Carbon\Carbon::TUESDAY)->format('d.m.Y')}}</td>
                                     <td style="text-align:center;" class="table_data">
                                         @if ($driver->created_at->format(('d.m.Y')) == Carbon\Carbon::now()->endOfWeek(Carbon\Carbon::TUESDAY)->format('d.m.Y') )
-                                            <button type="button" class="btn btn-success">Success</button>
+                                            <button type="button" class="btn btn-success btn-sm">Success</button>
                                         @else
-                                            <button type="button" class="btn btn-danger">Bending</button>
+                                            <button type="button" class="btn btn-danger btn-sm">Pending</button>
                                         @endif
                                     </td>
                                     <td style="text-align:center;" class="table_data">

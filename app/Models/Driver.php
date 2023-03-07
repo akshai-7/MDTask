@@ -11,7 +11,7 @@ class Driver extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class,'user_id');
+        return $this->belongsTo(User::class);
     }
     public function report()
     {

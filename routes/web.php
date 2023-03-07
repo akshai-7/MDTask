@@ -20,7 +20,6 @@ use Illuminate\Support\Facades\Mail;
 
 Route::view('/','login');
 Route::post('/user',[AdminController::class,'admin']);
-Route::get('/user',[AdminController::class,'create']);
 Route::get('/createuser',[AdminController::class,'newuser']);
 Route::get('/user',[AdminController::class,'userlist']);
 Route::post('/createuser',[AdminController::class,'createuser']) ;

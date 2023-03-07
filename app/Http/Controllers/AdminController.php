@@ -32,12 +32,9 @@ class AdminController extends Controller
             return redirect('/user');
     }
     //user
-        public function create(){
-            return view('/user');
-        }
         public function userlist(){
-            $user= User::all();
-            $user1= User::count();
+            $user=User::all();
+            $user1=User::count();
             return view('/user',['user'=>$user],['user1'=>$user1]);
         }
         public function newuser(){
