@@ -91,7 +91,8 @@ class AdminController extends Controller
     //user
         public function driverlist($user_id){
             $driver = Driver::where('user_id',$user_id)->get();
-            return view('/driver',['driver'=>$driver]);
+            $driver1 = Driver::where('user_id',$user_id)->get();
+            return view('/driver',['driver'=>$driver],['driver1'=>$driver1]);
         }
         public function newdriver($id){
             return view('/createdriver',compact('id'));

@@ -201,16 +201,17 @@
 					<div class="head">
 						<h3>Rental Details</h3>
 					</div>
-                    <table class="" style="width:">
+                    <table class="" style="width:1200px;">
                         <thead class="text-primary">
-                            <th style="text-align:center;" class="">Report</th>
+                            <th style="text-align:center;" class="">Report No</th>
                             <th style="text-align:center;">Driver Name</th>
                             <th style="text-align:center;">Company</th>
-                            <th style="text-align:center;">Email</th>
+                            {{-- <th style="text-align:center;">Email</th> --}}
                             <th style="text-align:center;">Phone</th>
                             <th style="text-align:center;" > Number Plate</th>
                             <th style="text-align:center;">Mileage</th>
-                            <th style="text-align:center;">Creation Date</th>
+                            <th style="text-align:center;">Inspection Date</th>
+                            <th style="text-align:center;">Next Inspection Date</th>
                             <th style="text-align:center;">Status</th>
                             <th style="text-align:center;">Action</th>
                         </thead>
@@ -221,24 +222,28 @@
                                     <td style="text-align:center;" class="table_data">{{$driver->report}}</td>
                                     <td style="text-align:center;" class="table_data">{{$driver->drivername}}</td>
                                     <td style="text-align:center;" class="table_data">{{$driver->company}}</td>
-                                    <td style="text-align:center;" class="table_data">{{$driver->deliveryemail}}</td>
+                                    {{-- <td style="text-align:center;" class="table_data">{{$driver->deliveryemail}}</td> --}}
                                     <td style="text-align:center;" class="table_data">{{$driver->phone}}</td>
                                     <td style="text-align:center;" class="table_data">{{$driver->number_plate}}</td>
                                     <td style="text-align:center;" class="table_data">{{$driver->mileage}}Km</td>
                                     <td style="text-align:center;" class="table_data">{{$driver->created_at->format('d.m.Y')}}</td>
-                                    <td style="text-align:center;" class="table_data">{{$driver->created_at->format('')}}
-                                        {{-- <input data-id="{{$driver->created_at->format('')}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="InActive" {{ $driver->status ? 'checked' : '' }}> --}}
-
+                                    <td style="text-align:center;" class="table_data">{{Carbon\Carbon::now()->endOfWeek(Carbon\Carbon::TUESDAY)->format('d.m.Y')}}</td>
+                                    <td style="text-align:center;" class="table_data">
+                                        @if ($driver->created_at->format(('d.m.Y')) == Carbon\Carbon::now()->endOfWeek(Carbon\Carbon::TUESDAY)->format('d.m.Y') )
+                                            <button type="button" class="btn btn-success">Success</button>
+                                        @else
+                                            <button type="button" class="btn btn-danger">Bending</button>
+                                        @endif
                                     </td>
                                     <td style="text-align:center;" class="table_data">
                                     <a href="/details/{{$driver->user_id}}"><i class="fa-solid fa-eye btn  text-white" style="background:#06064b "></i></a>
-                                    <a href="/createdriver/{{$driver->user_id}}"><i class="fa-solid fa-plus btn btn-secondary"></i></a>
                                     <a href="/remove/{{$driver->id}}"><i class="fa-solid fa-trash btn btn-danger" ></i></a></td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
 				</div>
+
 			</div>
 		</main>
     </div>
@@ -271,25 +276,7 @@
             document.getElementById("div-2").style.width="85%";
             isOpen=!isOpen;
         }
-//         $(function() {
-//     $('.toggle-class').change(function() {
-//         var status = $(this).prop('checked') == true ? 1 : 0;
-//         var user_id = $(this).data('id');
-//          console.log(status);
-//         $.ajax({
-//             type: "GET",
-//             dataType: "json",
-//             url: '/userChangeStatus',
-//             data: {'status': status, 'user_id': user_id},
-//             success: function(data){
-//               console.log(data.success)
-//             }
-//         });
-//     })
-//   })
-
-
-})
+    })
 </script>
 
 </body>

@@ -212,7 +212,8 @@
                             <th style="text-align:center;">Phone</th>
                             <th style="text-align:center;" > Number Plate</th>
                             <th style="text-align:center;">Mileage</th>
-                            <th style="text-align:center;">Creation Date</th>
+                            <th style="text-align:center;">Inspection Date</th>
+                            <th style="text-align:center;">status</th>
                             <th style="text-align:center;">Action</th>
                         </thead>
                         <tbody>
@@ -227,6 +228,13 @@
                                     <td style="text-align:center;" class="table_data">{{$driver->number_plate}}</td>
                                     <td style="text-align:center;" class="table_data">{{$driver->mileage}}Km</td>
                                     <td style="text-align:center;" class="table_data">{{$driver->created_at->format('d.m.Y')}}</td>
+                                    <td>
+                                        @if ($driver->created_at->format(('d.m.Y'))  == date("d.m.Y"))
+                                            <button type="button" class="btn btn-success">Success</button>
+                                        @else
+                                            <button type="button" class="btn btn-danger">Bending</button>
+                                        @endif
+                                    </td>
                                     <td style="text-align:center;" class="table_data">
                                     <a href="/details/{{$driver->user_id}}"><i class="fa-solid fa-eye btn  text-white" style="background:#06064b" ></i></a>
                                     {{-- <a href="/createdriver/{{$driver->user_id}}"><i class="fa-solid fa-plus btn btn-secondary"></i></a> --}}

@@ -311,14 +311,14 @@
        <div id="img-container">
         <img  id="img-logo" src="{{url('img/m-d-foundation.png')}}">
        </div>
-        <a class="nav_list" href="/createuser" ><div class="icon-name"><i class='bx bx-grid-alt nav_icon'></i></div> <div class="nav_name">Dashboard </div> </a>
+        {{-- <a class="nav_list" href="/createuser" ><div class="icon-name"><i class='bx bx-grid-alt nav_icon'></i></div> <div class="nav_name">Dashboard </div> </a> --}}
         <a class="nav_list" href="/user" ><div class="icon-name"><i class='bx bx-grid-alt nav_icon'></i></div> <div class="nav_name">Dashboard </div> </a>
         <a  class="nav_list" href="/allrentallist" ><div class="icon-name"> <i class="fa-solid fa-list"></i> </div><span class="nav_name">Rental</span> </a>
         <a  class="nav_list"href="/"> <div class="icon-name"><i class='bx bx-log-out nav_icon'></i> </div><span class="nav_name">SignOut</span> </a>
 
         <div class="dropdown">
             {{-- <button class="drpbtn"><i class='bx bx-log-out nav_icon'></i> </button> --}}
-            <a  class="drpbtn"href="#"><i class='bx bx-log-out nav_icon'></i> </a>
+            {{-- <a  class="drpbtn"href="#"><i class='bx bx-log-out nav_icon'></i> </a> --}}
             <div class="dropdown-content">
               <a href="#">Link 1</a>
               <a href="#">Link 2</a>
@@ -380,10 +380,11 @@
                                     <td style="text-align:center;" class="table_data">{{$user->role}}</td>
                                     <td style="text-align:center;" class="table_data">{{$user->created_at->format('d.m.Y')}}</td>
                                     <td style="text-align:center;" class="table_data">
-                                    <a href="/driver/{{$user->id}}"><i class="fa-solid fa-eye btn  text-white" style="background:#06064b"></i></a>
-                                    <a href="/updateuser/{{$user->id}}" ><i class="fa-solid fa-edit btn btn-success" ></i></i></a>
-                                    <a href="/createdriver/{{$user->id}}"><i class="fa-solid fa-plus btn btn-secondary"></i></a>
-                                    <a href="/delete/{{$user->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
+                                        <a href="/driver/{{$user->id}}"><i class="fa-solid fa-eye btn  text-white" style="background:#06064b"></i></a>
+                                        <a href="/updateuser/{{$user->id}}" ><i class="fa-solid fa-edit btn btn-success" ></i></i></a>
+                                        <a href="/createdriver/{{$user->id}}"><i class="fa-solid fa-plus btn btn-secondary"></i></a>
+                                        <a href="/delete/{{$user->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
