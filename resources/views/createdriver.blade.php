@@ -45,7 +45,6 @@
     #div-1{
         width: 5%;
         height: 200;
-        /* margin-right:200px; */
         background: var(--first-color);
     }
     #div-2{
@@ -94,7 +93,6 @@
     }
     .img {
         width: 100px;
-        /* height:40px; */
     }
     #img-container{
         width: 100%;
@@ -180,9 +178,7 @@
         color: black;
     }
     #main{
-
         display: flex;
-        /* justify-content: space-between; */
     }
     .main{
         margin-top: 20px;
@@ -192,36 +188,24 @@
     .main::-webkit-scrollbar {
         display: none;
     }
-.report{
-    margin-left: 50px;
-    width: 40%;
-
-
-
-}
-.subreport{
-    margin-left: 50px;
-    width: 40%;
-
-
-}
-.report1{
-    /* margin-left: 50px; */
-    width: 40%;
-
-
-
-}
-.subreport1{
-    /* margin-left: 50px; */
-    width: 40%;
-
-
-}
-.form-group {
-    display: flex;
-    justify-content: space-between;
-}
+    .report{
+        margin-left: 50px;
+        width: 40%;
+    }
+    .subreport{
+        margin-left: 50px;
+        width: 40%;
+    }
+    .report1{
+        width: 40%;
+    }
+    .subreport1{
+        width: 40%;
+    }
+    .form-group {
+        display: flex;
+        justify-content: space-between;
+    }
 </style>
 <body>
 <section id="container">
@@ -232,17 +216,15 @@
              <a class="nav_list" href="/user" ><div class="icon-name"><i class='bx bx-grid-alt nav_icon'></i></div> <div class="nav_name">Dashboard </div> </a>
              <a  class="nav_list" href="/allrentallist" ><div class="icon-name"> <i class="fa-solid fa-list"></i> </div><span class="nav_name">Rental</span> </a>
              <a  class="nav_list"href="/" > <div class="icon-name"><i class='bx bx-log-out nav_icon'></i> </div><span class="nav_name">SignOut</span> </a>
-         </div>
-         <div id="div-2">
-             <header class="headers" id="headers">
+        </div>
+        <div id="div-2">
+            <header class="headers" id="headers">
                  <div class="header_toggle" id="toggle-container"> <i class='bx bx-menu ' id="header-toggle"></i> </div>
-                 {{-- <div class="header_img"> <img src="{{url('img/m-d-foundation.png')}}" class="img"> </div> --}}
-             </header>
+            </header>
                 <h3>New Rental Details</h3>
-             <form action="/store/{id}" method="POST" autocomplete="off" class="main">
+            <form action="/store/{id}" method="POST" autocomplete="off" class="main">
                 @csrf
                 <input type="hidden" name="user_id" value="{{$id}}">
-
                     <main >
                         <div class="table-data">
                                     <h5 class="" style="color:#06064b;" > <i class="fa-solid fa-user"></i> Driver & Vehicle Details</h5>
@@ -275,7 +257,6 @@
                                                       <input type="text" name="phone" class="form-control" ><div style="color:rgb(216, 31, 31);;"> @error('phone')*{{$message}}@enderror</div>
                                                     </div>
                                                 </div>
-
                                         </div>
                                         <div class="subreport">
                                             <div class="form-group row mt-5">
@@ -284,28 +265,24 @@
                                                   <input type="date" name="date" class="form-control" ><div style="color:rgb(216, 31, 31);;"> @error('date')*{{$message}}@enderror</div>
                                                 </div>
                                             </div>
-
                                             <div class="form-group row mt-5 ">
                                                 <label for="" class="col-sm-3 col-form-label">NumberPlate</label>
                                                 <div class="col-sm-9">
                                                   <input type="text" name="number_plate" class="form-control" ><div style="color:rgb(216, 31, 31);;"> @error('number_plate')*{{$message}}@enderror</div>
                                                 </div>
                                             </div>
-
                                             <div class="form-group row mt-5 ">
                                                 <label for="" class="col-sm-2 col-form-label"> Mileage</label>
                                                 <div class="col-sm-9">
                                                   <input type="text" name="mileage" class="form-control" ><div style="color:rgb(216, 31, 31);;"> @error('mileage')*{{$message}}@enderror</div>
                                                 </div>
                                             </div>
-
                                             <div class="form-group row mt-5 ">
                                                 <label for="" class="col-sm-2 col-form-label"> Report</label>
                                                 <div class="col-sm-9">
                                                   <input type="text" name="report" class="form-control" ><div style="color:rgb(216, 31, 31);;"> @error('report')*{{$message}}@enderror</div>
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
                                     {{-- <h5 class="mt-4" style="color:#06064b;"> <i class="fa-solid fa-user"></i> Report on Incident</h5>
@@ -352,7 +329,6 @@
 
                                         </div>
                                     </div> --}}
-
                         </div>
                         <div class="table-data">
                                 <div class="head">
@@ -409,11 +385,11 @@
                                 </div>
                         </div>
                         <div class="table-data">
-                                <div class="head">
-                                    <h5 class="" style="color:#06064b;">Vehicle Check</h5>
-                                </div>
-                                 <div>
-                                        <table class="table table-bordered mt-3" >
+                            <div class="head">
+                                <h5 class="" style="color:#06064b;">Vehicle Check</h5>
+                            </div>
+                            <div>
+                                <table class="table table-bordered mt-3" >
                                             <thead class="">
                                                 <tr>
                                                     <th class="col-md-1" style="text-align:center;">S.no</th>
@@ -459,15 +435,15 @@
                                                     <td><input type="text"  name="action1[]"  class="form-control action border-0" style="text-align:center;" id='action' placeholder="Good/Bad" ></td>
                                                 </tr>
                                             </tbody>
-                                        </table>
-                                </div>
+                                </table>
+                            </div>
                         </div>
                         <div class="table-data">
-                                <div class="head">
-                                    <h5 class="" style="color:#06064b;">Cabin Check</h5>
-                                </div>
-                                <div>
-                                        <table class="table table-bordered mt-3">
+                            <div class="head">
+                                 <h5 class="" style="color:#06064b;">Cabin Check</h5>
+                            </div>
+                            <div>
+                                <table class="table table-bordered mt-3">
                                             <thead class="">
                                                 <tr>
                                                     <th class="col-md-1" style="text-align:center;">S.no</th>
@@ -514,7 +490,7 @@
                                                     <td><input type="text"  name="action2[]"  class="form-control action border-0" style="text-align:center;" id='action' placeholder="Good/Bad" ></td>
                                                 </tr>
                                                 <tr class="list">
-                                                    <td class="col-md-1"><input type="text"  name="sno[]"    class="form-control col-md-1 border-0" style="text-align:center;" value="1" id="sno"></td>
+                                                    <td class="col-md-1"><input type="text"  name="sno[]"    class="form-control col-md-1 border-0" style="text-align:center;" value="5" id="sno"></td>
                                                     <td><input type="text"  name="view2[]"   class="form-control view border-0" style="text-align:center;" id='view' value="Breakes inc.ABS/EBS"></td>
                                                     <td><input type="file"  name="image2[]"  class="form-control image border-0" style="text-align:center;" id='image'></td>
                                                     <td><input type="text"  name="feedback2[]"  class="form-control feedback border-0" style="text-align:center;" id='feedback'></td>
@@ -522,7 +498,7 @@
                                                     <td><input type="text"  name="action2[]"  class="form-control action border-0" style="text-align:center;" id='action' placeholder="Good/Bad" ></td>
                                                 </tr>
                                                 <tr class="list">
-                                                    <td class="col-md-1"><input type="text"  name="sno[]"    class="form-control col-md-1 border-0" style="text-align:center;" value="2" id="sno"></td>
+                                                    <td class="col-md-1"><input type="text"  name="sno[]"    class="form-control col-md-1 border-0" style="text-align:center;" value="6" id="sno"></td>
                                                     <td><input type="text"  name="view2[]"   class="form-control view border-0" style="text-align:center;" id='view' value="Mirrors/Glass/Visibility"></td>
                                                     <td><input type="file"  name="image2[]"  class="form-control image border-0" style="text-align:center;" id='image'></td>
                                                     <td><input type="text"  name="feedback2[]"  class="form-control feedback border-0" style="text-align:center;" id='feedback'></td>
@@ -530,7 +506,7 @@
                                                     <td><input type="text"  name="action2[]"  class="form-control action border-0" style="text-align:center;" id='action' placeholder="Good/Bad" ></td>
                                                 </tr>
                                                 <tr class="list">
-                                                    <td class="col-md-1"><input type="text"  name="sno[]"    class="form-control col-md-1 border-0" style="text-align:center;" value="3" id="sno"></td>
+                                                    <td class="col-md-1"><input type="text"  name="sno[]"    class="form-control col-md-1 border-0" style="text-align:center;" value="7" id="sno"></td>
                                                     <td><input type="text"  name="view2[]"   class="form-control view border-0" style="text-align:center;" id='view' value="Truck Interior/Seat Belt"></td>
                                                     <td><input type="file"  name="image2[]"  class="form-control image border-0" style="text-align:center;" id='image'></td>
                                                     <td><input type="text"  name="feedback2[]"  class="form-control feedback border-0" style="text-align:center;" id='feedback'></td>
@@ -538,8 +514,7 @@
                                                     <td><input type="text"  name="action2[]"  class="form-control action border-0" style="text-align:center;" id='action' placeholder="Good/Bad" ></td>
                                                 </tr>
                                                 <tr class="list">
-
-                                                    <td class="col-md-1"><input type="text"  name="sno[]"    class="form-control col-md-1 border-0" style="text-align:center;" value="4" id="sno"></td>
+                                                    <td class="col-md-1"><input type="text"  name="sno[]"    class="form-control col-md-1 border-0" style="text-align:center;" value="8" id="sno"></td>
                                                     <td><input type="text"  name="view2[]"   class="form-control view border-0" style="text-align:center;" id='view' value="Warining Lamps/MIL"></td>
                                                     <td><input type="file"  name="image2[]"  class="form-control image border-0" style="text-align:center;" id='image'></td>
                                                     <td><input type="text"  name="feedback2[]"  class="form-control feedback border-0" style="text-align:center;" id='feedback'></td>
@@ -547,14 +522,13 @@
                                                     <td><input type="text"  name="action2[]"  class="form-control action border-0" style="text-align:center;" id='action' placeholder="Good/Bad" ></td>
                                                 </tr>
                                             </tbody>
-                                        </table>
-                                </div>
+                                </table>
+                            </div>
                         </div>
                     </main>
                     <a href=""><input type="submit" value="Submit" class="text-white" id="add" style="color:#06064b;"></a>
             </form>
-
-         </div>
+        </div>
 </section>
 <script>
     var toggleBtn=document.getElementById("toggle-container");
@@ -574,7 +548,6 @@
 
             isOpen=!isOpen;
         }else{
-
             document.getElementById("div-1").style.width="15%";
             document.getElementById("div-2").style.transition="0.6s";
             var divsToHide = document.getElementsByClassName("nav_name"); //divsToHide is an array

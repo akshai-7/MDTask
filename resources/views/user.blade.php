@@ -190,7 +190,7 @@
                 background: rgb(237, 233, 233);
             }
             .table_row:hover {
-                background: white
+                background: white;
             }
             .table_row:hover  .table_data{
                 color: black;
@@ -225,6 +225,7 @@
                 bottom: 0;
                 right: 0;
                 background: rgba(0,0,0,0.5);
+
                 z-index: -2;
             }
             #popup:before {
@@ -415,9 +416,7 @@
                         <input type="submit" name="" value="Submit" class="btn text-white mt-5" style="float:right;background:#06064b;">
                     </div>
                 <a href="#" onclick="hide('popup')" style="color:red;text-align: center;">Close</a>
-
             </form>
-            <a href="/sendnotification">Send Mail</a>
         </div>
 
     </div>
@@ -442,7 +441,6 @@
 
                     isOpen=!isOpen;
                 }else{
-
                     document.getElementById("div-1").style.width="15%";
                     document.getElementById("div-2").style.transition="0.6s";
                     var divsToHide = document.getElementsByClassName("nav_name"); //divsToHide is an array

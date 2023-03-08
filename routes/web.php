@@ -35,7 +35,7 @@ Route::get('/remove/{id}',[AdminController::class,'remove']);
 Route::get('/report/{user_id}',[AdminController::class,'reportlist']);
 Route::get('/removereport/{id}',[AdminController::class,'removereport']);
 
-Route::get('/details/{user_id}',[AdminController::class,'check']);
+Route::get('/details/{user_id}/{id}',[AdminController::class,'check']);
 //updatevehiclecheck
 Route::get('/updatevehiclecheck/{id}',[AdminController::class,'updatevehiclecheck']);
 Route::post('/vehicleupdate/{user_id}',[AdminController::class,'vehicleupdate']);

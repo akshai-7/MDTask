@@ -142,7 +142,7 @@ class AdminController extends Controller
             $data->phone=$request['phone'];
             $data->report =$request['report'];
             // $data->date =$request['date'];
-            $data->date =Carbon::now()->endOfWeek(Carbon::WEDNESDAY)->format('d.m.Y');
+            $data->date =Carbon::now()->endOfWeek(Carbon::FRIDAY)->format('d.m.Y');
             $data->number_plate =$request['number_plate'];
             $data->mileage=$request['mileage'];
             $data->save();
@@ -225,8 +225,8 @@ class AdminController extends Controller
             return view('/report');
         }
 //check;
-        public function check($user_id){
-            $visual= Visual::where('user_id',$user_id)->get();
+        public function check($user_id,$id){
+            $visual= Visual::where('user_id',$user_id)->where('id',$id)->get();
             $vehicle = Vehicle::where('user_id',$user_id)->get();
             $cabin= Cabin::where('user_id',$user_id)->get();
             return view('/details',['cabin'=>$cabin,'visual'=>$visual,'vehicle'=>$vehicle]);
