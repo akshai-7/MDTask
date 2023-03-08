@@ -33,7 +33,12 @@ class AdminController extends Controller
     }
     //user
         public function userlist(){
-            $user=User::all();
+            // $user=User::all();((
+            $user = User::with('driver')->get();
+                // foreach($user as $user){
+                //     dd($user->driver[0]->created_at->format('d.m.y'));
+                // }
+
             $user1=User::count();
             return view('/user',['user'=>$user],['user1'=>$user1]);
         }

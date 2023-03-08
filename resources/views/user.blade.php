@@ -377,7 +377,7 @@
                                     <td style="text-align:center;" class="table_data">{{$loop->iteration}}</td>
                                     <td style="text-align:center;" class="table_data">{{$user->name}}</td>
                                     <td style="text-align:center;" class="table_data">{{$user->email}}</td>
-                                    <td style="text-align:center;" class="table_data">{{$user->role}}</td>
+                                    <td style="text-align:center;" class="table_data">{{$user->driver[0]->user_id}}</td>
                                     <td style="text-align:center;" class="table_data">{{$user->created_at->format('d.m.Y')}}</td>
                                     <td style="text-align:center;" class="table_data">
                                         <a href="/driver/{{$user->id}}"><i class="fa-solid fa-eye btn  text-white" style="background:#06064b"></i></a>
