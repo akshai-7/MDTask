@@ -11,6 +11,7 @@ use App\Models\Vehicle;
 use App\Models\Cabin;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class ApiController extends Controller
 {
@@ -84,7 +85,6 @@ class ApiController extends Controller
                     'deliveryemail'=>'required',
                     'phone'=>'required|min:10',
                     'report'=>'required',
-                    'date'=>'required',
                     'number_plate'=>'required',
                     'mileage'=>'required',
                 ]);
@@ -98,7 +98,8 @@ class ApiController extends Controller
                 $data->deliveryemail=$request['deliveryemail'];
                 $data->phone=$request['phone'];
                 $data->report =$request['report'];
-                $data->date =$request['date'];
+                // $data->date =$request['date'];
+                $data->date =Carbon::now()->endOfWeek(Carbon::FRIDAY)->format('d.m.Y');
                 $data->number_plate =$request['number_plate'];
                 $data->mileage=$request['mileage'];
                 $data->save();

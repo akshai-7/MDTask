@@ -194,7 +194,6 @@
      <div id="div-2">
         <header class="headers" id="headers">
             <div class="header_toggle" id="toggle-container"> <i class='bx bx-menu ' id="header-toggle"></i> </div>
-            {{-- <div class="header_img"> <img src="{{url('img/m-d-foundation.png')}}" class="img"> </div> --}}
         </header>
         <main>
             <div class="table-data">
@@ -202,7 +201,7 @@
                     <div class="head">
                         <h3>Rental Details</h3>
                     </div>
-                    <table>
+                    <table style="width: 1350px">
                         <thead class="">
                             <th style="text-align:center;" class="">S.No</th>
                             <th style="text-align:center;" class="">Report</th>
@@ -210,15 +209,15 @@
                             <th style="text-align:center;">Company</th>
                             <th style="text-align:center;">Email</th>
                             <th style="text-align:center;">Phone</th>
-                            <th style="text-align:center;" > Number Plate</th>
+                            <th style="text-align:center;"> Number Plate</th>
                             <th style="text-align:center;">Mileage</th>
-                            <th style="text-align:center;">Inspection Date</th>
-                            <th style="text-align:center;">status</th>
+                            <th style="text-align:center;">Last Inspection</th>
+                            <th style="text-align:center;">Next Inspection</th>
                             <th style="text-align:center;">Action</th>
                         </thead>
                         <tbody>
                             @foreach($driver as $driver)
-                                 <tr class="table_row ">
+                                 <tr class="table_row "></tr>
                                     <td style="text-align:center;" class="table_data">{{$loop->iteration}}</td>
                                     <td style="text-align:center;" class="table_data">{{$driver->report}}</td>
                                     <td style="text-align:center;" class="table_data">{{$driver->drivername}}</td>
@@ -228,16 +227,9 @@
                                     <td style="text-align:center;" class="table_data">{{$driver->number_plate}}</td>
                                     <td style="text-align:center;" class="table_data">{{$driver->mileage}}Km</td>
                                     <td style="text-align:center;" class="table_data">{{$driver->created_at->format('d.m.Y')}}</td>
-                                    <td>
-                                        @if ($driver->created_at->format(('d.m.Y'))  == date("d.m.Y"))
-                                            <button type="button" class="btn btn-success">Success</button>
-                                        @else
-                                            <button type="button" class="btn btn-danger">Bending</button>
-                                        @endif
-                                    </td>
+                                    <td style="text-align:center;" class="table_data">{{$driver->date}}</td>
                                     <td style="text-align:center;" class="table_data">
                                     <a href="/details/{{$driver->user_id}}"><i class="fa-solid fa-eye btn  text-white" style="background:#06064b" ></i></a>
-                                    {{-- <a href="/createdriver/{{$driver->user_id}}"><i class="fa-solid fa-plus btn btn-secondary"></i></a> --}}
                                     <a href="/remove/{{$driver->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
                                 </tr>
                             @endforeach

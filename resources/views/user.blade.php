@@ -340,12 +340,12 @@
             </div>
             @endif
         </div>
-        <div class="table-data1">
+        {{-- <div class="table-data1">
             <div class="usercount">
                 <h4> <i class="fa-solid fa-user"></i> Total Users </h4>
                 <h1 align="right" style="margin-right: 50px;color:blue;font-weight: 600;">{{$user1}}</h1>
             </div>
-        </div>
+        </div> --}}
         <div class="message1" id="message">
             @if (session()->has('message1'))
                 <div x-data="{show: true}" x-init="setTimeout(() => show = false, 3000)" x-show="show" style="width: 200px;height:20px;">
@@ -373,11 +373,12 @@
                         </thead>
                         <tbody>
                             @foreach($user as $user)
+                            {{-- @dd($user); --}}
                                  <tr class="table_row">
                                     <td style="text-align:center;" class="table_data">{{$loop->iteration}}</td>
                                     <td style="text-align:center;" class="table_data">{{$user->name}}</td>
                                     <td style="text-align:center;" class="table_data">{{$user->email}}</td>
-                                    <td style="text-align:center;" class="table_data">{{$user->driver[0]->user_id}}</td>
+                                    <td style="text-align:center;" class="table_data">{{$user->role}}</td>
                                     <td style="text-align:center;" class="table_data">{{$user->created_at->format('d.m.Y')}}</td>
                                     <td style="text-align:center;" class="table_data">
                                         <a href="/driver/{{$user->id}}"><i class="fa-solid fa-eye btn  text-white" style="background:#06064b"></i></a>

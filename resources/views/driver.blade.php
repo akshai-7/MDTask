@@ -198,19 +198,19 @@
 			<div class="table-data">
 				<div class="order">
 					<div class="head">
-						<h3>Rental Details</h3>
+						<h3>Inspection Details</h3>
 					</div>
                     <table class="" style="width:px;">
                         <thead class="text-primary">
-                            <th style="text-align:center;" class="">Report No</th>
+                            <th style="text-align:center;" >Report No</th>
                             {{-- <th style="text-align:center;">Driver Name</th> --}}
                             <th style="text-align:center;">Company</th>
                             {{-- <th style="text-align:center;">Email</th> --}}
                             <th style="text-align:center;">Phone</th>
                             <th style="text-align:center;">Number Plate</th>
                             <th style="text-align:center;">Mileage</th>
-                            <th style="text-align:center;">Inspection Date</th>
-                            <th style="text-align:center;">Next Inspection Date</th>
+                            <th style="text-align:center;">Last Inspection</th>
+                            <th style="text-align:center;">Next Inspection</th>
                             <th style="text-align:center;">Status</th>
                             <th style="text-align:center;">Action</th>
                         </thead>
@@ -225,11 +225,11 @@
                                     <td style="text-align:center;" class="table_data">{{$driver->number_plate}}</td>
                                     <td style="text-align:center;" class="table_data">{{$driver->mileage}}Km</td>
                                     <td style="text-align:center;" class="table_data">{{$driver->created_at->format('d.m.Y')}}</td>
-                                    <td style="text-align:center;" class="table_data">{{ Carbon\Carbon::now()->endOfWeek(Carbon\Carbon::TUESDAY)->format('d.m.Y')}}</td>
+                                    <td style="text-align:center;" class="table_data">{{$driver->date}}</td>
                                     <td style="text-align:center;" class="table_data">
-                                        @if ($driver->created_at->format(('d.m.Y')) == Carbon\Carbon::now()->endOfWeek(Carbon\Carbon::TUESDAY)->format('d.m.Y') )
+                                        @if(Carbon\Carbon::now()->endOfWeek(Carbon\Carbon::FRIDAY)->format('d.m.Y') != $driver->date)
                                             <button type="button" class="btn btn-success btn-sm">Success</button>
-                                        @else
+                                        @elseif(Carbon\Carbon::now()->endOfWeek(Carbon\Carbon::FRIDAY)->format('d.m.Y') >= $driver->date)
                                             <button type="button" class="btn btn-danger btn-sm">Pending</button>
                                         @endif
                                     </td>

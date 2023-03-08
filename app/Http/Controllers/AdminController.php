@@ -36,7 +36,7 @@ class AdminController extends Controller
             // $user=User::all();((
             $user = User::with('driver')->get();
                 // foreach($user as $user){
-                //     dd($user->driver[0]->created_at->format('d.m.y'));
+                //     dd($user->driver);
                 // }
 
             $user1=User::count();
@@ -90,11 +90,10 @@ class AdminController extends Controller
             session()->flash('message1',' User is Deleted');
             return redirect('/user');
         }
-    //user
+
         public function driverlist($user_id){
             $driver = Driver::where('user_id',$user_id)->get();
-            $driver1 = Driver::where('user_id',$user_id)->get();
-            return view('/driver',['driver'=>$driver],['driver1'=>$driver1]);
+            return view('/driver',['driver'=>$driver]);
         }
         public function newdriver($id){
             return view('/createdriver',compact('id'));
@@ -142,7 +141,8 @@ class AdminController extends Controller
             $data->deliveryemail=$request['deliveryemail'];
             $data->phone=$request['phone'];
             $data->report =$request['report'];
-            $data->date =$request['date'];
+            // $data->date =$request['date'];
+            $data->date =Carbon::now()->endOfWeek(Carbon::WEDNESDAY)->format('d.m.Y');
             $data->number_plate =$request['number_plate'];
             $data->mileage=$request['mileage'];
             $data->save();
