@@ -24,6 +24,7 @@ Route::get('/user',[AdminController::class,'userlist']);
 Route::post('/createuser',[AdminController::class,'createuser']) ;
 Route::get('/updateuser/{id}',[AdminController::class,'updateuser']);
 Route::Post('/updateuserdetails/{id}',[AdminController::class,'updateuserdetails']);
+Route::Post('/driverdatails/{id}',[AdminController::class,'driverdatails']);
 Route::get('/delete/{id}',[AdminController::class,'delete']);
 //driver
 Route::get('/driver/{user_id}',[AdminController::class,'driverlist']);

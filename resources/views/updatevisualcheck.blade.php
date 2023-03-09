@@ -191,7 +191,7 @@
                         <table >
                             <thead class="">
                                 <th style="text-align:center;" class="col-md-1 ">Id</th>
-                                <th style="text-align:center;" class="col-md-1 " >Driver_id</th>
+                                <th style="text-align:center;" class="col-md-1 ">Driver_id</th>
                                 <th style="text-align:center;" class="col-md-2 ">View</th>
                                 <th style="text-align:center;" class="col-md-2 ">Image</th>
                                 <th style="text-align:center;" class="col-md-3 ">Feed Back</th>

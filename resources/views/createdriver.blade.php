@@ -188,24 +188,7 @@
     .main::-webkit-scrollbar {
         display: none;
     }
-    .report{
-        margin-left: 50px;
-        width: 40%;
-    }
-    .subreport{
-        margin-left: 50px;
-        width: 40%;
-    }
-    .report1{
-        width: 40%;
-    }
-    .subreport1{
-        width: 40%;
-    }
-    .form-group {
-        display: flex;
-        justify-content: space-between;
-    }
+
 </style>
 <body>
 <section id="container">
@@ -221,71 +204,13 @@
             <header class="headers" id="headers">
                  <div class="header_toggle" id="toggle-container"> <i class='bx bx-menu ' id="header-toggle"></i> </div>
             </header>
-                <h3>New Rental Details</h3>
+                <h3>New Inspection Details</h3>
             <form action="/store/{driver_id}" method="POST" autocomplete="off" class="main">
                 @csrf
                 <input type="hidden" name="driver_id" value="{{$id}}">
                 {{-- @dd($id); --}}
                     <main >
-                        {{-- <div class="table-data">
-                                    <h5 class="" style="color:#06064b;" > <i class="fa-solid fa-user"></i> Driver & Vehicle Details</h5>
-                                    <div class="" id="main">
-                                        <div class="report">
-                                            <div class="form-group row mt-5 ">
-                                                <label for="" class="col-sm-2  col-form-label"> Name</label>
-                                                <div class="col-sm-9">
-                                                  <input type="text" name="drivername" class="form-control" ><div style="color:rgb(216, 31, 31);;"> @error('name')*{{$message}}@enderror</div>
-                                                </div>
-                                              </div>
-
-                                                <div class="form-group row mt-5 ">
-                                                    <label for="" class="col-sm-2  col-form-label"> Company</label>
-                                                    <div class="col-sm-9">
-                                                      <input type="text" name="company" class="form-control" ><div style="color:rgb(216, 31, 31);;"> @error('company')*{{$message}}@enderror</div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group row mt-5 ">
-                                                    <label for="" class="col-sm-2  col-form-label"> Email</label>
-                                                    <div class="col-sm-9">
-                                                      <input type="text" name="deliveryemail" class="form-control" ><div style="color:rgb(216, 31, 31);;"> @error('email')*{{$message}}@enderror</div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group row mt-5 ">
-                                                    <label for="" class="col-sm-2 col-form-label"> Phone</label>
-                                                    <div class="col-sm-9">
-                                                      <input type="text" name="phone" class="form-control" ><div style="color:rgb(216, 31, 31);;"> @error('phone')*{{$message}}@enderror</div>
-                                                    </div>
-                                                </div>
-                                        </div>
-                                        <div class="subreport">
-                                            <div class="form-group row mt-5">
-                                                <label for="" class="col-sm-2  col-form-label"> Date</label>
-                                                <div class="col-sm-9">
-                                                  <input type="date" name="date" class="form-control" ><div style="color:rgb(216, 31, 31);;"> @error('date')*{{$message}}@enderror</div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row mt-5 ">
-                                                <label for="" class="col-sm-3 col-form-label">NumberPlate</label>
-                                                <div class="col-sm-9">
-                                                  <input type="text" name="number_plate" class="form-control" ><div style="color:rgb(216, 31, 31);;"> @error('number_plate')*{{$message}}@enderror</div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row mt-5 ">
-                                                <label for="" class="col-sm-2 col-form-label"> Mileage</label>
-                                                <div class="col-sm-9">
-                                                  <input type="text" name="mileage" class="form-control" ><div style="color:rgb(216, 31, 31);;"> @error('mileage')*{{$message}}@enderror</div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row mt-5 ">
-                                                <label for="" class="col-sm-2 col-form-label"> Report</label>
-                                                <div class="col-sm-9">
-                                                  <input type="text" name="report" class="form-control" ><div style="color:rgb(216, 31, 31);;"> @error('report')*{{$message}}@enderror</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> --}}
+                        {{-- <div class="table-data"> --}}
                                     {{-- <h5 class="mt-4" style="color:#06064b;"> <i class="fa-solid fa-user"></i> Report on Incident</h5>
                                     <div class="" id="main">
                                         <div class="report">

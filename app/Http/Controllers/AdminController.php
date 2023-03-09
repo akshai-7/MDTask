@@ -15,8 +15,6 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Notifications\Notification;
-use App\Notifications\sendEmailnotification;
 use Illuminate\Support\Carbon;
 
 class AdminController extends Controller
@@ -33,12 +31,7 @@ class AdminController extends Controller
     }
     //user
         public function userlist(){
-            // $user=User::all();((
-            $user = User::with('driver')->get();
-                // foreach($user as $user){
-                //     dd($user->driver);
-                // }
-
+            $user=User::all();
             $user1=User::count();
             return view('/user',['user'=>$user],['user1'=>$user1]);
         }
@@ -90,7 +83,33 @@ class AdminController extends Controller
             session()->flash('message1',' User is Deleted');
             return redirect('/user');
         }
+        public function driverdatails(Request $request){
+            $request->validate([
+                'drivername'=>'required',
+                'company'=>'required',
+                'deliveryemail'=>'required|email',
+                'phone'=>'required|min:10',
+                'report'=>'required',
+                'number_plate'=>'required',
+                'mileage'=>'required',
 
+            ]);
+            $id=$request->user_id;
+            $data = new Driver();
+            $data->user_id=$id;
+            $data->drivername=$request['drivername'];
+            $data->company=$request['company'];
+            $data->deliveryemail=$request['deliveryemail'];
+            $data->phone=$request['phone'];
+            $data->report =$request['report'];
+            // $data->date =$request['date'];
+            $data->date =Carbon::now()->endOfWeek(Carbon::FRIDAY)->format('d.m.Y');
+            $data->number_plate =$request['number_plate'];
+            $data->mileage=$request['mileage'];
+            $data->save();
+            session()->flash('message',' Driver is Created');
+            return redirect('/driver/'.$id);
+        }
         public function driverlist($user_id){
             $driver = Driver::where('user_id',$user_id)->get();
             return view('/driver',['driver'=>$driver]);
@@ -99,22 +118,15 @@ class AdminController extends Controller
             return view('/createdriver',compact('id'));
         }
         public function store(Request $request){
-            // dd($request);
             $validator = Validator::make($request->all(),[
-                // 'drivername'=>'required',
-                // 'company'=>'required',
-                // 'deliveryemail'=>'required|email',
-                // 'phone'=>'required|min:10',
+                //
                 // 'date_of_incident'=>'required',
                 // 'location'=>'required',
                 // 'witnessed_by'=>'required',
                 // 'phone_number_of_witness'=>'required|min:10',
                 // 'brief_statement'=>'required',
                 // 'upload_image'=>'required',
-                // 'report'=>'required',
-                // 'date'=>'required',
-                // 'number_plate'=>'required',
-                // 'mileage'=>'required',
+
                 // 'view'=>'required',
                 // 'image'=>'required',
                 // 'feedback'=>'required',
@@ -134,22 +146,6 @@ class AdminController extends Controller
             if ($validator->fails()){
                 return response()->json(['message'=>'Validator error'],401);
             }else{
-            // $user_id=$request['user_id'];
-            // $driver_id=$request['driver_id'];
-            // dd($driver_id);
-            // $data = new Driver();
-            // $data->user_id =$driver_id;
-            // $data->drivername=$request['drivername'];
-            // $data->company=$request['company'];
-            // $data->deliveryemail=$request['deliveryemail'];
-            // $data->phone=$request['phone'];
-            // $data->report =$request['report'];
-            // // $data->date =$request['date'];
-            // $data->date =Carbon::now()->endOfWeek(Carbon::FRIDAY)->format('d.m.Y');
-            // $data->number_plate =$request['number_plate'];
-            // $data->mileage=$request['mileage'];
-            // $data->save();
-
             // $user = new Report();
             // $user->user_id=$user_id;
             // $user->date_of_incident =$request['date_of_incident'];
@@ -171,32 +167,31 @@ class AdminController extends Controller
             // $user->save();
 
             $driver_id=$request->driver_id;
-            // $data= $request->all();
-            // foreach($data['view'] as $row =>$value){
-            //     $data1=array(
-            //     'driver_id'=>$driver_id,
-            //     'view'=>$data['view'][$row],
-            //     'image'=> $data['image'][$row],
-            //     'feedback'=>$data['feedback'][$row],
-            //     'notes'=> $data['notes'][$row],
-            //     'action'=> $data['action'][$row],
-            //     );
-            //     Visual::create($data1);
-            //     }
+            $data= $request->all();
+            foreach($data['view'] as $row =>$value){
+                $data1=array(
+                'driver_id'=>$driver_id,
+                'view'=>$data['view'][$row],
+                'image'=> $data['image'][$row],
+                'feedback'=>$data['feedback'][$row],
+                'notes'=> $data['notes'][$row],
+                'action'=> $data['action'][$row],
+                );
+                Visual::create($data1);
+            }
 
-
-            // $data2= $request->all();
-            // foreach($data2['view'] as $key =>$value){
-            //     $data3=array(
-            //     'driver_id'=>$driver_id,
-            //     'view'=>$data2['view1'][$key],
-            //     'image'=> $data2['image1'][$key],
-            //     'feedback'=>$data2['feedback1'][$key],
-            //     'notes'=> $data2['notes1'][$key],
-            //     'action'=> $data2['action1'][$key],
-            //     );
-            //     Vehicle::create($data3);
-            //     }
+            $data2= $request->all();
+            foreach($data2['view'] as $key =>$value){
+                $data3=array(
+                'driver_id'=>$driver_id,
+                'view'=>$data2['view1'][$key],
+                'image'=> $data2['image1'][$key],
+                'feedback'=>$data2['feedback1'][$key],
+                'notes'=> $data2['notes1'][$key],
+                'action'=> $data2['action1'][$key],
+                );
+                Vehicle::create($data3);
+            }
 
             $data4= $request->all();
             foreach($data4['view'] as $list =>$value){
@@ -209,8 +204,9 @@ class AdminController extends Controller
                 'action'=> $data4['action2'][$list],
                 );
                 Cabin::create($data5);
-                }
-            return redirect('/driver/'.$driver_id);
+            }
+            $user=Driver::where('id',$driver_id)->first();
+            return redirect('/driver/'.$user->user_id);
             }
         }
         public function remove($id){
@@ -319,7 +315,6 @@ class AdminController extends Controller
             $user1=$user->user_id;
             return redirect('/details/'.$user1);
         }
-
         public function updatecabincheck($driver_id){
             $cabin = Cabin::where('id',$driver_id)->get();
             return view('/updatecabincheck',['cabin'=>$cabin ]);
