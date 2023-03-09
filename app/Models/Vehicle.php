@@ -18,11 +18,15 @@ class Vehicle extends Model
         return $this->belongsTo(Visual::class,'user_id');
     }
     protected $fillable = [
-        'user_id',
+        'driver_id',
         'view',
         'image',
         'feedback',
         'notes',
         'action'
         ];
+        public function driver()
+        {
+            return $this->belongsTo(Driver::class);
+        }
 }

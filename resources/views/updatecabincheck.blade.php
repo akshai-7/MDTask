@@ -193,7 +193,7 @@
                             <table>
                                 <thead class="">
                                     <th style="text-align:center;" class="col-md-1 ">Id</th>
-                                    <th style="text-align:center;" class="col-md-1 " >User_id</th>
+                                    <th style="text-align:center;" class="col-md-1 " >Driver_id</th>
                                     <th style="text-align:center;" class="col-md-2 ">View</th>
                                     <th style="text-align:center;" class="col-md-2 ">Image</th>
                                     <th style="text-align:center;" class="col-md-3 ">Feed Back</th>
@@ -204,12 +204,12 @@
                                     @foreach($cabin as $cabin)
                                         <tr class="table_row ">
                                             <td style="text-align:center;"><input type="text"  class="form-control table_data"   name="id" value="{{$cabin->id}}"></td>
-                                            <td style="text-align:center;"><input type="text"  class="form-control table_data"   name="user_id" value="{{$cabin->user_id}}"></td>
+                                            <td style="text-align:center;"><input type="text"  class="form-control table_data"   name="driver_id" value="{{$cabin->driver_id}}"></td>
                                             <td style="text-align:center;"><input type="text" class="form-control table_data"   name="view" value="{{$cabin->view}}"></td>
                                             <td style="text-align:center;"><img src="{{url('images/'.$cabin->image)}}"  width="50px" height="50px" class="rounded-0 border border-secondary table_data" alt=""><input type="file" name="image"></td>
                                             <td style="text-align:center;"><input type="text"  class="form-control table_data"  name="feedback" value="{{$cabin->feedback}}"></td>
                                             <td style="text-align:center;"><input type="text"  class="form-control table_data"  name="action" value="{{$cabin->action}}"></td>
-                                            <td style="text-align:center;"><a href="/details/{{$cabin->id}}/{{$cabin->user_id}}"><input type="submit" name="submit" value="Submit" class="btn text-white table_data " style="background:#06064b "></a>
+                                            <td style="text-align:center;"><a href="/details/{{$cabin->id}}/{{$cabin->driver_id}}"><input type="submit" name="submit" value="Submit" class="btn text-white table_data " style="background:#06064b "></a>
                                             </td>
                                         </tr>
                                     @endforeach

@@ -234,7 +234,8 @@
                                         @endif
                                     </td>
                                     <td style="text-align:center;" class="table_data">
-                                    <a href="/details/{{$driver->user_id}}/{{$driver->id}}"><i class="fa-solid fa-eye btn  text-white" style="background:#06064b "></i></a>
+                                    <a href="/details/{{$driver->id}}"><i class="fa-solid fa-eye btn  text-white" style="background:#06064b "></i></a>
+                                    <a href="/createdriver/{{$driver->id}}"><i class="fa-solid fa-plus btn btn-secondary"></i></a>
                                     <a href="/remove/{{$driver->id}}"><i class="fa-solid fa-trash btn btn-danger" ></i></a></td>
                                 </tr>
                             @endforeach

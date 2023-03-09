@@ -20,7 +20,6 @@ use Illuminate\Support\Facades\Mail;
 
 Route::view('/','login');
 Route::post('/user',[AdminController::class,'admin']);
-Route::get('/createuser',[AdminController::class,'newuser']);
 Route::get('/user',[AdminController::class,'userlist']);
 Route::post('/createuser',[AdminController::class,'createuser']) ;
 Route::get('/updateuser/{id}',[AdminController::class,'updateuser']);
@@ -28,33 +27,33 @@ Route::Post('/updateuserdetails/{id}',[AdminController::class,'updateuserdetails
 Route::get('/delete/{id}',[AdminController::class,'delete']);
 //driver
 Route::get('/driver/{user_id}',[AdminController::class,'driverlist']);
-Route::get('/createdriver/{user_id}',[AdminController::class,'newdriver']);
-Route::post('/store/{id}',[AdminController::class,'store']);
+Route::get('/createdriver/{driver_id}',[AdminController::class,'newdriver']);
+Route::post('/store/{driver_id}',[AdminController::class,'store']);
 Route::get('/remove/{id}',[AdminController::class,'remove']);
 //vehicle
 Route::get('/report/{user_id}',[AdminController::class,'reportlist']);
 Route::get('/removereport/{id}',[AdminController::class,'removereport']);
 
-Route::get('/details/{user_id}/{id}',[AdminController::class,'check']);
+Route::get('/details/{driver_id}',[AdminController::class,'check']);
 //updatevehiclecheck
 Route::get('/updatevehiclecheck/{id}',[AdminController::class,'updatevehiclecheck']);
-Route::post('/vehicleupdate/{user_id}',[AdminController::class,'vehicleupdate']);
+Route::post('/vehicleupdate/{driver_id}',[AdminController::class,'vehicleupdate']);
 Route::get('/deletevehicle/{id}',[AdminController::class,'deletevehicle']);
 //updatevisualcheck
 Route::get('/updatevisualcheck/{id}',[AdminController::class,'updatevisualcheck']);
-Route::post('/visualupdate/{user_id}',[AdminController::class,'visualupdate']);
+Route::post('/visualupdate/{driver_id}',[AdminController::class,'visualupdate']);
 Route::get('/deletevisual/{id}',[AdminController::class,'deletevisual']);
 //updatecabincheck
 Route::get('/updatecabincheck/{id}',[AdminController::class,'updatecabincheck']);
-Route::post('/cabinupdate/{user_id}',[AdminController::class,'cabinupdate']);
+Route::post('/cabinupdate/{driver_id}',[AdminController::class,'cabinupdate']);
 Route::get('/deletecabin/{id}',[AdminController::class,'deletecabin']);
 
 Route::get('/allrentallist',[AdminController::class,'allrentallist']);
 
-Route::get('/summary/{user_id}',[AdminController::class,'summary']);
+Route::get('/summary/{driver_id}',[AdminController::class,'summary']);
 
-Route::get('/pdf/{user_id}',[AdminController::class,'pdf']);
-Route::get('/edit/{user_id}',[AdminController::class,'edit']);
+Route::get('/pdf/{driver_id}',[AdminController::class,'pdf']);
+Route::get('/edit/{driver_id}',[AdminController::class,'edit']);
 
 
 Route::get('/send-email-using-gmail/{user_id}',[AdminController::class,'send']);

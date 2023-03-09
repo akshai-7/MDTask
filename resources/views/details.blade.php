@@ -264,7 +264,7 @@
                                         <td style="text-align:center;" class="table_data">{{$visual->feedback}}</td>
                                         <td style="text-align:center;" class="table_data">{{$visual->action}}</td>
                                         <td style="text-align:center;" class="table_data">
-                                        <a href="/updatevisualcheck/{{$visual->id}}"><i class="fa-solid fa-edit btn btn-success" ></i></a>
+                                        <a href="/updatevisualcheck/{{$visual->driver_id}}"><i class="fa-solid fa-edit btn btn-success" ></i></a>
                                         <a href="/deletevisual/{{$visual->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
                                     </tr>
                                 @endforeach
@@ -331,7 +331,7 @@
              </div>
             </div>
             <div>
-                <a href="/summary/{{$cabin->user_id}}"><input type="submit" value="Summary" class="text-white" style="background: #06064b" id="add"></a>
+                <a href="/summary/{{$cabin->driver_id}}"><input type="submit" value="Summary" class="text-white" style="background: #06064b" id="add"></a>
             </div>
             </div>
     </section>

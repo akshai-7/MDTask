@@ -277,9 +277,9 @@
             </div>
         </main>
         <div class="print">
-            <a href="/pdf/{{$cabin->user_id}}"><i class="fa-solid fa-print btn btn-danger"></i></a>
-            <a href="/send-email-using-gmail/{{$cabin->user_id}}"><i class="fa-solid fa-p btn btn-danger"></i></a>
-            <a href="/edit/{{$cabin->user_id}}"><i class="fa-solid fa-edit btn btn-success"></i></a>
+            <a href="/pdf/{{$cabin->driver_id}}"><i class="fa-solid fa-print btn btn-danger"></i></a>
+            <a href="/send-email-using-gmail/{{$cabin->driver_id}}"><i class="fa-solid fa-p btn btn-danger"></i></a>
+            <a href="/edit/{{$cabin->driver_id}}"><i class="fa-solid fa-edit btn btn-success"></i></a>
         </div>
 </section>
 <script>

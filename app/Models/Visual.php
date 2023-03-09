@@ -18,10 +18,15 @@ class Visual extends Model
         return $this->hasMany(Vehicle::class,'user_id');
     }
     protected $fillable = [
-        'user_id',
+        'driver_id',
         'view',
         'image',
         'feedback',
         'action'
         ];
+
+        public function driver()
+        {
+            return $this->belongsTo(Driver::class);
+        }
 }

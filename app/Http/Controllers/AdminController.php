@@ -99,6 +99,7 @@ class AdminController extends Controller
             return view('/createdriver',compact('id'));
         }
         public function store(Request $request){
+            // dd($request);
             $validator = Validator::make($request->all(),[
                 // 'drivername'=>'required',
                 // 'company'=>'required',
@@ -133,19 +134,21 @@ class AdminController extends Controller
             if ($validator->fails()){
                 return response()->json(['message'=>'Validator error'],401);
             }else{
-            $user_id=$request['user_id'];
-            $data = new Driver();
-            $data->user_id =$user_id;
-            $data->drivername=$request['drivername'];
-            $data->company=$request['company'];
-            $data->deliveryemail=$request['deliveryemail'];
-            $data->phone=$request['phone'];
-            $data->report =$request['report'];
-            // $data->date =$request['date'];
-            $data->date =Carbon::now()->endOfWeek(Carbon::FRIDAY)->format('d.m.Y');
-            $data->number_plate =$request['number_plate'];
-            $data->mileage=$request['mileage'];
-            $data->save();
+            // $user_id=$request['user_id'];
+            // $driver_id=$request['driver_id'];
+            // dd($driver_id);
+            // $data = new Driver();
+            // $data->user_id =$driver_id;
+            // $data->drivername=$request['drivername'];
+            // $data->company=$request['company'];
+            // $data->deliveryemail=$request['deliveryemail'];
+            // $data->phone=$request['phone'];
+            // $data->report =$request['report'];
+            // // $data->date =$request['date'];
+            // $data->date =Carbon::now()->endOfWeek(Carbon::FRIDAY)->format('d.m.Y');
+            // $data->number_plate =$request['number_plate'];
+            // $data->mileage=$request['mileage'];
+            // $data->save();
 
             // $user = new Report();
             // $user->user_id=$user_id;
@@ -167,37 +170,38 @@ class AdminController extends Controller
             // $user->mileage=$request['mileage'];
             // $user->save();
 
-            $data= $request->all();
-            $user_id=$request->user_id;
-            foreach($data['view'] as $row =>$value){
-                $data1=array(
-                'user_id'=>$request->user_id,
-                'view'=>$data['view'][$row],
-                'image'=> $data['image'][$row],
-                'feedback'=>$data['feedback'][$row],
-                'notes'=> $data['notes'][$row],
-                'action'=> $data['action'][$row],
-                );
-                Visual::create($data1);
-                }
+            $driver_id=$request->driver_id;
+            // $data= $request->all();
+            // foreach($data['view'] as $row =>$value){
+            //     $data1=array(
+            //     'driver_id'=>$driver_id,
+            //     'view'=>$data['view'][$row],
+            //     'image'=> $data['image'][$row],
+            //     'feedback'=>$data['feedback'][$row],
+            //     'notes'=> $data['notes'][$row],
+            //     'action'=> $data['action'][$row],
+            //     );
+            //     Visual::create($data1);
+            //     }
 
-            $data2= $request->all();
-            foreach($data2['view'] as $key =>$value){
-                $data3=array(
-                'user_id'=>$request->user_id,
-                'view'=>$data2['view1'][$key],
-                'image'=> $data2['image1'][$key],
-                'feedback'=>$data2['feedback1'][$key],
-                'notes'=> $data2['notes1'][$key],
-                'action'=> $data2['action1'][$key],
-                );
-                Vehicle::create($data3);
-                }
+
+            // $data2= $request->all();
+            // foreach($data2['view'] as $key =>$value){
+            //     $data3=array(
+            //     'driver_id'=>$driver_id,
+            //     'view'=>$data2['view1'][$key],
+            //     'image'=> $data2['image1'][$key],
+            //     'feedback'=>$data2['feedback1'][$key],
+            //     'notes'=> $data2['notes1'][$key],
+            //     'action'=> $data2['action1'][$key],
+            //     );
+            //     Vehicle::create($data3);
+            //     }
 
             $data4= $request->all();
             foreach($data4['view'] as $list =>$value){
                 $data5=array(
-                'user_id'=>$request->user_id,
+                'driver_id'=>$driver_id,
                 'view'=>$data4['view2'][$list],
                 'image'=> $data4['image2'][$list],
                 'feedback'=>$data4['feedback2'][$list],
@@ -206,7 +210,7 @@ class AdminController extends Controller
                 );
                 Cabin::create($data5);
                 }
-            return redirect('/driver/'.$user_id);
+            return redirect('/driver/'.$driver_id);
             }
         }
         public function remove($id){
@@ -225,25 +229,25 @@ class AdminController extends Controller
             return view('/report');
         }
 //check;
-        public function check($user_id,$id){
-            $visual= Visual::where('user_id',$user_id)->where('id',$id)->get();
-            $vehicle = Vehicle::where('user_id',$user_id)->get();
-            $cabin= Cabin::where('user_id',$user_id)->get();
+        public function check($driver_id){
+            $visual= Visual::where('driver_id',$driver_id)->get();
+            $vehicle = Vehicle::where('driver_id',$driver_id)->get();
+            $cabin= Cabin::where('driver_id',$driver_id)->get();
             return view('/details',['cabin'=>$cabin,'visual'=>$visual,'vehicle'=>$vehicle]);
         }
-        public function updatevisualcheck($id){
-            $visual = Visual::where('id',$id)->get();
+        public function updatevisualcheck($driver_id){
+            $visual = Visual::where('id',$driver_id)->get();
             return view('/updatevisualcheck',['visual'=>$visual ]);
         }
-        public function visualupdate(Request $request,$user_id){
+        public function visualupdate(Request $request,$driver_id){
             $request->validate([
                 'view'=>'required',
                 'image'=>'required',
                 'feedback'=>'required',
                 'action'=>'required',
             ]);
-            $user_id= $request->user_id;
-                $data1=User::find($user_id);
+            $driver_id= $request->driver_id;
+                $data1=Driver::find($driver_id);
                 if ($data1==null){
                     return response()->json(['message'=>'Invalid Id']);
                 }
@@ -252,7 +256,7 @@ class AdminController extends Controller
                 if ($data3==null){
                     return response()->json(['message'=>'Invalid Id']);
                 }
-            $visual= Visual::where('user_id',$data1->id)->where('id',$data3->id)->first();
+            $visual= Visual::where('driver_id',$data1->id)->where('id',$data3->id)->first();
             $visual->view=$request['view'];
             $visual->image =$request['image'];
                     if($request->hasfile('image')){
@@ -265,7 +269,7 @@ class AdminController extends Controller
             $visual->action=$request['action'];
             $visual->save();
             session()->flash('message',' Updated Successfully');
-            return redirect('/details/'.$data1->id);
+            return redirect('/details/'.$data3->id);
         }
         public function deletevisual($id){
             $user= Visual::find($id);
@@ -273,19 +277,19 @@ class AdminController extends Controller
             $data=$user->user_id;
             return redirect('/details/'.$data);
         }
-        public function updatevehiclecheck($id){
-            $vehicle = Vehicle::where('id',$id)->get();
+        public function updatevehiclecheck($driver_id){
+            $vehicle = Vehicle::where('id',$driver_id)->get();
             return view('/updatevehiclecheck',['vehicle'=>$vehicle ]);
         }
-        public function vehicleupdate(Request $request,$user_id){
+        public function vehicleupdate(Request $request,$driver_id){
             $request->validate([
                 'view'=>'required',
                 'image'=>'required',
                 'feedback'=>'required',
                 'action'=>'required',
             ]);
-            $user_id= $request->user_id;
-                $data1=User::find($user_id);
+            $driver_id= $request->driver_id;
+                $data1=Driver::find($driver_id);
                 if ($data1==null){
                     return response()->json(['message'=>'Invalid Id'],401);
                 }
@@ -294,7 +298,7 @@ class AdminController extends Controller
                 if ($data3==null){
                     return response()->json(['message'=>'Invalid Id'],401);
                 }
-            $vehicle= Vehicle::where('user_id',$data1->id)->where('id',$data3->id)->first();
+            $vehicle= Vehicle::where('driver_id',$data1->id)->where('id',$data3->id)->first();
             $vehicle->view=$request['view'];
             $vehicle->image =$request['image'];
                 if($request->hasfile('image')){
@@ -316,19 +320,19 @@ class AdminController extends Controller
             return redirect('/details/'.$user1);
         }
 
-        public function updatecabincheck($id){
-            $cabin = Cabin::where('id',$id)->get();
+        public function updatecabincheck($driver_id){
+            $cabin = Cabin::where('id',$driver_id)->get();
             return view('/updatecabincheck',['cabin'=>$cabin ]);
         }
-        public function cabinupdate(Request $request,$user_id){
+        public function cabinupdate(Request $request,$driver_id){
             $request->validate([
                 'view'=>'required',
                 'image'=>'required',
                 'feedback'=>'required',
                 'action'=>'required',
             ]);
-            $user_id= $request->user_id;
-                $data1=User::find($user_id);
+            $driver_id= $request->driver_id;
+                $data1=User::find($driver_id);
                 if ($data1==null){
                     return response()->json(['message'=>'Invalid Id'],401);
                 }
@@ -337,7 +341,7 @@ class AdminController extends Controller
                 if ($data3==null){
                     return response()->json(['message'=>'Invalid Id'],401);
                 }
-            $cabin= Cabin::where('user_id',$data1->id)->where('id',$data3->id)->first();
+            $cabin= Cabin::where('driver_id',$data1->id)->where('id',$data3->id)->first();
             $cabin->view=$request['view'];
             $cabin->image =$request['image'];
                 if($request->hasfile('image')){
@@ -363,21 +367,21 @@ class AdminController extends Controller
             return view('/allrentallist',['driver'=>$driver ]);
 
         }
-        public function summary($user_id){
-            $visual= Visual::where('user_id',$user_id)->get();
-            $vehicle = Vehicle::where('user_id',$user_id)->get();
-            $cabin= Cabin::where('user_id',$user_id)->get();
+        public function summary($driver_id){
+            $visual= Visual::where('driver_id',$driver_id)->get();
+            $vehicle = Vehicle::where('driver_id',$driver_id)->get();
+            $cabin= Cabin::where('driver_id',$driver_id)->get();
             return view('/summary',['cabin'=>$cabin,'visual'=>$visual,'vehicle'=>$vehicle]);
         }
-        public function pdf($user_id){
-            $visual= Visual::where('user_id',$user_id)->get();
-            $vehicle = Vehicle::where('user_id',$user_id)->get();
-            $cabin= Cabin::where('user_id',$user_id)->get();
+        public function pdf($driver_id){
+            $visual= Visual::where('driver_id',$driver_id)->get();
+            $vehicle = Vehicle::where('driver_id',$driver_id)->get();
+            $cabin= Cabin::where('driver_id',$driver_id)->get();
             $pdf = Pdf::loadView('pdf.userpdf',['cabin'=>$cabin,'visual'=>$visual,'vehicle'=>$vehicle]);
             return $pdf->download('userpdf.pdf');
         }
-        public function edit($user_id){
-            return redirect('/details/'.$user_id);
+        public function edit($driver_id){
+            return redirect('/details/'.$driver_id);
         }
         public function send($user_id){
             $user=User::where('id',$user_id)->first();

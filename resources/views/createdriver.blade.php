@@ -222,11 +222,12 @@
                  <div class="header_toggle" id="toggle-container"> <i class='bx bx-menu ' id="header-toggle"></i> </div>
             </header>
                 <h3>New Rental Details</h3>
-            <form action="/store/{id}" method="POST" autocomplete="off" class="main">
+            <form action="/store/{driver_id}" method="POST" autocomplete="off" class="main">
                 @csrf
-                <input type="hidden" name="user_id" value="{{$id}}">
+                <input type="hidden" name="driver_id" value="{{$id}}">
+                {{-- @dd($id); --}}
                     <main >
-                        <div class="table-data">
+                        {{-- <div class="table-data">
                                     <h5 class="" style="color:#06064b;" > <i class="fa-solid fa-user"></i> Driver & Vehicle Details</h5>
                                     <div class="" id="main">
                                         <div class="report">
@@ -284,7 +285,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     {{-- <h5 class="mt-4" style="color:#06064b;"> <i class="fa-solid fa-user"></i> Report on Incident</h5>
                                     <div class="" id="main">
                                         <div class="report">
@@ -329,7 +330,7 @@
 
                                         </div>
                                     </div> --}}
-                        </div>
+                        {{-- </div> --}}
                         <div class="table-data">
                                 <div class="head">
                                     <h5 class="" style="color:#06064b;">Visual Check</h5>
@@ -344,7 +345,7 @@
                                                     <th style="text-align:center;" class="col-md-2 ">Feed Back</th>
                                                     <th style="text-align:center;" class="col-md-2 ">Notes</th>
                                                     <th style="text-align:center;" class="col-md-2 ">Action</th>
-                                                    <th class="col-md-1 d-none" style="text-align:center;">User_id</th>
+                                                    <th class="col-md-1 d-none" style="text-align:center;">Driver_id</th>
                                                 </tr>
                                         </thead>
                                         <tbody id='row' >
@@ -398,7 +399,7 @@
                                                     <th style="text-align:center;" class="col-md-2 ">Feed Back</th>
                                                     <th style="text-align:center;" class="col-md-2 ">Notes</th>
                                                     <th style="text-align:center;" class="col-md-2 ">Action</th>
-                                                    <th class="col-md-1 d-none" style="text-align:center;">User_id</th>
+                                                    <th class="col-md-1 d-none" style="text-align:center;">Driver_id</th>
                                                 </tr>
                                             </thead>
                                             <tbody id='row1' >
@@ -452,7 +453,7 @@
                                                     <th style="text-align:center;" class="col-md-2 ">Feed Back</th>
                                                     <th style="text-align:center;" class="col-md-2 ">Notes</th>
                                                     <th style="text-align:center;" class="col-md-2 ">Action</th>
-                                                    <th class="col-md-1 d-none" style="text-align:center;">User_id</th>
+                                                    <th class="col-md-1 d-none" style="text-align:center;">Driver_id</th>
                                                 </tr>
                                             </thead>
                                             <tbody id='row2' >
@@ -526,7 +527,7 @@
                             </div>
                         </div>
                     </main>
-                    <a href=""><input type="submit" value="Submit" class="text-white" id="add" style="color:#06064b;"></a>
+                    <a href="#"><input type="submit" value="Submit" class="text-white" id="add" style="color:#06064b;"></a>
             </form>
         </div>
 </section>

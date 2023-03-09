@@ -13,10 +13,17 @@ class Driver extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function report()
+    public function visual()
     {
-        return $this->belongsTo(Report::class,'user_id','user_id');
+        return $this->belongsTo(Visual::class,'user_id','driver_id');
     }
-
+    public function vehicle()
+    {
+        return $this->belongsTo(Vehicle::class,'user_id');
+    }
+    public function cabin()
+    {
+        return $this->belongsTo(Cabin::class,'user_id');
+    }
 
 }
