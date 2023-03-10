@@ -12,7 +12,6 @@ use App\Models\Cabin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Auth;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Carbon;
@@ -118,7 +117,8 @@ class AdminController extends Controller
             return view('/createdriver',compact('id'));
         }
         public function store(Request $request){
-            $validator = Validator::make($request->all(),[
+
+            $request->validate([
                 //
                 // 'date_of_incident'=>'required',
                 // 'location'=>'required',
@@ -143,9 +143,7 @@ class AdminController extends Controller
                 // 'action2'=>'required',
                 // 'notes2'=>'required',
             ]);
-            if ($validator->fails()){
-                return response()->json(['message'=>'Validator error'],401);
-            }else{
+
             // $user = new Report();
             // $user->user_id=$user_id;
             // $user->date_of_incident =$request['date_of_incident'];
@@ -207,8 +205,8 @@ class AdminController extends Controller
             }
             $user=Driver::where('id',$driver_id)->first();
             return redirect('/driver/'.$user->user_id);
-            }
         }
+
         public function remove($id){
             $driver=Driver::find($id);
             $driver->delete();
@@ -265,12 +263,12 @@ class AdminController extends Controller
             $visual->action=$request['action'];
             $visual->save();
             session()->flash('message',' Updated Successfully');
-            return redirect('/details/'.$data3->id);
+            return redirect('/details/'.$data1->id);
         }
         public function deletevisual($id){
             $user= Visual::find($id);
             $user->delete();
-            $data=$user->user_id;
+            $data=$user->driver_id;
             return redirect('/details/'.$data);
         }
         public function updatevehiclecheck($driver_id){
@@ -312,7 +310,7 @@ class AdminController extends Controller
         public function deletevehicle($id){
             $user=Vehicle::find($id);
             $user->delete();
-            $user1=$user->user_id;
+            $user1=$user->driver_id;
             return redirect('/details/'.$user1);
         }
         public function updatecabincheck($driver_id){
@@ -354,7 +352,7 @@ class AdminController extends Controller
         public function deletecabin($id){
             $data=Cabin::find($id);
             $data->delete($id);
-            $data1=$data->user_id;
+            $data1=$data->driver_id;
             return redirect('/details/'.$data1);
         }
         public function allrentallist(){
@@ -380,12 +378,9 @@ class AdminController extends Controller
         }
         public function send($id){
             $user=Driver::where('id',$id)->first();
-            // dd($user);
             $email=$user->deliveryemail;
-            // dd($email);
 	        Mail::to($email)->send(new sendEmailUsingGmail);
             session()->flash('message','Mail Send Successfully !!');
             return redirect('/driver/'.$user->user_id);
-            // return redirect('/summary/'.$user_id);
         }
 }

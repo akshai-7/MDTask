@@ -274,10 +274,10 @@ class ApiController extends Controller
     //visual damage:
             public function visualdamage(Request $request,$id){
                 $validator = Validator::make($request->all(),[
-                    // 'view'=>'required',
-                    // 'image'=>'required',
-                    // 'feedback'=>'required',
-                    // 'action'=>'required',
+                    'view'=>'required',
+                    'image'=>'required',
+                    'feedback'=>'required',
+                    'action'=>'required',
                 ]);
                 if ($validator->fails()){
                     return response()->json(['message'=>'Validator error'],401);
@@ -325,10 +325,10 @@ class ApiController extends Controller
         //updatedamage:
             public function updatedamage(Request $request,$visual_id){
                 $validator = Validator::make($request->all(),[
-                    // 'view'=>'required',
-                    // 'image'=>'required|file',
-                    // 'feedback'=>'required',
-                    // 'action'=>'required',
+                    'view'=>'required',
+                    'image'=>'required|file',
+                    'feedback'=>'required',
+                    'action'=>'required',
                 ]);
                 if ($validator->fails()){
                     return response()->json(['message'=>'Validator error'],401);
@@ -373,11 +373,11 @@ class ApiController extends Controller
     //vehiclechecks:
             public function vehiclechecks(Request $request,$id){
                 $validator = Validator::make($request->all(),[
-                    // 'view'=>'required',
-                    // 'image'=>'required',
-                    // 'feedback'=>'required',
-                    // 'action'=>'required',
-                    // 'notes'=>'required',
+                    'view'=>'required',
+                    'image'=>'required',
+                    'feedback'=>'required',
+                    'action'=>'required',
+                    'notes'=>'required',
                 ]);
                 if($validator->fails()){
                     return response()->json(['message'=>'Validator error'],401);
@@ -428,11 +428,11 @@ class ApiController extends Controller
         //updatevehiclechecks:
             public function updatevehiclechecks(Request $request,$vehicle_id){
                 $validator = Validator::make($request->all(),[
-                    // 'view'=>'required',
-                    // 'image'=>'required',
-                    // 'feedback'=>'required',
-                    // 'action'=>'required',
-                    // 'notes'=>'required',
+                    'view'=>'required',
+                    'image'=>'required',
+                    'feedback'=>'required',
+                    'action'=>'required',
+                    'notes'=>'required',
                 ]);
                 if ($validator->fails()){
                     return response()->json(['message'=>'Validator error'],401);
@@ -478,20 +478,23 @@ class ApiController extends Controller
     //cabinchecks:
             public function cabinchecks(Request $request,$id){
                 $validator = Validator::make($request->all(),[
-                    // 'view'=>'required',
-                    // 'image'=>'required',
-                    // 'feedback'=>'required',
-                    // 'action'=>'required',
-                    // 'notes'=>'required',
+                    'view'=>'required',
+                    'image'=>'required',
+                    'feedback'=>'required',
+                    'action'=>'required',
+                    'notes'=>'required',
                 ]);
                 if ($validator->fails()){
                     return response()->json(['message'=>'Validator error'],401);
                 }
                 $data1=User::find($id);
-                if ($data1==null){
-                    return response()->json(['message'=>'Invalid Id'],401);
-                }
+                    if ($data1==null){
+                        return response()->json(['message'=>'Invalid Id'],401);
+                    }
                 $data=Driver::where('user_id',$id)->first();
+                    if ($data==null){
+                        return response()->json(['message'=>'Invalid Id'],401);
+                    }
                 $user=$data->id;
                 $data = new Cabin();
                 $data->driver_id =$user;
@@ -533,13 +536,17 @@ class ApiController extends Controller
                 if ($validator->fails()){
                     return response()->json(['message'=>'Validator error'],401);
                 }
-                $user2= $cabin_id;
-                    $user3=Cabin::find($user2);
-                    if ($user3==null){
+                $data1= $cabin_id;
+                    $data2=Cabin::find($data1);
+                    if ($data2==null){
                         return response()->json(['message'=>'Invalid Id'],401);
                     }
-                $data = Cabin::where('id',$user3->id)->first();
-                $data->user_id=$user3->id;
+                $data3=Driver::find($data2->driver_id);
+                    if ($data3==null){
+                        return response()->json(['message'=>'Invalid Id'],401);
+                    }
+                $data = Cabin::where('id',$data2->id)->where('driver_id',$data3->id)->first();
+                $data->driver_id=$data3->id;
                 $data->view=$request['view'];
                 $data->image =$request['image'];
                     if($request->hasfile('image')){
@@ -552,7 +559,7 @@ class ApiController extends Controller
                 $data->action=$request['action'];
                 $data->notes=$request['notes'];
                 $data->save();
-                return response()->json(['message'=>'Updated Successfully'],200);
+                return response()->json(['message'=>'Updated Successfully','data'=>$data],200);
             }
 
         //deletecabinchecks:
