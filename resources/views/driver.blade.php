@@ -136,8 +136,8 @@
     }
     main {
         position: relative;
-        width: 85%;
-        left: 120px;
+        width: 90%;
+        left: 80px;
     }
     .table-data{
         margin-top: 10%;
@@ -160,7 +160,7 @@
     }
     .order table th {
         padding-bottom: 12px;
-        font-size: 17px;
+        font-size: 15px;
         color: black;
         border-bottom: 1px solid var(--grey);
     }
@@ -195,7 +195,7 @@
          <img  id="img-logo" src="{{url('img/m-d-foundation.png')}}">
         </div>
          <a class="nav_list" href="/user" ><div class="icon-name"><i class='bx bx-grid-alt nav_icon'></i></div> <div class="nav_name">Dashboard </div> </a>
-         <a  class="nav_list" href="/allrentallist" ><div class="icon-name"> <i class="fa-solid fa-list"></i> </div><span class="nav_name">Rental</span> </a>
+         <a  class="nav_list" href="/allrentallist" ><div class="icon-name"> <i class="fa-solid fa-list"></i> </div><span class="nav_name">Inspection List</span> </a>
          <a  class="nav_list"href="/" > <div class="icon-name"><i class='bx bx-log-out nav_icon'></i> </div><span class="nav_name">SignOut</span> </a>
     </div>
     <div id="div-2">
@@ -245,13 +245,14 @@
                                     <td style="text-align:center;" class="table_data">{{$driver->date}}</td>
                                     <td style="text-align:center;" class="table_data">
                                         @if(Carbon\Carbon::now()->endOfWeek(Carbon\Carbon::FRIDAY)->format('d.m.Y') != $driver->date)
-                                            <button type="button" class="btn btn-success btn-sm" >Success</button>
+                                            <button type="button" class="btn btn-success btn-sm" >Completed</button>
                                         @elseif(Carbon\Carbon::now()->endOfWeek(Carbon\Carbon::FRIDAY)->format('d.m.Y') >= $driver->date)
-                                            <button type="button" class="btn btn-danger btn-sm">Pending</button>
+                                            <button type="button" class="btn btn-danger btn-sm" style="padding: 3px 15px;">Pending</button>
                                         @endif
                                     </td>
                                     <td style="text-align:center;" class="table_data">
                                     <a href="/details/{{$driver->id}}"><i class="fa-solid fa-eye btn  text-white" style="background:#06064b "></i></a>
+                                    <a href="/send-email-using-gmail/{{$driver->id}}"><i class="fa-solid fa-envelope btn btn-success"></i></a>
                                     <a href="/createdriver/{{$driver->id}}"><i class="fa-solid fa-plus btn btn-secondary"></i></a>
                                     <a href="/remove/{{$driver->id}}"><i class="fa-solid fa-trash btn btn-danger" ></i></a></td>
                                 </tr>

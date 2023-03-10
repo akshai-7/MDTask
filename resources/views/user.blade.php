@@ -284,6 +284,10 @@
                 display: flex;
                 justify-content: space-between;
             }
+            .close{
+                margin-left: 490px;
+                margin-top: -350px;
+            }
 </style>
 
 
@@ -295,7 +299,7 @@
         <img  id="img-logo" src="{{url('img/m-d-foundation.png')}}">
        </div>
         <a class="nav_list" href="/user" ><div class="icon-name"><i class='bx bx-grid-alt nav_icon'></i></div> <div class="nav_name">Dashboard </div> </a>
-        <a  class="nav_list" href="/allrentallist" ><div class="icon-name"> <i class="fa-solid fa-list"></i> </div><span class="nav_name">Rental</span> </a>
+        <a  class="nav_list" href="/allrentallist" ><div class="icon-name"> <i class="fa-solid fa-list"></i> </div><span class="nav_name">Inspection List</span> </a>
         <a  class="nav_list"href="/"> <div class="icon-name"><i class='bx bx-log-out nav_icon'></i> </div><span class="nav_name">SignOut</span> </a>
     </div>
     <div id="div-2">
@@ -386,7 +390,7 @@
                         <input type="password" class="form-control" name="password" placeholder=" Enter Password"><div style="color:rgb(216, 31, 31);;"> @error('password')*{{$message}}@enderror</div>
                         <input type="submit" name="" value="Submit" class="btn text-white mt-5" style="float:right;background:#06064b;">
                     </div>
-                <a href="#" onclick="hide('popup')" style="color:red;text-align: center;">Close</a>
+                <a href="#" onclick="hide('popup')" style="color:black;" class="close"><i class="fa-solid fa-xmark"></i></a>
             </form>
         </div>
     </div>

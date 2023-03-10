@@ -57,6 +57,6 @@ Route::get('/pdf/{driver_id}',[AdminController::class,'pdf']);
 Route::get('/edit/{driver_id}',[AdminController::class,'edit']);
 
 
-Route::get('/send-email-using-gmail/{user_id}',[AdminController::class,'send']);
-Route::get('/handle/{usee_id}',[AdminController::class,'handle']);
+Route::get('/send-email-using-gmail/{id}',[AdminController::class,'send']);
+Route::get('/handle/{id}',[AdminController::class,'handle']);
 

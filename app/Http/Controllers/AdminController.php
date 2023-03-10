@@ -378,11 +378,14 @@ class AdminController extends Controller
         public function edit($driver_id){
             return redirect('/details/'.$driver_id);
         }
-        public function send($user_id){
-            $user=User::where('id',$user_id)->first();
-            $email=$user->email;
+        public function send($id){
+            $user=Driver::where('id',$id)->first();
+            // dd($user);
+            $email=$user->deliveryemail;
+            // dd($email);
 	        Mail::to($email)->send(new sendEmailUsingGmail);
             session()->flash('message','Mail Send Successfully !!');
-            return redirect('/summary/'.$user_id);
+            return redirect('/driver/'.$user->user_id);
+            // return redirect('/summary/'.$user_id);
         }
 }

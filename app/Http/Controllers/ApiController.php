@@ -272,7 +272,7 @@ class ApiController extends Controller
             }
 
     //visual damage:
-            public function visualdamage(Request $request){
+            public function visualdamage(Request $request,$id){
                 $validator = Validator::make($request->all(),[
                     // 'view'=>'required',
                     // 'image'=>'required',
@@ -282,13 +282,13 @@ class ApiController extends Controller
                 if ($validator->fails()){
                     return response()->json(['message'=>'Validator error'],401);
                 }
-                $user=Auth::user()->id;
-                    $data1=User::find($user);
+                $data1=User::find($id);
                     if ($data1==null){
                         return response()->json(['message'=>'Invalid Id'],401);
                     }
+                $user=Driver::where('user_id',$id)->first();
                 $data = new Visual();
-                $data->user_id =$user;
+                $data->driver_id =$user->id;
                 $data->view=$request['view'];
                 $data->image=$request['image'];
                         if($request->hasfile('image')){
@@ -297,7 +297,6 @@ class ApiController extends Controller
                             $location=public_path($name);
                             $data->image =$name;
                         }
-
                 $data->feedback=$request['feedback'];
                 $data->action=$request['action'];
                 $data->save();
@@ -306,17 +305,17 @@ class ApiController extends Controller
 
         // damagedetails:
             public function damagedetails($visual_id){
-                $user=Auth::user()->id;
-                    $user1=User::find($user);
-                    if ($user1==null){
-                        return response()->json(['message'=>'Invalid Id'],401);
-                    }
+                // $user=Auth::user()->id;
+                //     $user1=User::find($user);
+                //     if ($user1==null){
+                //         return response()->json(['message'=>'Invalid Id'],401);
+                //     }
                 $visualId= $visual_id;
                     $data1=Visual::find($visualId);
                         if ($data1==null){
                             return response()->json(['message'=>'Invalid Id'],401);
                         }
-                $user=Visual::where('user_id',$user1->id)->where('id',$data1->id)->get();
+                $user=Visual::where('id',$data1->id)->get();
                 return response()->json(['success'=>true,'data'=> $user],200);
             }
 
@@ -376,7 +375,7 @@ class ApiController extends Controller
             }
 
     //vehiclechecks:
-            public function vehiclechecks(Request $request){
+            public function vehiclechecks(Request $request,$id){
                 $validator = Validator::make($request->all(),[
                     // 'view'=>'required',
                     // 'image'=>'required',
@@ -387,13 +386,16 @@ class ApiController extends Controller
                 if($validator->fails()){
                     return response()->json(['message'=>'Validator error'],401);
                 }
-                $data= Auth::user()->id;
-                    $data1=User::find($data);
-                    if ($data1==null){
-                        return response()->json(['message'=>'Invalid Id'],401);
-                    }
+                $data1=User::find($id);
+                if ($data1==null){
+                    return response()->json(['message'=>'Invalid Id'],401);
+                }
+                $user=Driver::where('user_id',$id)->first();
+                // dd($user->id);
+                $data=$user->id;
                 $user = new Vehicle();
-                $user->user_id =$data1->id;
+                $user->driver_id =$data;
+                // dd('driver_id');
                 $user->view=$request['view'];
                 $user->image =$request['image'];
                 if($request->hasfile('image')){
