@@ -136,8 +136,8 @@
     }
     main {
         position: relative;
-        width: 90%;
-        left: 80px;
+        width: 80%;
+        left: 120px;
     }
     .table-data{
         margin-top: 10%;
@@ -220,7 +220,7 @@
                     <table class="" style="width:px;">
                         <thead class="text-primary">
                             <th style="text-align:center;" >Report No</th>
-                            {{-- <th style="text-align:center;">Driver Name</th> --}}
+                            <th style="text-align:center;">Driver Name</th>
                             <th style="text-align:center;">Company</th>
                             {{-- <th style="text-align:center;">Email</th> --}}
                             <th style="text-align:center;">Phone</th>
@@ -228,14 +228,14 @@
                             <th style="text-align:center;">Mileage</th>
                             <th style="text-align:center;">Last Inspection</th>
                             <th style="text-align:center;">Next Inspection</th>
-                            <th style="text-align:center;">Status</th>
+                            <th style="text-align:center;">Over Due</th>
                             <th style="text-align:center;">Action</th>
                         </thead>
                         <tbody>
                             @foreach($driver as $driver)
                                  <tr class="table_row">
                                     <td style="text-align:center;" class="table_data">{{$driver->report}}</td>
-                                    {{-- <td style="text-align:center;" class="table_data">{{$driver->drivername}}</td> --}}
+                                    <td style="text-align:center;" class="table_data">{{$driver->drivername}}</td>
                                     <td style="text-align:center;" class="table_data">{{$driver->company}}</td>
                                     {{-- <td style="text-align:center;" class="table_data">{{$driver->deliveryemail}}</td> --}}
                                     <td style="text-align:center;" class="table_data">{{$driver->phone}}</td>
@@ -244,16 +244,16 @@
                                     <td style="text-align:center;" class="table_data">{{$driver->created_at->format('d.m.Y')}}</td>
                                     <td style="text-align:center;" class="table_data">{{$driver->date}}</td>
                                     <td style="text-align:center;" class="table_data">
-                                        @if(Carbon\Carbon::now()->endOfWeek(Carbon\Carbon::FRIDAY)->format('d.m.Y') != $driver->date)
-                                            <button type="button" class="btn btn-success btn-sm" >Completed</button>
-                                        @elseif(Carbon\Carbon::now()->endOfWeek(Carbon\Carbon::FRIDAY)->format('d.m.Y') >= $driver->date)
-                                            <button type="button" class="btn btn-danger btn-sm" style="padding: 3px 15px;">Pending</button>
+                                        @if($driver->date >= date('d.m.y'))
+                                            <button type="button" class="btn btn-sucess btn-sm" >NO</button>
+                                        @else
+                                            <button type="button" class="btn btn-daer btn-sm">Yes</button>
                                         @endif
                                     </td>
                                     <td style="text-align:center;" class="table_data">
                                     <a href="/details/{{$driver->id}}"><i class="fa-solid fa-eye btn  text-white" style="background:#06064b "></i></a>
-                                    <a href="/send-email-using-gmail/{{$driver->id}}"><i class="fa-solid fa-envelope btn btn-success"></i></a>
-                                    <a href="/createdriver/{{$driver->id}}"><i class="fa-solid fa-plus btn btn-secondary"></i></a>
+                                    {{-- <a href="/send-email-using-gmail/{{$driver->id}}"><i class="fa-solid fa-envelope btn btn-success"></i></a> --}}
+                                    {{-- <a href="/createdriver/{{$driver->id}}"><i class="fa-solid fa-plus btn btn-secondary"></i></a> --}}
                                     <a href="/remove/{{$driver->id}}"><i class="fa-solid fa-trash btn btn-danger" ></i></a></td>
                                 </tr>
                             @endforeach

@@ -82,35 +82,8 @@ class AdminController extends Controller
             session()->flash('message1',' User is Deleted');
             return redirect('/user');
         }
-        public function driverdatails(Request $request){
-            $request->validate([
-                'drivername'=>'required',
-                'company'=>'required',
-                'deliveryemail'=>'required|email',
-                'phone'=>'required|min:10',
-                'report'=>'required',
-                'number_plate'=>'required',
-                'mileage'=>'required',
-
-            ]);
-            $id=$request->user_id;
-            $data = new Driver();
-            $data->user_id=$id;
-            $data->drivername=$request['drivername'];
-            $data->company=$request['company'];
-            $data->deliveryemail=$request['deliveryemail'];
-            $data->phone=$request['phone'];
-            $data->report =$request['report'];
-            // $data->date =$request['date'];
-            $data->date =Carbon::now()->endOfWeek(Carbon::FRIDAY)->format('d.m.Y');
-            $data->number_plate =$request['number_plate'];
-            $data->mileage=$request['mileage'];
-            $data->save();
-            session()->flash('message',' Driver is Created');
-            return redirect('/driver/'.$id);
-        }
         public function driverlist($user_id){
-            $driver = Driver::where('user_id',$user_id)->get();
+            $driver = Driver::where('user_id',$user_id)->orderBy('id','desc')->take(1)->get();
             return view('/driver',['driver'=>$driver]);
         }
         public function newdriver($id){
@@ -119,7 +92,13 @@ class AdminController extends Controller
         public function store(Request $request){
 
             $request->validate([
-                //
+                // 'drivername'=>'required',
+                // 'company'=>'required',
+                // 'deliveryemail'=>'required|email',
+                // 'phone'=>'required|min:10',
+                // 'report'=>'required',
+                // 'number_plate'=>'required',
+                // 'mileage'=>'required',
                 // 'date_of_incident'=>'required',
                 // 'location'=>'required',
                 // 'witnessed_by'=>'required',
@@ -143,6 +122,20 @@ class AdminController extends Controller
                 // 'action2'=>'required',
                 // 'notes2'=>'required',
             ]);
+            $id=$request->user_id;
+            $data = new Driver();
+            $data->user_id=$id;
+            // $data->drivername=$request['drivername'];
+            // $data->company=$request['company'];
+            // $data->deliveryemail=$request['deliveryemail'];
+            // $data->phone=$request['phone'];
+            // $data->report =$request['report'];
+            // // $data->date =$request['date'];
+            // $data->date =Carbon::now()->endOfWeek(Carbon::FRIDAY)->format('d.m.Y');
+            // $data->number_plate =$request['number_plate'];
+            // $data->mileage=$request['mileage'];
+            // $data->save();
+
 
             // $user = new Report();
             // $user->user_id=$user_id;
@@ -164,7 +157,9 @@ class AdminController extends Controller
             // $user->mileage=$request['mileage'];
             // $user->save();
 
-            $driver_id=$request->driver_id;
+            $user_id=$request->user_id;
+            $user=Driver::where('user_id',$user_id)->latest('id')->first();
+            $driver_id=$user->id;
             $data= $request->all();
             foreach($data['view'] as $row =>$value){
                 $data1=array(
@@ -204,6 +199,7 @@ class AdminController extends Controller
                 Cabin::create($data5);
             }
             $user=Driver::where('id',$driver_id)->first();
+            session()->flash('message',' Driver is Created');
             return redirect('/driver/'.$user->user_id);
         }
 

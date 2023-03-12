@@ -133,14 +133,16 @@
         left: 120px;
     }
     .table-data{
-        margin-top: 10%;
+        margin-top: 4%;
         border-radius:8px;
         background: var(--light);
-        padding: 24px;
+        padding: 15px;
         overflow-x: auto;
     }
     .head {
         display: flex;
+        margin-top: 2%;
+        margin-left: -6%;
     }
     .head h3 {
         margin-right: auto;
@@ -148,17 +150,18 @@
         color: #06064b;
     }
     .order table {
-        width: 100%;
+        width: 110%;
         margin-top: 2%;
     }
     .order table th {
-        padding-bottom: 12px;
+        padding-bottom: 10px;
         font-size: 17px;
         color: black;
         border-bottom: 1px solid var(--grey);
     }
     .order table td {
-        padding: 16px 0;
+        padding: 14px 0;
+        font-size: 15px;
     }
     #add{
         background: rgb(254,231,154);
@@ -196,14 +199,16 @@
             <div class="header_toggle" id="toggle-container"> <i class='bx bx-menu ' id="header-toggle"></i> </div>
         </header>
         <main>
+            <div class="head">
+                <h3>Inspection Details</h3>
+            </div>
             <div class="table-data">
                 <div class="order">
-                    <div class="head">
-                        <h3>Inspection Details</h3>
-                    </div>
-                    <table style="width: 1350px">
+
+                    <table style="width: 1350px" >
                         <thead class="">
-                            <th style="text-align:center;" class="">S.No</th>
+                            <th style="text-align:center;" class="">ID</th>
+                            <th style="text-align:center;" class="">User ID</th>
                             <th style="text-align:center;" class="">Report</th>
                             <th style="text-align:center;">Driver Name</th>
                             <th style="text-align:center;">Company</th>
@@ -211,14 +216,16 @@
                             <th style="text-align:center;">Phone</th>
                             <th style="text-align:center;"> Number Plate</th>
                             <th style="text-align:center;">Mileage</th>
-                            <th style="text-align:center;">Last Inspection</th>
+                            <th style="text-align:center;">Inspection Date</th>
                             <th style="text-align:center;">Next Inspection</th>
+                            {{-- <th style="text-align:center;">Status</th> --}}
                             <th style="text-align:center;">Action</th>
                         </thead>
                         <tbody>
                             @foreach($driver as $driver)
-                                 <tr class="table_row "></tr>
-                                    <td style="text-align:center;" class="table_data">{{$loop->iteration}}</td>
+                                 <tr class="table_row">
+                                    <td style="text-align:center;" class="table_data">{{$driver->id}}</td>
+                                    <td style="text-align:center;" class="table_data">{{$driver->user_id}}</td>
                                     <td style="text-align:center;" class="table_data">{{$driver->report}}</td>
                                     <td style="text-align:center;" class="table_data">{{$driver->drivername}}</td>
                                     <td style="text-align:center;" class="table_data">{{$driver->company}}</td>
@@ -228,6 +235,13 @@
                                     <td style="text-align:center;" class="table_data">{{$driver->mileage}}Km</td>
                                     <td style="text-align:center;" class="table_data">{{$driver->created_at->format('d.m.Y')}}</td>
                                     <td style="text-align:center;" class="table_data">{{$driver->date}}</td>
+                                    {{-- <td style="text-align:center;" class="table_data">
+                                        @if($driver->date >= date('d.m.y'))
+                                            <button type="button" class="btn btn-sucess btn-sm" >NO</button>
+                                        @else
+                                            <button type="button" class="btn btn-daer btn-sm">Yes</button>
+                                        @endif
+                                    </td> --}}
                                     <td style="text-align:center;" class="table_data">
                                     <a href="/details/{{$driver->id}}"><i class="fa-solid fa-eye btn  text-white" style="background:#06064b" ></i></a>
                                     <a href="/remove/{{$driver->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>

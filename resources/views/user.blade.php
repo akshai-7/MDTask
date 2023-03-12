@@ -256,38 +256,11 @@
                 padding:10px;
 
             }
-
-            #myDIV {
-                display: none;
-                position: fixed;
-                padding: 20px;
-                width: 800px;
-                height:500px;
-                left: 50%;
-                margin-left: -400px;
-                top: 30%;
-                margin-top: -40px;
-                background:rgb(230, 228, 228);
-                z-index: 20;
-            }
-            .report1{
-                display: flex;
-            }
-            .report{
-                width: 40%;
-            }
-            .subreport{
-                margin-left: 20px;
-                width: 40%;
-            }
-            .form-group {
-                display: flex;
-                justify-content: space-between;
-            }
             .close{
                 margin-left: 490px;
                 margin-top: -350px;
             }
+
 </style>
 
 
@@ -299,7 +272,7 @@
         <img  id="img-logo" src="{{url('img/m-d-foundation.png')}}">
        </div>
         <a class="nav_list" href="/user" ><div class="icon-name"><i class='bx bx-grid-alt nav_icon'></i></div> <div class="nav_name">Dashboard </div> </a>
-        <a  class="nav_list" href="/allrentallist" ><div class="icon-name"> <i class="fa-solid fa-list"></i> </div><span class="nav_name">Inspection List</span> </a>
+        <a  class="nav_list" href="/allrentallist" ><div class="icon-name"> <i class="fa-solid fa-list"></i> </div><span class="nav_name">Inspection</span> </a>
         <a  class="nav_list"href="/"> <div class="icon-name"><i class='bx bx-log-out nav_icon'></i> </div><span class="nav_name">SignOut</span> </a>
     </div>
     <div id="div-2">
@@ -359,7 +332,7 @@
                                     <td style="text-align:center;" class="table_data">
                                         <a href="/driver/{{$user->id}}"><i class="fa-solid fa-eye btn  text-white" style="background:#06064b"></i></a>
                                         <a href="/updateuser/{{$user->id}}" ><i class="fa-solid fa-edit btn btn-success" ></i></i></a>
-                                        <a href="#" onclick="myFunction()" ><i class="fa-solid fa-plus btn btn-secondary" ></i></i></a>
+                                        <a href="/createdriver/{{$user->id}}"><i class="fa-solid fa-plus btn btn-secondary"></i></a>
                                         <a href="/delete/{{$user->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a>
                                     </td>
                                 </tr>
@@ -372,6 +345,7 @@
         <div class="popup" id="popup">
             <form action="/createuser" method="POST" autocomplete="off" >
                 @csrf
+                <h5 class="" style="color:#06064b;"><i class="fa-solid fa-user"></i>Create User</h5>
                 <div class=" row mt-5">
                     <label for="" class="col-sm-2  col-form-label"> Name</label>
                     <div class="col-sm-8">
@@ -394,74 +368,6 @@
             </form>
         </div>
     </div>
-    <div  id="myDIV">
-        <form action="/driverdatails/{id}" method="POST" autocomplete="off" class="form1" >
-            @csrf
-            <input type="hidden" name="user_id" value="{{$user->id}}">
-            <h5 class="" style="color:#06064b;" > <i class="fa-solid fa-user"></i> Driver & Vehicle Details</h5>
-            <div class="report1" >
-                <div class="report">
-                    <div class="form-group row mt-5 ">
-                        <label for="" class="col-sm-2  col-form-label"> Name</label>
-                        <div class="col-sm-9">
-                          <input type="text" name="drivername" class="form-control" ><div style="color:rgb(216, 31, 31);font-size:14px;"> @error('drivername')*{{$message}}@enderror</div>
-                        </div>
-                    </div>
-
-                        <div class="form-group row mt-5 ">
-                            <label for="" class="col-sm-2  col-form-label"> Company</label>
-                            <div class="col-sm-9">
-                              <input type="text" name="company" class="form-control" ><div style="color:rgb(216, 31, 31);font-size:14px;"> @error('company')*{{$message}}@enderror</div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mt-5 ">
-                            <label for="" class="col-sm-2  col-form-label"> Email</label>
-                            <div class="col-sm-9">
-                              <input type="text" name="deliveryemail" class="form-control" ><div style="color:rgb(216, 31, 31);font-size:14px;"> @error('deliveryemail')*{{$message}}@enderror</div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mt-5 ">
-                            <label for="" class="col-sm-2 col-form-label"> Phone</label>
-                            <div class="col-sm-9">
-                              <input type="text" name="phone" class="form-control" ><div style="color:rgb(216, 31, 31);font-size:14px;"> @error('phone')*{{$message}}@enderror</div>
-                            </div>
-                        </div>
-                </div>
-                <div class="subreport">
-                    <div class="form-group row mt-5">
-                        <label for="" class="col-sm-2  col-form-label"> Date</label>
-                        <div class="col-sm-9">
-                          <input type="date" name="date" class="form-control" ><div style="color:rgb(216, 31, 31);font-size:14px;"> @error('date')*{{$message}}@enderror</div>
-                        </div>
-                    </div>
-                    <div class="form-group row mt-5">
-                        <label for="" class="col-sm-2 col-form-label">NumberPlate</label>
-                        <div class="col-sm-8">
-                          <input type="text" name="number_plate" class="form-control" ><div style="color:rgb(216, 31, 31);font-size:14px;"> @error('number_plate')*{{$message}}@enderror</div>
-                        </div>
-                    </div>
-                    <div class="form-group row mt-5 ">
-                        <label for="" class="col-sm-2 col-form-label"> Mileage</label>
-                        <div class="col-sm-9">
-                          <input type="text" name="mileage" class="form-control" ><div style="color:rgb(216, 31, 31);font-size:14px;"> @error('mileage')*{{$message}}@enderror</div>
-                        </div>
-                    </div>
-                    <div class="form-group row mt-5 ">
-                        <label for="" class="col-sm-2 col-form-label"> Report</label>
-                        <div class="col-sm-9">
-                          <input type="text" name="report" class="form-control" ><div style="color:rgb(216, 31, 31);font-size:14px;"> @error('report')*{{$message}}@enderror</div>
-                          <input type="submit" name="" value="Submit" class="btn text-white mt-5" style="float:right;background:#06064b;">
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-
-
 </section>
 
 </body>
@@ -508,14 +414,6 @@
         }
 
 
-        function myFunction() {
-        var x = document.getElementById("myDIV");
-            if (x.style.display === "none") {
-                x.style.display = "block";
-            } else {
-                x.style.display = "none";
-            }
-        }
 
 </script>
 </html>

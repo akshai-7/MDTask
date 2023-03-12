@@ -24,12 +24,11 @@ Route::get('/user',[AdminController::class,'userlist']);
 Route::post('/createuser',[AdminController::class,'createuser']) ;
 Route::get('/updateuser/{id}',[AdminController::class,'updateuser']);
 Route::Post('/updateuserdetails/{id}',[AdminController::class,'updateuserdetails']);
-Route::Post('/driverdatails/{id}',[AdminController::class,'driverdatails']);
 Route::get('/delete/{id}',[AdminController::class,'delete']);
 //driver
 Route::get('/driver/{user_id}',[AdminController::class,'driverlist']);
 Route::get('/createdriver/{driver_id}',[AdminController::class,'newdriver']);
-Route::post('/store/{driver_id}',[AdminController::class,'store']);
+Route::post('/store/{id}',[AdminController::class,'store']);
 Route::get('/remove/{id}',[AdminController::class,'remove']);
 //vehicle
 Route::get('/report/{user_id}',[AdminController::class,'reportlist']);
