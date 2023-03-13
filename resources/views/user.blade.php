@@ -11,7 +11,6 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@2.8.2/dist/alpine.min.js"></script>
-
 	<title>M&D Foundations</title>
 </head>
 <style>
@@ -31,11 +30,10 @@
                 overflow-y: hidden;
             }
             body{
-                /* font-family: 'EB Garamond', serif; */
-                font-family: 'Times New Roman', Times, serif;
+                font-family: 'EB Garamond', serif;
+                /* font-family: 'Times New Roman', Times, serif; */
                 background: var(--grey);
                 overflow: hidden;
-
             }
             a{
                 text-decoration: none;
@@ -101,11 +99,7 @@
             .header_toggle{
                 color: black;
                 font-size: 1.5rem;
-                cursor: pointer
-            }
-            .img {
-                width: 100px;
-                /* height:40px; */
+                cursor: pointer;
             }
             #img-container{
                 width: 100%;
@@ -116,6 +110,12 @@
             }
             #img-logo{
                 width: 60%;
+            }
+            #img-logo1{
+                width: 80%;
+                border-radius: 50%;
+                margin-right: -155px;
+                margin-top: -10px;
             }
             .nav_list{
                 width: 100%;
@@ -215,6 +215,8 @@
                 margin-top: -50px;
                 background: #FFF;
                 z-index: 20;
+                align-items: center;
+                justify-content: center;
             }
 
             #popup:after {
@@ -254,16 +256,13 @@
             .usercount{
                 margin-left: 15px;
                 padding:10px;
-
             }
             .close{
                 margin-left: 490px;
-                margin-top: -350px;
+                margin-top: -360px;
             }
             .open-button {
-                color: blue;
                 padding: 13px 10px;
-                /* border: none; */
                 cursor: pointer;
                 position: fixed;
                 right: 28px;
@@ -271,18 +270,17 @@
             .form-popup {
                 display: none;
                 position: fixed;
-                padding: 13px 10px;
-                height: 200px;
+                padding:10px;
+                height: 100px;
                 width: 200px;
-                margin-top: 35px;
+                margin-top: 50px;
                 right: 45px;
-                background: white;
-               border-radius: 4px;
+                background:var(--light);
+                border-radius: 4px;
                 z-index: 9;
             }
 
 </style>
-
 <body>
 <section id="container">
 
@@ -297,24 +295,24 @@
     <div id="div-2">
         <header class="headers" id="headers">
             <div class="header_toggle" id="toggle-container"> <i class='bx bx-menu ' id="header-toggle"></i> </div>
-            <a href="#" class="open-button" onclick="openForm()"><i class="fa fa-user"></i></a>
+            <a href="#" class="open-button" onclick="openForm()"><img  id="img-logo1" src="{{url('images/user-2.png')}}"></a>
             <div class="form-popup" id="myForm">
                 <div class="container">
-                    <tr> Name:{{$user1->name}}</tr><br>
-                    <tr>Email:{{$user1->email}}</tr><br>
-                    <tr>Role: {{$user1->role}}</tr><br>
-                    <a href="/"> Log Out </a><br>
-                    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-                  </div>
+                    <a type="button"  onclick="closeForm()" style="color:black;margin-left:140px;"><i class="fa-solid fa-xmark"></i></a>
+                    <div class="cls" style="margin-top: -20px;">
+                        <tr> <i class="fa-solid fa-user" ></i> {{$user1->name}}</tr><br>
+                    <tr> <i class="fa-solid fa-envelope"></i> {{$user1->email}}</tr><br>
+                    <a href="/" style="color:black;"> <i class="fa-solid fa-arrow-right-from-bracket"></i> Log Out</a><br>
 
-
+                    </div>
+                </div>
             </div>
         </header>
         <div class="message" id="message">
             @if (session()->has('message'))
             <div x-data="{show: true}" x-init="setTimeout(() => show = false, 3000)" x-show="show" style="width: 200px;height:20px">
                 <div   div class="alert alert-success">
-                    {{session('message')}}
+                    <i class="fa-regular fa-circle-check"></i> {{session('message')}}
                 </div>
             </div>
             @endif
@@ -323,18 +321,11 @@
             @if (session()->has('message1'))
                 <div x-data="{show: true}" x-init="setTimeout(() => show = false, 3000)" x-show="show" style="width: 200px;height:20px;">
                     <div class="alert alert-danger">
-                        {{session('message1')}}
+                        <i class="fa-regular fa-circle-x"></i>{{session('message1')}}
                     </div>
                 </div>
             @endif
         </div>
-        {{-- <div class="table-data1">
-            <div class="usercount">
-                <h4> <i class="fa-solid fa-user"></i> Total Users </h4>
-                <h1 align="right" style="margin-right: 50px;color:blue;font-weight: 600;">{{$user1}}</h1>
-            </div>
-        </div> --}}
-
         <main class="main">
             <div class="table-data">
                 <div class="order">
@@ -353,7 +344,6 @@
                         </thead>
                         <tbody>
                             @foreach($user as $user)
-                            {{-- @dd($user); --}}
                                  <tr class="table_row">
                                     <td style="text-align:center;" class="table_data">{{$loop->iteration}}</td>
                                     <td style="text-align:center;" class="table_data">{{$user->name}}</td>
@@ -405,6 +395,7 @@
 
 </body>
 <script>
+    //sidebar
             var toggleBtn=document.getElementById("toggle-container");
             var isOpen=false;
             toggleBtn.addEventListener("click",()=>{
@@ -412,30 +403,30 @@
                     var divsToHide = document.getElementsByClassName("nav_name");
                     document.getElementById("div-1").style.width="5%";
                     document.getElementById("div-1").style.transition="0.6s";
-                    document.getElementById("div-2").style.width="95%";//divsToHide is an array
+                    document.getElementById("div-2").style.width="95%";
 
                     document.getElementById("toggle-container").innerHTML = "<i class='bx bx-menu' id='header-toggle'></i>";
                         for(var i = 0; i < divsToHide.length; i++){
 
-                            divsToHide[i].style.display = "none"; // depending on what you're doing
+                            divsToHide[i].style.display = "none";
                         }
 
                     isOpen=!isOpen;
                 }else{
                     document.getElementById("div-1").style.width="15%";
                     document.getElementById("div-2").style.transition="0.6s";
-                    var divsToHide = document.getElementsByClassName("nav_name"); //divsToHide is an array
+                    var divsToHide = document.getElementsByClassName("nav_name");
                     document.getElementById("toggle-container").innerHTML = "<i class='bx bx-x' id='header-toggle'></i>";
 
                         for(var i = 0; i < divsToHide.length; i++){
-                            divsToHide[i].style.display = "block"; // depending on what you're doing
+                            divsToHide[i].style.display = "block";
                         }
                     document.getElementById("div-2").style.width="85%";
                     isOpen=!isOpen;
                 }
         })
 
-
+//create user
         $ = function(id) {
         return document.getElementById(id);
         }
@@ -445,14 +436,14 @@
         var hide = function(id) {
             $(id).style.display ='none';
         }
-
+//admin popup
         function openForm() {
-  document.getElementById("myForm").style.display = "block";
-}
+                document.getElementById("myForm").style.display = "block";
+        }
 
-function closeForm() {
-  document.getElementById("myForm").style.display = "none";
-}
+        function closeForm() {
+                document.getElementById("myForm").style.display = "none";
+    }
 
 
 </script>

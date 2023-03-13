@@ -8,11 +8,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@2.8.2/dist/alpine.min.js"></script>
-
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 	<title>M&D Foundations</title>
 </head>
 
     <style>
+             @import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
         :root{
             --header-height: 3rem;
             --first-color:#ddddfc;
@@ -28,7 +30,8 @@
             overflow-x: hidden;
         }
         body{
-            font-family: 'Times New Roman', Times, serif;
+            font-family: 'EB Garamond', serif;
+            /* font-family: 'Times New Roman', Times, serif; */
             background: var(--grey);
             overflow: hidden;
         }
@@ -233,9 +236,18 @@
                 @if (session()->has('message'))
                 <div x-data="{show: true}" x-init="setTimeout(() => show = false, 3000)" x-show="show" style="width: 200px;height:20px">
                     <div   div class="alert alert-success">
-                        {{session('message')}}
+                        <i class="fa-regular fa-circle-check"></i> {{session('message')}}
                     </div>
                 </div>
+                @endif
+            </div>
+            <div class="message1" id="message">
+                @if (session()->has('message1'))
+                    <div x-data="{show: true}" x-init="setTimeout(() => show = false, 3000)" x-show="show" style="width: 200px;height:20px;">
+                        <div class="alert alert-danger">
+                            <i class="fa-regular fa-circle-x"></i> {{session('message1')}}
+                        </div>
+                    </div>
                 @endif
             </div>
             <main class="main">

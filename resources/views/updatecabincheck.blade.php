@@ -10,6 +10,8 @@
 	<title>M&D Foundations</title>
 </head>
 <style>
+        @import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
+
     :root{
         --header-height: 3rem;
         --first-color:#ddddfc;
@@ -25,7 +27,8 @@
         overflow-x: hidden;
     }
     body{
-        font-family: 'Times New Roman', Times, serif;
+        font-family: 'EB Garamond', serif;
+        /* font-family: 'Times New Roman', Times, serif; */
         background: var(--grey);
     }
     a{

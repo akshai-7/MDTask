@@ -12,6 +12,7 @@
 	<title>M&D Foundations</title>
 </head>
 <style>
+     @import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
     :root{
         --header-height: 3rem;
         --first-color:#ddddfc;
@@ -27,7 +28,8 @@
         overflow-x: hidden;
     }
     body{
-        font-family: 'Times New Roman', Times, serif;
+        font-family: 'EB Garamond', serif;
+        /* font-family: 'Times New Roman', Times, serif; */
         background: var(--grey);
     }
     a{
@@ -206,7 +208,7 @@
             @if (session()->has('message'))
             <div x-data="{show: true}" x-init="setTimeout(() => show = false, 3000)" x-show="show" style="width: 200px;height:20px">
                 <div   div class="alert alert-success">
-                    {{session('message')}}
+                    <i class="fa-regular fa-circle-check"></i> {{session('message')}}
                 </div>
             </div>
             @endif

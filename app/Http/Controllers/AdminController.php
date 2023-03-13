@@ -51,7 +51,7 @@ class AdminController extends Controller
             $user->email=$request['email'];
             $user->password=Hash::make($request['password']);
             $user->save();
-            session()->flash('message',' User is Created');
+            session()->flash('message','User is Created');
             return redirect('/user');
         }
         public function updateuser($id){
@@ -94,35 +94,34 @@ class AdminController extends Controller
         public function store(Request $request){
 
             $request->validate([
-                // 'drivername'=>'required',
-                // 'company'=>'required',
-                // 'deliveryemail'=>'required|email',
-                // 'phone'=>'required|min:10',
-                // 'report'=>'required',
-                // 'number_plate'=>'required',
-                // 'mileage'=>'required',
-                // 'date_of_incident'=>'required',
-                // 'location'=>'required',
-                // 'witnessed_by'=>'required',
-                // 'phone_number_of_witness'=>'required|min:10',
-                // 'brief_statement'=>'required',
-                // 'upload_image'=>'required',
-
-                // 'view'=>'required',
-                // 'image'=>'required',
-                // 'feedback'=>'required',
-                // 'action'=>'required',
-                // 'notes'=>'required',
-                // 'view1'=>'required',
-                // 'image1'=>'required',
-                // 'feedback1'=>'required',
-                // 'action1'=>'required',
-                // 'notes1'=>'required',
-                // 'view2'=>'required',
-                // 'image2'=>'required',
-                // 'feedback2'=>'required',
-                // 'action2'=>'required',
-                // 'notes2'=>'required',
+                'drivername'=>'required',
+                'company'=>'required',
+                'deliveryemail'=>'required|email',
+                'phone'=>'required|min:10',
+                'report'=>'required',
+                'number_plate'=>'required',
+                'mileage'=>'required',
+                'date_of_incident'=>'required',
+                'location'=>'required',
+                'witnessed_by'=>'required',
+                'phone_number_of_witness'=>'required|min:10',
+                'brief_statement'=>'required',
+                'upload_image'=>'required',
+                'view'=>'required',
+                'image'=>'required',
+                'feedback'=>'required',
+                'action'=>'required',
+                'notes'=>'required',
+                'view1'=>'required',
+                'image1'=>'required',
+                'feedback1'=>'required',
+                'action1'=>'required',
+                'notes1'=>'required',
+                'view2'=>'required',
+                'image2'=>'required',
+                'feedback2'=>'required',
+                'action2'=>'required',
+                'notes2'=>'required',
             ]);
             $id=$request->user_id;
             $data = new Driver();
@@ -267,6 +266,7 @@ class AdminController extends Controller
             $user= Visual::find($id);
             $user->delete();
             $data=$user->driver_id;
+            session()->flash('message1','Deleted');
             return redirect('/details/'.$data);
         }
         public function updatevehiclecheck($driver_id){
@@ -309,6 +309,7 @@ class AdminController extends Controller
             $user=Vehicle::find($id);
             $user->delete();
             $user1=$user->driver_id;
+            session()->flash('message1','Deleted');
             return redirect('/details/'.$user1);
         }
         public function updatecabincheck($driver_id){
@@ -351,6 +352,7 @@ class AdminController extends Controller
             $data=Cabin::find($id);
             $data->delete($id);
             $data1=$data->driver_id;
+            session()->flash('message1','Deleted');
             return redirect('/details/'.$data1);
         }
         public function allrentallist(){

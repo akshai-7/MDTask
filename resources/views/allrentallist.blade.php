@@ -11,6 +11,7 @@
 </head>
 
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
     :root{
         --header-height: 3rem;
         --first-color:#ddddfc;
@@ -26,7 +27,7 @@
         overflow-x: hidden;
     }
     body{
-        font-family: 'Times New Roman', Times, serif;
+        font-family: 'EB Garamond', serif;
         background: var(--grey);
     }
     a{
@@ -42,7 +43,6 @@
     #div-1{
         width: 5%;
         height: 200;
-        /* margin-right:200px; */
         background: var(--first-color);
     }
     #div-2{
@@ -88,10 +88,6 @@
         color: black;
         font-size: 1.5rem;
         cursor: pointer
-    }
-    .img {
-        width: 100px;
-        /* height:40px; */
     }
     #img-container{
         width: 100%;
@@ -162,7 +158,7 @@
     }
     .order table td {
         padding: 14px 0;
-        font-size: 15px;
+        font-size: 16px;
     }
     #add{
         background: rgb(254,231,154);
@@ -184,7 +180,6 @@
     .table_row:hover  .table_data{
         color: black;
     }
-
 </style>
 <body>
 <section id="container">
@@ -215,20 +210,18 @@
             <div class="table-data">
                 <div class="order">
 
-                    <table style="width: 1350px" >
+                    <table style="width: 1130px" >
                         <thead class="">
-                            <th style="text-align:center;" class="">ID</th>
-                            <th style="text-align:center;" class="">User ID</th>
+                            <th style="text-align:center;" class="">Id</th>
+                            <th style="text-align:center;" class="">User_Id</th>
                             <th style="text-align:center;" class="">Report</th>
                             <th style="text-align:center;">Driver Name</th>
                             <th style="text-align:center;">Company</th>
-                            <th style="text-align:center;">Email</th>
                             <th style="text-align:center;">Phone</th>
                             <th style="text-align:center;"> Number Plate</th>
                             <th style="text-align:center;">Mileage</th>
                             <th style="text-align:center;">Inspection Date</th>
                             <th style="text-align:center;">Next Inspection</th>
-                            {{-- <th style="text-align:center;">Status</th> --}}
                             <th style="text-align:center;">Action</th>
                         </thead>
                         <tbody >
@@ -239,19 +232,11 @@
                                     <td style="text-align:center;" class="table_data">{{$driver->report}}</td>
                                     <td style="text-align:center;" class="table_data">{{$driver->drivername}}</td>
                                     <td style="text-align:center;" class="table_data">{{$driver->company}}</td>
-                                    <td style="text-align:center;" class="table_data"> {{$driver->deliveryemail}}</td>
                                     <td style="text-align:center;" class="table_data">{{$driver->phone}}</td>
                                     <td style="text-align:center;" class="table_data">{{$driver->number_plate}}</td>
                                     <td style="text-align:center;" class="table_data">{{$driver->mileage}}Km</td>
                                     <td style="text-align:center;" class="table_data">{{$driver->created_at->format('d.m.Y')}}</td>
                                     <td style="text-align:center;" class="table_data">{{$driver->date}}</td>
-                                    {{-- <td style="text-align:center;" class="table_data">
-                                        @if($driver->date >= date('d.m.y'))
-                                            <button type="button" class="btn btn-sucess btn-sm" >NO</button>
-                                        @else
-                                            <button type="button" class="btn btn-daer btn-sm">Yes</button>
-                                        @endif
-                                    </td> --}}
                                     <td style="text-align:center;" class="table_data">
                                     <a href="/details/{{$driver->id}}"><i class="fa-solid fa-eye btn  text-white" style="background:#06064b" ></i></a>
                                     <a href="/remove/{{$driver->id}}" ><i class="fa-solid fa-trash btn btn-danger"></i></a></td>
@@ -272,12 +257,12 @@
             var divsToHide = document.getElementsByClassName("nav_name");
             document.getElementById("div-1").style.width="5%";
             document.getElementById("div-1").style.transition="0.6s";
-            document.getElementById("div-2").style.width="95%";//divsToHide is an array
+            document.getElementById("div-2").style.width="95%";
 
             document.getElementById("toggle-container").innerHTML = "<i class='bx bx-menu' id='header-toggle'></i>";
                 for(var i = 0; i < divsToHide.length; i++){
 
-                    divsToHide[i].style.display = "none"; // depending on what you're doing
+                    divsToHide[i].style.display = "none";
                 }
 
             isOpen=!isOpen;
@@ -285,18 +270,16 @@
 
             document.getElementById("div-1").style.width="15%";
             document.getElementById("div-2").style.transition="0.6s";
-            var divsToHide = document.getElementsByClassName("nav_name"); //divsToHide is an array
+            var divsToHide = document.getElementsByClassName("nav_name");
             document.getElementById("toggle-container").innerHTML = "<i class='bx bx-x' id='header-toggle'></i>";
 
                 for(var i = 0; i < divsToHide.length; i++){
-                    divsToHide[i].style.display = "block"; // depending on what you're doing
+                    divsToHide[i].style.display = "block";
                 }
             document.getElementById("div-2").style.width="85%";
             isOpen=!isOpen;
         }
     })
-
-
 </script>
 </body>
 </html>

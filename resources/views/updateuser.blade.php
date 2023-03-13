@@ -10,6 +10,8 @@
 	<title>M&D Foundations</title>
 </head>
 <style>
+        @import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
+
     :root{
         --header-height: 3rem;
         --first-color:#ddddfc;
@@ -25,7 +27,7 @@
         overflow-x: hidden;
     }
     body{
-        font-family: 'Times New Roman', Times, serif;
+        font-family: 'EB Garamond', serif;
         background: var(--grey);
     }
     a{
@@ -159,17 +161,6 @@
     }
     .order table td {
         padding: 16px 5px;
-    }
-    #add{
-        background: rgb(254,231,154);
-        border-radius: 5px;
-        border: 1px solid #D69E31;
-        color: #85592e;
-        cursor: pointer;
-        top:-5px;
-        height: 30px;
-        position: relative;
-        width: 80px;
     }
     .table_row {
         background: rgb(237, 233, 233);

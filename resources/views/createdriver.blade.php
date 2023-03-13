@@ -13,6 +13,7 @@
 	<title>M&D Foundations</title>
 </head>
 <style>
+     @import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
     :root{
         --header-height: 3rem;
         --first-color:#ddddfc;
@@ -28,7 +29,7 @@
         overflow-x: hidden;
     }
     body{
-        font-family: 'Times New Roman', Times, serif;
+        font-family: 'EB Garamond', serif;
         background: var(--grey);
         overflow: hidden;
     }
@@ -203,8 +204,6 @@
        margin-left: 50px;
        width: 40%;
     }
-
-
 </style>
 <body>
 <section id="container">
@@ -224,7 +223,6 @@
             <form action="/store/{id}" method="POST" autocomplete="off" class="main">
                 @csrf
                 <input type="hidden" name="user_id" value="{{$id}}">
-                {{-- @dd($id); --}}
                     <main>
                         <div class="table-data">
                             <h5 class="" style="color:#06064b;" > <i class="fa-solid fa-user"></i> Driver & Vehicle Details</h5>
@@ -391,7 +389,7 @@
                             </div>
                             <div>
                                 <table class="table table-bordered mt-3" >
-                                            <thead class="">
+                                        <thead class="">
                                                 <tr>
                                                     <th class="col-md-1" style="text-align:center;">S.no</th>
                                                     <th style="text-align:center;" class="col-md-2 ">View</th>
@@ -401,8 +399,8 @@
                                                     <th style="text-align:center;" class="col-md-2 ">Action</th>
                                                     <th class="col-md-1 d-none" style="text-align:center;">Driver_id</th>
                                                 </tr>
-                                            </thead>
-                                            <tbody id='row1' >
+                                        </thead>
+                                        <tbody id='row1' >
                                                 <tr class="list">
                                                     <td class="col-md-1"><input type="text"  name="sno[]"    class="form-control col-md-1 border-0" style="text-align:center;" value="1" id="sno"></td>
                                                     <td><input type="text"  name="view1[]"   class="form-control view border-0" style="text-align:center;" id='view' value="Adblue levels"></td>
@@ -435,7 +433,7 @@
                                                     <td><input type="text"  name="notes1[]" class="form-control notes border-0" style="text-align:center;" id='notes'></td>
                                                     <td><input type="text"  name="action1[]"  class="form-control action border-0" style="text-align:center;" id='action' placeholder="Good/Bad" ></td>
                                                 </tr>
-                                            </tbody>
+                                        </tbody>
                                 </table>
                             </div>
                         </div>
@@ -445,7 +443,7 @@
                             </div>
                             <div>
                                 <table class="table table-bordered mt-3">
-                                            <thead class="">
+                                        <thead class="">
                                                 <tr>
                                                     <th class="col-md-1" style="text-align:center;">S.no</th>
                                                     <th style="text-align:center;" class="col-md-2 ">View</th>
@@ -455,8 +453,8 @@
                                                     <th style="text-align:center;" class="col-md-2 ">Action</th>
                                                     <th class="col-md-1 d-none" style="text-align:center;">Driver_id</th>
                                                 </tr>
-                                            </thead>
-                                            <tbody id='row2' >
+                                        </thead>
+                                        <tbody id='row2' >
                                                 <tr class="list">
                                                     <td class="col-md-1"><input type="text"  name="sno[]"    class="form-control col-md-1 border-0" style="text-align:center;" value="1" id="sno"></td>
                                                     <td><input type="text"  name="view2[]"   class="form-control view border-0" style="text-align:center;" id='view' value="Steering"></td>
@@ -522,7 +520,7 @@
                                                     <td><input type="text"  name="notes2[]" class="form-control notes border-0" style="text-align:center;" id='notes'></td>
                                                     <td><input type="text"  name="action2[]"  class="form-control action border-0" style="text-align:center;" id='action' placeholder="Good/Bad" ></td>
                                                 </tr>
-                                            </tbody>
+                                        </tbody>
                                 </table>
                             </div>
                         </div>
