@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 	<title>M&D Foundations</title>
 </head>
+
 <style>
     :root{
         --header-height: 3rem;
@@ -183,6 +184,7 @@
     .table_row:hover  .table_data{
         color: black;
     }
+
 </style>
 <body>
 <section id="container">
@@ -197,10 +199,18 @@
      <div id="div-2">
         <header class="headers" id="headers">
             <div class="header_toggle" id="toggle-container"> <i class='bx bx-menu ' id="header-toggle"></i> </div>
+            <form action="/search" method="POST" autocomplete="off">
+                @csrf
+                <div class="input-group">
+                    <input type="text" class="form-control"  name="name" placeholder="Search..">
+                    <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i> </button>
+                  </div>
+            </form>
         </header>
         <main>
             <div class="head">
                 <h3>Inspection Details</h3>
+
             </div>
             <div class="table-data">
                 <div class="order">
@@ -221,9 +231,9 @@
                             {{-- <th style="text-align:center;">Status</th> --}}
                             <th style="text-align:center;">Action</th>
                         </thead>
-                        <tbody>
+                        <tbody >
                             @foreach($driver as $driver)
-                                 <tr class="table_row">
+                                 <tr class="table_row" >
                                     <td style="text-align:center;" class="table_data">{{$driver->id}}</td>
                                     <td style="text-align:center;" class="table_data">{{$driver->user_id}}</td>
                                     <td style="text-align:center;" class="table_data">{{$driver->report}}</td>
@@ -284,7 +294,9 @@
             document.getElementById("div-2").style.width="85%";
             isOpen=!isOpen;
         }
-})
+    })
+
+
 </script>
 </body>
 </html>

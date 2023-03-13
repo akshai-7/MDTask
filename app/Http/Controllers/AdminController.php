@@ -28,10 +28,12 @@ class AdminController extends Controller
         }
             return redirect('/user');
     }
-    //user
+    //user;
         public function userlist(){
-            $user=User::all();
-            $user1=User::count();
+            $role='user';
+            $user=User::where('role',$role)->get();
+            $role1='admin';
+            $user1=User::where('role',$role1)->first();
             return view('/user',['user'=>$user],['user1'=>$user1]);
         }
         public function newuser(){
@@ -125,16 +127,16 @@ class AdminController extends Controller
             $id=$request->user_id;
             $data = new Driver();
             $data->user_id=$id;
-            // $data->drivername=$request['drivername'];
-            // $data->company=$request['company'];
-            // $data->deliveryemail=$request['deliveryemail'];
-            // $data->phone=$request['phone'];
-            // $data->report =$request['report'];
-            // // $data->date =$request['date'];
-            // $data->date =Carbon::now()->endOfWeek(Carbon::FRIDAY)->format('d.m.Y');
-            // $data->number_plate =$request['number_plate'];
-            // $data->mileage=$request['mileage'];
-            // $data->save();
+            $data->drivername=$request['drivername'];
+            $data->company=$request['company'];
+            $data->deliveryemail=$request['deliveryemail'];
+            $data->phone=$request['phone'];
+            $data->report =$request['report'];
+            // $data->date =$request['date'];
+            $data->date =Carbon::now()->endOfWeek(Carbon::FRIDAY)->format('d.m.Y');
+            $data->number_plate =$request['number_plate'];
+            $data->mileage=$request['mileage'];
+            $data->save();
 
 
             // $user = new Report();
@@ -378,5 +380,10 @@ class AdminController extends Controller
 	        Mail::to($email)->send(new sendEmailUsingGmail);
             session()->flash('message','Mail Send Successfully !!');
             return redirect('/driver/'.$user->user_id);
+        }
+        public function search(Request $request){
+            $name=$request['name'];
+            $driver=Driver::where('drivername',$name)->get();
+            return view('/allrentallist',['driver'=>$driver ]);
         }
 }

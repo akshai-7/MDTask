@@ -19,6 +19,7 @@ class Kernel extends ConsoleKernel
        // $schedule->command('weekly:mail')->weekly()->fridays()->at('8:00')->timezone('UCT');
     }
 
+
     /**
      * Register the commands for the application.
      *

@@ -260,9 +260,28 @@
                 margin-left: 490px;
                 margin-top: -350px;
             }
+            .open-button {
+                color: blue;
+                padding: 13px 10px;
+                /* border: none; */
+                cursor: pointer;
+                position: fixed;
+                right: 28px;
+            }
+            .form-popup {
+                display: none;
+                position: fixed;
+                padding: 13px 10px;
+                height: 200px;
+                width: 200px;
+                margin-top: 35px;
+                right: 45px;
+                background: white;
+               border-radius: 4px;
+                z-index: 9;
+            }
 
 </style>
-
 
 <body>
 <section id="container">
@@ -278,6 +297,18 @@
     <div id="div-2">
         <header class="headers" id="headers">
             <div class="header_toggle" id="toggle-container"> <i class='bx bx-menu ' id="header-toggle"></i> </div>
+            <a href="#" class="open-button" onclick="openForm()"><i class="fa fa-user"></i></a>
+            <div class="form-popup" id="myForm">
+                <div class="container">
+                    <tr> Name:{{$user1->name}}</tr><br>
+                    <tr>Email:{{$user1->email}}</tr><br>
+                    <tr>Role: {{$user1->role}}</tr><br>
+                    <a href="/"> Log Out </a><br>
+                    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                  </div>
+
+
+            </div>
         </header>
         <div class="message" id="message">
             @if (session()->has('message'))
@@ -368,6 +399,8 @@
             </form>
         </div>
     </div>
+
+
 </section>
 
 </body>
@@ -413,6 +446,13 @@
             $(id).style.display ='none';
         }
 
+        function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
 
 
 </script>

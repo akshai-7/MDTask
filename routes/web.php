@@ -59,3 +59,8 @@ Route::get('/edit/{driver_id}',[AdminController::class,'edit']);
 Route::get('/send-email-using-gmail/{id}',[AdminController::class,'send']);
 Route::get('/handle/{id}',[AdminController::class,'handle']);
 
+
+Route::post('/search',[AdminController::class,'search']);
+
+
+
